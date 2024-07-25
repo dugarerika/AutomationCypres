@@ -34,7 +34,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
 
   context('Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
-    it.only('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
+    it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')
       let staff = "Erika "
       let start_time = "06:00"
