@@ -32,7 +32,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
     cy.clearCookies()
   })
 
-  context.only('Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+  describe.only('Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
     it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')
@@ -161,7 +161,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
     })
   })
 
-  context('Vendor Admin | Login/logout| logged with Staff credentials', () => {
+  describe('Vendor Admin | Login/logout| logged with Staff credentials', () => {
     
     it('Login into vendor with Staff credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')
@@ -185,7 +185,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
   })
 })
 
-context('Vendor Admin | logged with Admin credentials', () => {
+describe('Vendor Admin | logged with Admin credentials', () => {
     
   beforeEach(() => {
     login('Admin Section', 'testsalon','testsalon1o')
@@ -196,7 +196,7 @@ context('Vendor Admin | logged with Admin credentials', () => {
     cy.clearCookies()
   })
 
-  context('Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+  describe.only('Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
     
     
     it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
@@ -455,7 +455,7 @@ context('Vendor Admin | logged with Admin credentials', () => {
     })
   })
 
-  context('Vendor Admin | Staff/Staff Members| logged with Admin credentials', () => {
+  describe('Vendor Admin | Staff/Staff Members| logged with Admin credentials', () => {
     
     it('Verify it is possible to access the new staff section - Admin credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')
@@ -712,7 +712,7 @@ context('Vendor Admin | logged with Admin credentials', () => {
     })
   })
 
-  context('Vendor Admin | Login/logout| logged with Admin credentials', () => {
+  describe('Vendor Admin | Login/logout| logged with Admin credentials', () => {
     
     it('Login into vendor with Staff credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')
@@ -737,7 +737,7 @@ context('Vendor Admin | logged with Admin credentials', () => {
 
 })
 
-context('Vendor Admin | logged with Receptionist credentials', () => {
+describe('Vendor Admin | logged with Receptionist credentials', () => {
     
   beforeEach(() => {
     login('Receptionist Session', 'receptionist9','1234567890')
@@ -749,7 +749,7 @@ context('Vendor Admin | logged with Receptionist credentials', () => {
   })
 
 
-  context('Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
+  describe.only('Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
     it('Verify the New appointment modal is hidden after creating successfully an appointment  - Receptionist credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')
@@ -963,7 +963,7 @@ context('Vendor Admin | logged with Receptionist credentials', () => {
     })
   })
   
-  context('Vendor Admin | Staff/Staff Members| logged with Receptionist credentials', () => {
+  describe('Vendor Admin | Staff/Staff Members| logged with Receptionist credentials', () => {
   
     it('Verify it is possible to access the new staff section - Receptionist credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')
@@ -1220,7 +1220,7 @@ context('Vendor Admin | logged with Receptionist credentials', () => {
     })
   })
 
-  context('Vendor Admin | Login/logout| logged with Receptionist credentials', () => {
+  describe('Vendor Admin | Login/logout| logged with Receptionist credentials', () => {
       
     it('Login into vendor with Staff credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')
@@ -1244,7 +1244,7 @@ context('Vendor Admin | logged with Receptionist credentials', () => {
   })
 })  
 
-context('Vendor Admin | Login/logout| logged with Read Only credentials', () => {
+describe('Vendor Admin | Login/logout| logged with Read Only credentials', () => {
     
   beforeEach(() => {
     login('Readonly Session', 'readonly35','1234567890')
@@ -1255,7 +1255,7 @@ context('Vendor Admin | Login/logout| logged with Read Only credentials', () => 
     cy.clearCookies()
   })
 
-  context('Vendor Admin | Login/logout| logged with Read Only credentials', () => {
+  describe('Vendor Admin | Login/logout| logged with Read Only credentials', () => {
       
     it('Login into vendor with Staff credentials', () => {
       cy.visit('https://vendor.bookr.co/calendar')

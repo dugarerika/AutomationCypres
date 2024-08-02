@@ -15,6 +15,7 @@ function getConfigurationByFile(file) {
 }
 
 module.exports = defineConfig({
+  reporter: 'reporters/custom.js',
   projectId: 'mevvq9',
   e2e: {
     setupNodeEvents(on, config) {
@@ -40,7 +41,14 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     reporter: 'cypress-multi-reporters',
     reporterOptions: {
-      configFile: 'reporter-config.json'
+      reporterEnabled: "mochawesome",
+        mochawesomeReporterOptions: {
+            reportDir: "cypress/reports/mocha",
+            quite: true,
+            overwrite: false,
+            html: false,
+            json: true
+        }
     },
     retries: {
       runMode: 0,
