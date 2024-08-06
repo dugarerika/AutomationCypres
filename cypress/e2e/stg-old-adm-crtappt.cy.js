@@ -10,8 +10,8 @@ const login = (name, username, password) => {
     cy.get('#username').should('be.visible');
     cy.get('#password').should('be.visible');
     cy.xpath('//button[text()="Sign in"]').should('be.visible');
-    cy.get('#username').click().type(username, {force: true, delay: 50})
-    cy.get('#password').click().type(password,{force: true, delay: 50})
+    cy.get('#username').click().type(username, {force: true, delay: 70})
+    cy.get('#password').click().type(password,{force: true, delay: 70})
     cy.intercept('POST', '/ssr/main/api/auth/login').as('sign')
     cy.get('button').contains('Sign in').click()
     cy.wait(100)
@@ -83,7 +83,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
     })
   
     
-    it('Verify it is possible to create a new appointment - Admin Credentials', () => {
+    it('Verify it is possible to create a new appointment - Staff credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
       let staff = "Erika "
       let start_time = "06:00"
@@ -108,7 +108,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
       }) 
 
 
-    it('Verify it is possible to create an appointment over and already taken time slot - Admin Credentials', () => {
+    it('Verify it is possible to create an appointment over and already taken time slot - Staff credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
       let staff = "Erika "
       let start_time = "06:00"
@@ -699,6 +699,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
     cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
+
 
   describe.only('Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
