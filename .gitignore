@@ -3,4 +3,4 @@ package-lock.json
 cypress.config.js
 package.json
 cypress/screenshots
-cypress/reports/html/.jsons
+cypress/reports/html/.jsonsgit add .
