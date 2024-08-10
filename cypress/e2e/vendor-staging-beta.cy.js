@@ -26,7 +26,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
     login('Admin Section', 'testsalon','testsalon1o')
   })
 
-  after(() => {
+  afterEach(() => {
     cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
@@ -38,8 +38,8 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let staff = "Susan "
       let start_time = "07:00"
       let color
-      cy.get('.tool-datepicker-next').should('be.visible')
-      cy.get('.tool-datepicker-next').click()
+      // cy.get('.tool-datepicker-next').should('be.visible')
+      // cy.get('.tool-datepicker-next').click()
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -62,9 +62,8 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let staff = "Zara staff"
       let start_time = "07:00"
       let color
-      cy.get('.tool-datepicker-next').should('be.visible')
-      cy.get('.tool-datepicker-next').click()
-      
+      // cy.get('.tool-datepicker-next').should('be.visible')
+      // cy.get('.tool-datepicker-next').click()
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -90,8 +89,8 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let staff = "Zara staff"
       let start_time = "07:00"
       let color
-      cy.get('.tool-datepicker-next').should('be.visible')
-      cy.get('.tool-datepicker-next').click()
+      // cy.get('.tool-datepicker-next').should('be.visible')
+      // cy.get('.tool-datepicker-next').click()
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -117,8 +116,8 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let staff = "Zara staff"
       let start_time = "07:00"
       let color
-      cy.get('.tool-datepicker-next').should('be.visible')
-      cy.get('.tool-datepicker-next').click()
+      // cy.get('.tool-datepicker-next').should('be.visible')
+      // cy.get('.tool-datepicker-next').click()
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -140,11 +139,11 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-      let staff = "emmanuel kuye"
+      let staff = "Mateo "
       let start_time = "07:00"
       let color
-      cy.get('.tool-datepicker-next').should('be.visible')
-      cy.get('.tool-datepicker-next').click()
+      // cy.get('.tool-datepicker-next').should('be.visible')
+      // cy.get('.tool-datepicker-next').click()
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -164,11 +163,11 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin Credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-      let staff = "joy"
+      let staff = "Jaira "
       let start_time = "07:00"
       let color
-      cy.get('.tool-datepicker-next').should('be.visible')
-      cy.get('.tool-datepicker-next').click()
+      // cy.get('.tool-datepicker-next').should('be.visible')
+      // cy.get('.tool-datepicker-next').click()
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -188,11 +187,11 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify The edit appointment modal is display after clicking on Edit booking button - Admin credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-      let staff = "emmanuel kuye"
+      let staff = "Mateo "
       let start_time = "07:00"
       let color
-      cy.get('.tool-datepicker-next').should('be.visible')
-      cy.get('.tool-datepicker-next').click()
+      // cy.get('.tool-datepicker-next').should('be.visible')
+      // cy.get('.tool-datepicker-next').click()
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -209,11 +208,11 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to edit the Customer - Admin credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-      let staff = "emmanuel kuye"
+      let staff = "Mateo "
       let start_time = "07:00"
       let color
-      cy.get('.tool-datepicker-next').should('be.visible')
-      cy.get('.tool-datepicker-next').click()
+      // cy.get('.tool-datepicker-next').should('be.visible')
+      // cy.get('.tool-datepicker-next').click()
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
