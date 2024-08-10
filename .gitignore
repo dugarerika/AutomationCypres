@@ -1,2 +1,6 @@
 node_modules
-*.json
+package-lock.json
+cypress.config.js
+package.json
+cypress/screenshots
+cypress/reports/html/.jsons
