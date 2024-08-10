@@ -21,7 +21,7 @@ const login = (name, username, password) => {
   })
 }
 
-context('Vendor Admin | logged with Admin credentials', () => {
+describe('Vendor Admin | logged with Admin credentials', () => {
     
   beforeEach(() => {
     login('Admin Section', 'testsalon','testsalon1o')
@@ -32,7 +32,7 @@ context('Vendor Admin | logged with Admin credentials', () => {
     cy.clearCookies()
   })
 
-  context('Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+  describe.only('Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
     
     it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
@@ -240,7 +240,7 @@ context('Vendor Admin | logged with Admin credentials', () => {
     })
   })
 
-  context('Vendor Admin | Staff/Staff Members| logged with Admin credentials', () => {
+  describe('Vendor Admin | Staff/Staff Members| logged with Admin credentials', () => {
     
     it('Verify it is possible to access the new staff section - Admin credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
@@ -305,7 +305,7 @@ context('Vendor Admin | logged with Admin credentials', () => {
       cy.log('Test completed')
     })
   
-    it.only('Verify Last name is a optional field in the New Staff form - Admin credentials', () => {
+    it('Verify Last name is a optional field in the New Staff form - Admin credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
       cy.wait(1000)
       cy.contains('span','Employees').parents('button').should('exist')
@@ -520,7 +520,7 @@ context('Vendor Admin | logged with Admin credentials', () => {
     })
   })
 
-  context('Vendor Admin | Login/logout| logged with Admin credentials', () => {
+  describe('Vendor Admin | Login/logout| logged with Admin credentials', () => {
     
     it('Login into vendor with Staff credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
