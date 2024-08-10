@@ -6,7 +6,6 @@ const { should } = require("chai")
 const login = (name, username, password) => {
   cy.session(name,() => {
     cy.visit('https://beta.vendor.bookr-dev.com/')
-    cy.wait(900)
     cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
     cy.get('[type="text"]').should('be.visible')
     cy.get('[type="password"]').should('be.visible')
@@ -27,8 +26,8 @@ describe('Vendor Admin | logged with Admin credentials', () => {
     login('Admin Section', 'testsalon','testsalon1o')
   })
 
-  afterEach(() => {
-    // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
+  after(() => {
+    cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
 
@@ -60,7 +59,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to create an appointment searching and selecting customer from vendor - Admin credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-      let staff = "Oba Femi"
+      let staff = "Zara staff"
       let start_time = "07:00"
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
@@ -88,7 +87,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment - Admin credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-      let staff = "Oba Femi"
+      let staff = "Zara staff"
       let start_time = "07:00"
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
@@ -115,7 +114,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to create an appointment over and already taken time slot - Admin Credentials', () => {
       cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-      let staff = "Oba Femi"
+      let staff = "Zara staff"
       let start_time = "07:00"
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
