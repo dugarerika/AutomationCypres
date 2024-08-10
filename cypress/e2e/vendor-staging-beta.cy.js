@@ -41,7 +41,6 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -51,7 +50,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       })
       cy.contains('New Appointment').should('exist')
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-      cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+      cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
       cy.contains('Create Appointment').click({force: true})
       cy.wait('@new-user').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
@@ -79,7 +78,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       cy.contains("Search customer..").next('div').children('input').click({force: true})
       cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-      cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+      cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
       cy.contains('Create Appointment').click({force: true})
       cy.wait('@new-user').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
@@ -106,7 +105,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       cy.contains('New Appointment').should('exist')  
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
       cy.contains('Create Appointment').click({force: true})
-      cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+      cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
       cy.contains('Warning: ').should('be.visible')
       cy.contains('button','Continue').click({force: true})
       cy.wait('@new-user').then((interception) => {
@@ -135,7 +134,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
       cy.contains('Create Appointment').click({force: true})
       cy.contains('Warning: ').should('be.visible')
-      cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+      cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
       cy.contains('button','Continue').click({force: true})
       cy.wait('@new-user').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
@@ -159,7 +158,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       })
       cy.contains('New Appointment').should('exist')  
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-      cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+      cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
       cy.contains('Create Appointment').click({force: true})
       cy.wait('@new-user').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
@@ -184,7 +183,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       })
       cy.contains('New Appointment').should('exist')  
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-      cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+      cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
       cy.contains('Create Appointment').click({force: true})
       cy.wait('@new-user').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
