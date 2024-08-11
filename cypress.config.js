@@ -39,6 +39,7 @@ module.exports = defineConfig({
     videoUploadOnPasses: false,
     viewportHeight: 1080,
     viewportWidth: 1920,
+    numTestsKeptInMemory: 100,
     reporter: 'cypress-mochawesome-reporter',
     e2e: {
       setupNodeEvents(on, config) {
