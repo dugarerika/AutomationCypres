@@ -485,7 +485,7 @@ describe.only('Vendor Admin | Calendar | Create appointments by Clicking on the 
   it('Verify it is possible to create an appointment searching and selecting customer from vendor - Staff credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     let staff = "Erika "
-    let start_time = "06:00"
+    let start_time = "07:00"
     let color
     // cy.get('.tool-datepicker-next').should('be.visible')
     // cy.get('.tool-datepicker-next').click()
@@ -539,7 +539,7 @@ describe.only('Vendor Admin | Calendar | Create appointments by Clicking on the 
   it('Verify it is possible to create an appointment over and already taken time slot - Staff Credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     let staff = "Erika "
-    let start_time = "06:00"
+    let start_time = "07:00"
     let color
     // cy.get('.tool-datepicker-next').should('be.visible')
     // cy.get('.tool-datepicker-next').click()
@@ -560,30 +560,6 @@ describe.only('Vendor Admin | Calendar | Create appointments by Clicking on the 
     cy.wait('@new-user').then((interception) => {
       expect(interception.response.statusCode).to.equal(200)
     }) 
-  })
-
-  it('Verify the New appointment modal is hidden after creating successfully an appointment - Staff credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    let staff = "Erika "
-    let start_time = "06:00"
-    let color
-    // cy.get('.tool-datepicker-next').should('be.visible')
-    // cy.get('.tool-datepicker-next').click()
-    cy.contains(`${staff}`).parent('div').then(($div) => {
-      color = $div.attr('color')
-      cy.log(color)
-      cy.xpath(`//div[@data-schedule-time="${start_time}" and @color="${color}"]`).should('be.visible')
-      cy.xpath(`//div[@data-schedule-time="${start_time}" and @color="${color}"]`).click({force: true})
-      cy.log('Test completed')
-    })
-    cy.contains('New Appointment').should('exist')  
-    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
-    cy.contains('Create Appointment').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(200)
-    })
-    cy.contains('New Appointment').should('not.be.visible')  
   })
 
   it('Verify the New appointment modal is hidden after creating successfully an appointment - Staff Credentials', () => {
