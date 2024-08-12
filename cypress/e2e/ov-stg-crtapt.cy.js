@@ -616,7 +616,7 @@ describe('Vendor Admin | Calendar| Create appointments by Clicking on the calend
     cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
-  it.only('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
+  it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
     cy.visit('https://staging.vendor.bookr-dev.com/calendar')
     let staff = "Zstaff "
     let start_time = "08:00"
@@ -633,7 +633,7 @@ describe('Vendor Admin | Calendar| Create appointments by Clicking on the calend
     })
     cy.contains('New Appointment').should('exist')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+    cy.intercept('POST', '/ssr/main/api/vendor/bookings/validate/slots').as('new-user')
     cy.contains('Create Appointment').click({force: true})
     cy.wait('@new-user').then((interception) => {
       expect(interception.response.statusCode).to.equal(401)
