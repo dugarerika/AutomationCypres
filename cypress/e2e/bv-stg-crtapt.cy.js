@@ -244,7 +244,7 @@ describe('Beta Vendor Admin | logged with Receptionist credentials', () => {
     cy.clearCookies()
   })
 
-describe.only('Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+describe.only('Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
     
   it('Verify the New appointment modal is hidden after creating successfully an appointment - Receptionist credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
@@ -456,7 +456,7 @@ describe('Beta Vendor Admin | logged with Staff credentials', () => {
     cy.clearCookies()
   })
 
-describe.only('Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe.only('Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
     
   it('Verify the New appointment modal is hidden after creating successfully an appointment - Staff credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
