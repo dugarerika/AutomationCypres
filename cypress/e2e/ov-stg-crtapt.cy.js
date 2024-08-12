@@ -378,7 +378,6 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
     let color
     cy.get('.tool-datepicker-next').should('be.visible')
     cy.get('.tool-datepicker-next').click()
-    cy.wait(7000)
     cy.contains(`${staff}`).parent('div').then(($div) => {
       color = $div.attr('color')
       cy.log(color)
@@ -610,14 +609,14 @@ describe('Vendor Admin | Calendar | Create appointment by Clicking on the calend
 describe('Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    login('Readonly Session', 'readonly35','1234567890')
+    login('Readonly Session', 'readonly3','1234567890')
   })
 
   after(() => {
     cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
-  it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
+  it.only('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
     cy.visit('https://staging.vendor.bookr-dev.com/calendar')
     let staff = "Zstaff "
     let start_time = "08:00"

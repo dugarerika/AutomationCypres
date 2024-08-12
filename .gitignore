@@ -2,15 +2,7 @@ node_modules
 cypress/reports/html/
 cypress/screenshots/stg-old-adm-crtappt.cy.js/Vendor Admin  logged with Admin credentials -- Verify it is possible to add a new staff - Admin credentials -- before each hook (failed).png
 cypress/downloads/downloads.htm
-cypress/screenshots/bv-stg-crtapt.cy.js/Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify it is possible to create an appointment over and already taken time slot - Staff Credential.png
-cypress/screenshots/bv-stg-crtapt.cy.js/Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify it is possible to create an appointment searching and selecting customer from vendor - Staf.png
-cypress/screenshots/bv-stg-crtapt.cy.js/Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify it is possible to edit the Customer - Staff credentials (failed).png
-cypress/screenshots/bv-stg-crtapt.cy.js/Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify The edit appointment modal is display after clicking on Edit booking button - Staff credent.png
-cypress/screenshots/bv-stg-crtapt.cy.js/Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify the New appointment modal is hidden after creating successfully an appointment - Staff  (1).png
-cypress/screenshots/bv-stg-crtapt.cy.js/Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify the New appointment modal is hidden after creating successfully an appointment - Staff  (2).png
-cypress/screenshots/bv-stg-crtapt.cy.js/Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify the New appointment modal is hidden after creating successfully an appointment - Staff cred.png
-cypress/screenshots/bv-stg-crtapt.cy.js/Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify the New appointment modal is hidden after creating successfully an ovelap appointment - Sta.png
-mochawesome-report/mochawesome.html
+mochawesome-report
 mochawesome-report/mochawesome.json
 mochawesome-report/assets/app.css
 mochawesome-report/assets/app.js
@@ -25,21 +17,7 @@ mochawesome-report/assets/roboto-regular-webfont.woff
 mochawesome-report/assets/roboto-regular-webfont.woff2
 cypress.config.js
 .gitignore
-cypress/screenshots/bv-stg-crtapt.cy.js/Beta Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify it is possible to create an appointment searching and selecting customer from vendor -.png
-cypress/screenshots/bv-stg-crtapt.cy.js/Beta Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify it is possible to edit the Customer - Staff credentials (failed).png
-cypress/screenshots/bv-stg-crtapt.cy.js/Beta Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify The edit appointment modal is display after clicking on Edit booking button - Staff cr.png
-cypress/screenshots/bv-stg-crtapt.cy.js/Beta Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify the New appointment modal is hidden after creating successfully an appointment - S (1).png
-cypress/screenshots/bv-stg-crtapt.cy.js/Beta Vendor Admin  logged with Staff credentials -- Vendor Admin  Calendar  Create appointments by Clicking on the calendar logged with Staff credentials -- Verify the New appointment modal is hidden after creating successfully an appointment - Staff.png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Admin credentials -- Vendor Admin  StaffStaff Members logged with Admin credentials -- Verify it is possible to add a new staff - Admin credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Admin credentials -- Vendor Admin  StaffStaff Members logged with Admin credentials -- Verify it is possible to delete staff - Admin credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Admin credentials -- Vendor Admin  StaffStaff Members logged with Admin credentials -- Verify it is possible to edit staff User permission From READ ONLY to STAFF - Admin credentials (failed) (1).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Admin credentials -- Vendor Admin  StaffStaff Members logged with Admin credentials -- Verify it is possible to edit staff User permission From READ ONLY to STAFF - Admin credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Admin credentials -- Vendor Admin  StaffStaff Members logged with Admin credentials -- Verify it is possible to edit staff User permission From RECEPTIONIST to READ ONLY - Admin credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Admin credentials -- Vendor Admin  StaffStaff Members logged with Admin credentials -- Verify it is possible to edit staff User permission From STAFF to RECEPTIONIST - Admin credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Receptionist credentials -- Vendor Admin  StaffStaff Members logged with Receptionist credentials -- Verify it is possible to add a new staff - Receptionist credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Receptionist credentials -- Vendor Admin  StaffStaff Members logged with Receptionist credentials -- Verify it is possible to delete staff - Receptionist credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Receptionist credentials -- Vendor Admin  StaffStaff Members logged with Receptionist credentials -- Verify it is possible to edit staff User permission From READ ONLY to STAFF - Receptionist credentials (failed) (1).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Receptionist credentials -- Vendor Admin  StaffStaff Members logged with Receptionist credentials -- Verify it is possible to edit staff User permission From READ ONLY to STAFF - Receptionist credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Receptionist credentials -- Vendor Admin  StaffStaff Members logged with Receptionist credentials -- Verify it is possible to edit staff User permission From RECEPTIONIST to READ ONLY - Receptionist credentials (failed).png
-cypress/screenshots/ov-stg-crtapt.cy.js/Vendor Admin  logged with Receptionist credentials -- Vendor Admin  StaffStaff Members logged with Receptionist credentials -- Verify it is possible to edit staff User permission From STAFF to RECEPTIONIST - Receptionist credentials (failed).png
+cypress/screenshots/*
 cypress/downloads/downloads.htm.crdownload
+cypress/screenshots/ov-stg-crtapt.cy.js/*
+mochawesome-report/mochawesome.html
