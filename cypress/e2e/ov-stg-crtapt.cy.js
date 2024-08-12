@@ -407,7 +407,7 @@ describe('Vendor Admin | Calendar | Create appointment by Clicking on the calend
     cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
-  it.only('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Admin credentials', () => {
+  it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Admin credentials', () => {
     cy.visit('https://staging.vendor.bookr-dev.com/calendar')
     let staff1 = "Zstaff "
     let start_time = "08:00"
