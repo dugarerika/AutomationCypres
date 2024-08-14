@@ -66,7 +66,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')  
-    }) 
+  }) 
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
     cy.visit('https://staging.vendor.bookr-dev.com/calendar')
@@ -247,7 +247,7 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
     cy.contains('Add Offer').click()
     cy.contains('div','Offer').should('exist')  
     cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
-    cy.get('.css-ltr-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{enter}')
+    cy.get('.css-ltr-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{downarrow}{enter}') //fecha
     cy.get('.css-ltr-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -527,7 +527,7 @@ describe('Vendor Admin | Calendar | Create appointment by Clicking on the calend
   it('Verify the New appointment modal is hidden after creating successfully an appointment  - Receptionist credentials', () => {
     cy.visit('https://staging.vendor.bookr-dev.com/calendar')
     let staff = "Zstaff "
-    let start_time = "08:00"
+    let start_time = "05:00"
     let color
     cy.get('.tool-datepicker-next').should('be.visible')
     cy.get('.tool-datepicker-next').click()
