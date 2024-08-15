@@ -31,7 +31,29 @@ afterEach(() => {
   cy.clearCookies()
 })
 
-it('Verify it is possible to create a new Product - Admin credentials', () => {
+it('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
+  cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+  cy.contains('Inventory').should('exist')  
+  cy.contains('Inventory').click({force: true}) 
+  cy.contains('Products').should('exist')  
+  cy.contains('Products').click({force: true}) 
+  // cy.wait(7000)
+  cy.contains('h6','Products').should('exist') 
+  }) 
+})
+
+it('Verify the it is possible to create a new Product - Admin credentials', () => {
+  cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+  cy.contains('Inventory').should('exist')  
+  cy.contains('Inventory').click({force: true}) 
+  cy.contains('Products').should('exist')  
+  cy.contains('Products').click({force: true}) 
+  // cy.wait(7000)
+  cy.contains('h6','Products').should('exist') 
+  cy.contains('button','Add New').should('exist')  
+  cy.contains('button','Add New').click({force: true}) 
+
+it('Verify the it is possible to create a new Product - Admin credentials', () => {
   cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
   cy.contains('Inventory').should('exist')  
   cy.contains('Inventory').click({force: true}) 
