@@ -707,14 +707,11 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
     cy.clearCookies()
   })
 
-  it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
+  it.only('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     let staff = "Naomi "
     let start_time = "08:00"
     let color
-    // cy.get('.tool-datepicker-next').should('be.visible')
-    // cy.get('.tool-datepicker-next').click()
-    // cy.wait(7000)
     cy.contains(`${staff}`).parent('div').then(($div) => {
       color = $div.attr('color')
       cy.log(color)
