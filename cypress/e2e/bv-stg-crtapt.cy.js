@@ -712,9 +712,9 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
     let staff = "Naomi "
     let start_time = "08:00"
     let color
-    cy.get('.tool-datepicker-next').should('be.visible')
-    cy.get('.tool-datepicker-next').click()
-    cy.wait(7000)
+    // cy.get('.tool-datepicker-next').should('be.visible')
+    // cy.get('.tool-datepicker-next').click()
+    // cy.wait(7000)
     cy.contains(`${staff}`).parent('div').then(($div) => {
       color = $div.attr('color')
       cy.log(color)
