@@ -20,7 +20,7 @@ const login = (name, username, password) => {
   })
 }
 
-describe.only('Beta Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
+describe('Beta Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
 
   beforeEach(() => {
     login('Admin Section', 'testsalon', 'testsalon1o')
@@ -405,7 +405,7 @@ describe.only('Beta Vendor Admin | Inventory | Create products| logged with Admi
     cy.wait(100)
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Product description - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Short description - Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -441,8 +441,8 @@ describe.only('Beta Vendor Admin | Inventory | Create products| logged with Admi
     cy.contains('button', 'Basic Info').click({ force: true })
     cy.get('input[placeholder = "Enter product name"]').should('exist')
     cy.get('input[placeholder = "Enter product name"]').type('Product filled up with Product Name and Product Description')
-    cy.get('input[placeholder="Enter product description"]').should('exist')
-    cy.get('input[placeholder="Enter product description"]').type('This is a product description of the product')
+    cy.get('textarea[placeholder="Enter product description"]').should('exist')
+    cy.get('textarea[placeholder="Enter product description"]').type('This is a product description of the product')
     cy.contains('button', 'Save').should('exist')
     cy.contains('button', 'Save').click({ force: true })
     cy.contains('span', 'Product created successfully').should('exist')
