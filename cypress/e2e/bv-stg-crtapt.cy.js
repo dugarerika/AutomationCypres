@@ -23,6 +23,9 @@ const login = (name, username, password) => {
 const searchTimeSlot = (staff,start_time) => {
   cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
   let color
+  cy.get('.tool-datepicker-next').should('be.visible')
+  cy.get('.tool-datepicker-next').click()
+  cy.wait(7000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
@@ -38,8 +41,9 @@ const searchApt = () => {
   let staff = "Mateo "
   let start_time = "07:00"
   let color
-  // cy.get('.tool-datepicker-next').should('be.visible')
-  // cy.get('.tool-datepicker-next').click()
+  cy.get('.tool-datepicker-next').should('be.visible')
+  cy.get('.tool-datepicker-next').click()
+  cy.wait(7000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
