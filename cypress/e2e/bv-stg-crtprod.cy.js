@@ -77,6 +77,18 @@ const filloutProductInventoryInfo =(prod_ksu, prod_stock_qty, prod_low_stock_lvl
 
 }
 
+const accessToCreateSuppliers = () => {
+  cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+  cy.contains('Inventory').should('exist')
+  cy.contains('Inventory').click({ force: true })
+  cy.contains('Suppliers').should('exist')
+  cy.contains('Suppliers').click({ force: true })
+  cy.contains('h6', 'Suppliers').should('exist')
+  cy.contains('button', 'Add New').should('exist')
+  cy.contains('button', 'Add New').click({ force: true })
+  cy.contains('h3', 'Create Suppliers').should('exist')
+}
+
 const expectedMessageCreateProduct = (product_message) => {
   cy.contains('button', 'Save').should('exist')
   cy.contains('button', 'Save').click({ force: true })
@@ -579,4 +591,34 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   //     cy.contains('span', 'Product deleted successfully').should('exist')
   //   })
   // })
+})
+
+describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin credentials', () =>{
+
+  beforeEach(() => {
+    login('Admin Section', 'testsalon', 'testsalon1o')
+  })
+
+  afterEach(() => {
+    // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
+    cy.clearCookies()
+  })
+
+  it('Verify it is possible access to the Inventory/Suplliers section- Admin credentials', () => {
+    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.contains('Inventory').should('exist')
+    cy.contains('Inventory').click({ force: true })
+    cy.contains('Suppliers').should('exist')
+    cy.contains('Suppliers').click({ force: true })
+    cy.contains('h6', 'Suppliers').should('exist')
+  })
+
+  it('Verify the it is possible access to the Create Suppliers form - Admin credentials', () => {
+    accessToCreateSuppliers()
+  })
+
+  it('Verify Product Name is the required field by trying to create a product leaving empty all the fields- Admin credentials, () => {
+    accessToCreateSuppliers()
+  })
+
 })
