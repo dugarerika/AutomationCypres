@@ -44,7 +44,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
     login('Admin Section', 'artnailcorner','1234567890')
   })
 
-  after(() => {
+  afterEach(() => {
     cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
@@ -313,7 +313,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
     login('Receptionist Session', 'recep6','1234567890')
   })
 
-  after(() => {
+  afterEach(() => {
     cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })

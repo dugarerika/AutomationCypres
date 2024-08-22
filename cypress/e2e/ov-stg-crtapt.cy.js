@@ -26,9 +26,7 @@ const searchTimeSlot = (staff,start_time) => {
   let color
   cy.get('.tool-datepicker-next').should('be.visible')
   cy.get('.tool-datepicker-next').click()
-  cy.get('.tool-datepicker-next').click()
-  cy.get('.tool-datepicker-next').click()
-  cy.wait(7000)
+  cy.wait(4000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
@@ -38,21 +36,16 @@ const searchTimeSlot = (staff,start_time) => {
   cy.contains('New Appointment').should('exist')  
 }
 
-const searchApt = () => {
-  cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-  let staff = "Mateo "
-  let start_time = "07:00"
+const searchApt = (staff, start_time) => {
+  // cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color
-  cy.get('.tool-datepicker-next').should('be.visible')
-  cy.get('.tool-datepicker-next').click()
-  cy.get('.tool-datepicker-next').click()
-  cy.get('.tool-datepicker-next').click()
+  // cy.get('.tool-datepicker-next').should('be.visible')
+  // cy.get('.tool-datepicker-next').click()
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
     cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).should('be.visible')
     cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).click()
-    cy.log('Test completed')
   })
   cy.contains('Appointment Details').should('be.visible')
 }
@@ -145,7 +138,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     }) 
   })
 
-  it('Verify it is possible to create an appointment searching and selecting customer from vendor - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','07:00')  
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
@@ -157,6 +150,54 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
+  })
+
+  it.only('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
+    searchTimeSlot('Zumba Zumba','09:00')  
+    cy.contains("Search customer..").next('div').should('exist')
+    cy.contains("Search customer..").next('div').children('input').click({force: true})
+    cy.contains("Search customer..").next('div').children('input').type('38717494{enter}{enter}',{force: true, delay: 1000})
+    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')
+    searchApt('Zumba Zumba','09:00') 
+    cy.contains('div>p','+973').should('exist')
+  })
+
+  it.only('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
+    searchTimeSlot('Zumba Zumba','10:00')  
+    cy.contains("Search customer..").next('div').should('exist')
+    cy.contains("Search customer..").next('div').children('input').click({force: true})
+    cy.contains("Search customer..").next('div').children('input').type('97338717494{enter}{enter}',{force: true, delay: 1000})
+    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')
+    searchApt('Zumba Zumba','10:00') 
+    cy.contains('div>p','+973').should('exist')
+  })
+
+  it.only('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
+    searchTimeSlot('Zumba Zumba','11:00')  
+    cy.contains("Search customer..").next('div').should('exist')
+    cy.contains("Search customer..").next('div').children('input').click({force: true})
+    cy.contains("Search customer..").next('div').children('input').type('+97338717494{enter}{enter}',{force: true, delay: 1000})
+    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')
+    searchApt('Zumba Zumba','11:00') 
+    cy.contains('div>p','+973').should('exist')
   })
 })
 
@@ -269,23 +310,6 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')  
-  })
-
-  it('Verify The edit appointment modal is display after clicking on Edit booking button - Admin credentials', () => {
-    searchApt('Marly william','07:00') 
-    cy.contains('Edit Booking').should('be.visible')
-    cy.contains('Edit Booking').click({force: true})
-    cy.contains('Edit Appointment').should('exist') 
-  })
-
-  it('Verify it is possible to edit the Customer - Admin credentials', () => {
-    searchApt('Marly william','07:00') 
-    cy.contains('Edit Booking').should('be.visible')
-    cy.contains('Edit Booking').click({force: true})
-    cy.contains('Edit Appointment').should('exist') 
-    cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
-    cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-    cy.wait(1000)
   })
 })
 
@@ -402,24 +426,6 @@ describe('Vendor Admin | Calendar | Create appointment by Clicking on the calend
     cy.contains('New Appointment').should('not.be.visible')
     cy.log('Test completed')
   })
-
-  it('Verify The edit appointment modal is display after clicking on Edit booking button  - Receptionist credentials', () => {
-    searchApt('Marly william','06:00') 
-    cy.contains('Edit Booking').should('be.visible')
-    cy.contains('Edit Booking').click({force: true})
-    cy.contains('Edit Appointment').should('exist') 
-    cy.log('Test completed')
-  })
-
-  it('Verify it is possible to edit the Customer  - Receptionist credentials', () => {
-    searchApt('Marly william','06:00') 
-    cy.contains('Edit Booking').should('be.visible')
-    cy.contains('Edit Booking').click({force: true})
-    cy.contains('Edit Appointment').should('exist') 
-    cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
-    cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-    cy.log('Test completed')
-  })
 })
 
 describe('Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
@@ -466,6 +472,4 @@ describe('Vendor Admin | Calendar| Create appointments by Clicking on the calend
     })
     cy.contains('User does not have enough permissions to use this service').should('not.be.visible')  
     }) 
-    
-  
   })

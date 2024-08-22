@@ -23,9 +23,6 @@ const login = (name, username, password) => {
 const searchTimeSlot = (staff,start_time) => {
   cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
   let color
-  cy.get('.tool-datepicker-next').should('be.visible')
-  cy.get('.tool-datepicker-next').click()
-  cy.wait(7000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
@@ -36,14 +33,9 @@ const searchTimeSlot = (staff,start_time) => {
   cy.contains('New Appointment').should('exist')
 }
 
-const searchApt = () => {
+const searchApt = (staff,start_time) => {
   cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-  let staff = "Mateo "
-  let start_time = "07:00"
   let color
-  cy.get('.tool-datepicker-next').should('be.visible')
-  cy.get('.tool-datepicker-next').click()
-  cy.wait(7000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
@@ -57,11 +49,10 @@ const searchApt = () => {
 describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    login('Staff Section', 'readonly35','1234567890')
+    login('Readonly Section', 'readonly5','1234567890')
   })
 
   afterEach(() => {
-    cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
 
@@ -195,6 +186,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
   searchTimeSlot('Jaira','07:00') 
   cy.contains('New Appointment').should('exist')
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+  
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
   cy.contains('Create Appointment').click({force: true})
   cy.wait('@new-user').then((interception) => {
@@ -226,7 +218,7 @@ it('Verify it is possible to edit the Customer - Admin credentials', () => {
 
 describe('Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   beforeEach(() => {
-    login('Staff Section', 'receptionist9','1234567890')
+    login('Receptionist Section', 'receptionist9','1234567890')
   })
 
   afterEach(() => {
