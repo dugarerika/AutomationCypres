@@ -3,6 +3,8 @@
 
 const { should } = require("chai")
 
+// Important:  before running this test cases the product list must be empty
+
 const login = (name, username, password) => {
   cy.session(name, () => {
     cy.visit('https://beta.vendor.bookr-dev.com/')
@@ -144,69 +146,7 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     // cy.contains('span','Low Stock Level').should('exist')
   })
 
-// Create Non successfully
-  it('Verify Product Name is the required field by trying to create a product leaving empty all the fields- Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product name is required')
-  })
-
-  it('Verify Product Name is the only required field by tring to create a product, filling up barcode only - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductBasicInfo('{enter}','1234567890123','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product name is required')
-  })
-
-  it('Verify Product Name is the only required field by trying to create a product, filling up Product Measurement without unit only - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductBasicInfo('{enter}','{enter}','1234567890','{enter}','{enter}')
-    expectedMessageCreateProduct('Product name is required')
-  })
-
-  it('Verify Product Name is the only required field by trying to create a product filling up Product Measurement with unit only - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('option', 'Select Unit').should('exist')
-    cy.get('select').select('l')
-    expectedMessageCreateProduct('Product name is required')
-  })
-
-  it('Verify Product Name is the only required field by trying to create a product filling up Short Description only - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductBasicInfo('{enter}','{enter}','{enter}','This is a short description','{enter}')
-    expectedMessageCreateProduct('Product name is required')
-  })
-
-  it('Verify Product Name is the only required field by trying to create a product filling up Product Description only - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','This is a product description')
-    expectedMessageCreateProduct('Product name is required')
-  })
-
-  it('Verify Product Name is the only required field by triying to create a product filling up Supply Price only - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductPricingInfo('120','{enter}')
-    expectedMessageCreateProduct('Product name is required')
-  })
-
-  it('Verify Product Name is the only required field by trying to create a product by filling up Retail Price only - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductPricingInfo('{enter}','567')
-    expectedMessageCreateProduct('Product name is required')
-  })
-
-  it('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
-    accessToCreateProduct()
-    cy.contains('button', 'Basic Info').should('exist')
-    cy.contains('button', 'Basic Info').click({ force: true })
-    cy.get('input[placeholder = "Enter product name"]').should('exist')
-    cy.get('input[placeholder = "Enter product name"]').type('Product Measuarement cannot be submited without Units')
-    cy.get('input[placeholder="Enter product measurement"]').should('exist')
-    cy.get('input[placeholder="Enter product measurement"]').type('123')
-    expectedMessageCreateProduct('measure.unit must be one of the following values: ml, l, g, kg, oz, lb, cm, ft, in, whole')
-  })
-
-//Create succesfully
+  //Create succesfully
   it('Verify it is possible to create a Product by filling up only the Product Name - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Product Name only','{enter}','{enter}','{enter}','{enter}')
@@ -215,7 +155,7 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
 
   it('Verify Product is create successfully by filling up Price Name and Product Bar Code - Admin credentials', () => {
     accessToCreateProduct()
-    filloutProductBasicInfo('Product filled up with Product Name and Barcode','1234567890123','{enter}','{enter}','{enter}')
+    filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
@@ -302,6 +242,109 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
+  it('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
+    filloutProductBasicInfo('Product filled up with Price Name, product bar code, short description, prod description and Reorder Quantity','098765432112','{enter}','Prod short description','Product description')
+    expectedMessageCreateProduct('Product created successfully')
+  })
+
+
+// Create Non successfully
+
+it('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
+  accessToCreateProduct()
+  filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
+  filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
+  expectedMessageCreateProduct('Failed to create product')
+})
+
+it('Verify it is not possible to create a Product by filling up Price Name and already added Product Bar Code - Admin credentials', () => {
+  accessToCreateProduct()
+  filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
+  expectedMessageCreateProduct('Failed to create product')
+})
+
+  it('Verify Product Name is the required field by trying to create a product leaving empty all the fields- Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','{enter}')
+    expectedMessageCreateProduct('Product name is required')
+  })
+
+  it('Verify Product Name is the only required field by tring to create a product, filling up barcode only - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('{enter}','1234567890123','{enter}','{enter}','{enter}')
+    expectedMessageCreateProduct('Product name is required')
+  })
+
+  it('Verify Product Name is the only required field by trying to create a product, filling up Product Measurement without unit only - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('{enter}','{enter}','1234567890','{enter}','{enter}')
+    expectedMessageCreateProduct('Product name is required')
+  })
+
+  it('Verify Product Name is the only required field by trying to create a product filling up Product Measurement with unit only - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','{enter}')
+    cy.contains('option', 'Select Unit').should('exist')
+    cy.get('select').select('l')
+    expectedMessageCreateProduct('Product name is required')
+  })
+
+  it('Verify Product Name is the only required field by trying to create a product filling up Short Description only - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('{enter}','{enter}','{enter}','This is a short description','{enter}')
+    expectedMessageCreateProduct('Product name is required')
+  })
+
+  it('Verify Product Name is the only required field by trying to create a product filling up Product Description only - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','This is a product description')
+    expectedMessageCreateProduct('Product name is required')
+  })
+
+  it('Verify Product Name is the only required field by triying to create a product filling up Supply Price only - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductPricingInfo('120','{enter}')
+    expectedMessageCreateProduct('Product name is required')
+  })
+
+  it('Verify Product Name is the only required field by trying to create a product by filling up Retail Price only - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductPricingInfo('{enter}','567')
+    expectedMessageCreateProduct('Product name is required')
+  })
+
+  it('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
+    accessToCreateProduct()
+    cy.contains('button', 'Basic Info').should('exist')
+    cy.contains('button', 'Basic Info').click({ force: true })
+    cy.get('input[placeholder = "Enter product name"]').should('exist')
+    cy.get('input[placeholder = "Enter product name"]').type('Product Measuarement cannot be submited without Units')
+    cy.get('input[placeholder="Enter product measurement"]').should('exist')
+    cy.get('input[placeholder="Enter product measurement"]').type('123')
+    expectedMessageCreateProduct('measure.unit must be one of the following values: ml, l, g, kg, oz, lb, cm, ft, in, whole')
+  })
+
+  it('Verify Product cannot be create when bar code is less than 12 digits - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('Product filled up with Product Name and less than 12 digits Bar code','12345678901','{enter}','{enter}','{enter}')
+    expectedMessageCreateProduct('Failed to create product')
+  })
+
+  
+  it('Verify Product cannot be create when bar code is more than 12 digits - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('Product filled up with Product Name and more than 12 digits Bar code','12345678901234','{enter}','{enter}','{enter}')
+    expectedMessageCreateProduct('Failed to create product')
+  })
+
+  it('Verify Product cannot be create when bar code is alphanumeric - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('Product filled up with Product Name and more than 12 digits Bar code','12345678901a','{enter}','{enter}','{enter}')
+    expectedMessageCreateProduct('Failed to create product')
+  })
+
 
 //Edit Successfully
   it('Verify the option to edit production is available from the Inventory/Product list section- Admin credentials', () => {
@@ -343,7 +386,7 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   })
 
 //Delete Successfully
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -365,333 +408,4 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     })
   })
 
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it.only('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
 })

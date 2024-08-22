@@ -37,10 +37,10 @@ const searchTimeSlot = (staff,start_time) => {
 }
 
 const searchApt = (staff, start_time) => {
-  // cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+  cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color
-  // cy.get('.tool-datepicker-next').should('be.visible')
-  // cy.get('.tool-datepicker-next').click()
+  cy.get('.tool-datepicker-next').should('be.visible')
+  cy.get('.tool-datepicker-next').click()
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
