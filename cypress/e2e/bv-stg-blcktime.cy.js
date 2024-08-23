@@ -33,7 +33,7 @@ const searchTimeSlot = (staff,start_time) => {
     cy.contains('New Appointment').should('exist')
 }
 
-const searchApt = (staff,start_time) => {
+const searchBlockTime = (staff,start_time) => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     let color
     cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -56,7 +56,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.clearCookies()
     })
 
-    it.only('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
+    it('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
         cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
@@ -71,7 +71,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('div>span','Start time cannot be empty').should('be.visible')
     })
 
-    it.only('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
+    it('Verify End time is required to create a blocktime on the Calendar  - Admin credentials', () => {
         cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
@@ -88,7 +88,26 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('div>span','End time cannot be empty').should('be.visible')
     })
 
-    it.only('Verify it is possible to create a blocktime on the Calendar by filling up the required fields - Admin credentials', () => {
+    it('Verify Start time and End time cannot be the same time when creating a blocktime on the Calendar  - Admin credentials', () => {
+        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.contains('button','Add New').should('be.visible')
+        cy.contains('button','Add New').click({force: true})
+        cy.wait(1000)
+        cy.contains('li','New Block Time').should('be.visible')
+        cy.contains('li','New Block Time').click({force: true})
+        cy.contains('div>h3','Create Block Time').should('be.visible')
+        cy.contains('div>h3','Create Block Time').click({force: true})
+        cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('nao{enter}')
+        cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Blocked times start and end time are invalid').should('be.visible')
+    })
+
+    it('Verify it is possible to create a blocktime on the Calendar by filling up the required fields - Admin credentials', () => {
         cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
@@ -104,13 +123,23 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','End Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('button','Submit').click({force: true})
-        cy.contains('div>span','End time cannot be empty').should('be.visible')
+        cy.contains('div>span','Blocked Time Created').should('be.visible')
     })
 
-
-    it('It is possible to edit a blocktime on the calendar - Admin credentials', () => {
+    it('Verify it is possible to edit staff on a blocktime from the Calendar - Admin credentials', () => {
+        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.contains('span', 'Block Time for').next('span','Naomi').click({force: true})
+        cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('erika{enter}')
+        cy.contains('span', 'Block Time for').next('span','Naomi').click({force: true})
+        cy.contains('button','Update').click({force: true})
+        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
     })
 
-    it('It is possible to delete a blocktime on the calendar - Admin credentials', () => {
+    it('Verify it is possible to delete a blocktime from the Calendar - Admin credentials', () => {
+        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.contains('span', 'Block Time for').next('span','Erika').click({force: true})
+        cy.contains('button','Delete').click({force: true})
+        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
     })
 })
