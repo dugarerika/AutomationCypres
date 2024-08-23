@@ -88,7 +88,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('div>span','End time cannot be empty').should('be.visible')
     })
 
-    it.only('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
+    it.only('Verify it is possible to create a blocktime on the Calendar by filling up the required fields - Admin credentials', () => {
         cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
