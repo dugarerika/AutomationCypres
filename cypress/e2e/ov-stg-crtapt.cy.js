@@ -152,7 +152,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     cy.contains('New Appointment').should('not.be.visible')
   })
 
-  it.only('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','09:00')  
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
@@ -168,7 +168,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     cy.contains('div>p','+973').should('exist')
   })
 
-  it.only('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','10:00')  
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
@@ -184,7 +184,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     cy.contains('div>p','+973').should('exist')
   })
 
-  it.only('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','11:00')  
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
