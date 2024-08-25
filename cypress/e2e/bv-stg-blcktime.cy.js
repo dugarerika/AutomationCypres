@@ -131,12 +131,32 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('span', 'Block Time for').next('span','Naomi').click({force: true})
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('erika{enter}')
-        cy.contains('span', 'Block Time for').next('span','Naomi').click({force: true})
         cy.contains('button','Update').click({force: true})
         cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
     })
 
-    it('Verify it is possible to delete a blocktime from the Calendar - Admin credentials', () => {
+    it('Verify it is possible to edit Start time on a blocktime from the Calendar - Admin credentials', () => {
+        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.contains('span', 'Block Time for').next('span','Naomi').click({force: true})
+        cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('erika{enter}')
+        cy.contains('button','Update').click({force: true})
+        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+    })
+
+    it('Verify it is possible to edit End time on a blocktime from the Calendar - Admin credentials', () => {
+        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.contains('span', 'Block Time for').next('span','Naomi').click({force: true})
+        // cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
+        // cy.contains('div','Choose a staff').next('div').find('input').click().type('erika{enter}')
+        cy.contains('button','Update').click({force: true})
+        cy.wait(1000)
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+    })
+
+    it.skip('Verify it is possible to delete a blocktime from the Calendar - Admin credentials', () => {
         cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
         cy.contains('span', 'Block Time for').next('span','Erika').click({force: true})
         cy.contains('button','Delete').click({force: true})

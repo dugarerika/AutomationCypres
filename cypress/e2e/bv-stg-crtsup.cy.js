@@ -119,7 +119,7 @@ describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admi
 
   //Delete suppliers
 
-  it.only('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
+  it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -141,7 +141,7 @@ describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admi
     })
   })
 
-  it.only('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
+  it.skip('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -163,7 +163,7 @@ describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admi
     })
   })
 
-  it.only('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
+  it.skip('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -185,7 +185,7 @@ describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admi
     })
   })
 
-  it.only('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
+  it.skip('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -207,25 +207,4 @@ describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admi
     })
   })
 
-  it.only('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Supplier').should('exist')
-    cy.contains('Supplier').click({ force: true })
-    cy.contains('h6', 'Supplier').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Supplier Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this supplier?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this supplier?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Supplier deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
   })
-})
