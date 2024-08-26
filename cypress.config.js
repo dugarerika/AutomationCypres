@@ -47,8 +47,8 @@ module.exports = defineConfig({
       },
     },
     retries: {
-      runMode: 1,
-      openMode: 1
+      runMode: 0,
+      openMode: 0
     },
     env: {
       webdriveruni_homepage: "http://www.webdriveruniversity.com",
