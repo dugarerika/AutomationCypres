@@ -21,3 +21,4 @@ cypress/screenshots/*
 cypress/downloads/downloads.htm.crdownload
 cypress/screenshots/ov-stg-crtapt.cy.js/*
 mochawesome-report/mochawesome.html
+cypress/videos/ov-stg-crtapt.cy.js.mp4
