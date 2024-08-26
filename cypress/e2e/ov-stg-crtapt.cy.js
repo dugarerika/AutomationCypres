@@ -24,8 +24,9 @@ const login = (name, username, password) => {
 const searchTimeSlot = (staff,start_time) => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color
-  cy.get('.tool-datepicker-next').should('be.visible')
-  cy.get('.tool-datepicker-next').click()
+  // cy.get('.tool-datepicker-next').should('be.visible')
+  // cy.get('.tool-datepicker-next').click()
+  // cy.get('.tool-datepicker-next').click()
   cy.wait(4000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
@@ -39,8 +40,9 @@ const searchTimeSlot = (staff,start_time) => {
 const searchApt = (staff, start_time) => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color
-  cy.get('.tool-datepicker-next').should('be.visible')
-  cy.get('.tool-datepicker-next').click()
+  // cy.get('.tool-datepicker-next').should('be.visible')
+  // cy.get('.tool-datepicker-next').click()
+  // cy.get('.tool-datepicker-next').click()
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
@@ -93,8 +95,8 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     let staff = "Zumba Zumba"
     let start_time = "18:00"
     let color
-    cy.get('.tool-datepicker-next').should('be.visible')
-    cy.get('.tool-datepicker-next').click()
+    // cy.get('.tool-datepicker-next').should('be.visible')
+    // cy.get('.tool-datepicker-next').click()
     cy.wait(7000)
     cy.contains('06:00 PM').scrollIntoView()
     cy.wait(1000)
