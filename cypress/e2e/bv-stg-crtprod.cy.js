@@ -88,7 +88,7 @@ const expectedMessageCreateProduct = (product_message) => {
 describe('Beta Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    login('Admin Section', 'testsalon', 'testsalon1o')
+    login('Admin Section', 'artnailcorner', '1234567890')
   })
 
   afterEach(() => {
