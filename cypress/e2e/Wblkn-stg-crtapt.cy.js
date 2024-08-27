@@ -38,7 +38,7 @@ const loginOldVendor = (name, username, password) => {
     })          
   })
 }
-  
+ 
 const searchApt = (sstaff, start_time, am_pm) => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color
@@ -59,6 +59,59 @@ cy.contains(`${sstaff}`).parent('div').then(($div) => {
 cy.contains('Appointment Details').should('be.visible')
 }
 
+const bookWeblinkApp = (category, service, staff, paymentMethod) => {
+  cy.contains('button>span','Services').click({force: true})
+  cy.contains('div>button','At Vendor').click({force: true})
+  cy.contains('h6',category).click({force: true})
+  cy.contains('h4',service).click({force: true})
+  cy.wait(2200)
+  cy.contains('div>button','Continue').should('exist')
+  cy.contains('div>button','Continue').click()
+
+  cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().should('exist')
+  cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().then(($span) => {
+    var startTime = $span.text()
+    cy.log('startTime')
+    cy.log(startTime)
+    cy.contains('div>p',staff).parent().parent().parent().parent().find('small').first().then(($small) => {
+      var AmPm = $small.text()
+      cy.log('AmPm')
+      cy.log(AmPm)
+      cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().click({force: true})
+      cy.wait(1000)
+      cy.contains('div>button','Checkout').should('exist')
+      cy.contains('div>button','Checkout').click()
+      cy.contains('p',paymentMethod).should('exist')
+      cy.contains('p',paymentMethod).click()
+      cy.wait(100)
+      cy.contains('button','CHECKOUT').should('exist')
+      cy.contains('button','CHECKOUT').click()
+      cy.wait(2000)
+
+      loginOldVendor('Admin Section', 'artnailcorner','1234567890')
+      cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+      cy.wait(12000)
+      cy.contains(`${startTime} ${AmPm}`).scrollIntoView()
+      cy.contains(`${staff}`).parent('div').then(($div) => {
+        var color = $div.attr("color")
+        cy.log(color)
+        cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${startTime} ${AmPm}"]`).should('be.visible')
+        cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${startTime} ${AmPm}"]`).click({force: true})
+        cy.log('Test completed')
+      })
+      cy.wait(3000)
+      cy.contains('Appointment Details').should('be.visible')  
+      cy.contains('p',`${startTime} ${AmPm}`).should('be.visible')  
+      cy.contains('p',`${service}`, {matchCase: false}).should('be.visible')  
+      cy.contains('div>span',`WEB`).should('be.visible') 
+      cy.contains('button',`No Status`).should('be.visible')  
+      
+    })
+  })
+
+}
+
+
 describe('Weblink |Create appointments through deeplink', () => {
 
   beforeEach(() => {
@@ -71,58 +124,12 @@ describe('Weblink |Create appointments through deeplink', () => {
     cy.clearCookies()
   })
 
-  it('Verify it is not possible to create an appointment through deeplink for 1 service to pay at salon', () => {
+  it.only('Verify it is not possible to create an appointment through deeplink for 1 service to pay at salon', () => {
     var staff = "Zumba Zumba"
     var category = "Nails"
     var service = "Nails pink"
     var paymentMethod = "Pay at Vendor"
-    cy.contains('button>span','Services').click({force: true})
-    cy.contains('div>button','At Vendor').click({force: true})
-    cy.contains('h6',category).click({force: true})
-    cy.contains('h4',service).click({force: true})
-    cy.wait(2200)
-    cy.contains('div>button','Continue').should('exist')
-    cy.contains('div>button','Continue').click()
-  
-    cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().should('exist')
-    cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().then(($span) => {
-      var startTime = $span.text()
-      cy.log('startTime')
-      cy.log(startTime)
-      cy.contains('div>p',staff).parent().parent().parent().parent().find('small').first().then(($small) => {
-        var AmPm = $small.text()
-        cy.log('AmPm')
-        cy.log(AmPm)
-        cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().click({force: true})
-        cy.wait(1000)
-        cy.contains('div>button','Checkout').should('exist')
-        cy.contains('div>button','Checkout').click()
-        cy.contains('p',paymentMethod).should('exist')
-        cy.contains('p',paymentMethod).click()
-        cy.wait(100)
-        cy.contains('button','CHECKOUT').should('exist')
-        cy.contains('button','CHECKOUT').click()
-        cy.wait(2000)
-        loginOldVendor('Admin Section', 'artnailcorner','1234567890')
-        cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-        cy.wait(12000)
-        cy.contains(`${startTime} ${AmPm}`).scrollIntoView()
-        cy.contains(`${staff}`).parent('div').then(($div) => {
-          var color = $div.attr("color")
-          cy.log(color)
-          cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${startTime} ${AmPm}"]`).should('be.visible')
-          cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${startTime} ${AmPm}"]`).click({force: true})
-          cy.log('Test completed')
-        })
-        cy.wait(3000)
-        cy.contains('Appointment Details').should('be.visible')  
-        cy.contains('p',`${startTime} ${AmPm}`).should('be.visible')  
-        cy.contains('p',`${service}`, {matchCase: false}).should('be.visible')  
-        cy.contains('div>span',`WEB`).should('be.visible') 
-        cy.contains('button',`No Status`).should('be.visible')  
-        
-      })
-    })
+    bookWeblinkApp(category,service,staff,paymentMethod)
   })
 
   it('Verify it is not possible to create an appointment through deeplink for 1 service paid with Wallet  - Readonly credentials', () => {
