@@ -59,7 +59,7 @@ cy.contains(`${sstaff}`).parent('div').then(($div) => {
 cy.contains('Appointment Details').should('be.visible')
 }
 
-const bookWeblinkApp = (category, service, staff, paymentMethod) => {
+const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
   cy.contains('button>span','Services').click({force: true})
   cy.contains('div>button','At Vendor').click({force: true})
   cy.contains('h6',category).click({force: true})
@@ -104,7 +104,6 @@ const bookWeblinkApp = (category, service, staff, paymentMethod) => {
       cy.contains('p',`${startTime} ${AmPm}`).should('be.visible')  
       cy.contains('p',`${service}`, {matchCase: false}).should('be.visible')  
       cy.contains('div>span',`WEB`).should('be.visible') 
-      cy.contains('button',`No Status`).should('be.visible')  
       
     })
   })
@@ -124,12 +123,13 @@ describe('Weblink |Create appointments through deeplink', () => {
     cy.clearCookies()
   })
 
-  it.only('Verify it is not possible to create an appointment through deeplink for 1 service to pay at salon', () => {
-    var staff = "Zumba Zumba"
+  it('Verify it is not possible to create an appointment through deeplink for 1 service to pay at salon', () => {
+    var staff = "Naomi naomi"
     var category = "Nails"
     var service = "Nails pink"
     var paymentMethod = "Pay at Vendor"
-    bookWeblinkApp(category,service,staff,paymentMethod)
+    bookServiceWeblinkApp(category,service,staff,paymentMethod)
+    cy.contains('button',`No Status`).should('be.visible')  
   })
 
   it('Verify it is not possible to create an appointment through deeplink for 1 service paid with Wallet  - Readonly credentials', () => {
@@ -137,7 +137,9 @@ describe('Weblink |Create appointments through deeplink', () => {
     var category = "Nails"
     var service = "Nails pink"
     var paymentMethod = "Wallet"
-    bookWeblinkApp(category,service,staff,paymentMethod)
+    bookServiceWeblinkApp(category,service,staff,paymentMethod)
+    cy.contains('button',`Paid Online`).should('be.visible')  
+    cy.contains('li>h4',`${paymentMethod}`).should('be.visible')  
   })
 
 })
