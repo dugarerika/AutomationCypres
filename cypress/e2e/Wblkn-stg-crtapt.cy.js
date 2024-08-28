@@ -88,7 +88,7 @@ const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
       cy.contains('button','CHECKOUT').click()
       cy.wait(2000)
 
-      loginOldVendor('Admin Section', 'testsalon','testsalon1o')
+      loginOldVendor('Admin Section', 'artnailcorner','1234567890')
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
       cy.wait(12000)
       cy.contains(`${startTime} ${AmPm}`).scrollIntoView()
@@ -114,9 +114,9 @@ const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
 describe('Weblink |Create appointments through deeplink', () => {
 
   beforeEach(() => {
-    loginDeeplink('User Section', 'dugarerika@gmail.com','1234567890')
+    loginDeeplink('User Section', 'vickysecreto21@gmail.com','1234567890')
     cy.wait(1000)
-    cy.visit('https://stg.customer.bookr-dev.com/vendors/testsalon')
+    cy.visit('https://stg.customer.bookr-dev.com/vendors/athary-world-nail-')
   })
  
   afterEach(() => {
