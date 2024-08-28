@@ -88,7 +88,7 @@ const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
       cy.contains('button','CHECKOUT').click()
       cy.wait(2000)
 
-      loginOldVendor('Admin Section', 'artnailcorner','1234567890')
+      loginOldVendor('Admin Section', 'testsalon','testsalon1o')
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
       cy.wait(12000)
       cy.contains(`${startTime} ${AmPm}`).scrollIntoView()
@@ -114,9 +114,9 @@ const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
 describe('Weblink |Create appointments through deeplink', () => {
 
   beforeEach(() => {
-    loginDeeplink('User Section', 'vickysecreto21@gmail.com','1234567890')
+    loginDeeplink('User Section', 'dugarerika@gmail.com','1234567890')
     cy.wait(1000)
-    cy.visit('https://stg.customer.bookr-dev.com/vendors/athary-world-nail-')
+    cy.visit('https://stg.customer.bookr-dev.com/vendors/testsalon')
   })
  
   afterEach(() => {
@@ -130,6 +130,16 @@ describe('Weblink |Create appointments through deeplink', () => {
     var paymentMethod = "Pay at Vendor"
     bookServiceWeblinkApp(category,service,staff,paymentMethod)
     cy.contains('button',`No Status`).should('be.visible')  
+  })
+
+  it('Verify it is not possible to create an appointment through deeplink for 1 service paid with Wallet  - Readonly credentials', () => {
+    var staff = "Susan one"
+    var category = "Nails"
+    var service = "Nails pink"
+    var paymentMethod = "Wallet"
+    bookServiceWeblinkApp(category,service,staff,paymentMethod)
+    cy.contains('button',`Paid Online`).should('be.visible')  
+    cy.contains('li>h4',`${paymentMethod}`).should('be.visible')  
   })
 
   it('Verify it is not possible to create an appointment through deeplink for 1 service paid with Wallet  - Readonly credentials', () => {

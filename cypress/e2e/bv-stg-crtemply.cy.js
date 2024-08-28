@@ -43,7 +43,7 @@ const expectedMessageCreateProduct = (product_message) => {
 describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    login('Admin Section', 'artnailcorner', '1234567890')
+    login('Admin Section', 'pinkdoor', '1234567890')
 })
 
 afterEach(() => {
@@ -51,7 +51,17 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
+it('Verify it is possible access to the Employee section- Admin credentials', () => {
+    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.contains('Inventory').should('exist')
+    cy.contains('Inventory').click({ force: true })
+    cy.contains('Products').should('exist')
+    cy.contains('Products').click({ force: true })
+    cy.contains('h6', 'Products').should('exist')
+})
+
+
+it('Verify it is possible access to the Employee section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
