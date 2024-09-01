@@ -156,13 +156,13 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
   })  
   it('Verify suppliers Name is the required field by trying to add new supplier fiiling all the inputs fields- Admin credentials', () => {
     accessToCreateSuppliers()
-    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','COntract mobile','3@gmail.com')
+    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','38717494','3@gmail.com')
     expectedMessageCreateSupplier('Supplier created successfully')
   })
 
   //Delete suppliers
 
-  it.skip('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
+  it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
