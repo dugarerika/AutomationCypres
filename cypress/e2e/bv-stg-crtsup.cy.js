@@ -55,7 +55,7 @@ const expectedMessageCreateSupplier = (supplier_message) => {
   cy.contains('span', supplier_message).should('exist')
 }
 
-describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin credentials', () =>{
+describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin credentials', () =>{
 
   beforeEach(() => {
     login('Admin Section', 'artnailcorner', '1234567890')
@@ -66,7 +66,7 @@ describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admi
     cy.clearCookies()
   })
 
-  it.only('Verify it is possible access to the Inventory/Suplliers section- Admin credentials', () => {
+  it('Verify it is possible access to the Inventory/Suplliers section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -75,68 +75,86 @@ describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admi
     cy.contains('h6', 'Suppliers').should('exist')
   })
 
-  it.only('Verify the it is possible access to the Create Suppliers form - Admin credentials', () => {
+  it('Verify the it is possible access to the Create Suppliers form - Admin credentials', () => {
     accessToCreateSuppliers()
   })
 
   //Unsuccessfully suplier creation
-  it.only('Verify suppliers Name is the required field by trying to add new supplier leaving empty all the fields- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier leaving empty all the fields- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling only the supplier Description- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the supplier Description- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','Supplier Description','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact First Name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact First Name- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','contact first name','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Last Name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Last Name- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','contact last name','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
   
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Mobile- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Mobile- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','{enter}','581199141','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
   
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling only email- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only email- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','{enter}','{enter}','tests@gmail.com')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Mobile and email- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Mobile and email- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','{enter}','581199141','tests@gmail.com')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling all the form fiels exepct Supplliers name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling all the form fiels exepct Supplliers name- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','Suppliers description','contact fisrt name','contact last name','581199141','tests@gmail.com')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
   //Successfully suplier creation
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling only the supplier name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the supplier name- Admin credentials', () => {
     accessToCreateSuppliers()
-    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','581199141','3@gmail.com')
+    filloutSupplierForm('Supplier with only supplier name filed out','{enter}','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier created successfully')
   })
+
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling up Supplier name and description inputs fields- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','{enter}','{enter}','{enter}','{enter}')
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })  
   
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling only the supplier name- Admin credentials', () => {
+
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling up Supplier name, description and contact first name inputs fields- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','{enter}','{enter}','{enter}')
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })  
+
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling up Supplier name, description, contact first name and last name inputs fields- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','{enter}','{enter}')
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })  
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling all the inputs fields- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','COntract mobile','3@gmail.com')
     expectedMessageCreateSupplier('Supplier created successfully')
@@ -144,7 +162,7 @@ describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admi
 
   //Delete suppliers
 
-  it.only('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
+  it.skip('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
