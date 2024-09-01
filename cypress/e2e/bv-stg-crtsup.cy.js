@@ -58,7 +58,7 @@ const expectedMessageCreateSupplier = (supplier_message) => {
 describe.only('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin credentials', () =>{
 
   beforeEach(() => {
-    login('Admin Section', 'testsalon', 'testsalon1o')
+    login('Admin Section', 'artnailcorner', '1234567890')
   })
 
   afterEach(() => {
