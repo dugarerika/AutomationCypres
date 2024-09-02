@@ -147,19 +147,19 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   })
 
   //Create succesfully
-  it.only('Verify it is possible to create a Product by filling up only the Product Name - Admin credentials', () => {
+  it('Verify it is possible to create a Product by filling up only the Product Name - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Product Name only','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Product Bar Code - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Product Bar Code - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Product Measurement with Mililiter Unit - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Product Measurement with Mililiter Unit - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with and Product Measurement with Mililiter Unit','{enter}','123','{enter}','{enter}')
     cy.contains('option', 'Select Unit').should('exist')
@@ -167,7 +167,7 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Product Category - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Category - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Product Category').should('exist')
@@ -177,7 +177,7 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Product Brand').should('exist')
@@ -187,47 +187,47 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Short description - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Short description - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Product Name and Short Description','{enter}','{enter}','This is a short description of the product','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Product description - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Product description - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Product Name and Product Description','{enter}','{enter}','{enter}','This is a product description of the product')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Supply Price - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Supply Price - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Supply Price','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Retail Price - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Retail Price - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('{enter}','6789')
     filloutProductBasicInfo('Product filled up with Price name and Retail Price','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and SKU - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and SKU - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Current Stock Quantity - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Current Stock Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','3','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Current Stock Quantity','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','4','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Low Stock Level','{enter}','{enter}','{enter}','{enter}')
@@ -235,43 +235,49 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   })
 
   
-  it.only('Verify Product is create successfully by filling up Price Name and Reorder Quantity - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Reorder Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     filloutProductBasicInfo('Product filled up with Price name and Reorder Quantity','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     filloutProductBasicInfo('Product filled up with Price Name product bar code short description prod description and Reorder Quantity','098765432112','{enter}','Prod short description','Product description')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('SKU12345-AB','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 4006381333931 and SKU12345-AB','4006381333931','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 9780201379624, and SKU67890-CD  - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 9780201379624, and SKU67890-CD  - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('SKU67890-CD','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 9780201379624 and SKU67890-CD','9780201379624','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 5012345678900, and SKU98765-GH  - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 5012345678900, and SKU98765-GH  - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('SKU98765-GH','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 5012345678900 and SKU98765-GH','5012345678900','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-// Create Non successfully  
+  it('Verify Product is create successfully by filling up Price Name, Supply Price and Retail Price- Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductPricingInfo('12345','10')
+    filloutProductBasicInfo('Product filled up with Price name Supply and Retail Price','{enter}','{enter}','{enter}','{enter}')
+    expectedMessageCreateProduct('Product created successfully')
+  })
 
+// Create Non successfully  
 it('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
   accessToCreateProduct()
   filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
