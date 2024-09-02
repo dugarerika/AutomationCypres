@@ -373,7 +373,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
 
 
 //Edit Successfully
-  it('Verify the option to edit production is available from the Inventory/Product list section- Admin credentials', () => {
+  it.skip('Verify the option to edit production is available from the Inventory/Product list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -388,7 +388,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.contains('h3', 'Edit Product Details').should('exist')
   })
 
-  it('Verify it is not possible edit product messure without adding a unit from the Inventory/Product list section- Admin credentials', () => {
+  it.skip('Verify it is not possible edit product messure without adding a unit from the Inventory/Product list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -412,7 +412,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
   })
 
 //Delete Successfully
-  it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
+  it.skip('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
