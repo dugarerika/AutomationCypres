@@ -167,10 +167,44 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Category created from the Create product form - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
+    cy.contains('label>span', 'Product Category').should('exist')
+    cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('h3', 'Categories').should('exist')
+    cy.wait(2000)
+    cy.get('section').next('div').find('button').click({ force: true })
+    cy.contains('span','Category Name').parent().next('div').find('input').type('Automated Category', { force: true, delay: 50 })
+    cy.get('section').next('div').find('button').click({ force: true })
+    cy.contains('span', 'Category created').should('exist')
+    cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('h3', 'Categories').should('exist')
+    cy.get('section>div>ul>*').first().click({ force: true })
+    expectedMessageCreateProduct('Product created successfully')
+  })
+
   it('Verify Product is create successfully by filling up Price Name and Selecting a Product Category - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Product Category').should('exist')
+    cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('h3', 'Categories').should('exist')
+    cy.get('section>div>ul>*').first().click({ force: true })
+    expectedMessageCreateProduct('Product created successfully')
+  })
+  
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand created from the Create product form - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
+    cy.contains('label>span', 'Product Brand').should('exist')
+    cy.contains('label>span', 'Product Brand').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('h3', 'Brands').should('exist')
+    cy.wait(2000)
+    cy.get('section').next('div').find('button').click({ force: true })
+    cy.contains('span','Brand Name').parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
+    cy.get('section').next('div').find('button').click({ force: true })
+    cy.contains('span', 'Brand created').should('exist')
     cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories').should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
@@ -271,6 +305,12 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   })
 
   it('Verify Product is create successfully by filling up Price Name, Supply Price and Retail Price- Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductPricingInfo('12345','10')
+    filloutProductBasicInfo('Product filled up with Price name Supply and Retail Price','{enter}','{enter}','{enter}','{enter}')
+    expectedMessageCreateProduct('Product created successfully')
+  })
+  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price and tax toogle switched ON- Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','10')
     filloutProductBasicInfo('Product filled up with Price name Supply and Retail Price','{enter}','{enter}','{enter}','{enter}')
