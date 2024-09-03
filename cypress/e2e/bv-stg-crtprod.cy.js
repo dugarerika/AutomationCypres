@@ -233,6 +233,12 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
+  it('Verify Product is create successfully by filling up Price Name and Short and product description - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('Product filled up with Product Name Short and product Description','{enter}','{enter}','This is a short description of the product','This is a product description of the product')
+    expectedMessageCreateProduct('Product created successfully')
+  })
+
   it('Verify Product is create successfully by filling up Price Name and Supply Price - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','{enter}')
@@ -307,13 +313,25 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   it('Verify Product is create successfully by filling up Price Name, Supply Price and Retail Price- Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','10')
-    filloutProductBasicInfo('Product filled up with Price name Supply and Retail Price','{enter}','{enter}','{enter}','{enter}')
+    filloutProductBasicInfo('Product filled up with Price name Supply & Retail Price','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
   it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price and tax toogle switched ON- Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','10')
-    filloutProductBasicInfo('Product filled up with Price name Supply and Retail Price','{enter}','{enter}','{enter}','{enter}')
+    cy.contains('span','Tax').click({ force: true })
+    filloutProductBasicInfo('Product filled up with Price name Supply Retail Price and tax toggle switched ON','{enter}','{enter}','{enter}','{enter}')
+    expectedMessageCreateProduct('Product created successfully')
+  })
+
+  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, Tax and Enable Retails sales toogle switched ON- Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductPricingInfo('12345','10')
+    cy.contains('span','Tax').click({ force: true })
+    cy.wait(100)
+    cy.contains('span','Enable Retail Sales').click({ force: true })
+    cy.wait(100)
+    filloutProductBasicInfo('Product filled up with Price name Supply Retail Price tax & Enable Retails sales toggle switched ON','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
