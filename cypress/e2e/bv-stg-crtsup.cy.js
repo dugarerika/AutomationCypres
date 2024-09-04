@@ -52,6 +52,7 @@ const filloutSupplierForm = (sup_name, sup_description, sup_first_name, sup_last
 const expectedMessageCreateSupplier = (supplier_message) => {
   cy.contains('button', 'Save').should('exist')
   cy.contains('button', 'Save').click()
+  cy.wait(100)
   cy.contains('span', supplier_message).should('exist')
 }
 
