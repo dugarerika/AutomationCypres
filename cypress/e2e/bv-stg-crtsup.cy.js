@@ -139,25 +139,60 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
 
   it('Verify suppliers Name is the required field by trying to add new supplier fiiling up Supplier name and description inputs fields- Admin credentials', () => {
     accessToCreateSuppliers()
-    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','{enter}','{enter}','{enter}','{enter}')
+    filloutSupplierForm('Supplier name - description','Supplier Description','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier created successfully')
   })  
-  
 
   it('Verify suppliers Name is the required field by trying to add new supplier fiiling up Supplier name, description and contact first name inputs fields- Admin credentials', () => {
     accessToCreateSuppliers()
-    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','{enter}','{enter}','{enter}')
+    filloutSupplierForm('Supplier name - description - contact first name','Supplier Description','contact First Name','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier created successfully')
   })  
 
   it('Verify suppliers Name is the required field by trying to add new supplier fiiling up Supplier name, description, contact first name and last name inputs fields- Admin credentials', () => {
     accessToCreateSuppliers()
-    filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','{enter}','{enter}')
+    filloutSupplierForm('Supplier name - description - first name - last name','Supplier Description','contact First Name','Contact Last Name','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier created successfully')
   })  
+
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling up Supplier name, description, contact first name and last name inputs fields- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier name - description - first name - last name - mobile','Supplier Description','contact First Name','Contact Last Name','38972467','{enter}')
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })  
+
   it('Verify suppliers Name is the required field by trying to add new supplier fiiling all the inputs fields- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','38717494','3@gmail.com')
+    cy.wait(100)
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })
+
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling supplier name, last name, mobile and email- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier name - last name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
+    cy.wait(100)
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })
+
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling supplier name, mobile and email- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier name - Contact Last Name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
+    cy.wait(100)
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })
+
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling supplier name, mobile and email- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier name - mobile - email','{enter}','{enter}','{enter}','38972467','3@gmail.com')
+    cy.wait(100)
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })
+
+  
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling supplier name and email- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier name - email','{enter}','{enter}','{enter}','{enter}','3@gmail.com')
     cy.wait(100)
     expectedMessageCreateSupplier('Supplier created successfully')
   })
