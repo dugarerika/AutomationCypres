@@ -154,7 +154,7 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
     filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier created successfully')
   })  
-  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling all the inputs fields- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling all the inputs fields- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','38717494','3@gmail.com')
     cy.wait(100)
