@@ -182,6 +182,13 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
     expectedMessageCreateSupplier('Supplier created successfully')
   })
 
+
+  it('Verify suppliers Name is the required field by trying to add new supplier fiiling up Supplier name, description and contact first name inputs fields- Admin credentials', () => {
+    accessToCreateSuppliers()
+    filloutSupplierForm('Supplier name - contact Last Name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
+    expectedMessageCreateSupplier('Supplier created successfully')
+  })  
+
   it('Verify suppliers Name is the required field by trying to add new supplier fiiling supplier name, mobile and email- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('Supplier name - mobile - email','{enter}','{enter}','{enter}','38972467','3@gmail.com')
