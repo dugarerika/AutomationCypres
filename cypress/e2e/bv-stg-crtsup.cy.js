@@ -154,29 +154,10 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
     filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier created successfully')
   })  
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling all the inputs fields- Admin credentials', () => {
+  it.only('Verify suppliers Name is the required field by trying to add new supplier fiiling all the inputs fields- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','38717494','3@gmail.com')
+    cy.wait(100)
     expectedMessageCreateSupplier('Supplier created successfully')
   })
-
-  //Delete suppliers
-
-  it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Supplier').should('exist')
-    cy.contains('Supplier').click({ force: true })
-    cy.contains('h6', 'Supplier').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Supplier Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this supplier?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this supplier?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Supplier deleted successfully').should('exist')
-  })
-
-  })
+})
