@@ -55,7 +55,7 @@ const searchApt = (staff, start_time) => {
 describe('Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    login('Staff Session', 'zumba','1234567890')
+    login('Staff Session', 'zumba1','1234567890')
   })
 
   after(() => {
@@ -220,12 +220,12 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
   })
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Admin credentials', () => {
-    searchTimeSlot('Susan ','07:00')  
-    cy.contains('Susan ').should('exist')
+    searchTimeSlot('Susan one ','07:00')  
+    cy.contains('Susan one ').should('exist')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
-    searchTimeSlot('Susan ','08:00')  
+    searchTimeSlot('Susan one ','08:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -245,7 +245,7 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
     }) 
 
   it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin credentials', () => {
-    searchTimeSlot('Susan ','07:00')  
+    searchTimeSlot('Susan one ','07:00')  
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
