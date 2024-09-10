@@ -87,51 +87,51 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the supplier Description- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier filling only the supplier Description- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','Supplier Description','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact First Name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier filling only the Contact First Name- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','contact first name','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Last Name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier filling only the Contact Last Name- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','contact last name','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
   
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Mobile- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier filling only the Contact Mobile- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','{enter}','581199141','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
   
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only email- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier filling only email- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','{enter}','{enter}','tests@gmail.com')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the Contact Mobile and email- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier filling only the Contact Mobile and email- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','{enter}','{enter}','{enter}','581199141','tests@gmail.com')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling all the form fiels exepct Supplliers name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier filling all the form fiels exepct Supplliers name- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('{enter}','Suppliers description','contact fisrt name','contact last name','581199141','tests@gmail.com')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
   //Successfully suplier creation
-  it('Verify suppliers Name is the required field by trying to add new supplier fiiling only the supplier name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to add new supplier filling only the supplier name- Admin credentials', () => {
     accessToCreateSuppliers()
     filloutSupplierForm('Supplier with only supplier name filed out','{enter}','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier created successfully')

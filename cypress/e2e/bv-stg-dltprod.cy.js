@@ -85,7 +85,7 @@ const expectedMessageCreateProduct = (product_message) => {
   cy.contains('span', product_message).should('exist')
 }
 
-describe('Beta Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
+describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin credentials', () => {
 
   beforeEach(() => {
     login('Admin Section', 'artnailcorner', '1234567890')
@@ -98,7 +98,7 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
 
 
 //Delete Successfully
-  it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Edit products from the Inventory/Product list section- Admin credentials', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -429,113 +429,4 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     })
   })
 
-  it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
-
-  it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.get('tbody>*').should('exist')
-    cy.get('tbody>*').first().click({ force: true })
-    cy.contains('h3', 'Product Details').should('exist')
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('tbody').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
-  })
 })

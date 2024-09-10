@@ -55,7 +55,7 @@ const expectedMessageCreateSupplier = (supplier_message) => {
   cy.contains('span', supplier_message).should('exist')
 }
 
-describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin credentials', () =>{
+describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin credentials', () =>{
 
     beforeEach(() => {
         login('Admin Section', 'artnailcorner', '1234567890')
