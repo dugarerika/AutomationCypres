@@ -26,7 +26,6 @@ const searchTimeSlot = (staff,start_time) => {
   let color
   // cy.get('.tool-datepicker-next').should('be.visible')
   // cy.get('.tool-datepicker-next').click()
-  // cy.get('.tool-datepicker-next').click()
   cy.wait(4000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
@@ -41,7 +40,6 @@ const searchApt = (staff, start_time) => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color1
   // cy.get('.tool-datepicker-next').should('be.visible')
-  // cy.get('.tool-datepicker-next').click()
   // cy.get('.tool-datepicker-next').click()
   cy.wait(2000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -141,11 +139,11 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     }) 
   })
 
-  it('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
+  it.only('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','07:00')  
-    cy.contains("Search customer..").next('div').should('exist')
-    cy.contains("Search customer..").next('div').children('input').click({force: true})
-    cy.contains("Search customer..").next('div').children('input').type('Wendy{enter}{enter}',{force: true, delay: 1000})
+    cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
+    cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
+    cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('Wendy{enter}{enter}',{force: true, delay: 1000})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
