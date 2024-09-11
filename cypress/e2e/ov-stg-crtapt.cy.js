@@ -151,7 +151,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
-    searchApt('Zumba Zumba','07:00') 
+    searchApt('Zumba Zumba','07:00')
   })
 
   it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
