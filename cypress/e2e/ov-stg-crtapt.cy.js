@@ -26,6 +26,7 @@ const searchTimeSlot = (staff,start_time) => {
   let color
   cy.get('.tool-datepicker-next').should('be.visible')
   cy.get('.tool-datepicker-next').click()
+  cy.get('.tool-datepicker-next').click()
   cy.wait(4000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
@@ -40,6 +41,7 @@ const searchApt = (staff, start_time) => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color1
   cy.get('.tool-datepicker-next').should('be.visible')
+  cy.get('.tool-datepicker-next').click()
   cy.get('.tool-datepicker-next').click()
   cy.wait(2000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -218,7 +220,7 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
   })
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Admin credentials', () => {
-    searchTimeSlot('Zumba Zumba ','07:00')  
+    searchTimeSlot('Zumba Zumba','07:00')  
     cy.contains('Susan one ').should('exist')
   })
 
