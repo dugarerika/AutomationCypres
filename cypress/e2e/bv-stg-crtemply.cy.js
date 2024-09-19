@@ -225,7 +225,7 @@ it('Verify it is not possible to Add an Employee by filling up only the First Na
     expectedMessageCreateEmployee('role must be one of the following values: staff, receptionist, readonly')
 })
 
-it.only('Verify it is not possible to Add an Employee by filling up only the First Name, 2 character Username, 5 character Password and Permission level |username longer or equal to 3 characteres is required|', () => {
+it('Verify it is not possible to Add an Employee by filling up only the First Name, 2 character Username, 5 character Password and Permission level |username longer or equal to 3 characteres is required|', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
