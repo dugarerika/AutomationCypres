@@ -214,7 +214,7 @@ const bookOfferWeblinkApp = (offer, staff, paymentMethod) => {
 describe('Weblink |Create appointments through deeplink', () => {
 
   beforeEach(() => {
-    loginDeeplink('User Section', 'vickysecreto21@gmail.com','1234567890')
+    loginDeeplink('User Section', 'wendyzulca3@gmail.com','1234567890')
     cy.wait(1000)
     cy.visit('https://stg.customer.bookr-dev.com/vendors/athary-world-nail-')
   })

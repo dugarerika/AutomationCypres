@@ -24,8 +24,8 @@ const login = (name, username, password) => {
 const searchTimeSlot = (staff,start_time) => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color
-  cy.get('.tool-datepicker-next').should('be.visible')
-  cy.get('.tool-datepicker-next').click()
+  // cy.get('.tool-datepicker-next').should('be.visible')
+  // cy.get('.tool-datepicker-next').click()
   // cy.get('.tool-datepicker-next').click()
   cy.wait(4000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -40,8 +40,8 @@ const searchTimeSlot = (staff,start_time) => {
 const searchApt = (staff, start_time) => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color1
-  cy.get('.tool-datepicker-next').should('be.visible')
-  cy.get('.tool-datepicker-next').click()
+  // cy.get('.tool-datepicker-next').should('be.visible')
+  // cy.get('.tool-datepicker-next').click()
   // cy.get('.tool-datepicker-next').click()
   cy.wait(2000)
   cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -55,7 +55,7 @@ const searchApt = (staff, start_time) => {
 describe('Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    login('Staff Session', 'zumba1','1234567890')
+    login('Staff Session', 'zumba11','1234567890')
   })
 
   after(() => {
