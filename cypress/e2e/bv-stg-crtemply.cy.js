@@ -70,7 +70,37 @@ it('Verify it is possible access to the Employee section- Admin credentials', ()
     cy.contains('div','Employees').click({ force: true })
 })
 
-// Add employee Non successfully
+// Add Employee Successfully
+
+it('Verify it is not possible to Add an Employee by filling up only the First Name, 4 character Username, 5 character Password and Permission level |username longer or equal to 3 characteres is required|', () => {
+    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.contains('Employees').should('exist')
+    cy.contains('Employees').click({ force: true })
+    cy.contains('div','Employees').should('exist')
+    cy.contains('div','Employees').click({ force: true })
+    cy.contains('h6','Employees').parent().next('div').find('button').eq(1).should('exist')
+    cy.contains('h6','Employees').parent().next('div').find('button').eq(1).click({ force: true })
+    filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'q012', '12345')
+    cy.contains('span','Permission level').parent().next('select').should('exist')
+    cy.contains('span','Permission level').parent().next('select').select('Staff')
+    expectedMessageCreateEmployee('Employee created')
+})
+
+// Add Employee Non-Successfully
+
+it('Verify it is not possible to Add an Employee by filling up only the First Name, 4 character Username, 5 character Password and Permission level |username longer or equal to 3 characteres is required|', () => {
+    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.contains('Employees').should('exist')
+    cy.contains('Employees').click({ force: true })
+    cy.contains('div','Employees').should('exist')
+    cy.contains('div','Employees').click({ force: true })
+    cy.contains('h6','Employees').parent().next('div').find('button').eq(1).should('exist')
+    cy.contains('h6','Employees').parent().next('div').find('button').eq(1).click({ force: true })
+    filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'q012', '12345')
+    cy.contains('span','Permission level').parent().next('select').should('exist')
+    cy.contains('span','Permission level').parent().next('select').select('Staff')
+    expectedMessageCreateEmployee('duplicate key value violates unique constraint "users_user_username_key"')
+})
 
 it('Verify it is not possible to Add an Employee by leaving all the fields empty, |First Name, username, Password and Permission Level are required|', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
@@ -225,7 +255,7 @@ it('Verify it is not possible to Add an Employee by filling up only the First Na
     expectedMessageCreateEmployee('role must be one of the following values: staff, receptionist, readonly')
 })
 
-it('Verify it is not possible to Add an Employee by filling up only the First Name, 2 character Username, 5 character Password and Permission level |username longer or equal to 3 characteres is required|', () => {
+it('Verify it is not possible to Add an Employee by filling up only the First Name, 2 character Username, 5 character Password and Permission level |password must be longer or equal to 5 characteres is required|', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
@@ -239,7 +269,7 @@ it('Verify it is not possible to Add an Employee by filling up only the First Na
     expectedMessageCreateEmployee('user.username must be longer than or equal to 3 characters')
 })
 
-it('Verify it is not possible to Add an Employee by filling up only the First Name, 3 character Username, 4 character Password and Permission level |username longer or equal to 3 characteres is required|', () => {
+it('Verify it is not possible to Add an Employee by filling up only the First Name, 3 character Username, 4 character Password and Permission level |username must be longer or equal to 3 characteres is required|', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
