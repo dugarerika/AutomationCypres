@@ -43,7 +43,7 @@ const expectedMessageCreateProduct = (product_message) => {
 describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    login('Admin Section', 'pinkdoor', '1234567890')
+    login('Admin Section', 'artnailcorner', '1234567890')
 })
 
 afterEach(() => {

@@ -262,15 +262,15 @@ describe('Weblink |Create appointments through deeplink', () => {
   })
 
 
-    it.only('Verify it is not possible to create an appointment through deeplink for 1 offer to pay at salon', () => {
-    var staff = "Naomi naomi"
-    var offer = "Offer with only 1 service"
-    var paymentMethod = "Pay at Vendor"
-    bookOfferWeblinkApp(offer,staff,paymentMethod)
-    cy.contains('button',`No Status`).should('be.visible')  
-  })
+  it('Verify it is not possible to create an appointment through deeplink for 1 offer to pay at salon', () => {
+  var staff = "Naomi naomi"
+  var offer = "Offer with only 1 service"
+  var paymentMethod = "Pay at Vendor"
+  bookOfferWeblinkApp(offer,staff,paymentMethod)
+  cy.contains('button',`No Status`).should('be.visible')  
+})
 
-  it.only('Verify it is not possible to create an appointment through deeplink for 1 offer paid with Wallet  - Readonly credentials', () => {
+  it('Verify it is not possible to create an appointment through deeplink for 1 offer paid with Wallet  - Readonly credentials', () => {
     var staff = "Susan one"
     var offer = "Offer with only 1 service"
     var paymentMethod = "Wallet"

@@ -435,7 +435,7 @@ describe('Vendor Admin | Calendar | Create appointment by Clicking on the calend
 describe('Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    login('Readonly Session', 'readonly3','1234567890')
+    login('Readonly Session', 'readonly31','1234567890')
   })
 
   after(() => {
