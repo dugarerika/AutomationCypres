@@ -23,6 +23,7 @@
   "license": "ISC",
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",
+    "@faker-js/faker": "^9.0.1",
     "cypress": "^10.11.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-mochawesome-reporter": "^3.8.2",

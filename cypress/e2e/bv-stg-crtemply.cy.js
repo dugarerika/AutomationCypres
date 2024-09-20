@@ -2,9 +2,13 @@
 /// <reference types="cypress-xpath" />
 
 const { should } = require("chai")
+const { faker } = require('@faker-js/faker');
 
 // Important:  before running this test cases the product list must be empty
 
+const randEmail = faker.internet.email()
+const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
+const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 const login = (name, username, password) => {
 cy.session(name, () => {
     cy.visit('https://beta.vendor.bookr-dev.com/')
@@ -37,12 +41,13 @@ const filloutProfileInfo = (first_name, last_name, email, order, username, passw
     cy.contains('span','Order').parent().next('div').find('input').eq(0).type(order)
 }
 
-const filloutServicesInfo =() =>{
-    
+const filloutServicesInfo =() =>{   
+    cy.contains('div>button', 'Profile').scrollIntoView()
+    cy.contains('div>button', 'Services').click({force: true})
+    cy.contains('span','All services').parent('label').find('input').click({force:true})
 }
 
-const filloutCommissionsInfo =() =>{
-    
+const filloutCommissionsInfo =() =>{    
 }
 
 const expectedMessageCreateEmployee = (product_message) => {
@@ -72,7 +77,7 @@ it('Verify it is possible access to the Employee section- Admin credentials', ()
 
 // Add Employee Successfully
 
-it('Verify it is not possible to Add an Employee by filling up only the First Name, 4 character Username, 5 character Password and Permission level |username longer or equal to 3 characteres is required|', () => {
+it.only('Verify it is not possible to add an Employee by filling up All the required info and selecting all services', () => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
@@ -80,7 +85,22 @@ it('Verify it is not possible to Add an Employee by filling up only the First Na
     cy.contains('div','Employees').click({ force: true })
     cy.contains('h6','Employees').parent().next('div').find('button').eq(1).should('exist')
     cy.contains('h6','Employees').parent().next('div').find('button').eq(1).click({ force: true })
-    filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'q012', '12345')
+    filloutProfileInfo(randUsername1, '{enter}', randEmail, '{enter}', randUsername1, '1234567890')
+    cy.contains('span','Permission level').parent().next('select').should('exist')
+    cy.contains('span','Permission level').parent().next('select').select('Staff')
+    filloutServicesInfo()
+    expectedMessageCreateEmployee('Employee created')
+})
+
+it('Verify it is possible to Add an Employee by filling up only the First Name, 4 character Username, 5 character Password and Permission level |username longer or equal to 3 characteres is required|', () => {
+    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.contains('Employees').should('exist')
+    cy.contains('Employees').click({ force: true })
+    cy.contains('div','Employees').should('exist')
+    cy.contains('div','Employees').click({ force: true })
+    cy.contains('h6','Employees').parent().next('div').find('button').eq(1).should('exist')
+    cy.contains('h6','Employees').parent().next('div').find('button').eq(1).click({ force: true })
+    filloutProfileInfo(randUsername2, '{enter}', '{enter}', '{enter}', randUsername2, '12345')
     cy.contains('span','Permission level').parent().next('select').should('exist')
     cy.contains('span','Permission level').parent().next('select').select('Staff')
     expectedMessageCreateEmployee('Employee created')
@@ -96,7 +116,7 @@ it('Verify it is not possible to Add an Employee by filling up only the First Na
     cy.contains('div','Employees').click({ force: true })
     cy.contains('h6','Employees').parent().next('div').find('button').eq(1).should('exist')
     cy.contains('h6','Employees').parent().next('div').find('button').eq(1).click({ force: true })
-    filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'q012', '12345')
+    filloutProfileInfo(randUsername2, '{enter}', '{enter}', '{enter}', randUsername2, '12345')
     cy.contains('span','Permission level').parent().next('select').should('exist')
     cy.contains('span','Permission level').parent().next('select').select('Staff')
     expectedMessageCreateEmployee('duplicate key value violates unique constraint "users_user_username_key"')
