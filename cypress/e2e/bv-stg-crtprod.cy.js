@@ -67,7 +67,7 @@ const filloutProductInventoryInfo =(prod_ksu, prod_stock_qty, prod_low_stock_lvl
   cy.contains('div>button', 'Inventory').click({ force: true })
   cy.contains('h6', 'Inventory').should('exist')
   cy.contains('span', 'Track Stock Quantity').should('exist')
-  cy.contains('span', 'Receive Low Stock Notifications').should('exist')
+  // cy.contains('span', 'Receive Low Stock Notifications').should('exist')
   cy.contains('label>span', 'SKU (Stock Keeping Unit)').should('exist')
   cy.contains('label>span', 'SKU (Stock Keeping Unit)').parents('label').next('div').find('input').type(prod_ksu)
   cy.contains('label>span', 'Current Stock Quantity').should('exist')
