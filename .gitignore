@@ -24,3 +24,4 @@ mochawesome-report/mochawesome.html
 cypress/videos/ov-stg-crtapt.cy.js.mp4
 cypress/videos/Wblkn-stg-crtapt.cy.js.mp4
 cypress/videos/bv-stg-dltsup.cy.js.mp4
+yarn.lock
