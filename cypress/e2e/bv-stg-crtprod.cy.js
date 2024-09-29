@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+  /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
 const { should } = require("chai")
@@ -253,21 +253,21 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and SKU - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and SKU - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Current Stock Quantity - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Current Stock Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','3','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Current Stock Quantity','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','4','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Low Stock Level','{enter}','{enter}','{enter}','{enter}')
@@ -275,21 +275,21 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   })
 
   
-  it('Verify Product is create successfully by filling up Price Name and Reorder Quantity - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Reorder Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     filloutProductBasicInfo('Product filled up with Price name and Reorder Quantity','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     filloutProductBasicInfo('Product filled up with Price Name product bar code short description prod description and Reorder Quantity','098765432112','{enter}','Prod short description','Product description')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('SKU12345-AB','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 4006381333931 and SKU12345-AB','4006381333931','{enter}','{enter}','{enter}')
@@ -310,13 +310,14 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name, Supply Price and Retail Price- Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name, Supply Price and Retail Price- Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','10')
     filloutProductBasicInfo('Product filled up with Price name Supply & Retail Price','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
-  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price and tax toogle switched ON- Admin credentials', () => {
+  
+  it.only('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price and tax toogle switched ON- Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','10')
     cy.contains('span','Tax').click({ force: true })
