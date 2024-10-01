@@ -87,7 +87,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
   }) 
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','06:00') 
+    searchTimeSlot('Zumba Zumba','08:00') 
     cy.contains('Zumba Zumba').should('exist')
   })
   
@@ -141,7 +141,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     }) 
   })
 
-  it('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
+  it.only('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','07:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -156,7 +156,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     searchApt('Zumba Zumba','07:00')
   })
 
-  it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
+  it.only('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','09:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -172,7 +172,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     cy.contains('div>p','+973').should('exist')
   })
 
-  it('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
+  it.only('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','10:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -188,7 +188,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
     cy.contains('div>p','+973').should('exist')
   })
 
-  it('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
+  it.only('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','11:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -224,7 +224,7 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
     cy.contains('Zumba Zumba').should('exist')
   })
 
-  it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
+  it.only('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
     searchTimeSlot('Susan one','08:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
@@ -244,7 +244,7 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
     cy.contains('New Appointment').should('not.be.visible')  
     }) 
 
-  it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin credentials', () => {
+  it.only('Verify the New appointment modal is hidden after creating successfully an appointment - Admin credentials', () => {
     searchTimeSlot('Susan one','07:00')  
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')

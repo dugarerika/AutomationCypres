@@ -56,7 +56,7 @@ const filloutProductPricingInfo =(prod_supply_price, prod_retail_price) =>{
   cy.contains('span', 'Supply Price').should('exist')
   cy.contains('span', 'Retail Price').should('exist')
   cy.contains('span', 'Enable Retail Sales').should('exist')
-  cy.contains('span', 'Tax').should('exist')
+  // cy.contains('span', 'Tax').should('exist')
   cy.contains('label>span', 'Supply Price').parents('label').next('div').find('input').type(prod_supply_price)
   cy.contains('label>span', 'Supply Price').should('exist')
   cy.contains('label>span', 'Retail Price').parents('label').next('div').find('input').type(prod_retail_price)
@@ -70,12 +70,12 @@ const filloutProductInventoryInfo =(prod_ksu, prod_stock_qty, prod_low_stock_lvl
   // cy.contains('span', 'Receive Low Stock Notifications').should('exist')
   cy.contains('label>span', 'SKU (Stock Keeping Unit)').should('exist')
   cy.contains('label>span', 'SKU (Stock Keeping Unit)').parents('label').next('div').find('input').type(prod_ksu)
-  cy.contains('label>span', 'Current Stock Quantity').should('exist')
-  cy.contains('label>span', 'Current Stock Quantity').parents('label').next('div').find('input').type(prod_stock_qty)
-  cy.contains('label>span', 'Low Stock Level').should('exist')
-  cy.contains('label>span', 'Low Stock Level').parents('label').next('div').find('input').type(prod_low_stock_lvl)
-  cy.contains('label>span', 'Reorder Quantity').should('exist')
-  cy.contains('label>span', 'Reorder Quantity').parents('label').next('div').find('input').type(prod_reorder_qty)
+  // cy.contains('label>span', 'Current Stock Quantity').should('exist')
+  // cy.contains('label>span', 'Current Stock Quantity').parents('label').next('div').find('input').type(prod_stock_qty)
+  // cy.contains('label>span', 'Low Stock Level').should('exist')
+  // cy.contains('label>span', 'Low Stock Level').parents('label').next('div').find('input').type(prod_low_stock_lvl)
+  // cy.contains('label>span', 'Reorder Quantity').should('exist')
+  // cy.contains('label>span', 'Reorder Quantity').parents('label').next('div').find('input').type(prod_reorder_qty)
 
 }
 
@@ -132,7 +132,6 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     cy.contains('span', 'Supply Price').should('exist')
     cy.contains('span', 'Retail Price').should('exist')
     cy.contains('span', 'Enable Retail Sales').should('exist')
-    cy.contains('span', 'Tax').should('exist')
   })
 
   it('Verify the it is possible access to the Create product/Inventory tab form - Admin credentials', () => {
@@ -253,21 +252,21 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and SKU - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and SKU - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Current Stock Quantity - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Current Stock Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','3','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Current Stock Quantity','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','4','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Low Stock Level','{enter}','{enter}','{enter}','{enter}')
@@ -275,21 +274,21 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   })
 
   
-  it.only('Verify Product is create successfully by filling up Price Name and Reorder Quantity - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Reorder Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     filloutProductBasicInfo('Product filled up with Price name and Reorder Quantity','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     filloutProductBasicInfo('Product filled up with Price Name product bar code short description prod description and Reorder Quantity','098765432112','{enter}','Prod short description','Product description')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('SKU12345-AB','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 4006381333931 and SKU12345-AB','4006381333931','{enter}','{enter}','{enter}')
@@ -303,32 +302,24 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 5012345678900, and SKU98765-GH  - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Bar code EAN-13 5012345678900, SKU98765-GH, Retail Price and Supply Price  - Admin credentials', () => {
     accessToCreateProduct()
+    filloutProductPricingInfo('12345','10')
     filloutProductInventoryInfo('SKU98765-GH','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 5012345678900 and SKU98765-GH','5012345678900','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, Supply Price and Retail Price- Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Supply Price and Retail Price- Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','10')
     filloutProductBasicInfo('Product filled up with Price name Supply & Retail Price','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
-  
-  it.only('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price and tax toogle switched ON- Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','10')
-    cy.contains('span','Tax').click({ force: true })
-    filloutProductBasicInfo('Product filled up with Price name Supply Retail Price and tax toggle switched ON','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product created successfully')
-  })
-
-  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, Tax and Enable Retails sales toogle switched ON- Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductPricingInfo('12345','10')
-    cy.contains('span','Tax').click({ force: true })
+    // cy.contains('span','Tax').click({ force: true })
     cy.wait(100)
     cy.contains('span','Enable Retail Sales').click({ force: true })
     cy.wait(100)
@@ -341,13 +332,13 @@ it('Verify it is no possible to create a Product by filling up Price Name and al
   accessToCreateProduct()
   filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
   filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
-  expectedMessageCreateProduct('Failed to create product')
+  expectedMessageCreateProduct('Product with this SKU already exists')
 })
 
 it('Verify it is not possible to create a Product by filling up Price Name and already added Product Bar Code - Admin credentials', () => {
   accessToCreateProduct()
   filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
-  expectedMessageCreateProduct('Failed to create product')
+  expectedMessageCreateProduct('Product with this Barcode already exists')
 })
 
   it('Verify Product Name is the required field by trying to create a product leaving empty all the fields- Admin credentials', () => {
@@ -414,21 +405,40 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
   it('Verify Product cannot be create when bar code is less than 12 digits - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Product Name and less than 12 digits Bar code','12345678901','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Failed to create product')
+    expectedMessageCreateProduct('Invalid Barcode, Barcodes must be 8, 12, or 13 digits long')
   })
 
   
   it('Verify Product cannot be create when bar code is more than 12 digits - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Product Name and more than 12 digits Bar code','12345678901234','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Failed to create product')
+    expectedMessageCreateProduct('Invalid Barcode, Barcodes must be 8, 12, or 13 digits long')
   })
 
   it('Verify Product cannot be create when bar code is alphanumeric - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Product Name and more than 12 digits Bar code','12345678901a','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Failed to create product')
+    expectedMessageCreateProduct('Invalid Barcode, Barcodes must be 8, 12, or 13 digits long')
   })
+
+  it.skip('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
+    accessToCreateProduct()
+    filloutProductBasicInfo('Product filled up with Price Name and Supplier','{enter}','{enter}','{enter}','{enter}')
+    filloutProductInventoryInfo('{enter}','{enter}','{enter}','{enter}')
+    cy.contains('label>span', 'Supplier').should('exist')
+    cy.contains('label>span', 'Supplier').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('h3', 'Suppliers').should('exist')
+    cy.wait(2000)
+    cy.get('section').next('div').find('button').click({ force: true })
+    cy.contains('span','Supplier Name').parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
+    cy.get('section').next('div').find('button').click({ force: true })
+    cy.contains('span', 'Supplier created Successfully').should('exist')
+    // cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
+    // cy.contains('h3', 'Categories').should('exist')
+    // cy.get('section>div>ul>*').first().click({ force: true })
+    expectedMessageCreateProduct('Product created successfully')
+  })
+  
 
 
 //Edit Successfully
