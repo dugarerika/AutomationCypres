@@ -14,7 +14,7 @@ const loginov = (name, username, password) => {
     cy.get('#password').click().type(password,{force: true, delay: 80})
     cy.intercept('POST', '/ssr/main/api/auth/login').as('sign')
     cy.get('button').contains('Sign in').click()
-    cy.wait(100)
+    cy.wait(1000)
     cy.wait('@sign').then((interception) => {
       expect(interception.response.statusCode).to.equal(200)
     })          
