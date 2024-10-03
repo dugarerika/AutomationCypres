@@ -14,7 +14,7 @@ const loginov = (name, username, password) => {
     cy.xpath('//button[text()="Sign in"]').should('be.visible');
     cy.get('#username').click().type(username, {force: true, delay: 80})
     cy.get('#password').click().type(password,{force: true, delay: 80})
-    cy.intercept('POST', '/ssr/main/api/auth/loginov').as('sign')
+    cy.intercept('POST', '/ssr/main/api/auth/login').as('sign')
     cy.get('button').contains('Sign in').click()
     cy.wait(100)
     cy.wait('@sign').then((interception) => {
