@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-const login = (name, username, password) => {
+const loginov = (name, username, password) => {
   cy.session(name,() => {
     cy.visit('https://staging.vendor.bookr-dev.com/auth')
     cy.wait(900)
@@ -55,7 +55,7 @@ const searchApt = (staff, start_time) => {
 describe('Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    login('Staff Session', 'zumba11','1234567890')
+    loginov('Staff Session', 'zumba11','1234567890')
   })
 
   after(() => {
@@ -210,7 +210,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
 describe('Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    login('Admin Section', 'artnailcorner','1234567890')
+    loginov('Admin Section', 'artnailcorner','1234567890')
   })
 
   after(() => {
@@ -322,7 +322,7 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
 describe('Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
   beforeEach(() => {
-    login('Receptionist Session', 'recep6','1234567890')
+    loginov('Receptionist Session', 'recep6','1234567890')
   })
 
   after(() => {
@@ -437,7 +437,7 @@ describe('Vendor Admin | Calendar | Create appointment by Clicking on the calend
 describe('Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    login('Readonly Session', 'readonly31','1234567890')
+    loginov('Readonly Session', 'readonly31','1234567890')
   })
 
   after(() => {

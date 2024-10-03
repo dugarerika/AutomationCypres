@@ -22,23 +22,7 @@ const login = (name, username, password) => {
   })
 }
 
-const loginov = (name, username, password) => {
-  cy.session(name,() => {
-    cy.visit('https://staging.vendor.bookr-dev.com/auth')
-    cy.wait(900)
-    cy.get('#username').should('be.visible');
-    cy.get('#password').should('be.visible');
-    cy.xpath('//button[text()="Sign in"]').should('be.visible');
-    cy.get('#username').click().type(username, {force: true, delay: 80})
-    cy.get('#password').click().type(password,{force: true, delay: 80})
-    cy.intercept('POST', '/ssr/main/api/auth/loginov').as('sign')
-    cy.get('button').contains('Sign in').click()
-    cy.wait(100)
-    cy.wait('@sign').then((interception) => {
-      expect(interception.response.statusCode).to.equal(200)
-    })          
-  })
-}
+
 
 const accessToCreateProduct = () => {
   cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
@@ -51,6 +35,7 @@ const accessToCreateProduct = () => {
   cy.contains('button', 'Add New').click({ force: true })
   cy.contains('h3', 'Create Product').should('exist')
 }
+
 
 const filloutProductBasicInfo = (prod_name, prod_barcode, prod_measurement, prod_short_description, prod_description) => {
   cy.contains('button', 'Basic Info').should('exist')
