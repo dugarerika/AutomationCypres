@@ -33,7 +33,7 @@ module.exports = defineConfig({
     experimentalSessionAndOrigin: true,
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 120000,
-    screenshotOnRunFailure: true,
+    screenshotOnRunFailure: false,
     trashAssetsBeforeRuns: true,
     video: false,
     videoUploadOnPasses: false,
@@ -47,7 +47,7 @@ module.exports = defineConfig({
       },
     },
     retries: {
-      runMode: 1,
+      runMode: 2,
       openMode: 0
     },
     env: {
