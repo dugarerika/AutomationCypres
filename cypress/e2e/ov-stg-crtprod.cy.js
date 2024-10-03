@@ -34,6 +34,8 @@ const accessToCreateProductov = () => {
   cy.contains('button', 'Add New').should('exist')
   cy.contains('button', 'Add New').click({ force: true })
   cy.contains('h3', 'Create Product').should('exist')
+  cy.visit('https://staging.vendor.bookr-dev.com/inventory')
+
 }
 
 
