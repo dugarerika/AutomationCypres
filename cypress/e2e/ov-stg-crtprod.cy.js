@@ -27,14 +27,15 @@ const accessToCreateProductov = () => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
-  cy.wait(500)
+  cy.wait(1000)
+  cy.visit('https://staging.vendor.bookr-dev.com/inventory')
   // cy.contains('Products').should('exist')
   // cy.contains('Products').click({ force: true })
-  cy.contains('h6', 'Products').should('exist')
+  cy.contains('div>h6', 'Products').should('exist')
   cy.contains('button', 'Add New').should('exist')
   cy.contains('button', 'Add New').click({ force: true })
   cy.contains('h3', 'Create Product').should('exist')
-  cy.visit('https://staging.vendor.bookr-dev.com/inventory')
+
 
 }
 
@@ -105,6 +106,7 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     cy.visit('https://staging.vendor.bookr-dev.com/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
+    cy.visit('https://staging.vendor.bookr-dev.com/inventory')
     cy.contains('h6', 'Products').should('exist')
   })
 
