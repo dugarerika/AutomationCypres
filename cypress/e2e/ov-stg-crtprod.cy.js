@@ -91,7 +91,7 @@ const expectedMessageCreateProduct = (product_message) => {
   cy.contains('span', product_message).should('exist')
 }
 
-describe('Beta Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
+describe('Old Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
 
   beforeEach(() => {
     loginov('Admin Section', 'artnailcorner', '1234567890')
@@ -404,7 +404,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.get('input[placeholder = "Enter product name"]').type('Product Measuarement cannot be submited without Units')
     cy.get('input[placeholder="Enter product measurement"]').should('exist')
     cy.get('input[placeholder="Enter product measurement"]').type('123')
-    expectedMessageCreateProduct('measure.unit must be one of the following values: ml, l, g, kg, oz, lb, cm, ft, in, whole')
+    expectedMessageCreateProduct('unit must be one of the following values: ml, l, g, kg, oz, lb, cm, ft, in, whole')
   })
 
   it('Verify Product cannot be create when bar code is less than 12 digits - Admin credentials', () => {
