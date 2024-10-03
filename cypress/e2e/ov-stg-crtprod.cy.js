@@ -27,6 +27,7 @@ const accessToCreateProductov = () => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
+  cy.wait(500)
   cy.contains('Products').should('exist')
   cy.contains('Products').click({ force: true })
   cy.contains('h6', 'Products').should('exist')
