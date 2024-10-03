@@ -103,8 +103,6 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     cy.visit('https://staging.vendor.bookr-dev.com/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
     cy.contains('h6', 'Products').should('exist')
   })
 
