@@ -82,16 +82,42 @@ describe('Beta Vendor Admin | Services | Create Service| logged with Admin crede
         accessToAddServiceForm()
     })
 
-    it.only('Verify that at least 1 service variant is required - Admin Credentila', () => {
+    it('Verify that at least 1 service variant is required - Admin Credentila', () => {
         accessToServiceSection()
         accessToAddServiceForm()
         expectedMessageCreateService('variants should not be empty')
     })
 
-    it('Verify that service Name is required - Admin Credentila', () => {
+    it.only('Verify that service Name is required - Admin Credentila', () => {
+        let nameid
+        let priceid
+        let durid
         accessToServiceSection()
-        accessToAddServiceForm
-        expectedMessageCreateService('Service created')
+        accessToAddServiceForm()
+        cy.contains('h6','Pricing Option ').scrollIntoView()
+        cy.contains('label','Price').then(($labelprice) => {
+            priceid = $labelprice.attr('for')
+            cy.log(priceid)
+            cy.get(`input[id="${priceid}"]`).type(10)
+        })
+        cy.contains('label','Name').then(($labelname) => {
+            nameid = $labelname.attr('for')
+            cy.log(nameid)
+            cy.get(`input[id="${nameid}"]`).type('test')
+        })
+        cy.contains('h6','Pricing Option ').scrollIntoView()
+        // cy.contains('label','Duration').then(($label) => {
+        //     priceid = $label.attr('for')
+        //     cy.log(durid)
+        //     cy.get(`input[id="${durid}"]`).type(10)
+        // })
+        cy.contains('label','Duration').next().find('input').click({ force: true })
+        cy.get('ul>li[data-hour="5"]').click({ force: true })
+        cy.contains('h6','Pricing Option ').click({ force: true })
+
+
+        // // 
+        // expectedMessageCreateService('Service created')
     })
 
 
