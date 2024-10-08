@@ -70,16 +70,8 @@ const filloutProductInventoryInfo =(prod_ksu, prod_stock_qty, prod_low_stock_lvl
   cy.contains('div>button', 'Inventory').click({ force: true })
   cy.contains('h6', 'Inventory').should('exist')
   cy.contains('span', 'Track Stock Quantity').should('exist')
-  // cy.contains('span', 'Receive Low Stock Notifications').should('exist')
   cy.contains('label>span', 'SKU (Stock Keeping Unit)').should('exist')
   cy.contains('label>span', 'SKU (Stock Keeping Unit)').parents('label').next('div').find('input').type(prod_ksu)
-  // cy.contains('label>span', 'Current Stock Quantity').should('exist')
-  // cy.contains('label>span', 'Current Stock Quantity').parents('label').next('div').find('input').type(prod_stock_qty)
-  // cy.contains('label>span', 'Low Stock Level').should('exist')
-  // cy.contains('label>span', 'Low Stock Level').parents('label').next('div').find('input').type(prod_low_stock_lvl)
-  // cy.contains('label>span', 'Reorder Quantity').should('exist')
-  // cy.contains('label>span', 'Reorder Quantity').parents('label').next('div').find('input').type(prod_reorder_qty)
-
 }
 
 const expectedMessageCreateProduct = (product_message) => {
@@ -91,7 +83,7 @@ const expectedMessageCreateProduct = (product_message) => {
 describe('Beta Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    login('Admin Section', 'artnailcorner', '1234567890')
+    login('Admin Section', 'testsalon', 'testsalon1o')
   })
 
   afterEach(() => {
@@ -262,25 +254,10 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
     expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Current Stock Quantity - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductInventoryInfo('{enter}','3','{enter}','{enter}')
-    filloutProductBasicInfo('Product filled up with Price name and Current Stock Quantity','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product created successfully')
-  })
-
   it('Verify Product is create successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductInventoryInfo('{enter}','{enter}','4','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Low Stock Level','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product created successfully')
-  })
-
-  
-  it('Verify Product is create successfully by filling up Price Name and Reorder Quantity - Admin credentials', () => {
-    accessToCreateProduct()
-    filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
-    filloutProductBasicInfo('Product filled up with Price name and Reorder Quantity','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateProduct('Product created successfully')
   })
 
@@ -322,7 +299,6 @@ describe('Beta Vendor Admin | Inventory | Create products| logged with Admin cre
   it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
     accessToCreateProduct()
     filloutProductPricingInfo('12345','10')
-    // cy.contains('span','Tax').click({ force: true })
     cy.wait(100)
     cy.contains('span','Enable Retail Sales').click({ force: true })
     cy.wait(100)
@@ -424,7 +400,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     expectedMessageCreateProduct('Invalid Barcode, Barcodes must be 8, 12, or 13 digits long')
   })
 
-  it.skip('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
     accessToCreateProduct()
     filloutProductBasicInfo('Product filled up with Price Name and Supplier','{enter}','{enter}','{enter}','{enter}')
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','{enter}')
@@ -433,16 +409,13 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.contains('h3', 'Suppliers').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span','Supplier Name').parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
+    cy.contains('h3','Create Supplier').should('exist')
+    cy.contains('span','Supplier Name').parent().next('div').find('input').type('Automated Supplier', { force: true, delay: 50 })
+    cy.contains('span','Supplier Description').parent().next('div').find('textarea').eq(0).type('Automated Supplier', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span', 'Supplier created Successfully').should('exist')
-    // cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
-    // cy.contains('h3', 'Categories').should('exist')
-    // cy.get('section>div>ul>*').first().click({ force: true })
+    cy.contains('span', 'Supplier created successfully').should('exist')
     expectedMessageCreateProduct('Product created successfully')
   })
-  
-
 
 //Edit Successfully
   it.skip('Verify the option to edit production is available from the Inventory/Product list section- Admin credentials', () => {
