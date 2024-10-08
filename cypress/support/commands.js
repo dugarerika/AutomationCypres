@@ -117,14 +117,15 @@ Cypress.Commands.add('filloutProductPricingInfo', (prod_supply_price, prod_retai
     cy.contains('label>span', 'Retail Price').parents('label').next('div').find('input').type(prod_retail_price)
 })
 
-const filloutProductInventoryInfo =(prod_ksu, prod_stock_qty, prod_low_stock_lvl, prod_reorder_qty) =>{
+Cypress.Commands.add('filloutProductInventoryInfo', (prod_ksu, prod_stock_qty, prod_low_stock_lvl, prod_reorder_qty) =>{
     cy.contains('div>button', 'Inventory').should('exist')
     cy.contains('div>button', 'Inventory').click({ force: true })
     cy.contains('h6', 'Inventory').should('exist')
     cy.contains('span', 'Track Stock Quantity').should('exist')
     cy.contains('label>span', 'SKU (Stock Keeping Unit)').should('exist')
     cy.contains('label>span', 'SKU (Stock Keeping Unit)').parents('label').next('div').find('input').type(prod_ksu)
-}
+})
+
 
 
 

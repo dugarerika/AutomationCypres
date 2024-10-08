@@ -3,24 +3,6 @@
 
 const { should } = require("chai")
 
-const loginov = (name, username, password) => {
-  cy.session(name,() => {
-    cy.visit('https://staging.vendor.bookr-dev.com/auth')
-    cy.wait(900)
-    cy.get('#username').should('be.visible');
-    cy.get('#password').should('be.visible');
-    cy.xpath('//button[text()="Sign in"]').should('be.visible');
-    cy.get('#username').click().type(username, {force: true, delay: 80})
-    cy.get('#password').click().type(password,{force: true, delay: 80})
-    cy.intercept('POST', '/ssr/main/api/auth/login').as('sign')
-    cy.get('button').contains('Sign in').click()
-    cy.wait(1000)
-    cy.wait('@sign').then((interception) => {
-      expect(interception.response.statusCode).to.equal(200)
-    })          
-  })
-}
- 
 const searchTimeSlot = (staff,start_time) => {
   cy.visit('https://staging.vendor.bookr-dev.com/calendar')
   let color
@@ -55,7 +37,7 @@ const searchApt = (staff, start_time) => {
 describe('Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    loginov('Staff Session', 'zumba11','1234567890')
+    cy.loginov('Staff Session', 'zumba11','1234567890')
   })
 
   after(() => {

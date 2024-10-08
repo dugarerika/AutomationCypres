@@ -5,16 +5,7 @@ const { should } = require("chai")
 
 // Important:  before running this test cases the product list must be empty
 
-const filloutProductInventoryInfo =(prod_ksu, prod_stock_qty, prod_low_stock_lvl, prod_reorder_qty) =>{
-  cy.contains('div>button', 'Inventory').should('exist')
-  cy.contains('div>button', 'Inventory').click({ force: true })
-  cy.contains('h6', 'Inventory').should('exist')
-  cy.contains('span', 'Track Stock Quantity').should('exist')
-  cy.contains('label>span', 'SKU (Stock Keeping Unit)').should('exist')
-  cy.contains('label>span', 'SKU (Stock Keeping Unit)').parents('label').next('div').find('input').type(prod_ksu)
-}
-
-describe('Old Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
+describe('Production - Old Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
 
   beforeEach(() => {
     cy.loginovprd('Admin Section', 'testsalon', 'testsalon1o')
@@ -178,35 +169,35 @@ describe('Old Vendor Admin | Inventory | Create products| logged with Admin cred
 
   it('Verify Product is create successfully by filling up Price Name and SKU - Admin credentials', () => {
     cy.accessToCreateProductovprod()
-    filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
+    cy.filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
     cy.filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
   it('Verify Product is create successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
     cy.accessToCreateProductovprod()
-    filloutProductInventoryInfo('{enter}','{enter}','4','{enter}')
+    cy.filloutProductInventoryInfo('{enter}','{enter}','4','{enter}')
     cy.filloutProductBasicInfo('Product filled up with Price name and Low Stock Level','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
   it('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
     cy.accessToCreateProductovprod()
-    filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
+    cy.filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     cy.filloutProductBasicInfo('Product filled up with Price Name product bar code short description prod description and Reorder Quantity','098765432112','{enter}','Prod short description','Product description')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
   it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
     cy.accessToCreateProductovprod()
-    filloutProductInventoryInfo('SKU12345-AB','{enter}','{enter}','{enter}')
+    cy.filloutProductInventoryInfo('SKU12345-AB','{enter}','{enter}','{enter}')
     cy.filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 4006381333931 and SKU12345-AB','4006381333931','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
   it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 9780201379624, and SKU67890-CD  - Admin credentials', () => {
     cy.accessToCreateProductovprod()
-    filloutProductInventoryInfo('SKU67890-CD','{enter}','{enter}','{enter}')
+    cy.filloutProductInventoryInfo('SKU67890-CD','{enter}','{enter}','{enter}')
     cy.filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 9780201379624 and SKU67890-CD','9780201379624','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
@@ -214,7 +205,7 @@ describe('Old Vendor Admin | Inventory | Create products| logged with Admin cred
   it('Verify Product is create successfully by filling up Price Name, Bar code EAN-13 5012345678900, SKU98765-GH, Retail Price and Supply Price  - Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductPricingInfo('12345','10')
-    filloutProductInventoryInfo('SKU98765-GH','{enter}','{enter}','{enter}')
+    cy.filloutProductInventoryInfo('SKU98765-GH','{enter}','{enter}','{enter}')
     cy.filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 5012345678900 and SKU98765-GH','5012345678900','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
@@ -238,7 +229,7 @@ describe('Old Vendor Admin | Inventory | Create products| logged with Admin cred
 // Create Non successfully  
 it('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
   cy.accessToCreateProductovprod()
-  filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
+  cy.filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
   cy.filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this SKU already exists')
 })
@@ -332,7 +323,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
   it('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Supplier','{enter}','{enter}','{enter}','{enter}')
-    filloutProductInventoryInfo('{enter}','{enter}','{enter}','{enter}')
+    cy.filloutProductInventoryInfo('{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Supplier').should('exist')
     cy.contains('label>span', 'Supplier').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Suppliers').should('exist')
