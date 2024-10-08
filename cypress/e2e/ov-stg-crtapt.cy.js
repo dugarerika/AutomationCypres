@@ -34,7 +34,7 @@ const searchApt = (staff, start_time) => {
   })
   cy.contains('Appointment Details').should('be.visible')
 }
-describe('Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
     cy.loginov('Staff Session', 'zumba11','1234567890')
@@ -189,7 +189,7 @@ describe('Vendor Admin | Calendar |Create appointments by Clicking on the calend
   })
 })
 
-describe('Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
     loginov('Admin Section', 'artnailcorner','1234567890')
@@ -301,7 +301,7 @@ describe('Vendor Admin | Calendar | Create appointments by Clicking on the calen
   })
 })
 
-describe('Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
+describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
   beforeEach(() => {
     loginov('Receptionist Session', 'recep6','1234567890')
@@ -416,7 +416,7 @@ describe('Vendor Admin | Calendar | Create appointment by Clicking on the calend
   })
 })
 
-describe('Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
     loginov('Readonly Session', 'readonly31','1234567890')

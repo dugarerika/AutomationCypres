@@ -82,6 +82,21 @@ Cypress.Commands.add('accessToCreateProductovprod', () => {
 })
 
 
+// -- This is a child command for the create product section Old Vendor STAGING--
+// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
+Cypress.Commands.add('accessToCreateProductov', () => {
+    cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+    cy.contains('Inventory').should('exist')
+    cy.contains('Inventory').click({ force: true })
+    cy.wait(1000)
+    cy.visit('https://staging.vendor.bookr-dev.com/inventory')
+    cy.contains('div>h6', 'Products').should('exist')
+    cy.contains('button', 'Add New').should('exist')
+    cy.contains('button', 'Add New').click({ force: true })
+    cy.contains('h3', 'Create Product').should('exist')
+})
+
+
 // -- This is a child command for the create product section Old Vendor PRODUCTION and STAGING--
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 Cypress.Commands.add('filloutProductBasicInfo', (prod_name, prod_barcode, prod_measurement, prod_short_description, prod_description) => {
