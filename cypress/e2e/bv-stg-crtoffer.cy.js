@@ -5,7 +5,10 @@ const { should } = require("chai")
 
 // Important:  before running this test cases the product list must be empty
 
+
+
 const filloutOfferInfo =() =>{
+
 }
 
 
