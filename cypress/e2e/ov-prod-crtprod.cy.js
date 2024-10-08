@@ -5,18 +5,6 @@ const { should } = require("chai")
 
 // Important:  before running this test cases the product list must be empty
 
-const cy.filloutProductPricingInfo =(prod_supply_price, prod_retail_price) =>{
-  cy.contains('button', 'Pricing').should('exist')
-  cy.contains('button', 'Pricing').click({ force: true })
-  cy.contains('h6', 'Pricing').should('exist')
-  cy.contains('span', 'Supply Price').should('exist')
-  cy.contains('span', 'Retail Price').should('exist')
-  cy.contains('span', 'Enable Retail Sales').should('exist')
-  cy.contains('label>span', 'Supply Price').parents('label').next('div').find('input').type(prod_supply_price)
-  cy.contains('label>span', 'Supply Price').should('exist')
-  cy.contains('label>span', 'Retail Price').parents('label').next('div').find('input').type(prod_retail_price)
-}
-
 const filloutProductInventoryInfo =(prod_ksu, prod_stock_qty, prod_low_stock_lvl, prod_reorder_qty) =>{
   cy.contains('div>button', 'Inventory').should('exist')
   cy.contains('div>button', 'Inventory').click({ force: true })
