@@ -2,23 +2,6 @@
 /// <reference types="cypress-xpath" />
 
 const { should } = require("chai")
-
-const login = (name, username, password) => {
-  cy.session(name,() => {
-    cy.visit('https://beta.vendor.bookr-dev.com/')
-    cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
-    cy.get('[type="text"]').should('be.visible')
-    cy.get('[type="password"]').should('be.visible')
-    cy.xpath('//button[text()="Login"]').should('be.visible')
-    cy.get('[type="text"]').type(username, {force: true, delay: 50})
-    cy.get('[type="password"]').type(password,{force: true, delay: 50})
-    cy.intercept('POST', '/api/main/auth/login').as('sign')
-    cy.xpath('//button[text()="Login"]').click()
-    cy.wait('@sign').then((interception) => {
-      expect(interception.response.statusCode).to.equal(200)
-    })          
-  })
-}
   
 const searchTimeSlot = (staff,start_time) => {
   cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
@@ -46,10 +29,10 @@ const searchApt = (staff,start_time) => {
   cy.contains('Appointment Details').should('be.visible')
 }
 
-describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    login('Readonly Section', 'readonly5','1234567890')
+    cy.login('Readonly Section', 'readonly5','1234567890')
   })
 
   afterEach(() => {
@@ -88,10 +71,10 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
     }) 
   })
 
-describe('Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
-  login('Admin Section', 'testsalon','testsalon1o')
+  cy.login('Admin Section', 'testsalon','testsalon1o')
 })
 
 afterEach(() => {
@@ -216,9 +199,9 @@ it('Verify it is possible to edit the Customer - Admin credentials', () => {
 })
   })
 
-describe('Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   beforeEach(() => {
-    login('Receptionist Section', 'receptionist9','1234567890')
+    cy.login('Receptionist Section', 'receptionist9','1234567890')
   })
 
   afterEach(() => {
@@ -338,9 +321,9 @@ describe('Beta Vendor Admin | Calendar | Create appointments by Clicking on the 
   })
 })
     
-describe('Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   beforeEach(() => {
-    login('Staff Section', 'erika40','1234567890')
+    cy.login('Staff Section', 'erika40','1234567890')
   })
 
   afterEach(() => {
