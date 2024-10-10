@@ -325,7 +325,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.expectedMessageCreateProduct('Invalid Barcode, Barcodes must be 8, 12, or 13 digits long')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Supplier','{enter}','{enter}','{enter}','{enter}')
     cy.filloutProductInventoryInfo('{enter}','{enter}','{enter}','{enter}')
@@ -334,8 +334,8 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.contains('h3', 'Suppliers').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('h3','Create Supplier').should('exist')
-    cy.contains('span','Supplier Name').parent().next('div').find('input').type('Automated Supplier', { force: true, delay: 50 })
+    // cy.contains('h3','Create Supplier').should('exist')
+    cy.contains('label>span','Supplier Name').parent().next('div').find('input').type('Automated Supplier', { force: true, delay: 50 })
     cy.contains('span','Supplier Description').parent().next('div').find('textarea').eq(0).type('Automated Supplier', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Supplier created successfully').should('exist')

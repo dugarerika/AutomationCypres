@@ -8,22 +8,7 @@ const randEmail1 = faker.internet.email()
 const randEmail2 = faker.internet.email()
 const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
-const login = (name, username, password) => {
-cy.session(name, () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/')
-    cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
-    cy.get('[type="text"]').should('be.visible')
-    cy.get('[type="password"]').should('be.visible')
-    cy.xpath('//button[text()="Login"]').should('be.visible')
-    cy.get('[type="text"]').type(username, { force: true, delay: 50 })
-    cy.get('[type="password"]').type(password, { force: true, delay: 50 })
-    cy.intercept('POST', '/api/main/auth/login').as('sign')
-    cy.xpath('//button[text()="Login"]').click()
-    cy.wait('@sign').then((interception) => {
-    expect(interception.response.statusCode).to.equal(200)
-    })
-})
-}
+
 
 const filloutServiceInfo = (first_name, last_name, email, order, username, password) => {
     cy.contains('span','First Name').parent().next('div').find('input').eq(0).should('exist')
@@ -65,7 +50,7 @@ const expectedMessageCreateService = (service_message) => {
 describe('Beta Vendor Admin | Services | Create Service| logged with Admin credentials', () => {
 
     beforeEach(() => {
-        login('Admin Section', 'artnailcorner', '1234567890')
+        cy.login('Admin Section', 'artnailcorner', '1234567890')
     })
     
     afterEach(() => {
