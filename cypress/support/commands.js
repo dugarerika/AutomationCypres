@@ -12,8 +12,8 @@
 // -- This is a parent command to log into the Beta Vendor STAGING --
 Cypress.Commands.add('login', (name, username, password) => {
     cy.session(name,() => {
-        cy.visit('https://beta.vendor.bookr-dev.com/')
-        cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging"))
+        cy.url().should('include', Cypress.env("URL_BetaVendor_Staging") + 'auth')
         cy.get('[type="text"]').should('be.visible')
         cy.get('[type="password"]').should('be.visible')
         cy.xpath('//button[text()="Login"]').should('be.visible')
