@@ -28,7 +28,7 @@ module.exports = defineConfig({
     },
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
     //excludeSpecPattern: "cypress/e2e/other/*.js",
-    baseUrl: "",
+    baseUrl: "https://beta.vendor.bookr-dev.com/",
     chromeWebSecurity: false,
     experimentalSessionAndOrigin: true,
     defaultCommandTimeout: 10000,
