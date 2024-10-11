@@ -9,7 +9,7 @@
 // ***********************************************
 //
 //
-// -- This is a parent command to log into the Beta Vendor --
+// -- This is a parent command to log into the Beta Vendor STAGING --
 Cypress.Commands.add('login', (name, username, password) => {
     cy.session(name,() => {
         cy.visit('https://beta.vendor.bookr-dev.com/')
@@ -27,6 +27,7 @@ Cypress.Commands.add('login', (name, username, password) => {
     })
 })
 
+// -- This is a parent command to log into the Beta Vendor PRODUCTION --
 Cypress.Commands.add('loginprod', (name, username, password) => {
     cy.session(name,() => {
         cy.visit('https://vendor-beta.bookr.co/')
@@ -82,10 +83,8 @@ Cypress.Commands.add('loginovprd', (name, username, password) => {
     })
 })
 
-
-//
+// ------------------------------ Inventory Section --------------------------------
 // -- This is a child command for the create product section Old Vendor PRODUCTION--
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 Cypress.Commands.add('accessToCreateProductovprod', () => {
     cy.visit('https://vendor.bookr.co/calendar')
     cy.contains('Inventory').should('exist')
@@ -100,7 +99,6 @@ Cypress.Commands.add('accessToCreateProductovprod', () => {
 
 
 // -- This is a child command for the create product section Old Vendor STAGING--
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 Cypress.Commands.add('accessToCreateProductov', () => {
     cy.visit('https://staging.vendor.bookr-dev.com/calendar')
     cy.contains('Inventory').should('exist')
@@ -172,7 +170,29 @@ Cypress.Commands.add('filloutProductInventoryInfo', (prod_ksu, prod_stock_qty, p
 
 
 
-
+// ------------------------------ Employee Section --------------------------------
+Cypress.Commands.add('deleteEmployee', () => {
+    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.contains('Employees').should('exist')
+    cy.contains('Employees').click({ force: true })
+    cy.contains('div','Employees').should('exist')
+    cy.contains('div','Employees').click({ force: true })
+    cy.get('tbody>*').should('exist')
+    cy.get('tbody>*').first().click({ force: true })
+    cy.contains('Delete Employee').scrollIntoView()
+    cy.contains('Delete Employee').click({ force: true })
+    cy.contains('button', 'Delete').should('exist')
+    cy.contains('button', 'Delete').click({ force: true })
+    cy.contains('h3', 'Delete Employee').should('exist')
+    cy.contains('p', 'Are you sure you want to delete this Employee?').should('exist')
+    cy.contains('p', 'Are you sure you want to delete this Employee?').parents('section').next('div').find('button').eq(1).click({ force: true })
+    cy.contains('span', 'Employee deleted successfully').should('exist')
+    cy.get('tbody').find('tr').its('length').then(count => {
+      if (count) {   // not count >= 0, because 0 means no elements
+        cy.log(`there are ${count - 1} elements`)
+    }
+    })
+})
 
 
 

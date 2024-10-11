@@ -28,7 +28,7 @@ module.exports = defineConfig({
     },
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
     //excludeSpecPattern: "cypress/e2e/other/*.js",
-    baseUrl: "http://www.webdriveruniversity.com",
+    baseUrl: "",
     chromeWebSecurity: false,
     experimentalSessionAndOrigin: true,
     defaultCommandTimeout: 10000,
@@ -51,8 +51,11 @@ module.exports = defineConfig({
       openMode: 0
     },
     env: {
-      webdriveruni_homepage: "http://www.webdriveruniversity.com",
-      first_name: "Sarah"
+      URL_OldVendor_Staging: "https://staging.vendor.bookr-dev.com/",
+      URL_BetaVendor_Staging: "https://beta.vendor.bookr-dev.com/",
+      URL_OldVendor_Production: "https://vendor.bookr.co/",
+      URL_BetaVendor_Production: "https://vendor-beta.bookr.co/",
+      URL_Deeplink_Staging_artnailcorner: "https://stg.customer.bookr-dev.com/vendors/athary-world-nail-"
     }
   },
 });

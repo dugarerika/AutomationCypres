@@ -232,6 +232,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   })
 
 // Create Non successfully  
+
 it('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
   cy.accessToCreateProduct()
   cy.filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
