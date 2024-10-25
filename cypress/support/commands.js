@@ -30,8 +30,8 @@ Cypress.Commands.add('login', (name, username, password) => {
 // -- This is a parent command to log into the Beta Vendor PRODUCTION --
 Cypress.Commands.add('loginprod', (name, username, password) => {
     cy.session(name,() => {
-        cy.visit('https://vendor-beta.bookr.co/')
-        cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
+        cy.visit(Cypress.env("URL_BetaVendor_Production"))
+        cy.url().should('include', Cypress.env("URL_BetaVendor_Production") + 'auth')
         cy.get('[type="text"]').should('be.visible')
         cy.get('[type="password"]').should('be.visible')
         cy.xpath('//button[text()="Login"]').should('be.visible')
@@ -48,7 +48,8 @@ Cypress.Commands.add('loginprod', (name, username, password) => {
 // -- This is a parent command to login into the Old Vendor STAGING--
 Cypress.Commands.add('loginov', (name, username, password) => {
     cy.session(name,() => {
-        cy.visit('https://staging.vendor.bookr-dev.com/auth')
+        cy.visit(Cypress.env("URL_OldVendor_Staging"))
+        cy.url().should('include', Cypress.env("URL_OldVendor_Staging") + 'auth')
         cy.wait(900)
         cy.get('#username').should('be.visible');
         cy.get('#password').should('be.visible');
