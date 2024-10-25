@@ -8,8 +8,15 @@
     "triggerAllTests-headed": "npx cypress run --headed",
     "triggerAllTests-chrome": "npx cypress run --browser chrome",
     "triggerAllTests-dashboard": "npx cypress run --record --key 3025d595-10bc-4aad-91ed-5802e5896b45",
-    "triggerAllTests-webdriveruni": "npx cypress run --spec cypress/e2e/webdriver-uni/*",
     "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
+    "triggerAllTests-OldVendor-Staging-Inventory-CreateProdut": "npx cypress run --spec cypress/e2e/ov-stg-crtprod.cy.js",
+    "triggerAllTests-BetaVendor-Staging-Inventory-CreateProdut": "npx cypress run --spec cypress/e2e/bv-prod-crtprod.cy.js",
+    "triggerAllTests-BetaVendor-Staging-Inventory-DeleteProdut": "npx cypress run --spec cypress/e2e/bv-stg-dltprod.cy.js",
+    "triggerAllTests-OldVendor-Production-Inventory-CreateProdut": "npx cypress run --spec cypress/e2e/ov-prod-crtprod.cy.js",
+    "triggerAllTests-BetaVendor-Production-Inventory-CreateProdut": "npx cypress run --spec cypress/e2e/bv-prod-crtprod.cy.js",
+    "triggerAllTests-OldVendor-Production-Inventory-DeleteProdut": "npx cypress run --spec cypress/e2e/ov-prod-dltprod.cy.js",
+    
+    
     "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
     "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
     "delete-results": "rm -rf cypress/results/* || true",
