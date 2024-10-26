@@ -11,7 +11,7 @@
     "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
    
     "triggerAllTests-OldVendor-Staging-Inventory-CreateProdut": "npx cypress run --spec cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js",
-    "triggerAllTests-BetaVendor-Staging-Inventory-CreateProdut": "npx cypress run --spec cypress/e2e/staging/inventory/bv-prod-crtprod.cy.js",
+    "triggerAllTests-BetaVendor-Staging-Inventory-CreateProdut": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-DeleteProdut": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltprod.cy.js",
 
     "triggerAllTests-OldVendor-Production-Inventory-CreateProdut": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-crtprod.cy.js",
