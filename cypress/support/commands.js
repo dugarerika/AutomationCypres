@@ -115,7 +115,7 @@ Cypress.Commands.add('accessToCreateProductov', () => {
 
 Cypress.Commands.add('accessToCreateProduct', () => {
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
