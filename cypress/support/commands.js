@@ -17,8 +17,8 @@ Cypress.Commands.add('login', (name, username, password) => {
         cy.get('[type="text"]').should('be.visible')
         cy.get('[type="password"]').should('be.visible')
         cy.xpath('//button[text()="Login"]').should('be.visible')
-        cy.get('[type="text"]').type(Cypress.env("Vendor_Username_Staging"), {force: true, delay: 50})
-        cy.get('[type="password"]').type(Cypress.env("Vendor_Password_Staging"),{force: true, delay: 50})
+        cy.get('[type="text"]').type(username, {force: true, delay: 50})
+        cy.get('[type="password"]').type(password,{force: true, delay: 50})
         cy.intercept('POST', '/api/main/auth/login').as('sign')
         cy.xpath('//button[text()="Login"]').click()
         cy.wait('@sign').then((interception) => {
