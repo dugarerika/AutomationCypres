@@ -19,7 +19,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
 
 //Delete Successfully
   it('Verify it is possible Edit products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -41,7 +42,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -63,7 +65,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -85,7 +88,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -107,7 +111,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -129,7 +134,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -151,7 +157,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -173,7 +180,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -195,7 +203,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -217,7 +226,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -240,7 +250,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
 
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -262,7 +273,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -284,7 +296,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -306,7 +319,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -328,7 +342,8 @@ describe('Production - Old Vendor Admin | Inventory | Edit products| logged with
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/inventory')
+    // cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')

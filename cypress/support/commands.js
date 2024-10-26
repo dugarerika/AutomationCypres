@@ -68,7 +68,8 @@ Cypress.Commands.add('loginov', (name, username, password) => {
 // -- This is a parent command to login into the Old Vendor PRODUCTION--
 Cypress.Commands.add('loginovprd', (name, username, password) => {
     cy.session(name,() => {
-        cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
+        //cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
+        cy.visit(Cypress.env("URL_OldVendor_Production") + 'auth?nativeLogout=true')
         cy.wait(900)
         cy.get('#username').should('be.visible');
         cy.get('#password').should('be.visible');
@@ -87,11 +88,13 @@ Cypress.Commands.add('loginovprd', (name, username, password) => {
 // ------------------------------ Inventory Section --------------------------------
 // -- This is a child command for the create product section Old Vendor PRODUCTION--
 Cypress.Commands.add('accessToCreateProductovprod', () => {
-    cy.visit('https://vendor.bookr.co/calendar')
+    //cy.visit('https://vendor.bookr.co/calendar')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.wait(1000)
-    cy.visit('https://vendor.bookr.co/inventory')
+    //cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('div>h6', 'Products').should('exist')
     cy.contains('button', 'Add New').should('exist')
     cy.contains('button', 'Add New').click({ force: true })
@@ -101,11 +104,13 @@ Cypress.Commands.add('accessToCreateProductovprod', () => {
 
 // -- This is a child command for the create product section Old Vendor STAGING--
 Cypress.Commands.add('accessToCreateProductov', () => {
-    cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+    //cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+    cy.visit(Cypress.env("URL_OldVendor_Staging") + 'calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.wait(1000)
-    cy.visit('https://staging.vendor.bookr-dev.com/inventory')
+    //cy.visit('https://staging.vendor.bookr-dev.com/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Staging") + 'inventory')
     cy.contains('div>h6', 'Products').should('exist')
     cy.contains('button', 'Add New').should('exist')
     cy.contains('button', 'Add New').click({ force: true })
@@ -114,7 +119,6 @@ Cypress.Commands.add('accessToCreateProductov', () => {
 
 
 Cypress.Commands.add('accessToCreateProduct', () => {
-    //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -174,7 +178,8 @@ Cypress.Commands.add('filloutProductInventoryInfo', (prod_ksu, prod_stock_qty, p
 
 // ------------------------------ Employee Section --------------------------------
 Cypress.Commands.add('deleteEmployee', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.url().should('include', Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
     cy.contains('div','Employees').should('exist')

@@ -16,10 +16,12 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
   })
 
   it('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
-    cy.visit('https://vendor.bookr.co/calendar')
+    //cy.visit('https://vendor.bookr.co/calendar')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
-    cy.visit('https://vendor.bookr.co/inventory')
+    //cy.visit('https://vendor.bookr.co/inventory')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('h6', 'Products').should('exist')
   })
 
