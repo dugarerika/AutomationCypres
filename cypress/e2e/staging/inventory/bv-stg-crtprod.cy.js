@@ -17,7 +17,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   })
 
   it('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')

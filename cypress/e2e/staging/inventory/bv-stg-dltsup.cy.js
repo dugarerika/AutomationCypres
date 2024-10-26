@@ -5,7 +5,8 @@ const { should } = require("chai")
 
 const login = (name, username, password) => {
   cy.session(name, () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/')
+    //cy.visit('https://beta.vendor.bookr-dev.com/')
+    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
     cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
     cy.get('[type="text"]').should('be.visible')
     cy.get('[type="password"]').should('be.visible')
@@ -21,7 +22,8 @@ const login = (name, username, password) => {
 }
 
 const accessToCreateSuppliers = () => {
-  cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+  //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
   cy.contains('Suppliers').should('exist')
@@ -67,7 +69,8 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
     })
 
     it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
-        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Supplier').should('exist')
@@ -84,7 +87,8 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
     })
     
     it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
-        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Supplier').should('exist')
@@ -101,7 +105,8 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
     })
 
     it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
-        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Supplier').should('exist')
@@ -118,7 +123,8 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
     })
 
     it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
-        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+       //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Supplier').should('exist')
@@ -135,7 +141,8 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
     })
     
     it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
-        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+       //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+       cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Supplier').should('exist')
@@ -152,7 +159,8 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
     })
 
     it('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
-        cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+       //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+       cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Supplier').should('exist')
