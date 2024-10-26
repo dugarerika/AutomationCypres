@@ -8,7 +8,7 @@ const { should } = require("chai")
 describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    cy.login('Admin Section', 'testsalon', 'testsalon1o')
+    cy.login('Admin Section')
   })
 
   afterEach(() => {

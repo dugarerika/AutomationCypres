@@ -55,7 +55,11 @@ module.exports = defineConfig({
       URL_BetaVendor_Staging: "https://vendor.beta.bookr-dev.com/",
       URL_OldVendor_Production: "https://vendor.bookr.co/",
       URL_BetaVendor_Production: "https://vendor-beta.bookr.co/",
-      URL_Deeplink_Staging_artnailcorner: "https://stg.customer.bookr-dev.com/vendors/athary-world-nail-"
+      URL_Deeplink_Staging_artnailcorner: "https://stg.customer.bookr-dev.com/vendors/athary-world-nail-",
+      Vendor_Username_Staging: "artnailcorner",
+      Vendor_Password_Staging: "1234567890",
+      Vendor_Username_Production: "testsalon",
+      Vendor_Password_Production: "testsalon1o"
     }
   },
 });
