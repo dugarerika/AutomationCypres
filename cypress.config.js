@@ -56,7 +56,7 @@ module.exports = defineConfig({
       URL_OldVendor_Production: "https://vendor.bookr.co/",
       URL_BetaVendor_Production: "https://vendor-beta.bookr.co/",
       URL_Deeplink_Staging_artnailcorner: "https://stg.customer.bookr-dev.com/vendors/athary-world-nail-",
-      Vendor_Admin_Username_Staging: "artnailcorner",
+      Vendor_Admin_Username_Staging: "pinkdoor",
       Vendor_Admin_Password_Staging: "1234567890",
       Vendor_Staff_Username_Staging: "zumba11",
       Vendor_Staff_Password_Staging: "1234567890",      

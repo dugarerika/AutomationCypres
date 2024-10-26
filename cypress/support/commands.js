@@ -250,6 +250,43 @@ Cypress.Commands.add('deleteEmployee', () => {
     })
 })
 
+Cypress.Commands.add('filloutProfileInfo', (first_name, last_name, email, order, username, password) => {
+    cy.contains('span','First Name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','First Name').parent().next('div').find('input').eq(0).type(first_name)
+    cy.contains('span','Username').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Username').parent().next('div').find('input').eq(0).type(username)
+    cy.contains('span','Password').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Password').parent().next('div').find('input').eq(0).type(password)
+    cy.contains('span','Last Name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Last Name').parent().next('div').find('input').eq(0).type(last_name)
+    cy.contains('span','Email').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Email').parent().next('div').find('input').eq(0).type(email)
+    cy.contains('span','Order').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Order').parent().next('div').find('input').eq(0).type(order)
+})
+
+
+Cypress.Commands.add('filloutServicesInfo', () => {
+    cy.contains('div>button', 'Profile').scrollIntoView()
+    cy.contains('div>button', 'Services').click({force: true})
+    cy.contains('span','All services').parent('label').find('input').click({force:true})
+})
+
+Cypress.Commands.add('filloutCommissionsInfo', () => {
+    cy.contains('div>button', 'Commissions').scrollIntoView()
+    cy.contains('div>button', 'Commissions').click({force: true})
+    cy.contains('label>span','Service').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Service').parent().next('div').find('input').eq(0).type('10')
+})
+
+Cypress.Commands.add('expectedMessageCreateEmployee', (product_message) => {
+    cy.contains('button', 'Save').should('exist')
+    cy.contains('button', 'Save').click({ force: true })
+    cy.contains('div>span', product_message).should('exist')
+    cy.wait(300)
+})
+
+// ------------------------------ Calendar Section --------------------------------
 
 
 //
