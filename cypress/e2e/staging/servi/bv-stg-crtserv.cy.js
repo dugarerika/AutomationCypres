@@ -50,7 +50,7 @@ const expectedMessageCreateService = (service_message) => {
 describe('Beta Vendor Admin | Services | Create Service| logged with Admin credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Section', 'artnailcorner', '1234567890')
+        cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
     })
     
     afterEach(() => {
