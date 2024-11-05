@@ -64,8 +64,8 @@ module.exports = defineConfig({
       Vendor_ReadOnly_Password_Staging: "1234567890",   
       Vendor_Receptionist_Username_Staging: "recep6",
       Vendor_Receptionist_Password_Staging: "1234567890",      
-      Vendor_Admin_Username_Production: "testsalon",
-      Vendor_Admin_Password_Production: "testsalon1o"
+      Vendor_Admin_Username_Production: "qatartestsalon3@mailinator.com",
+      Vendor_Admin_Password_Production: "1234567890"
     }
   },
 });
