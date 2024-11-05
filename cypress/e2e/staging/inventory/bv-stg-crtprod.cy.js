@@ -113,7 +113,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
   
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand created from the Create product form - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Product Brand').should('exist')
@@ -130,7 +130,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Product Brand').should('exist')
