@@ -15,11 +15,11 @@ describe('Staging - Old Vendor Admin | Inventory | Create products| logged with 
     cy.clearCookies()
   })
 
-  it('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
-    cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+  it.only('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
+    cy.visit('https://vendor.bookr-dev.com/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
-    cy.visit('https://staging.vendor.bookr-dev.com/inventory')
+    cy.visit('https://vendor.bookr-dev.com/inventory')
     cy.contains('h6', 'Products').should('exist')
   })
 

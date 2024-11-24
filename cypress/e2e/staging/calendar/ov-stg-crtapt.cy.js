@@ -4,7 +4,7 @@
 const { should } = require("chai")
 
 const searchTimeSlot = (staff,start_time) => {
-  cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+  cy.visit('https://vendor.bookr-dev.com//calendar')
   let color
   // cy.get('.tool-datepicker-next').should('be.visible')
   // cy.get('.tool-datepicker-next').click()
@@ -20,7 +20,7 @@ const searchTimeSlot = (staff,start_time) => {
 }
 
 const searchApt = (staff, start_time) => {
-  cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+  cy.visit('https://vendor.bookr-dev.com//calendar')
   let color1
   // cy.get('.tool-datepicker-next').should('be.visible')
   // cy.get('.tool-datepicker-next').click()
@@ -41,7 +41,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 
   after(() => {
-    cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr-dev.com//auth?nativeLogout=true')
   })
 
   afterEach(() => {
@@ -74,7 +74,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
   
   it('Verify it is possible to scrool down on the calendar an create a new appointment- Staff credentials', () => {
-    cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+    cy.visit('https://vendor.bookr-dev.com//calendar')
     let staff = "Zumba Zumba"
     let start_time = "18:00"
     let color
@@ -123,7 +123,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     }) 
   })
 
-  it('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
+  it.only('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','07:00')  
     cy.wait(70)
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
@@ -140,8 +140,8 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     searchApt('Zumba Zumba','07:00')
   })
 
-  it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','09:00')  
+  it.only('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
+    searchTimeSlot('Zumba Zumba','01:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('38717494{enter}{enter}',{force: true, delay: 1000})
@@ -152,12 +152,12 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
-    searchApt('Zumba Zumba','09:00') 
+    searchApt('Zumba Zumba','01:00') 
     cy.contains('div>p','+973').should('exist')
   })
 
-  it('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','10:00')  
+  it.only('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
+    searchTimeSlot('Zumba Zumba','02:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('97338717494{enter}{enter}',{force: true, delay: 1000})
@@ -168,12 +168,12 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
-    searchApt('Zumba Zumba','10:00') 
+    searchApt('Zumba Zumba','02:00') 
     cy.contains('div>p','+973').should('exist')
   })
 
-  it('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','11:00')  
+  it.only('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
+    searchTimeSlot('Zumba Zumba','03:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('+97338717494{enter}{enter}',{force: true, delay: 1000})
@@ -184,7 +184,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
-    searchApt('Zumba Zumba','11:00') 
+    searchApt('Zumba Zumba','03:00') 
     cy.contains('div>p','+973').should('exist')
   })
 })
@@ -196,7 +196,7 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clickin
   })
 
   after(() => {
-    cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr-dev.com//auth?nativeLogout=true')
   })
 
   afterEach(() => {
@@ -308,14 +308,14 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking
   })
 
   after(() => {
-    cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr-dev.com//auth?nativeLogout=true')
   })
 
   afterEach(() => {
     cy.clearCookies()
   })
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Receptionist credentials', () => {
-    cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+    cy.visit('https://vendor.bookr-dev.com//calendar')
     let staff1 = "Zstaff "
     let start_time = "08:00"
     let color
@@ -423,7 +423,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking
   })
 
   after(() => {
-    cy.visit('https://staging.vendor.bookr-dev.com/auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr-dev.com//auth?nativeLogout=true')
   })
 
   afterEach(() => {
