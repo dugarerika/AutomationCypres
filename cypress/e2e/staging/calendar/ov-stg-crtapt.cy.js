@@ -123,7 +123,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     }) 
   })
 
-  it.only('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','07:00')  
     cy.wait(70)
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
@@ -137,10 +137,11 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
+    cy.wait(700)
     searchApt('Zumba Zumba','07:00')
   })
 
-  it.only('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','01:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -152,11 +153,12 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
+    cy.wait(700)
     searchApt('Zumba Zumba','01:00') 
     cy.contains('div>p','+973').should('exist')
   })
 
-  it.only('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','02:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -169,10 +171,11 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     })
     cy.contains('New Appointment').should('not.be.visible')
     searchApt('Zumba Zumba','02:00') 
+    cy.wait(700)
     cy.contains('div>p','+973').should('exist')
   })
 
-  it.only('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','03:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -185,6 +188,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     })
     cy.contains('New Appointment').should('not.be.visible')
     searchApt('Zumba Zumba','03:00') 
+    cy.wait(700)
     cy.contains('div>p','+973').should('exist')
   })
 })
@@ -192,7 +196,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
 describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    loginov('Admin Section', 'artnailcorner','1234567890')
+    cy.loginov('Admin Section', 'artnailcorner','1234567890')
   })
 
   after(() => {
@@ -304,7 +308,7 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clickin
 describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
   beforeEach(() => {
-    loginov('Receptionist Session', 'recep6','1234567890')
+    cy.loginov('Receptionist Session', 'recep6','1234567890')
   })
 
   after(() => {
@@ -416,10 +420,10 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking
   })
 })
 
-describe('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe.only('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    loginov('Readonly Session', 'readonly31','1234567890')
+    cy.loginov('Readonly Session', 'readonlyerika','1234567890')
   })
 
   after(() => {
