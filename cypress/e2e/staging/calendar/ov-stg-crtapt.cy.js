@@ -37,7 +37,7 @@ const searchApt = (staff, start_time) => {
 describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Staff Session', 'zumba11','1234567890')
+    cy.loginov('Staff Session', 'zumbacococut','1234567890')
   })
 
   after(() => {
@@ -124,7 +124,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 
   it('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','07:00')  
+    searchTimeSlot('Zumba Zumba','10:00')  
     cy.wait(70)
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -138,11 +138,11 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     })
     cy.contains('New Appointment').should('not.be.visible')
     cy.wait(700)
-    searchApt('Zumba Zumba','07:00')
+    searchApt('Zumba Zumba','10:00')
   })
 
   it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','01:00')  
+    searchTimeSlot('Zumba Zumba','04:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('38717494{enter}{enter}',{force: true, delay: 1000})
@@ -154,7 +154,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     })
     cy.contains('New Appointment').should('not.be.visible')
     cy.wait(700)
-    searchApt('Zumba Zumba','01:00') 
+    searchApt('Zumba Zumba','04:00') 
     cy.contains('div>p','+973').should('exist')
   })
 
@@ -196,7 +196,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
 describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Admin Section', 'artnailcorner','1234567890')
+    cy.loginov('Admin Section', 'cococutsalon','1234567890')
   })
 
   after(() => {
@@ -292,23 +292,12 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clickin
     })
     cy.contains('New Appointment').should('not.be.visible')  
   })
-
-  it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin Credentials', () => {
-    searchTimeSlot('Naomi','07:00')   
-    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
-    cy.contains('Create Appointment').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(200)
-    })
-    cy.contains('New Appointment').should('not.be.visible')  
-  })
 })
 
 describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Receptionist Session', 'recep6','1234567890')
+    cy.loginov('Receptionist Session', 'recepcococut','1234567890')
   })
 
   after(() => {
@@ -406,24 +395,12 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking
       expect(interception.response.statusCode).to.equal(200)
     }) 
   })
-
-  it('Verify the New appointment modal is hidden after creating successfully an appointment  - Receptionist credentials', () => {
-    searchTimeSlot('Marly william','06:00') 
-    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
-    cy.contains('Create Appointment').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(200)
-    })
-    cy.contains('New Appointment').should('not.be.visible')
-    cy.log('Test completed')
-  })
 })
 
-describe.only('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Readonly Session', 'readonlyerika','1234567890')
+    cy.loginov('Readonly Session', 'readonlyerika2','1234567890')
   })
 
   after(() => {
