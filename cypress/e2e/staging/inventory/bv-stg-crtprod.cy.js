@@ -86,7 +86,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Product Category created from the Create product form - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Category created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Product Category').should('exist')
@@ -103,7 +103,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Product Category - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Category - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Product Category').should('exist')
@@ -224,12 +224,40 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductPricingInfo('12345','10')
-    cy.wait(100)
+    cy.wait(200)
     cy.contains('span','Enable Retail Sales').click({ force: true })
-    cy.wait(100)
+    cy.wait(200)
     cy.filloutProductBasicInfo('Product filled up with Price name Supply Retail Price tax & Enable Retails sales toggle switched ON','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
+
+  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle Track Stock Quantity ON- Admin credentials', () => {
+    cy.accessToCreateProduct()
+    cy.filloutProductPricingInfo('12345','10')
+    cy.filloutProductInventoryInfo('SKU98765-GI','{enter}','{enter}','{enter}')
+    cy.wait(100)
+    cy.contains('span','Track Stock Quantity').click({ force: true })
+    cy.wait(100)
+    cy.filloutProductBasicInfo('Product filled up with Price name Supply Retail Price tax & Track Stock Quantity toggle switched ON','{enter}','{enter}','{enter}','{enter}')
+    cy.expectedMessageCreateProduct('Product created successfully')
+  })
+
+  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, Enable Retails sales and Enable Retails sales toogle Track Stock Quantity ON- Admin credentials', () => {
+    cy.accessToCreateProduct()
+    cy.filloutProductInventoryInfo('SKU77777-GI','{enter}','3','80')
+    cy.wait(200)
+    cy.contains('span','Track Stock Quantity').should('exist')
+    cy.contains('span','Track Stock Quantity').click({ force: true })
+    cy.wait(900)
+    cy.filloutProductPricingInfo('12345','10')
+    cy.wait(200)
+    cy.contains('span','Enable Retail Sales').click({ force: true })
+    cy.wait(200)
+    cy.filloutProductBasicInfo('Product filled up with Price name Supply Retail Price tax Enable Retails sales & Track Stock Quantity toggle switched ON','{enter}','{enter}','{enter}','{enter}')
+    cy.expectedMessageCreateProduct('Product created successfully')
+  })
+
+
 
 // Create Non successfully  
 it('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
