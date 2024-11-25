@@ -4,7 +4,8 @@
 const { should } = require("chai")
 
 const searchTimeSlot = (staff,start_time) => {
-  cy.visit('https://vendor.bookr-dev.com//calendar')
+  // https://vendor.bookr.co/calendar
+  cy.visit(Cypress.env("URL_OldVendor_Production") + 'calendar')
   let color
   // cy.get('.tool-datepicker-next').should('be.visible')
   // cy.get('.tool-datepicker-next').click()
@@ -20,7 +21,7 @@ const searchTimeSlot = (staff,start_time) => {
 }
 
 const searchApt = (staff, start_time) => {
-  cy.visit('https://vendor.bookr-dev.com//calendar')
+  cy.visit(Cypress.env("URL_OldVendor_Production") + 'calendar')
   let color1
   // cy.get('.tool-datepicker-next').should('be.visible')
   // cy.get('.tool-datepicker-next').click()
@@ -34,14 +35,14 @@ const searchApt = (staff, start_time) => {
   })
   cy.contains('Appointment Details').should('be.visible')
 }
-describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe('Production - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Staff Session', 'zumbacococut','1234567890')
+    cy.loginovprd('Staff Session', 'zumbacococut','1234567890')
   })
 
   after(() => {
-    cy.visit('https://vendor.bookr-dev.com/auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
   })
 
   afterEach(() => {
@@ -74,7 +75,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
   
   it('Verify it is possible to scrool down on the calendar an create a new appointment- Staff credentials', () => {
-    cy.visit('https://vendor.bookr-dev.com//calendar')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'calendar')
     let staff = "Zumba Zumba"
     let start_time = "18:00"
     let color
@@ -193,14 +194,14 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 })
 
-describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+describe('Production - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Admin Section', 'cococutsalon','1234567890')
+    cy.loginovprd('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
   })
 
   after(() => {
-    cy.visit('https://vendor.bookr-dev.com//auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
   })
 
   afterEach(() => {
@@ -294,21 +295,21 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clickin
   })
 })
 
-describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
+describe('Production - Old Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Receptionist Session', 'recepcococut','1234567890')
+    cy.loginovprd('Receptionist Session', 'recepcococut','1234567890')
   })
 
   after(() => {
-    cy.visit('https://vendor.bookr-dev.com//auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
   })
 
   afterEach(() => {
     cy.clearCookies()
   })
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Receptionist credentials', () => {
-    cy.visit('https://vendor.bookr-dev.com//calendar')
+    cy.visit(Cypress.env("URL_OldVendor_Production") + 'calendar')
     let staff1 = "Zstaff "
     let start_time = "08:00"
     let color
@@ -397,14 +398,14 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking
   })
 })
 
-describe('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe('Production - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Readonly Session', 'readonlyerika2','1234567890')
+    cy.loginovprd('Readonly Session', 'readonlyerika2','1234567890')
   })
 
   after(() => {
-    cy.visit('https://vendor.bookr-dev.com//auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
   })
 
   afterEach(() => {

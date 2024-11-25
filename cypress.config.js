@@ -15,6 +15,8 @@ function getConfigurationByFile(file) {
 }
 
 module.exports = defineConfig({
+  viewportWidth: 1200,
+  viewportHeight: 1000,
   reporter: 'reporters/custom.js',
   projectId: 'mevvq9',
   e2e: {
@@ -33,7 +35,7 @@ module.exports = defineConfig({
     experimentalSessionAndOrigin: true,
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 120000,
-    screenshotOnRunFailure: false,
+    screenshotOnRunFailure: true,
     trashAssetsBeforeRuns: true,
     video: false,
     videoUploadOnPasses: false,
@@ -48,7 +50,7 @@ module.exports = defineConfig({
     },
     retries: {
       runMode: 2,
-      openMode: 0
+      openMode: 1
     },
     env: {
       URL_OldVendor_Staging: "https://vendor.bookr-dev.com/",
