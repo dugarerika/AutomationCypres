@@ -71,7 +71,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     }) 
   })
 
-describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
     cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))

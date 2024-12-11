@@ -146,7 +146,7 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
     searchTimeSlot('Zumba Zumba','04:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
-    cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('38717494{enter}{enter}',{force: true, delay: 1000})
+    cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('38972467{enter}{enter}',{force: true, delay: 1000})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
