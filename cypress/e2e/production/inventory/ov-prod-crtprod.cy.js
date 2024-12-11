@@ -8,7 +8,8 @@ const { should } = require("chai")
 describe('Production - Old Vendor Admin | Inventory | Create products| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    cy.loginovprd('Admin Section', 'testsalon', 'testsalon1o')
+    // cy.loginovprd('Admin Section', 'testsalon', 'testsalon1o')
+    cy.loginovprd('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
   })
 
   afterEach(() => {
