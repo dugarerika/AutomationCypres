@@ -40,7 +40,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
   })
 
   after(() => {
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth?nativeLogout=true')
+    //https://vendor.beta.bookr-dev.com/auth
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
@@ -85,6 +86,11 @@ afterEach(() => {
   //cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth?nativeLogout=true')
   cy.clearCookies()
+})
+
+after(() => {
+  //https://vendor.beta.bookr-dev.com/auth
+  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
 })
 
 it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
@@ -215,6 +221,11 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.clearCookies()
   })
 
+  after(() => {
+    //https://vendor.beta.bookr-dev.com/auth
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  })
+
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Receptionist credentials', () => {
     searchTimeSlot('Zara staff','08:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
@@ -326,7 +337,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.wait(1000)
   })
 })
-    
+
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   beforeEach(() => {
     cy.login('Staff Section', 'erika40','1234567890')
@@ -338,6 +349,11 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.clearCookies()
   })    
 
+  after(() => {
+    //https://vendor.beta.bookr-dev.com/auth
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  })
+  
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
     searchTimeSlot('Erika ','08:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
