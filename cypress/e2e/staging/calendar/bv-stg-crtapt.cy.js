@@ -41,6 +41,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
 
   after(() => {
     //https://vendor.beta.bookr-dev.com/auth
+    cy.logout()
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   })
 
@@ -353,7 +354,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     //https://vendor.beta.bookr-dev.com/auth
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   })
-  
+
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
     searchTimeSlot('Erika ','08:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
