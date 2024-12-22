@@ -32,7 +32,6 @@ const searchApt = (staff,start_time) => {
 describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    // cy.login('Readonly Section', 'readonly5','1234567890')
     cy.login('Admin Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
   })
 
