@@ -24,7 +24,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('div>h3','Create Block Time').should('be.visible')
         cy.contains('div>h3','Create Block Time').click({force: true})
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Allservicesstaff {enter}')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('button','Submit').click({force: true})
         cy.contains('div>span','Start time cannot be empty').should('be.visible')
     })
@@ -39,7 +39,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('div>h3','Create Block Time').should('be.visible')
         cy.contains('div>h3','Create Block Time').click({force: true})
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Allservicesstaff {enter}')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
         cy.contains('button','Submit').click({force: true})
@@ -56,7 +56,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('div>h3','Create Block Time').should('be.visible')
         cy.contains('div>h3','Create Block Time').click({force: true})
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Allservicesstaff {enter}')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
@@ -75,7 +75,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
         cy.contains('div>h3','Create Block Time').should('be.visible')
         cy.contains('div>h3','Create Block Time').click({force: true})
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Allservicesstaff {enter}')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
@@ -86,7 +86,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
 
     it('Verify it is possible to edit staff on a blocktime from the Calendar - Admin credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Allservicesstaff').click({force: true})
+        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Set {enter}')
         cy.contains('button','Update').click({force: true})
@@ -95,7 +95,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
 
     it('Verify it is possible to edit Start time on a blocktime from the Calendar - Admin credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Allservicesstaff').click({force: true})
+        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
@@ -107,7 +107,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
 
     it('Verify it is possible to edit End time on a blocktime from the Calendar - Admin credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Allservicesstaff').click({force: true})
+        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','End Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
         cy.wait(1000)
@@ -117,7 +117,7 @@ describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the c
 
     it('Verify it is possible to delete a blocktime from the Calendar - Admin credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Erika').click({force: true})
+        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
         cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
     })
