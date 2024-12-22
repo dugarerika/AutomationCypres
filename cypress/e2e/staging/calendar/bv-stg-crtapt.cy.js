@@ -30,8 +30,13 @@ const searchApt = (staff,start_time) => {
 }
 
 describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', {testIsolation: true }, () => {
+  before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearCurrentSessionData)
+  })
 
   beforeEach(() => {
+    cy.then(Cypress.session.clearCurrentSessionData)
     cy.login('Admin Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
   })
 
@@ -41,7 +46,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
 
   after(() => {
     //https://vendor.beta.bookr-dev.com/auth
-    cy.logout()
+    //cy.logout()
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   })
 
@@ -78,6 +83,11 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
   })
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', {testIsolation: true }, () => {
+
+  before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearCurrentSessionData)
+  })
 
 beforeEach(() => {
     cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
@@ -212,6 +222,11 @@ it('Verify it is possible to edit the Customer - Admin credentials', () => {
   })
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', {testIsolation: true }, () => {
+  before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearCurrentSessionData)
+  })
+  
   beforeEach(() => {
     // cy.login('Receptionist Section', 'receptionist9','1234567890')
     cy.login('Admin Section', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
@@ -340,6 +355,11 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 })
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', {testIsolation: true }, () => {
+  before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearCurrentSessionData)
+  })
+  
   beforeEach(() => {
     cy.login('Staff Section', 'erika40','1234567890')
     cy.login('Admin Section', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
