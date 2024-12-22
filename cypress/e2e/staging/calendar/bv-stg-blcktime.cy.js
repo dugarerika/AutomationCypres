@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-describe('Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Admin Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
     beforeEach(() => {
         cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
