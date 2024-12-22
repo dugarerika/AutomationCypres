@@ -62,7 +62,7 @@ module.exports = defineConfig({
       Vendor_Admin_Password_Staging: "1234567890",
       Vendor_Staff_Username_Staging: "zumba11",
       Vendor_Staff_Password_Staging: "1234567890",      
-      Vendor_ReadOnly_Username_Staging: "readonly31",
+      Vendor_ReadOnly_Username_Staging: "readonly835",
       Vendor_ReadOnly_Password_Staging: "1234567890",   
       Vendor_Receptionist_Username_Staging: "recep6",
       Vendor_Receptionist_Password_Staging: "1234567890",      
