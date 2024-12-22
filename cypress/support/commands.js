@@ -85,6 +85,11 @@ Cypress.Commands.add('loginovprd', (name, username, password) => {
     })
 })
 
+// -- This is a parent command to logout from the Beta Vendor STAGGING --
+Cypress.Commands.add('logout', () => {
+    cy.then(Cypress.session.clearCurrentSessionData)
+})
+
 // ------------------------------ Inventory/ Products Section --------------------------------
 // -- This is a child command for the create product section Old Vendor PRODUCTION--
 Cypress.Commands.add('accessToCreateProductovprod', () => {
