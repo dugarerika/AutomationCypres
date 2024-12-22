@@ -29,15 +29,14 @@ const searchApt = (staff,start_time) => {
   cy.contains('Appointment Details').should('be.visible')
 }
 
-describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', {testIsolation: true }, () => {
+describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
-    cy.then(Cypress.session.clearCurrentSessionData)
+    cy.then(Cypress.session.clearAllSavedSessions)
   })
 
   beforeEach(() => {
-    cy.then(Cypress.session.clearCurrentSessionData)
-    cy.login('Admin Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
+    cy.login('ReadOnly Session', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
   })
 
   afterEach(() => {
@@ -80,29 +79,29 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     })
     cy.contains('User does not have enough permissions to use this service').should('not.be.visible')  
     }) 
-  })
+})
 
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', {testIsolation: true }, () => {
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   before(() => {
     // ensure clean test slate for these tests
-    cy.then(Cypress.session.clearCurrentSessionData)
+    cy.then(Cypress.session.clearAllSavedSessions)
   })
 
 beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+    cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
 })
 
 afterEach(() => {
   //cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth?nativeLogout=true')
-  cy.clearCookies()
+  // cy.clearCookies()
 })
 
-after(() => {
-  //https://vendor.beta.bookr-dev.com/auth
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-})
+// after(() => {
+//   //https://vendor.beta.bookr-dev.com/auth
+//   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+// })
 
 it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
   searchTimeSlot('Susan one','08:00') 
@@ -221,15 +220,15 @@ it('Verify it is possible to edit the Customer - Admin credentials', () => {
 })
   })
 
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', {testIsolation: true }, () => {
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
-    cy.then(Cypress.session.clearCurrentSessionData)
+    cy.then(Cypress.session.clearAllSavedSessions)
   })
   
   beforeEach(() => {
-    // cy.login('Receptionist Section', 'receptionist9','1234567890')
-    cy.login('Admin Section', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
+    // cy.login('Receptionist Session', 'receptionist9','1234567890')
+    cy.login('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
   })
 
   afterEach(() => {
@@ -354,15 +353,15 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', {testIsolation: true }, () => {
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
-    cy.then(Cypress.session.clearCurrentSessionData)
+    cy.then(Cypress.session.clearAllSavedSessions)
   })
   
   beforeEach(() => {
-    cy.login('Staff Section', 'erika40','1234567890')
-    cy.login('Admin Section', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
+    cy.login('Staff Session', 'erika40','1234567890')
+    cy.login('Admin Session', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
   })
 
   afterEach(() => {
