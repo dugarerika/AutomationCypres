@@ -39,6 +39,10 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     cy.clearCookies()
   })
 
+  after(() => {
+  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth?nativeLogout=true')
+  })
+
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
     searchTimeSlot('Naomi ','08:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
@@ -73,7 +77,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
-  beforeEach(() => {
+beforeEach(() => {
     cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
 })
 
