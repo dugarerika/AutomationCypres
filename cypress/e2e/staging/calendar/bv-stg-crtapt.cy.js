@@ -32,7 +32,8 @@ const searchApt = (staff,start_time) => {
 describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    cy.login('Readonly Section', 'readonly5','1234567890')
+    // cy.login('Readonly Section', 'readonly5','1234567890')
+    cy.login('Admin Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
   })
 
   afterEach(() => {
@@ -202,7 +203,8 @@ it('Verify it is possible to edit the Customer - Admin credentials', () => {
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   beforeEach(() => {
-    cy.login('Receptionist Section', 'receptionist9','1234567890')
+    // cy.login('Receptionist Section', 'receptionist9','1234567890')
+    cy.login('Admin Section', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
   })
 
   afterEach(() => {
@@ -325,6 +327,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   beforeEach(() => {
     cy.login('Staff Section', 'erika40','1234567890')
+    cy.login('Admin Section', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
   })
 
   afterEach(() => {
