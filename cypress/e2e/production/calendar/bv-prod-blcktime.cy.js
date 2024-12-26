@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
     beforeEach(() => {
         cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
@@ -14,7 +14,6 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
-        // cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
         cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
@@ -41,7 +40,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
-        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}{enter}{enter}{enter}{enter}')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
         cy.contains('button','Submit').click({force: true})
         cy.contains('div>span','End time cannot be empty').should('be.visible')
     })
@@ -58,9 +57,9 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
-        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('03:00{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
-        cy.contains('span','End Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
         cy.contains('button','Submit').click({force: true})
         cy.contains('div>span','Blocked times start and end time are invalid').should('be.visible')
     })
@@ -77,9 +76,9 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
-        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('01:00{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
-        cy.contains('span','End Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
         cy.contains('button','Submit').click({force: true})
         cy.contains('div>span','Blocked Time Created').should('be.visible')
     })
