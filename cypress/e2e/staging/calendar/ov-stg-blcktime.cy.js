@@ -4,7 +4,7 @@
 const { should } = require("chai")
 
 const newBlockTime = (supplier_message) => {
-    cy.visit(Cypress.env("URL_OldVendor_Staging") + 'calendar')
+    cy.visit(Cypress.env("URL_OldVendor_Staging"))
     cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').click({force: true})
     cy.wait(1000)
@@ -15,6 +15,11 @@ const newBlockTime = (supplier_message) => {
   }
 describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
+    before(() => {
+        // ensure clean test slate for these tests
+        cy.then(Cypress.session.clearAllSavedSessions)
+      })
+      
     beforeEach(() => {
         cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
     })
