@@ -13,16 +13,18 @@
     "triggerAllTests-OldVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltprod.cy.js",
-
-    "triggerAllTests-OldVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-crtprod.cy.js",
-    "triggerAllTests-BetaVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/production/inventory/bv-prod-crtprod.cy.js",
-    "triggerAllTests-OldVendor-Production-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-dltprod.cy.js",
     
     "triggerAllTests-OldVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js",
 
+    "//": "PRODUCTION",
+
     "triggerAllTests-OldVendor-Production-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js",
+
+    "triggerAllTests-OldVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-crtprod.cy.js",
+    "triggerAllTests-BetaVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/production/inventory/bv-prod-crtprod.cy.js",
+    "triggerAllTests-OldVendor-Production-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-dltprod.cy.js",
 
     "npm run triggerAllTests-BetaVendor-Staging-Employee-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",
     "triggerAllTests-BetaVendor-Staging-Employee-DeleteEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-dltemply.cy.js",
