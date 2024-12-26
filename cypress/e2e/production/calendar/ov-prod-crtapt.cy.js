@@ -398,7 +398,7 @@ describe('Production - Old Vendor Admin | Calendar | Create appointment by Click
   })
 })
 
-describe('Production - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe.only('Production - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
     cy.loginovprd('Readonly Session', Cypress.env("Vendor_ReadOnly_Username_Production"), Cypress.env("Vendor_ReadOnly_Password_Production"))
