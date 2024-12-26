@@ -19,9 +19,9 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
         // ensure clean test slate for these tests
         cy.then(Cypress.session.clearAllSavedSessions)
       })
-      
+
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+        cy.loginov('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
     })
 
     afterEach(() => {
