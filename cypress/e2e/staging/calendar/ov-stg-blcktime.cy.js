@@ -3,10 +3,10 @@
 
 const { should } = require("chai")
 
-describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
     beforeEach(() => {
-        cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+        cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
     })
 
     afterEach(() => {
@@ -14,7 +14,8 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+        // cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.wait(1000)
@@ -29,7 +30,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify End time is required to create a blocktime on the Calendar  - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.wait(1000)
@@ -46,7 +47,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify Start time and End time cannot be the same time when creating a blocktime on the Calendar  - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.wait(1000)
@@ -65,7 +66,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify it is possible to create a blocktime on the Calendar by filling up the required fields - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.wait(1000)
@@ -84,7 +85,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify it is possible to edit staff on a blocktime from the Calendar - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Set {enter}')
@@ -93,7 +94,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify it is possible to edit Start time on a blocktime from the Calendar - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
@@ -105,7 +106,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify it is possible to edit End time on a blocktime from the Calendar - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','End Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
@@ -115,7 +116,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify it is possible to delete a blocktime from the Calendar - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
         cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')

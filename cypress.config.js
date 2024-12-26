@@ -65,11 +65,20 @@ module.exports = defineConfig({
       Vendor_ReadOnly_Username_Staging: "readonly835",
       Vendor_ReadOnly_Password_Staging: "1234567890",   
       Vendor_Receptionist_Username_Staging: "recep6",
-      Vendor_Receptionist_Password_Staging: "1234567890",      
-      Vendor_Admin_Username_Production1: "testsalon",
-      Vendor_Admin_Password_Production1: "testsalon1o",
+      Vendor_Receptionist_Password_Staging: "1234567890",    
+      
+      /// PRODUCTION  
+
       Vendor_Admin_Username_Production: "qatartestsalon3@mailinator.com",
-      Vendor_Admin_Password_Production: "1234567890"
+      Vendor_Admin_Password_Production: "1234567890",
+      Vendor_Staff_Username_Production: "zumbacococut",
+      Vendor_Staff_Password_Production: "1234567890",
+      Vendor_ReadOnly_Username_Production: "readonlyerika2",
+      Vendor_ReadOnly_Password_Production: "1234567890",   
+      Vendor_Receptionist_Username_Production: "recepcococut",
+      Vendor_Receptionist_Password_Production: "1234567890",    
+      Vendor_Admin_Username_Production1: "testsalon",
+      Vendor_Admin_Password_Production1: "testsalon1o"
     }
   },
 });

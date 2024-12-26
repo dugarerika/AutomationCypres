@@ -38,7 +38,7 @@ const searchApt = (staff, start_time) => {
 describe('Production - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    cy.loginovprd('Staff Session', 'zumbacococut','1234567890')
+    cy.loginovprd('Staff Session', Cypress.env("Vendor_Staff_Username_Production"), Cypress.env("Vendor_Staff_Password_Production"))
   })
 
   after(() => {
@@ -298,7 +298,7 @@ describe('Production - Old Vendor Admin | Calendar | Create appointments by Clic
 describe('Production - Old Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
   beforeEach(() => {
-    cy.loginovprd('Receptionist Session', 'recepcococut','1234567890')
+    cy.loginovprd('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
   })
 
   after(() => {
@@ -401,7 +401,7 @@ describe('Production - Old Vendor Admin | Calendar | Create appointment by Click
 describe('Production - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    cy.loginovprd('Readonly Session', 'readonlyerika2','1234567890')
+    cy.loginovprd('Readonly Session', Cypress.env("Vendor_ReadOnly_Username_Production"), Cypress.env("Vendor_ReadOnly_Password_Production"))
   })
 
   after(() => {
