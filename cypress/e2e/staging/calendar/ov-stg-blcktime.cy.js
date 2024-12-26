@@ -3,15 +3,15 @@
 
 const { should } = require("chai")
 
-const newBlockTime = (supplier_message) => {
+const newBlockTime = () => {
     cy.visit(Cypress.env("URL_OldVendor_Staging"))
     cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').click({force: true})
     cy.wait(1000)
     cy.contains('li','New Block Time').should('be.visible')
     cy.contains('li','New Block Time').click({force: true})
-    cy.contains('div>h3','Create Block Time').should('be.visible')
-    cy.contains('div>h3','Create Block Time').click({force: true})
+    cy.contains('div>h3','New Block Time').should('be.visible')
+    cy.contains('div>h3','New Block Time').click({force: true})
   }
 describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
