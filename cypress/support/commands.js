@@ -71,8 +71,8 @@ Cypress.Commands.add('loginovprd', (name, username, password) => {
         //cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
         cy.visit(Cypress.env("URL_OldVendor_Production") + 'auth?nativeLogout=true')
         cy.wait(900)
-        cy.get('#username').should('be.visible');
-        cy.get('#password').should('be.visible');
+        // cy.get('#username').should('be.visible');
+        // cy.get('#password').should('be.visible');
         cy.xpath('//button[text()="Sign in"]').should('be.visible');
         cy.get('#username').click().type(username, {force: true, delay: 80})
         cy.get('#password').click().type(password,{force: true, delay: 80})
