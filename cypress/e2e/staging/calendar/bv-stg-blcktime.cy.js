@@ -21,7 +21,7 @@ beforeEach(() => {
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Session, Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+        cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
     })
 
     afterEach(() => {
