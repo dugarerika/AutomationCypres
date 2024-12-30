@@ -14,6 +14,10 @@ const newBlockTime = (supplier_message) => {
     cy.contains('div>h3','Create Block Time').click({force: true})
 }
 
+beforeEach(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearAllSavedSessions)
+})
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
     beforeEach(() => {
@@ -106,9 +110,9 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 })
 
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
-
+    
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
+        cy.login('Staff Section', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
     })
 
     afterEach(() => {
@@ -199,7 +203,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Receptionist Credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
+        cy.login('Receptionist Section', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
     })
 
     afterEach(() => {
@@ -289,18 +293,24 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials', () => {
 
+    after(() => {
+        // ensure clean test slate for these tests
+        cy.then(Cypress.session.clearAllSavedSessions)
+    })
+
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
+        cy.login('Read-only Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
     })
 
     afterEach(() => {
         cy.clearCookies()
     })
+
     it('Verify The option to add Block Time is not available for Readonlyu Role - Read-Only credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.wait(1000)
         cy.contains('li','New Block Time').should('not.exist')
-        })
+    })
 })
