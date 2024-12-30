@@ -186,7 +186,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
 
     it('Verify it is possible to edit staff on a blocktime from the Calendar - Staff credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
+        cy.contains('span', 'Block Time for').next('span','Zumba Zumba').click({force: true})
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Set {enter}')
         cy.contains('button','Update').click({force: true})
@@ -195,7 +195,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
 
     it('Verify it is possible to edit Start time on a blocktime from the Calendar - Staff credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
+        cy.contains('span', 'Block Time for').next('span','Zumba Zumba').click({force: true})
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
@@ -207,7 +207,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
 
     it('Verify it is possible to edit End time on a blocktime from the Calendar - Staff credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
+        cy.contains('span', 'Block Time for').next('span','Zumba Zumba').click({force: true})
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','End Time').parent().next('div').find('input').type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
         cy.wait(1000)
@@ -217,7 +217,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
 
     it('Verify it is possible to delete a blocktime from the Calendar - Staff credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
+        cy.contains('span', 'Block Time for').next('span','Zumba Zumba').click({force: true})
         cy.contains('button','Delete').click({force: true})
         cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
     })
