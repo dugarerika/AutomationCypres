@@ -293,11 +293,14 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
         cy.login('Admin Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
     })
 
+    afterEach(() => {
+        cy.clearCookies()
+    })
     it('Verify The option to add Block Time is not available for Readonlyu Role - Read-Only credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.wait(1000)
-        cy.contains('li','New Block Time').should('not.be.visible')
+        cy.contains('li','New Block Time').should('not.exist')
         })
 })
