@@ -21,7 +21,7 @@ beforeEach(() => {
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+        cy.login('Admin Session, Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
     })
 
     afterEach(() => {
@@ -112,7 +112,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
     
     beforeEach(() => {
-        cy.login('Staff Section', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
+        cy.login('Staff Session', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
     })
 
     afterEach(() => {
@@ -203,7 +203,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Receptionist Credentials', () => {
 
     beforeEach(() => {
-        cy.login('Receptionist Section', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
+        cy.login('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
     })
 
     afterEach(() => {
@@ -293,13 +293,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials', () => {
 
-    after(() => {
-        // ensure clean test slate for these tests
-        cy.then(Cypress.session.clearAllSavedSessions)
-    })
-
     beforeEach(() => {
-        cy.login('Read-only Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
+        cy.login('Read-only Session', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
     })
 
     afterEach(() => {
