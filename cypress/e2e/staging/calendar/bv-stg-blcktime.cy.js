@@ -13,13 +13,13 @@ const newBlockTime = (supplier_message) => {
     cy.contains('div>h3','Create Block Time').should('be.visible')
     cy.contains('div>h3','Create Block Time').click({force: true})
 }
-
-beforeEach(() => {
-    // ensure clean test slate for these tests
-    cy.then(Cypress.session.clearAllSavedSessions)
-})
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
+    before(() => {
+        // ensure clean test slate for these tests
+        cy.then(Cypress.session.clearAllSavedSessions)
+    })
+    
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
     })
@@ -110,6 +110,11 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 })
 
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
+    
+    before(() => {
+        // ensure clean test slate for these tests
+        cy.then(Cypress.session.clearAllSavedSessions)
+    })
     
     beforeEach(() => {
         cy.login('Staff Session', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
@@ -293,6 +298,11 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials', () => {
 
+    before(() => {
+        // ensure clean test slate for these tests
+        cy.then(Cypress.session.clearAllSavedSessions)
+    })
+    
     beforeEach(() => {
         cy.login('Read-only Session', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
     })
