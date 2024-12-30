@@ -53,11 +53,15 @@ module.exports = defineConfig({
       openMode: 1
     },
     env: {
+      
+      //STAGING
       URL_OldVendor_Staging: "https://vendor.bookr-dev.com/",
       URL_BetaVendor_Staging: "https://vendor.beta.bookr-dev.com/",
       URL_OldVendor_Production: "https://vendor.bookr.co/",
       URL_BetaVendor_Production: "https://vendor-beta.bookr.co/",
       URL_Deeplink_Staging_artnailcorner: "https://customer.bookr-dev.com/vendors/athary-world-nail-",
+      Vendor_Admin_Username_Staging1: "beautiquespa",
+      Vendor_Admin_Password_Staging1: "1234567890",
       Vendor_Admin_Username_Staging: "artnailcorner",
       Vendor_Admin_Password_Staging: "1234567890",
       Vendor_Staff_Username_Staging: "zumba11",
@@ -66,6 +70,7 @@ module.exports = defineConfig({
       Vendor_ReadOnly_Password_Staging: "1234567890",   
       Vendor_Receptionist_Username_Staging: "recep6",
       Vendor_Receptionist_Password_Staging: "1234567890",    
+      
       /// PRODUCTION  
       Vendor_Admin_Username_Production: "qatartestsalon3@mailinator.com",
       Vendor_Admin_Password_Production: "1234567890",

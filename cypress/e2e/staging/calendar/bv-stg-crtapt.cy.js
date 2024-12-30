@@ -29,58 +29,6 @@ const searchApt = (staff,start_time) => {
   cy.contains('Appointment Details').should('be.visible')
 }
 
-describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
-  before(() => {
-    // ensure clean test slate for these tests
-    cy.then(Cypress.session.clearAllSavedSessions)
-  })
-
-  beforeEach(() => {
-    cy.login('ReadOnly Session', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
-  })
-
-  afterEach(() => {
-    cy.clearCookies()
-  })
-
-  after(() => {
-    //https://vendor.beta.bookr-dev.com/auth
-    //cy.logout()
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-  })
-
-  it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
-    searchTimeSlot('Naomi ','08:00')
-    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
-    cy.contains('Create Appointment').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(401)
-    })
-    cy.contains('User does not have enough permissions to use this service').should('not.be.visible')  
-  })
-
-  it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
-    searchTimeSlot('Naomi ','08:00')  
-    // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
-    cy.contains('Add New Item').should('exist')  
-    cy.contains('Add New Item').click()
-    cy.contains('Add Offer').should('exist')  
-    cy.contains('Add Offer').click()
-    cy.contains('div','Offer').should('exist')  
-    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
-    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('nao{enter}')
-    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
-    cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
-    cy.contains('Create Appointment').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(401)
-    })
-    cy.contains('User does not have enough permissions to use this service').should('not.be.visible')  
-    }) 
-})
-
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   before(() => {
@@ -242,7 +190,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Receptionist credentials', () => {
-    searchTimeSlot('Zara staff','08:00')
+    searchTimeSlot('Zstaff ','08:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -273,7 +221,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create an appointment searching and selecting customer from vendor - Receptionist credentials', () => {
-    searchTimeSlot('Zara staff','06:00') 
+    searchTimeSlot('Zstaff ','06:00') 
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
     cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
@@ -287,7 +235,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment - Receptionist credentials', () => {
-    searchTimeSlot('Zara staff','06:00') 
+    searchTimeSlot('Zstaff ','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -300,7 +248,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create an appointment over and already taken time slot - Receptionist Credentials', () => {
-    searchTimeSlot('Zara staff','06:00') 
+    searchTimeSlot('Zstaff ','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.contains('Warning: ').should('be.visible')
@@ -460,4 +408,54 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
     cy.wait(1000)
   })
+})
+
+describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+  before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearAllSavedSessions)
+  })
+
+  beforeEach(() => {
+    cy.login('ReadOnly Session', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
+  })
+
+  afterEach(() => {
+    cy.clearCookies()
+  })
+
+  after(() => {
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  })
+
+  it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
+    searchTimeSlot('Naomi ','08:00')
+    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(401)
+    })
+    cy.contains('User does not have enough permissions to use this service').should('not.be.visible')  
+  })
+
+  it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
+    searchTimeSlot('Naomi ','08:00')  
+    // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+    cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
+    cy.contains('Add New Item').should('exist')  
+    cy.contains('Add New Item').click()
+    cy.contains('Add Offer').should('exist')  
+    cy.contains('Add Offer').click()
+    cy.contains('div','Offer').should('exist')  
+    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
+    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('nao{enter}')
+    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(401)
+    })
+    cy.contains('User does not have enough permissions to use this service').should('not.be.visible')  
+    }) 
 })

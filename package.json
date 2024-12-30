@@ -10,21 +10,33 @@
     "triggerAllTests-dashboard": "npx cypress run --record --key 3025d595-10bc-4aad-91ed-5802e5896b45",
     "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
 
+    "//": "STAGING",
+    "triggerAllTests-Staging": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js" ,
+    "triggerAllTests-OldVendor-Staging": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
+    "triggerAllTests-BetaVendor-Staging": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js",
+
+    "//": "STAGING - INVENTORY",
     "triggerAllTests-OldVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltprod.cy.js",
     
+    "//": "STAGING - CALENDAR",
     "triggerAllTests-OldVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js",
+    "triggerAllTests-OldVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js",
     "triggerAllTests-BetaVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js",
 
     "//": "PRODUCTION",
-
+    "triggerAllTests-Production": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js cypress/e2e/production/calendar/bv-prod-blcktime.cy.js" ,
     "triggerAllTests-OldVendor-Production": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Production": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-blcktime.cy.js",
+
+    "//": "PRODUCTION - CALENDAR",
     "triggerAllTests-OldVendor-Production-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Production-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-blcktime.cy.js",
+    "triggerAllTests-OldVendor-Production-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-blcktime.cy.js",
 
+    "//": "PRODUCTION - INVENTORY",
     "triggerAllTests-OldVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/production/inventory/bv-prod-crtprod.cy.js",
     "triggerAllTests-OldVendor-Production-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-dltprod.cy.js",
