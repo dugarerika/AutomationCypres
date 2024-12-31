@@ -3,6 +3,17 @@
 
 const { should } = require("chai")
 
+const newBlockTime = () => {
+    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+    cy.contains('button','Add New').should('be.visible')
+    cy.contains('button','Add New').click({force: true})
+    cy.wait(1000)
+    cy.contains('li','New Block Time').should('be.visible')
+    cy.contains('li','New Block Time').click({force: true})
+    cy.contains('div>h3','Create Block Time').should('be.visible')
+    cy.contains('div>h3','Create Block Time').click({force: true})
+}
+
 describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
     before(() => {
@@ -19,14 +30,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-        cy.contains('button','Add New').should('be.visible')
-        cy.contains('button','Add New').click({force: true})
-        cy.wait(1000)
-        cy.contains('li','New Block Time').should('be.visible')
-        cy.contains('li','New Block Time').click({force: true})
-        cy.contains('div>h3','Create Block Time').should('be.visible')
-        cy.contains('div>h3','Create Block Time').click({force: true})
+        newBlockTime()
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('button','Submit').click({force: true})
@@ -34,14 +38,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify End time is required to create a blocktime on the Calendar  - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-        cy.contains('button','Add New').should('be.visible')
-        cy.contains('button','Add New').click({force: true})
-        cy.wait(1000)
-        cy.contains('li','New Block Time').should('be.visible')
-        cy.contains('li','New Block Time').click({force: true})
-        cy.contains('div>h3','Create Block Time').should('be.visible')
-        cy.contains('div>h3','Create Block Time').click({force: true})
+        newBlockTime()
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
@@ -51,14 +48,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify Start time and End time cannot be the same time when creating a blocktime on the Calendar  - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-        cy.contains('button','Add New').should('be.visible')
-        cy.contains('button','Add New').click({force: true})
-        cy.wait(1000)
-        cy.contains('li','New Block Time').should('be.visible')
-        cy.contains('li','New Block Time').click({force: true})
-        cy.contains('div>h3','Create Block Time').should('be.visible')
-        cy.contains('div>h3','Create Block Time').click({force: true})
+        newBlockTime()
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
@@ -70,14 +60,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     it('Verify it is possible to create a blocktime on the Calendar by filling up the required fields - Admin credentials', () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-        cy.contains('button','Add New').should('be.visible')
-        cy.contains('button','Add New').click({force: true})
-        cy.wait(1000)
-        cy.contains('li','New Block Time').should('be.visible')
-        cy.contains('li','New Block Time').click({force: true})
-        cy.contains('div>h3','Create Block Time').should('be.visible')
-        cy.contains('div>h3','Create Block Time').click({force: true})
+        newBlockTime()
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
