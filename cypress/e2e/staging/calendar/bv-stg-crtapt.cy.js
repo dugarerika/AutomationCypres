@@ -432,11 +432,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     searchTimeSlot('Naomi ','08:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
-    cy.contains('Create Appointment').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(401)
-    })
-    cy.contains('User does not have enough permissions to use this service').should('not.be.visible')  
+    cy.contains('Create Appointment').should('not.be.visible')
   })
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
@@ -452,10 +448,6 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('nao{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
-    cy.contains('Create Appointment').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(401)
-    })
-    cy.contains('User does not have enough permissions to use this service').should('not.be.visible')  
+    cy.contains('Create Appointment').should('not.be.visible')
     }) 
 })
