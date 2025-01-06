@@ -5,8 +5,8 @@ const { should } = require("chai")
 
 const loginDeeplink = (name, username, password) => {
   cy.session(name,() => {
-    cy.visit('https://stg.customer.bookr-dev.com/auth')
-    cy.url().should('include', 'https://stg.customer.bookr-dev.com/auth')
+    cy.visit('https://customer.bookr-dev.com/auth?')
+    cy.url().should('include', 'https://customer.bookr-dev.com/auth?')
     cy.wait(1000)
     cy.get('[type="text"]').should('be.visible')
     cy.get('[type="password"]').should('be.visible')
@@ -23,7 +23,7 @@ const loginDeeplink = (name, username, password) => {
 
 const loginOldVendor = (name, username, password) => {
   cy.session(name,() => {
-    cy.visit('https://staging.vendor.bookr-dev.com/auth')
+    cy.visit('https://customer.bookr-dev.com/auth?')
     cy.wait(900)
     cy.get('#username').should('be.visible');
     cy.get('#password').should('be.visible');
@@ -89,7 +89,7 @@ const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
       cy.wait(2000)
 
       loginOldVendor('Admin Section', 'artnailcorner','1234567890')
-      cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+      cy.visit('https://vendor.bookr-dev.com/calendar')
       cy.wait(12000)
       cy.contains(`${startTime} ${AmPm}`).scrollIntoView()
       cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -142,7 +142,7 @@ const bookHomeServiceWeblinkApp = (category, service, staff, paymentMethod) => {
       cy.contains('button','CHECKOUT').click()
       cy.wait(2000)
       loginOldVendor('Admin Section', 'artnailcorner','1234567890')
-      cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+      cy.visit('https://vendor.bookr-dev.com/calendar')
       cy.wait(12000)
       cy.contains(`${startTime} ${AmPm}`).scrollIntoView()
       cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -216,7 +216,7 @@ describe('Weblink |Create appointments through deeplink', () => {
   beforeEach(() => {
     loginDeeplink('User Section', 'wendyzulca3@gmail.com','1234567890')
     cy.wait(1000)
-    cy.visit('https://stg.customer.bookr-dev.com/vendors/athary-world-nail-')
+    cy.visit('https://customer.bookr-dev.com/vendors/athary-world-nail-')
   })
 
   afterEach(() => {
@@ -315,7 +315,7 @@ describe('Weblink |Create appointments through deeplink', () => {
         cy.wait(200000)
   
         loginOldVendor('Admin Section', 'artnailcorner','1234567890')
-        cy.visit('https://staging.vendor.bookr-dev.com/calendar')
+        cy.visit('https://vendor.bookr-dev.com/calendar')
         cy.wait(12000)
         cy.contains(`${startTime} ${AmPm}`).scrollIntoView()
         cy.contains(`${staff}`).parent('div').then(($div) => {

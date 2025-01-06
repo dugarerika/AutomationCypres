@@ -40,7 +40,7 @@ const searchApt = (staff, start_time) => {
 describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Staff Session', 'zumbacococut','1234567890')
+    cy.loginov('Staff Session', 'zumba11','1234567890')
   })
 
   after(() => {
@@ -144,7 +144,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     // searchApt('Zumba Zumba','05:00')
   })
 
-  it.only('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','04:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -199,7 +199,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
 describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Admin Section', 'cococutsalon','1234567890')
+    cy.loginov('Admin Section', 'artnailcorner','1234567890')
   })
 
   after(() => {
@@ -300,7 +300,7 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clickin
 describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking on the calendar | logged with Receptionist credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Receptionist Session', 'recepcococut','1234567890')
+    cy.loginov('Receptionist Session', 'recep6','1234567890')
   })
 
   after(() => {
@@ -403,7 +403,7 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking
 describe('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Readonly Session', 'readonlyerika2','1234567890')
+    cy.loginov('Readonly Session', 'readonly835','1234567890')
   })
 
   after(() => {
