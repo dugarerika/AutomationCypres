@@ -258,14 +258,14 @@ Cypress.Commands.add('deleteEmployee', () => {
 })
 
 Cypress.Commands.add('filloutProfileInfo', (first_name, last_name, email, order, username, password) => {
-    cy.contains('span','First Name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('span','First Name').parent().next('div').find('input').eq(0).type(first_name)
+    cy.contains('span','First name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','First name').parent().next('div').find('input').eq(0).type(first_name)
     cy.contains('span','Username').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('span','Username').parent().next('div').find('input').eq(0).type(username)
     cy.contains('span','Password').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('span','Password').parent().next('div').find('input').eq(0).type(password)
-    cy.contains('span','Last Name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('span','Last Name').parent().next('div').find('input').eq(0).type(last_name)
+    cy.contains('span','Last name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Last name').parent().next('div').find('input').eq(0).type(last_name)
     cy.contains('span','Email').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('span','Email').parent().next('div').find('input').eq(0).type(email)
     cy.contains('span','Order').parent().next('div').find('input').eq(0).should('exist')
@@ -273,10 +273,10 @@ Cypress.Commands.add('filloutProfileInfo', (first_name, last_name, email, order,
 })
 
 
-Cypress.Commands.add('filloutServicesInfo', () => {
+Cypress.Commands.add('selectAllServices', () => {
     cy.contains('div>button', 'Profile').scrollIntoView()
     cy.contains('div>button', 'Services').click({force: true})
-    cy.contains('span','All services').parent('label').find('input').click({force:true})
+    cy.contains('span','All Services').parent('label').find('input').click({force:true})
 })
 
 Cypress.Commands.add('filloutCommissionsInfo', () => {

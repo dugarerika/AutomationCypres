@@ -26,7 +26,7 @@ const filloutServiceInfo = (first_name, last_name, email, order, username, passw
 }
 
 const accessToServiceSection = () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.contains('Services').should('exist')
     cy.contains('Services').click({ force: true })
     cy.contains('div','Services').should('exist')
@@ -37,7 +37,7 @@ const accessToServiceSection = () => {
 const accessToAddServiceForm = () => {
     cy.contains('h6','Services').parent().next('div').find('button').eq(1).should('exist')
     cy.contains('h6','Services').parent().next('div').find('button').eq(1).click({ force: true })
-    cy.contains('h3','Add a new service').should('exist')
+    cy.contains('h3','Add New Service').should('exist')
 }
 
 const expectedMessageCreateService = (service_message) => {
@@ -50,7 +50,7 @@ const expectedMessageCreateService = (service_message) => {
 describe('Beta Vendor Admin | Services | Create Service| logged with Admin credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+        cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
     })
     
     afterEach(() => {
@@ -80,12 +80,12 @@ describe('Beta Vendor Admin | Services | Create Service| logged with Admin crede
         accessToServiceSection()
         accessToAddServiceForm()
         cy.contains('h6','Pricing Option ').scrollIntoView()
-        cy.contains('label','Price').then(($labelprice) => {
+        cy.contains('label','Pricing Name (AR)').then(($labelprice) => {
             priceid = $labelprice.attr('for')
             cy.log(priceid)
             cy.get(`input[id="${priceid}"]`).type(10)
         })
-        cy.contains('label','Name').then(($labelname) => {
+        cy.contains('label','Pricing Name').then(($labelname) => {
             nameid = $labelname.attr('for')
             cy.log(nameid)
             cy.get(`input[id="${nameid}"]`).type('test')
@@ -94,9 +94,10 @@ describe('Beta Vendor Admin | Services | Create Service| logged with Admin crede
         // cy.contains('label','Duration').then(($label) => {
         //     priceid = $label.attr('for')
         //     cy.log(durid)
-        //     cy.get(`input[id="${durid}"]`).type(10)
+        //     cy.get('ul>li[data-hour="5"]').click({ force: true })
         // })
-        cy.contains('label','Duration').next().find('input').click({ force: true })
+        // cy.contains('label','Duration').next().find('input').click({ force: true })
+        cy.get('label').contains('Duration').parent().find('input').click({ force: true })
         cy.get('ul>li[data-hour="5"]').click({ force: true })
         cy.contains('h6','Pricing Option ').click({ force: true })
 

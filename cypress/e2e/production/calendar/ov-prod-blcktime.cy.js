@@ -301,7 +301,7 @@ describe('Production - Old Vendor Receptionist | Calendar| Create Blocktime on t
     })
 })
 
-describe('Production - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
+describe('Production - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with ReadOnly Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -309,14 +309,14 @@ describe('Production - Old Vendor Admin | Calendar| Create Blocktime on the Cale
     })
 
     beforeEach(() => {
-        cy.loginovprd('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+        cy.loginovprd('ReadOnly Section', Cypress.env("Vendor_ReadOnly_Username_Production"), Cypress.env("Vendor_ReadOnly_Password_Production"))
     })
 
     afterEach(() => {
         cy.clearCookies()
     })
 
-    it('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
+    it('Verify Start time is required to create a blocktime on the Calendar  - ReadOnly credentials', () => {
         cy.visit(Cypress.env("URL_OldVendor_Production"))
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
