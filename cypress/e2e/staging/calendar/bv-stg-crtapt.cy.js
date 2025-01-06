@@ -76,7 +76,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
 })
 
 it('Verify it is possible to create an appointment searching and selecting customer from vendor - Admin credentials', () => {
-  searchTimeSlot('Naomi NaomiNaomi','07:00') 
+  searchTimeSlot('Naomi Naomi','07:00') 
   cy.contains("Search customer..").next('div').should('exist')
   cy.contains("Search customer..").next('div').children('input').click({force: true})
   cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
@@ -90,7 +90,7 @@ it('Verify it is possible to create an appointment searching and selecting custo
 })
 
 it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment - Admin credentials', () => {
-  searchTimeSlot('Naomi NaomiNaomi','07:00')  
+  searchTimeSlot('Naomi Naomi','07:00')  
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.contains('Create Appointment').click({force: true})
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -103,7 +103,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ov
 })
 
 it('Verify it is possible to create an appointment over and already taken time slot - Admin Credentials', () => {
-  searchTimeSlot('Naomi NaomiNaomi','07:00') 
+  searchTimeSlot('Naomi Naomi','07:00') 
   cy.contains('New Appointment').should('exist')
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.contains('Create Appointment').click({force: true})
@@ -279,7 +279,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -387,7 +387,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by C
   })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -406,14 +406,14 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create appointments by Cl
   })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
-    searchTimeSlot('Naomi NaomiNaomi','08:00')
+    searchTimeSlot('Naomi Naomi','08:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
     cy.contains('Create Appointment').should('not.be.visible')
   })
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
-    searchTimeSlot('Naomi NaomiNaomi','08:00')  
+    searchTimeSlot('Naomi Naomi','08:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
