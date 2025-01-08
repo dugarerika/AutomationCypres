@@ -87,7 +87,6 @@ const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
       cy.contains('button','CHECKOUT').should('exist')
       cy.contains('button','CHECKOUT').click()
       cy.wait(2000)
-
       loginOldVendor('Admin Section', 'artnailcorner','1234567890')
       cy.visit('https://vendor.bookr-dev.com/calendar')
       cy.wait(12000)
