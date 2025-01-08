@@ -82,7 +82,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
   it('Verify Product is create successfully by filling up Price Name and Product measurement with Mililiter Unit - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductBasicInfo('Product filled up with and Product measurement with Mililiter Unit','{enter}','123','{enter}','{enter}')
-    cy.contains('option', 'Select Unit').should('exist')
+    cy.contains('option', 'Select unit').should('exist')
     cy.get('select').select('l')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
@@ -95,7 +95,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.contains('h3', 'Categories').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span','Category Name').parent().next('div').find('input').type('Automated Category', { force: true, delay: 50 })
+    cy.contains('span','Category name').parent().next('div').find('input').type('Automated Category', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Category created').should('exist')
     cy.contains('label>span', 'Category').parents('label').next('div').find('input').click({ force: true })
@@ -268,7 +268,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
   it('Verify Product name is the only required field by trying to create a product filling up Product measurement with unit only - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('option', 'Select Unit').should('exist')
+    cy.contains('option', 'Select unit').should('exist')
     cy.get('select').select('l')
     cy.expectedMessageCreateProduct('Product name is required')
   })
