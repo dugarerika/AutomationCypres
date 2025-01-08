@@ -52,7 +52,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.contains('h6', 'Pricing').should('exist')
     cy.contains('span', 'Supply Price').should('exist')
     cy.contains('span', 'Retail price').should('exist')
-    cy.contains('span', 'Enable Retail Sales').should('exist')
+    cy.contains('span', 'Enable Retail Sale').should('exist')
   })
 
   it('Verify the it is possible access to the Create product/Inventory tab form - Admin credentials', () => {
@@ -226,7 +226,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('12345','10')
     cy.wait(100)
-    cy.contains('span','Enable Retail Sales').click({ force: true })
+    cy.contains('span','Enable Retail Sale').click({ force: true })
     cy.wait(100)
     cy.filloutProductBasicInfo('Product filled up with Price name Supply Retail price tax & Enable Retails sales toggle switched ON','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
