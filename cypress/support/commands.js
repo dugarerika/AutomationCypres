@@ -101,8 +101,8 @@ Cypress.Commands.add('accessToCreateProductovprod', () => {
     //cy.visit('https://vendor.bookr.co/inventory')
     cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
     cy.contains('div>h6', 'Products').should('exist')
-    cy.contains('button', 'Add New').should('exist')
-    cy.contains('button', 'Add New').click({ force: true })
+    cy.contains('button', 'Add new').should('exist')
+    cy.contains('button', 'Add new').click({ force: true })
     cy.contains('h3', 'Create Product').should('exist')
 })
 
@@ -117,8 +117,8 @@ Cypress.Commands.add('accessToCreateProductov', () => {
     //cy.visit('https://staging.vendor.bookr-dev.com/inventory')
     cy.visit(Cypress.env("URL_OldVendor_Staging") + 'inventory')
     cy.contains('div>h6', 'Products').should('exist')
-    cy.contains('button', 'Add New').should('exist')
-    cy.contains('button', 'Add New').click({ force: true })
+    cy.contains('button', 'Add new').should('exist')
+    cy.contains('button', 'Add new').click({ force: true })
     cy.contains('h3', 'Create Product').should('exist')
 })
 
@@ -130,8 +130,8 @@ Cypress.Commands.add('accessToCreateProduct', () => {
     cy.contains('Products').should('exist')
     cy.contains('Products').click({ force: true })
     cy.contains('h6', 'Products').should('exist')
-    cy.contains('button', 'Add New').should('exist')
-    cy.contains('button', 'Add New').click({ force: true })
+    cy.contains('button', 'Add new').should('exist')
+    cy.contains('button', 'Add new').click({ force: true })
     cy.contains('h3', 'Create Product').should('exist')
 })
 
@@ -142,8 +142,8 @@ Cypress.Commands.add('accessToCreateProductbvprod', () => {
     cy.contains('Products').should('exist')
     cy.contains('Products').click({ force: true })
     cy.contains('h6', 'Products').should('exist')
-    cy.contains('button', 'Add New').should('exist')
-    cy.contains('button', 'Add New').click({ force: true })
+    cy.contains('button', 'Add new').should('exist')
+    cy.contains('button', 'Add new').click({ force: true })
     cy.contains('h3', 'Create Product').should('exist')
 })
 
