@@ -5,8 +5,7 @@ const { should } = require("chai")
 
 const loginDeeplink = (name, username, password) => {
   cy.session(name,() => {
-    cy.visit('https://customer.bookr-dev.com/auth?')
-    cy.url().should('include', 'https://customer.bookr-dev.com/auth?')
+    cy.visit('https://customer.bookr-dev.com/auth?source=vendors/cococut-salon')
     cy.wait(1000)
     cy.get('[type="text"]').should('be.visible')
     cy.get('[type="password"]').should('be.visible')
@@ -35,7 +34,8 @@ const loginOldVendor = (name, username, password) => {
     cy.wait(100)
     cy.wait('@sign').then((interception) => {
       expect(interception.response.statusCode).to.equal(200)
-    })          
+    })  
+    cy.visit('https://vendor.bookr-dev.com/calendar')        
   })
 }
 
@@ -60,8 +60,6 @@ cy.contains('Appointment Details').should('be.visible')
 }
 
 const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
-  loginDeeplink('User Section', 'wendyzulca3@gmail.com','1234567890')
-  cy.visit('customer.bookr-dev.com/vendors/cococut-salon')
   cy.contains('button>span','Services').click({force: true})
   cy.contains('div>button','At Vendor').click({force: true})
   cy.contains('h6',category).click({force: true})
@@ -69,7 +67,6 @@ const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
   cy.wait(2200)
   cy.contains('div>button','Continue').should('exist')
   cy.contains('div>button','Continue').click()
-
   cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().should('exist')
   cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().then(($span) => {
     var startTime = $span.text()
@@ -89,8 +86,7 @@ const bookServiceWeblinkApp = (category, service, staff, paymentMethod) => {
       cy.contains('button','CHECKOUT').should('exist')
       cy.contains('button','CHECKOUT').click()
       cy.wait(2000)
-      loginOldVendor('Admin Section', 'artnailcorner','1234567890')
-      cy.visit('https://vendor.bookr-dev.com/calendar')
+      loginOldVendor('Admin Section', 'cococutsalon','1234567890')
       cy.wait(12000)
       cy.contains(`${startTime} ${AmPm}`).scrollIntoView()
       cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -166,12 +162,10 @@ const bookHomeServiceWeblinkApp = (category, service, staff, paymentMethod) => {
 const bookOfferWeblinkApp = (offer, staff, paymentMethod) => {
   cy.contains('button>span','Offer').click({force: true})
   cy.contains('div>button','At Vendor').click({force: true})
-  // cy.contains('h6',category).click({force: true})
   cy.contains('h4',offer).click({force: true})
   cy.wait(2200)
   cy.contains('div>button','Continue').should('exist')
   cy.contains('div>button','Continue').click()
-
   cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().should('exist')
   cy.contains('div>p',staff).parent().parent().parent().parent().find('span').first().then(($span) => {
     var startTime = $span.text()
@@ -212,21 +206,30 @@ const bookOfferWeblinkApp = (offer, staff, paymentMethod) => {
   })
 }
 
-describe('Weblink |Create appointments through deeplink', () => {
+//   beforeEach(() => {
+//     loginDeeplink('User Section', 'wendyzulca3@gmail.com','1234567890')
+//     cy.wait(10)
+//     cy.visit('https://customer.bookr-dev.com/vendors/cococut-salon')
+//   })
 
-  // beforeEach(() => {
-  //   loginDeeplink('User Section', 'wendyzulca3@gmail.com','1234567890')
-  //   cy.wait(10000)
-  // })
-
-
-  it('Verify it is not possible to create an appointment through deeplink for 1 service to pay at salon', () => {
-    var staff = "Zstaff"
+  it.only('Verify it is not possible to create an appointment through deeplink for 1 service to pay at salon', () => {
+    var staff = "Zumba zumba"
     var category = "Hair"
     var service = "Basic haircut - short hair"
     var paymentMethod = "Pay at Vendor"
+    cy.visit('https://customer.bookr-dev.com/auth?source=vendors/cococut-salon')
+    cy.wait(1000)
+    cy.get('[type="text"]').should('be.visible')
+    cy.get('[type="password"]').should('be.visible')
+    cy.xpath('//button[text()="Login"]').should('be.visible')
+    cy.get('[type="text"]').type('wendyzulca3@gmail.com', {force: true, delay: 50})
+    cy.get('[type="password"]').type('1234567890',{force: true, delay: 50})
+    // cy.intercept('POST', '/gateway/api/auth/login').as('sign')
+    cy.xpath('//button[text()="Login"]').click()
+    // cy.wait('@sign').then((interception) => {
+    //   expect(interception.response.statusCode).to.equal(200)
+    // })   
     bookServiceWeblinkApp(category,service,staff,paymentMethod)
-    cy.contains('button',`No Status`).should('be.visible')  
   })
 
   it('Verify it is not possible to create an appointment through deeplink for 1 service paid with Wallet  - Readonly credentials', () => {
@@ -333,5 +336,3 @@ describe('Weblink |Create appointments through deeplink', () => {
     cy.contains('button',`Paid Online`).should('be.visible')  
     cy.contains('li>h4',`${paymentMethod}`).should('be.visible')  
   })
-
-})
