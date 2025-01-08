@@ -40,7 +40,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.contains('span', 'Produce barcode').should('exist')
     cy.contains('span', 'Product measurement').should('exist')
     cy.contains('span', 'Category').should('exist')
-    cy.contains('span', 'Product Brand').should('exist')
+    cy.contains('span', 'Brand').should('exist')
     cy.contains('span', 'Short description').should('exist')
     cy.contains('span', 'Product description').should('exist')
   })
@@ -114,11 +114,11 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.expectedMessageCreateProduct('Product created successfully')
   })
   
-  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand created from the Create product form - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Brand created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Product Brand').should('exist')
-    cy.contains('label>span', 'Product Brand').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Brand').should('exist')
+    cy.contains('label>span', 'Brand').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Brands').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
@@ -131,11 +131,11 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Brand - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Product Brand').should('exist')
-    cy.contains('label>span', 'Product Brand').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Brand').should('exist')
+    cy.contains('label>span', 'Brand').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Brands').should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
     cy.expectedMessageCreateProduct('Product created successfully')
