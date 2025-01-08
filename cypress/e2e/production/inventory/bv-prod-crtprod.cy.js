@@ -33,9 +33,9 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
 //Navigation within the Creation Tabs
   it('Verify the it is possible access to the Create product/Basic info tab form - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
-    cy.contains('button', 'Basic Info').should('exist')
-    cy.contains('button', 'Basic Info').click({ force: true })
-    cy.contains('h6', 'Basic Info').should('exist')
+    cy.contains('button', 'Basic info').should('exist')
+    cy.contains('button', 'Basic info').click({ force: true })
+    cy.contains('h6', 'Basic info').should('exist')
     cy.contains('span', 'Product name').should('exist')
     cy.contains('span', 'Produce barcode').should('exist')
     cy.contains('span', 'Product measurement').should('exist')
@@ -299,8 +299,8 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
 
   it('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
-    cy.contains('button', 'Basic Info').should('exist')
-    cy.contains('button', 'Basic Info').click({ force: true })
+    cy.contains('button', 'Basic info').should('exist')
+    cy.contains('button', 'Basic info').click({ force: true })
     cy.get('input[placeholder = "Enter Product name"]').should('exist')
     cy.get('input[placeholder = "Enter Product name"]').type('Product Measuarement cannot be submited without Units')
     cy.get('input[placeholder="Enter Product measurement"]').should('exist')
