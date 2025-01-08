@@ -103,7 +103,7 @@ Cypress.Commands.add('accessToCreateProductovprod', () => {
     cy.contains('div>h6', 'Products').should('exist')
     cy.contains('button', 'Add new').should('exist')
     cy.contains('button', 'Add new').click({ force: true })
-    cy.contains('h3', 'Create Product').should('exist')
+    cy.contains('h3', 'Create product').should('exist')
 })
 
 
@@ -119,7 +119,7 @@ Cypress.Commands.add('accessToCreateProductov', () => {
     cy.contains('div>h6', 'Products').should('exist')
     cy.contains('button', 'Add new').should('exist')
     cy.contains('button', 'Add new').click({ force: true })
-    cy.contains('h3', 'Create Product').should('exist')
+    cy.contains('h3', 'Create product').should('exist')
 })
 
 
@@ -132,7 +132,7 @@ Cypress.Commands.add('accessToCreateProduct', () => {
     cy.contains('h6', 'Products').should('exist')
     cy.contains('button', 'Add new').should('exist')
     cy.contains('button', 'Add new').click({ force: true })
-    cy.contains('h3', 'Create Product').should('exist')
+    cy.contains('h3', 'Create product').should('exist')
 })
 
 Cypress.Commands.add('accessToCreateProductbvprod', () => {
@@ -144,7 +144,7 @@ Cypress.Commands.add('accessToCreateProductbvprod', () => {
     cy.contains('h6', 'Products').should('exist')
     cy.contains('button', 'Add new').should('exist')
     cy.contains('button', 'Add new').click({ force: true })
-    cy.contains('h3', 'Create Product').should('exist')
+    cy.contains('h3', 'Create product').should('exist')
 })
 
 // -- This is a child command for the create product section Old Vendor PRODUCTION and STAGING--
