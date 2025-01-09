@@ -285,19 +285,19 @@ it.only('Verify it is not possible to create a Product by filling up Price Name 
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it('Verify Product name is the only required field by triying to create a product filling up Supply Price only - Admin credentials', () => {
+  it.only('Verify Product name is the only required field by triying to create a product filling up Supply Price only - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('120','{enter}')
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it('Verify Product name is the only required field by trying to create a product by filling up Retail price only - Admin credentials', () => {
+  it.only('Verify Product name is the only required field by trying to create a product by filling up Retail price only - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('{enter}','567')
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
+  it.only('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.contains('button', 'Basic info').should('exist')
     cy.contains('button', 'Basic info').click({ force: true })
