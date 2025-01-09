@@ -166,6 +166,24 @@ Cypress.Commands.add('filloutProductBasicInfo', (prod_name, prod_barcode, prod_m
     // cy.get('textarea[placeholder="Enter product description"]').type(prod_description)
 })
 
+
+Cypress.Commands.add('filloutProductBasicInfoov', (prod_name, prod_barcode, prod_measurement, prod_short_description, prod_description) => {
+    cy.contains('button', 'Basic Info').should('exist')
+    cy.contains('button', 'Basic Info').click({ force: true })
+    cy.get('input[placeholder = "Enter product name"]').should('exist')
+    cy.get('input[placeholder = "Enter product name"]').type(prod_name)
+    cy.get('input[placeholder="Enter product barcode"]').should('exist')
+    cy.get('input[placeholder="Enter product barcode"]').type(prod_barcode)
+    cy.get('input[placeholder="Enter product measurement"]').should('exist')
+    cy.get('input[placeholder="Enter product measurement"]').type(prod_measurement)
+    cy.get('input[placeholder="Enter short description for your product"]').should('exist')
+    cy.get('input[placeholder="Enter short description for your product"]').type(prod_short_description)
+    cy.contains('label>span', 'Product description').parents('label').next('div').find('textarea').first().should('exist')
+    cy.contains('label>span', 'Product description').parents('label').next('div').find('textarea').first().type(prod_description)
+    // cy.get('textarea[placeholder="Enter product description"]').should('exist')
+    // cy.get('textarea[placeholder="Enter product description"]').type(prod_description)
+})
+
 Cypress.Commands.add('expectedMessageCreateProduct', (product_message) => {
     cy.contains('button', 'Save').should('exist')
     cy.contains('button', 'Save').click({ force: true })
