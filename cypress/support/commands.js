@@ -181,7 +181,7 @@ Cypress.Commands.add('filloutProductPricingInfo', (prod_supply_price, prod_retai
     cy.contains('span', 'Enable Retail Sale').should('exist')
     cy.contains('label>span', 'Supply Price').parents('label').next('div').find('input').type(prod_supply_price)
     cy.contains('label>span', 'Supply Price').should('exist')
-    cy.contains('label>span', 'Retail Price').parents('label').next('div').find('input').type(prod_retail_price)
+    cy.contains('label>span', 'Retail price').parents('label').next('div').find('input').type(prod_retail_price)
 })
 
 Cypress.Commands.add('filloutProductInventoryInfo', (prod_ksu, prod_stock_qty, prod_low_stock_lvl, prod_reorder_qty) =>{
