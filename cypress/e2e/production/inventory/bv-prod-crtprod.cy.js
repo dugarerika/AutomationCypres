@@ -95,7 +95,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.contains('h3', 'Categories').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span','Category name').parent().next('div').find('input').type('Automated Category', { force: true, delay: 50 })
+    cy.contains('span','Search by name').parent().next('div').find('input').type('Automated Category', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Category created').should('exist')
     cy.contains('label>span', 'Category').parents('label').next('div').find('input').click({ force: true })
