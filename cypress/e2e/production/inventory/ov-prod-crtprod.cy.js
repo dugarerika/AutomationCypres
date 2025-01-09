@@ -33,16 +33,16 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
 //Navigation within the Creation Tabs
   it('Verify the it is possible access to the Create product/Basic info tab form - Admin credentials', () => {
     cy.accessToCreateProductovprod()
-    cy.contains('button', 'Basic Info').should('exist')
-    cy.contains('button', 'Basic Info').click({ force: true })
-    cy.contains('h6', 'Basic Info').should('exist')
-    cy.contains('span', 'Product Name').should('exist')
-    cy.contains('span', 'Product Bar Code').should('exist')
-    cy.contains('span', 'Product Measurement').should('exist')
-    cy.contains('span', 'Product Category').should('exist')
-    cy.contains('span', 'Product Brand').should('exist')
-    cy.contains('span', 'Short Description').should('exist')
-    cy.contains('span', 'Product Description').should('exist')
+    cy.contains('button', 'Basic info').should('exist')
+    cy.contains('button', 'Basic info').click({ force: true })
+    cy.contains('h6', 'Basic info').should('exist')
+    cy.contains('span', 'Product name').should('exist')
+    cy.contains('span', 'Produce barcode').should('exist')
+    cy.contains('span', 'Product measurement').should('exist')
+    cy.contains('span', 'Category').should('exist')
+    cy.contains('span', 'Brand').should('exist')
+    cy.contains('span', 'Short description').should('exist')
+    cy.contains('span', 'Product description').should('exist')
   })
 
   it('Verify the it is possible access to the Create product/Pricing tab form - Admin credentials', () => {
@@ -51,8 +51,8 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
     cy.contains('button', 'Pricing').click({ force: true })
     cy.contains('h6', 'Pricing').should('exist')
     cy.contains('span', 'Supply Price').should('exist')
-    cy.contains('span', 'Retail Price').should('exist')
-    cy.contains('span', 'Enable Retail Sales').should('exist')
+    cy.contains('span', 'Retail price').should('exist')
+    cy.contains('span', 'Enable Retail Sale').should('exist')
   })
 
   it('Verify the it is possible access to the Create product/Inventory tab form - Admin credentials', () => {
@@ -79,7 +79,7 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
   it('Verify Product is create successfully by filling up Price Name and Product Measurement with Mililiter Unit - Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductBasicInfo('Product filled up with and Product Measurement with Mililiter Unit','{enter}','123','{enter}','{enter}')
-    cy.contains('option', 'Select Unit').should('exist')
+    cy.contains('option', 'Select unit').should('exist')
     cy.get('select').select('l')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
@@ -87,12 +87,12 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
   it('Verify Bookr Category is requested when creating a Product by filling up Price Name and Selecting a Product Category created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Product Category').should('exist')
-    cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Category').should('exist')
+    cy.contains('label>span', 'Category').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span','Category Name').parent().next('div').find('input').type('Automated Category', { force: true, delay: 50 })
+    cy.contains('span','Category name').parent().next('div').find('input').type('Automated Category', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Please select a bookr category').should('exist')
     // cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
@@ -282,7 +282,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
   it('Verify Product Name is the only required field by trying to create a product filling up Product Measurement with unit only - Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('option', 'Select Unit').should('exist')
+    cy.contains('option', 'Select unit').should('exist')
     cy.get('select').select('l')
     cy.expectedMessageCreateProduct('Product name is required')
   })
