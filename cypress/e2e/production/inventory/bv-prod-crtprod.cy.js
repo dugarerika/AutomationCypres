@@ -329,7 +329,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.expectedMessageCreateProduct('Invalid Barcode, Barcodes must be 8, 12, or 13 digits long')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Supplier','{enter}','{enter}','{enter}','{enter}')
     cy.filloutProductInventoryInfo('{enter}','{enter}','{enter}','{enter}')
