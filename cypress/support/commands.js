@@ -150,8 +150,8 @@ Cypress.Commands.add('accessToCreateProductbvprod', () => {
 // -- This is a child command for the create product section Old Vendor PRODUCTION and STAGING--
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 Cypress.Commands.add('filloutProductBasicInfo', (prod_name, prod_barcode, prod_measurement, prod_short_description, prod_description) => {
-    cy.contains('button', 'Basic Info').should('exist')
-    cy.contains('button', 'Basic Info').click({ force: true })
+    cy.contains('button', 'Basic info').should('exist')
+    cy.contains('button', 'Basic info').click({ force: true })
     cy.get('input[placeholder = "Enter product name"]').should('exist')
     cy.get('input[placeholder = "Enter product name"]').type(prod_name)
     cy.get('input[placeholder="Enter product barcode e.g 123456789"]').should('exist')
