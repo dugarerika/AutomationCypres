@@ -103,7 +103,7 @@ Cypress.Commands.add('accessToCreateProductovprod', () => {
     cy.contains('div>h6', 'Products').should('exist')
     cy.contains('button', 'Add new').should('exist')
     cy.contains('button', 'Add new').click({ force: true })
-    cy.contains('h3', 'Create product').should('exist')
+    cy.contains('h3', 'Create Product').should('exist')
 })
 
 
@@ -119,7 +119,7 @@ Cypress.Commands.add('accessToCreateProductov', () => {
     cy.contains('div>h6', 'Products').should('exist')
     cy.contains('button', 'Add new').should('exist')
     cy.contains('button', 'Add new').click({ force: true })
-    cy.contains('h3', 'Create product').should('exist')
+    cy.contains('h3', 'Create Product').should('exist')
 })
 
 
