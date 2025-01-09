@@ -159,14 +159,14 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Supply Price - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Supply Price - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('12345','{enter}')
     cy.filloutProductBasicInfo('Product filled up with Price name and Supply Price','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Retail price - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Retail price - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('{enter}','6789')
     cy.filloutProductBasicInfo('Product filled up with Price name and Retail price','{enter}','{enter}','{enter}','{enter}')
@@ -208,7 +208,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, Bar code EAN-13 5012345678900, SKU98765-GH, Retail price and Supply Price  - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Bar code EAN-13 5012345678900, SKU98765-GH, Retail price and Supply Price  - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('12345','10')
     cy.filloutProductInventoryInfo('SKU98765-GH','{enter}','{enter}','{enter}')
@@ -216,13 +216,13 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, Supply Price and Retail price- Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Supply Price and Retail price- Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('12345','10')
     cy.filloutProductBasicInfo('Product filled up with Price name Supply & Retail price','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
-  it.only('Verify Product is create successfully by filling up Price Name, Supply Price, Retail price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('12345','10')
     cy.wait(100)
@@ -234,14 +234,14 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
 
 // Create Non successfully  
 
-it.only('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
+it('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
   cy.accessToCreateProductbvprod()
   cy.filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
   cy.filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this SKU already exists')
 })
 
-it.only('Verify it is not possible to create a Product by filling up Price Name and already added Produce barcode - Admin credentials', () => {
+it('Verify it is not possible to create a Product by filling up Price Name and already added Produce barcode - Admin credentials', () => {
   cy.accessToCreateProductbvprod()
   cy.filloutProductBasicInfo('Product filled up with Product name and Bar code','123456789012','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this Barcode already exists')
@@ -285,19 +285,19 @@ it.only('Verify it is not possible to create a Product by filling up Price Name 
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it.only('Verify Product name is the only required field by triying to create a product filling up Supply Price only - Admin credentials', () => {
+  it('Verify Product name is the only required field by triying to create a product filling up Supply Price only - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('120','{enter}')
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it.only('Verify Product name is the only required field by trying to create a product by filling up Retail price only - Admin credentials', () => {
+  it('Verify Product name is the only required field by trying to create a product by filling up Retail price only - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductPricingInfo('{enter}','567')
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it.only('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
+  it('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.contains('button', 'Basic info').should('exist')
     cy.contains('button', 'Basic info').click({ force: true })
