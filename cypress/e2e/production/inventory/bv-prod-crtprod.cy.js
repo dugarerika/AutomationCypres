@@ -114,7 +114,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.expectedMessageCreateProduct('Product created successfully')
   })
   
-  it('Verify Product is create successfully by filling up Price Name and Selecting a Brand created from the Create product form - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Brand created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Brand').should('exist')
@@ -122,7 +122,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.contains('h3', 'Brands').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span','Brand Name').parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
+    cy.contains('span','Brand').parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Brand created').should('exist')
     cy.contains('label>span', 'Category').parents('label').next('div').find('input').click({ force: true })
@@ -131,7 +131,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Selecting a Brand - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Brand - Admin credentials', () => {
     cy.accessToCreateProductbvprod()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Brand').should('exist')
