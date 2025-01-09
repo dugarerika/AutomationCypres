@@ -33,8 +33,8 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
 //Navigation within the Creation Tabs
   it('Verify the it is possible access to the Create product/Basic info tab form - Admin credentials', () => {
     cy.accessToCreateProductovprod()
-    cy.contains('button', 'Basic info').should('exist')
-    cy.contains('button', 'Basic info').click({ force: true })
+    cy.contains('button', 'Basic Info').should('exist')
+    cy.contains('button', 'Basic Info').click({ force: true })
     cy.contains('h6', 'Basic info').should('exist')
     cy.contains('span', 'Product name').should('exist')
     cy.contains('span', 'Produce barcode').should('exist')
