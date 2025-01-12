@@ -129,7 +129,7 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
     cy.expectedMessageCreateProduct('Product created successfully')
   })
   
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand created from the Create product form - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductBasicInfoov('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Brand').should('exist')
