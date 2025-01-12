@@ -136,7 +136,7 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
     cy.contains('label>span', 'Brand').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Brands').should('exist')
     cy.wait(2000)
-    cy.get('section').next('div').find('button').click({ force: true })
+    //cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span','Brand').parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Brand created').should('exist')
@@ -237,7 +237,7 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
     cy.filloutProductBasicInfoov('Product filled up with Price name Supply & Retail Price','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
-  it.only('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductPricingInfo('12345','10')
     cy.wait(100)
@@ -248,7 +248,7 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
   })
 
 // Create Non successfully  
-it.only('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
+it('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
   cy.accessToCreateProductovprod()
   cy.filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
   cy.filloutProductBasicInfoov('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
