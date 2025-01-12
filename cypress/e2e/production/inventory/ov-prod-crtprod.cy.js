@@ -136,7 +136,7 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
     cy.contains('label>span', 'Brand').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Brands').should('exist')
     cy.wait(2000)
-    //cy.get('section').next('div').find('button').click({ force: true })
+    cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span','Brand name').parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Brand created').should('exist')
