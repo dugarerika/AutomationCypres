@@ -129,7 +129,7 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
     cy.expectedMessageCreateProduct('Product created successfully')
   })
   
-  it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand created from the Create product form - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductBasicInfoov('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Brand').should('exist')
@@ -237,25 +237,25 @@ describe('Production - Old Vendor Admin | Inventory | Create products| logged wi
     cy.filloutProductBasicInfoov('Product filled up with Price name Supply & Retail Price','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
-  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle switched ON- Admin credentials', () => {
     cy.accessToCreateProductovprod()
     cy.filloutProductPricingInfo('12345','10')
     cy.wait(100)
-    cy.contains('span','Enable Retail Sales').click({ force: true })
+    cy.contains('span','Enable Retail Sale').click({ force: true })
     cy.wait(100)
     cy.filloutProductBasicInfoov('Product filled up with Price name Supply Retail Price tax & Enable Retails sales toggle switched ON','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
 // Create Non successfully  
-it('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
+it.only('Verify it is no possible to create a Product by filling up Price Name and already added SKU - Admin credentials', () => {
   cy.accessToCreateProductovprod()
   cy.filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
   cy.filloutProductBasicInfoov('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this SKU already exists')
 })
 
-it('Verify it is not possible to create a Product by filling up Price Name and already added Product Bar Code - Admin credentials', () => {
+it.only('Verify it is not possible to create a Product by filling up Price Name and already added Product Bar Code - Admin credentials', () => {
   cy.accessToCreateProductovprod()
   cy.filloutProductBasicInfoov('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this Barcode already exists')
