@@ -255,7 +255,7 @@ it('Verify it is no possible to create a Product by filling up Price Name and al
   cy.expectedMessageCreateProduct('Product with this SKU already exists')
 })
 
-it.only('Verify it is not possible to create a Product by filling up Price Name and already added Product Bar Code - Admin credentials', () => {
+it('Verify it is not possible to create a Product by filling up Price Name and already added Product Bar Code - Admin credentials', () => {
   cy.accessToCreateProductovprod()
   cy.filloutProductBasicInfoov('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this Barcode already exists')
