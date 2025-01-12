@@ -106,7 +106,6 @@ Cypress.Commands.add('accessToCreateProductovprod', () => {
     cy.contains('h3', 'Create Product').should('exist')
 })
 
-
 // -- This is a child command for the create product section Old Vendor STAGING--
 Cypress.Commands.add('accessToCreateProductov', () => {
     //cy.visit('https://staging.vendor.bookr-dev.com/calendar')
@@ -121,7 +120,6 @@ Cypress.Commands.add('accessToCreateProductov', () => {
     cy.contains('button', 'Add new').click({ force: true })
     cy.contains('h3', 'Create Product').should('exist')
 })
-
 
 Cypress.Commands.add('accessToCreateProduct', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
