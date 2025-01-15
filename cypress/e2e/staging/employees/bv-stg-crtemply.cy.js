@@ -50,7 +50,7 @@ it('Verify it is possible to add an Employee with role Readonly by filling up Al
     cy.expectedMessageCreateEmployee('Employee created')
 })
 
-it.skip('Verify it is possible to add an Employee with role receptionist by filling up All the required info, selecting all services and adding ', () => {
+it('Verify it is possible to add an Employee with role receptionist by filling up All the required info, selecting all services and adding ', () => {
     employeeSection()
     cy.contains('h6','Employees').parent().next('div').find('button').eq(1).should('exist')
     cy.contains('h6','Employees').parent().next('div').find('button').eq(1).click({ force: true })
@@ -62,7 +62,7 @@ it.skip('Verify it is possible to add an Employee with role receptionist by fill
     cy.expectedMessageCreateEmployee('Employee created')
 })
 
-it.only('Verify it is possible to add an Employee by filling up All the required info and selecting all services', () => {
+it('Verify it is possible to add an Employee by filling up All the required info and selecting all services', () => {
     employeeSection()
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
