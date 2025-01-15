@@ -50,11 +50,8 @@ it('Verify it is possible to add an Employee with role Readonly by filling up Al
     cy.expectedMessageCreateEmployee('Employee created')
 })
 
-<<<<<<< HEAD
+
 it('Verify it is possible to add an Employee with role receptionist by filling up All the required info, selecting all services and adding ', () => {
-=======
-it.('Verify it is possible to add an Employee with role receptionist by filling up All the required info, selecting all services and adding ', () => {
->>>>>>> 1cf971269fed1f8b8d636a1b0a7c47a045c7caa8
     employeeSection()
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
