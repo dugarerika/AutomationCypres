@@ -30,7 +30,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   })
 
 //Navigation within the Creation Tabs
-  it.only('Verify the it is possible access to the Create product/Basic info tab form - Admin credentials', () => {
+  it('Verify the it is possible access to the Create product/Basic info tab form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.contains('button', 'Basic Info', { matchCase: false }).should('exist')
     cy.contains('button', 'Basic Info', { matchCase: false }).click({ force: true })
@@ -89,8 +89,8 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   it('Verify Bookr Category is requested when creating a Product by filling up Price Name and Selecting a Product Category created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Product Category', { matchCase: false }).should('exist')
-    cy.contains('label>span', 'Product Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Category', { matchCase: false }).should('exist')
+    cy.contains('label>span', 'Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories', { matchCase: false }).should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
@@ -105,8 +105,8 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   it('Verify Product is create successfully by filling up Price Name and Selecting a Product Category created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Product Category', { matchCase: false }).should('exist')
-    cy.contains('label>span', 'Product Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Category', { matchCase: false }).should('exist')
+    cy.contains('label>span', 'Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories', { matchCase: false }).should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
@@ -115,7 +115,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.contains('label>span', 'Bookr Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true }).type('{downarrow}{enter}')
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Category created', { matchCase: false }).should('exist')
-    cy.contains('label>span', 'Product Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories', { matchCase: false }).should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -124,8 +124,8 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   it('Verify Product is create successfully by filling up Price Name and Selecting a Product Category - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Product Category', { matchCase: false }).should('exist')
-    cy.contains('label>span', 'Product Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Category', { matchCase: false }).should('exist')
+    cy.contains('label>span', 'Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories', { matchCase: false }).should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -142,7 +142,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.contains('span','Brand Name', { matchCase: false }).parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Brand created' , { matchCase: false }).should('exist')
-    cy.contains('label>span', 'Product Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories', { matchCase: false }).should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -151,8 +151,8 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   it('Verify Product is create successfully by filling up Price Name and Selecting a Product Brand - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Product Brand', { matchCase: false }).should('exist')
-    cy.contains('label>span', 'Product Brand', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Brand', { matchCase: false }).should('exist')
+    cy.contains('label>span', 'Brand', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Brands', { matchCase: false }).should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
     cy.expectedMessageCreateProduct('Product created successfully')
