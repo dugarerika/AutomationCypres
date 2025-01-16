@@ -32,9 +32,9 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
 //Navigation within the Creation Tabs
   it('Verify the it is possible access to the Create product/Basic info tab form - Admin credentials', () => {
     cy.accessToCreateProduct()
-    cy.contains('button', 'Basic Info').should('exist')
-    cy.contains('button', 'Basic Info').click({ force: true })
-    cy.contains('h6', 'Basic Info').should('exist')
+    cy.contains('button', 'Basic Info', { matchCase: false }).should('exist')
+    cy.contains('button', 'Basic Info', { matchCase: false }).click({ force: true })
+    cy.contains('h6', 'Basic Info', { matchCase: false }).should('exist')
     cy.contains('span', 'Product Name').should('exist')
     cy.contains('span', 'Product Bar Code').should('exist')
     cy.contains('span', 'Product Measurement').should('exist')
@@ -50,7 +50,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.contains('button', 'Pricing').click({ force: true })
     cy.contains('h6', 'Pricing').should('exist')
     cy.contains('span', 'Supply Price').should('exist')
-    cy.contains('span', 'Retail Price').should('exist')
+    cy.contains('span', 'Retail Price', { matchCase: false }).should('exist')
     cy.contains('span', 'Enable Retail Sales').should('exist')
   })
 
@@ -81,7 +81,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   it('Verify Product is create successfully by filling up Price Name and Product Measurement with Mililiter Unit - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with and Product Measurement with Mililiter Unit','{enter}','123','{enter}','{enter}')
-    cy.contains('option', 'Select Unit').should('exist')
+    cy.contains('option', 'Select Unit', { matchCase: false }).should('exist')
     cy.get('select').select('l')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
@@ -124,8 +124,8 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   it('Verify Product is create successfully by filling up Price Name and Selecting a Product Category - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Product Category').should('exist')
-    cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Product Category', { matchCase: false }).should('exist')
+    cy.contains('label>span', 'Product Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories').should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -142,7 +142,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.contains('span','Brand Name').parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span', 'Brand created').should('exist')
-    cy.contains('label>span', 'Product Category').parents('label').next('div').find('input').click({ force: true })
+    cy.contains('label>span', 'Product Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories').should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
     cy.expectedMessageCreateProduct('Product created successfully')
