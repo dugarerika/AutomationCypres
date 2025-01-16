@@ -123,14 +123,14 @@ Cypress.Commands.add('accessToCreateProductov', () => {
 
 Cypress.Commands.add('accessToCreateProduct', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
-    cy.contains('button', 'Add new').should('exist')
-    cy.contains('button', 'Add new').click({ force: true })
-    cy.contains('h3', 'Create product').should('exist')
+    cy.contains('Inventory', { matchCase: false }).should('exist')
+    cy.contains('Inventory', { matchCase: false }).click({ force: true })
+    cy.contains('Products', { matchCase: false }).should('exist')
+    cy.contains('Products', { matchCase: false }).click({ force: true })
+    cy.contains('h6', 'Products', { matchCase: false }).should('exist')
+    cy.contains('button', 'Add new', { matchCase: false }).should('exist')
+    cy.contains('button', 'Add new', { matchCase: false }).click({ force: true })
+    cy.contains('h3', 'Create product', { matchCase: false }).should('exist')
 })
 
 Cypress.Commands.add('accessToCreateProductbvprod', () => {
@@ -148,8 +148,8 @@ Cypress.Commands.add('accessToCreateProductbvprod', () => {
 // -- This is a child command for the create product section Old Vendor PRODUCTION and STAGING--
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 Cypress.Commands.add('filloutProductBasicInfo', (prod_name, prod_barcode, prod_measurement, prod_short_description, prod_description) => {
-    cy.contains('button', 'Basic info').should('exist')
-    cy.contains('button', 'Basic info').click({ force: true })
+    cy.contains('button', 'Basic info', { matchCase: false }).should('exist')
+    cy.contains('button', 'Basic info', { matchCase: false }).click({ force: true })
     cy.get('input[placeholder = "Enter product name"]').should('exist')
     cy.get('input[placeholder = "Enter product name"]').type(prod_name)
     cy.get('input[placeholder="Enter product barcode"]').should('exist')
@@ -158,8 +158,8 @@ Cypress.Commands.add('filloutProductBasicInfo', (prod_name, prod_barcode, prod_m
     cy.get('input[placeholder="Enter product measurement"]').type(prod_measurement)
     cy.get('input[placeholder="Enter short description for your product"]').should('exist')
     cy.get('input[placeholder="Enter short description for your product"]').type(prod_short_description)
-    cy.contains('label>span', 'Product description').parents('label').next('div').find('textarea').first().should('exist')
-    cy.contains('label>span', 'Product description').parents('label').next('div').find('textarea').first().type(prod_description)
+    cy.contains('label>span', 'Product description', { matchCase: false }).parents('label').next('div').find('textarea').first().should('exist')
+    cy.contains('label>span', 'Product description', { matchCase: false }).parents('label').next('div').find('textarea').first().type(prod_description)
     // cy.get('textarea[placeholder="Enter product description"]').should('exist')
     // cy.get('textarea[placeholder="Enter product description"]').type(prod_description)
 })
