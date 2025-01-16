@@ -36,7 +36,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.contains('button', 'Basic Info', { matchCase: false }).click({ force: true })
     cy.contains('h6', 'Basic Info', { matchCase: false }).should('exist')
     cy.contains('span', 'Product Name', { matchCase: false }).should('exist')
-    cy.contains('span', 'Product Bar Code', { matchCase: false }).should('exist')
+    cy.contains('span', 'Produce barcode', { matchCase: false }).should('exist')
     cy.contains('span', 'Product Measurement', { matchCase: false }).should('exist')
     cy.contains('span', 'Product Category', { matchCase: false }).should('exist')
     cy.contains('span', 'Product Brand', { matchCase: false }).should('exist')
@@ -72,7 +72,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Product Bar Code - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Produce barcode - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -204,21 +204,21 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Produce barcode, short description, prod description and Reorder Quantity - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
-    cy.filloutProductBasicInfo('Product filled up with Price Name product bar code short description prod description and Reorder Quantity','098765432112','{enter}','Prod short description','Product description')
+    cy.filloutProductBasicInfo('Product filled up with Price Name Produce barcode short description prod description and Reorder Quantity','098765432112','{enter}','Prod short description','Product description')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Produce barcode EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductInventoryInfo('SKU12345-AB','{enter}','{enter}','{enter}')
     cy.filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 4006381333931 and SKU12345-AB','4006381333931','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name, product bar code EAN-13 9780201379624, and SKU67890-CD  - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Produce barcode EAN-13 9780201379624, and SKU67890-CD  - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductInventoryInfo('SKU67890-CD','{enter}','{enter}','{enter}')
     cy.filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 9780201379624 and SKU67890-CD','9780201379624','{enter}','{enter}','{enter}')
@@ -285,7 +285,7 @@ it('Verify it is no possible to create a Product by filling up Price Name and al
   cy.expectedMessageCreateProduct('Product with this SKU already exists')
 })
 
-it('Verify it is not possible to create a Product by filling up Price Name and already added Product Bar Code - Admin credentials', () => {
+it('Verify it is not possible to create a Product by filling up Price Name and already added Produce barcode - Admin credentials', () => {
   cy.accessToCreateProduct()
   cy.filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this Barcode already exists')
