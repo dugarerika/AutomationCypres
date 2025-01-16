@@ -15,7 +15,7 @@ describe('Staging - Old Vendor Admin | Inventory | Create products| logged with 
     cy.clearCookies()
   })
 
-  it.only('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
+  it('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
     cy.visit('https://vendor.bookr-dev.com/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
