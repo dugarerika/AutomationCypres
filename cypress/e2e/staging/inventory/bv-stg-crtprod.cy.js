@@ -51,7 +51,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.contains('h6', 'Pricing', { matchCase: false }).should('exist')
     cy.contains('span', 'Supply Price', { matchCase: false }).should('exist')
     cy.contains('span', 'Retail Price', { matchCase: false }).should('exist')
-    cy.contains('span', 'Enable Retail Sales', { matchCase: false }).should('exist')
+    cy.contains('span', 'Enable Retail Sale', { matchCase: false }).should('exist')
   })
 
   it('Verify the it is possible access to the Create product/Inventory tab form - Admin credentials', () => {
@@ -243,7 +243,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.accessToCreateProduct()
     cy.filloutProductPricingInfo('12345','10')
     cy.wait(200)
-    cy.contains('span','Enable Retail Sales').click({ force: true })
+    cy.contains('span','Enable Retail Sale').click({ force: true })
     cy.wait(200)
     cy.filloutProductBasicInfo('Product filled up with Price name Supply Retail Price tax & Enable Retails sales toggle switched ON','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -269,7 +269,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   //   cy.wait(9000)
   //   cy.filloutProductPricingInfo('12345','10')
   //   cy.wait(2000)
-  //   cy.contains('span','Enable Retail Sales').click({ force: true })
+  //   cy.contains('span','Enable Retail Sale').click({ force: true })
   //   cy.wait(2000)
   //   cy.filloutProductBasicInfo('Product filled up with Price name Supply Retail Price tax Enable Retails sales & Track Stock Quantity toggle switched ON','{enter}','{enter}','{enter}','{enter}')
   //   cy.expectedMessageCreateProduct('Product created successfully')

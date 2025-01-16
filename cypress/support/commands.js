@@ -183,9 +183,9 @@ Cypress.Commands.add('filloutProductBasicInfoov', (prod_name, prod_barcode, prod
 })
 
 Cypress.Commands.add('expectedMessageCreateProduct', (product_message) => {
-    cy.contains('button', 'Save').should('exist')
-    cy.contains('button', 'Save').click({ force: true })
-    cy.contains('span', product_message).should('exist')
+    cy.contains('button', 'Save', { matchCase: false }).should('exist')
+    cy.contains('button', 'Save', { matchCase: false }).click({ force: true })
+    cy.contains('span', product_message, { matchCase: false }).should('exist')
 })
 
 Cypress.Commands.add('filloutProductPricingInfo', (prod_supply_price, prod_retail_price) =>{
