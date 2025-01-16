@@ -73,7 +73,7 @@ describe('Beta Vendor Admin | Services | Create Service| logged with Admin crede
         expectedMessageCreateService('variants should not be empty')
     })
 
-    it.only('Verify that service Name is required - Admin Credentila', () => {
+    it('Verify that service Name is required - Admin Credentila', () => {
         let nameid
         let priceid
         let durid

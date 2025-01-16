@@ -72,7 +72,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Produce barcode - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Produce barcode - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
