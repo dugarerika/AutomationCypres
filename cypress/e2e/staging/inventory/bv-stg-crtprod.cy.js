@@ -72,7 +72,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Produce barcode - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Produce barcode - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -249,7 +249,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle Track Stock Quantity ON- Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle Track Stock Quantity ON- Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductPricingInfo('12345','10')
     cy.filloutProductInventoryInfo('SKU98765-GI','{enter}','{enter}','{enter}')
@@ -260,7 +260,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  // it.only('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, Enable Retails sales and Enable Retails sales toogle Track Stock Quantity ON- Admin credentials', () => {
+  // it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, Enable Retails sales and Enable Retails sales toogle Track Stock Quantity ON- Admin credentials', () => {
   //   cy.accessToCreateProduct()
   //   cy.filloutProductInventoryInfo('SKU77777-GI','{enter}','3','80')
   //   cy.wait(200)
@@ -309,7 +309,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it('Verify Product Name is the only required field by trying to create a product filling up Product Measurement with unit only - Admin credentials', () => {
+  it.only('Verify Product Name is the only required field by trying to create a product filling up Product Measurement with unit only - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','{enter}')
     cy.contains('option', 'Select Unit').should('exist')
@@ -341,7 +341,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
+  it.only('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.contains('button', 'Basic Info').should('exist')
     cy.contains('button', 'Basic Info').click({ force: true })
@@ -371,7 +371,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.expectedMessageCreateProduct('Invalid Barcode, Barcodes must be 8, 12, or 13 digits long')
   })
 
-  it('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
+  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Supplier','{enter}','{enter}','{enter}','{enter}')
     cy.filloutProductInventoryInfo('{enter}','{enter}','{enter}','{enter}')
