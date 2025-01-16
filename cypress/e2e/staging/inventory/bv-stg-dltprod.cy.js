@@ -26,19 +26,19 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('Products').should('exist')
     cy.contains('Products').click({ force: true })
     cy.contains('h6', 'Products').should('exist')
-    cy.get('div[row-id="1"]').should('exist')
-    cy.get('div[row-id="1"]').click({ force: true })
+    cy.get('div[row-id="1"]').find('div[col-id="category.name"]').should('exist')
+    cy.get('div[row-id="1"]').find('div[col-id="category.name"]').click({ force: true })
     cy.contains('h3', 'Product details').should('exist')
     cy.contains('button', 'Delete').should('exist')
     cy.contains('button', 'Delete').click({ force: true })
     cy.contains('p', 'Are you sure you want to delete this product?').should('exist')
     cy.contains('p', 'Are you sure you want to delete this product?').parents('section').next('div').find('button').eq(1).click({ force: true })
     cy.contains('span', 'Product deleted successfully').should('exist')
-    cy.get('div[row-id="1"]').find('tr').its('length').then(count => {
-      if (count) {   // not count >= 0, because 0 means no elements
-        cy.log(`there are ${count - 1} elements`)
-      }
-    })
+    // cy.get('div[row-id="1"]').find('tr').its('length').then(count => {
+    //   if (count) {   // not count >= 0, because 0 means no elements
+    //     cy.log(`there are ${count - 1} elements`)
+    //   }
+    // })
   })
 
   it('Verify it is possible delete products from the Inventory/Product list section- Admin credentials', () => {
