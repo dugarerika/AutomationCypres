@@ -30,7 +30,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
   })
 
 //Navigation within the Creation Tabs
-  it('Verify the it is possible access to the Create product/Basic info tab form - Admin credentials', () => {
+  it.only('Verify the it is possible access to the Create product/Basic info tab form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.contains('button', 'Basic Info', { matchCase: false }).should('exist')
     cy.contains('button', 'Basic Info', { matchCase: false }).click({ force: true })
