@@ -19,6 +19,7 @@
     "triggerAllTests-OldVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltprod.cy.js",
+    "triggerAllTests-BetaVendor-Staging-Inventory-EditProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-edtprod.cy.js",
     
     "//": "STAGING - CALENDAR",
     "triggerAllTests-OldVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",

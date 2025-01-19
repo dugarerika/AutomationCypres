@@ -18,11 +18,11 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
 
   it('Verify it is possible access to the Inventory/Product section- Admin credentials', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Products').should('exist')
-    cy.contains('Products').click({ force: true })
-    cy.contains('h6', 'Products').should('exist')
+    cy.contains('Inventory', { matchCase: false }).should('exist')
+    cy.contains('Inventory', { matchCase: false }).click({ force: true })
+    cy.contains('Products', { matchCase: false }).should('exist')
+    cy.contains('Products', { matchCase: false }).click({ force: true })
+    cy.contains('h6', 'Products', { matchCase: false }).should('exist')
   })
 
   it('Verify the it is possible access to the Create product form - Admin credentials', () => {
@@ -72,7 +72,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Produce barcode - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Produce barcode - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -249,12 +249,12 @@ describe('Staging - Beta Vendor Admin | Inventory | Create products| logged with
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle Track Stock Quantity ON- Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name, Supply Price, Retail Price, and Enable Retails sales toogle Track Stock Quantity ON- Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductPricingInfo('12345','10')
     cy.filloutProductInventoryInfo('SKU98765-GI','{enter}','{enter}','{enter}')
     cy.wait(100)
-    cy.contains('span','Track Stock Quantity').click({ force: true })
+    cy.contains('span','Track Stock Quantity', { matchCase: false }).click({ force: true })
     cy.wait(100)
     cy.filloutProductBasicInfo('Product filled up with Price name Supply Retail Price tax & Track Stock Quantity toggle switched ON','{enter}','{enter}','{enter}','{enter}')
     cy.expectedMessageCreateProduct('Product created successfully')
@@ -309,10 +309,10 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it.only('Verify Product Name is the only required field by trying to create a product filling up Product Measurement with unit only - Admin credentials', () => {
+  it('Verify Product Name is the only required field by trying to create a product filling up Product Measurement with unit only - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('{enter}','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('option', 'Select Unit').should('exist')
+    cy.contains('option', 'Select Unit', { matchCase: false }).should('exist')
     cy.get('select').select('l')
     cy.expectedMessageCreateProduct('Product name is required')
   })
@@ -341,10 +341,10 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.expectedMessageCreateProduct('Product name is required')
   })
 
-  it.only('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
+  it('Verify Product Measuarement cannot be submited without Units - Admin credentials', () => {
     cy.accessToCreateProduct()
-    cy.contains('button', 'Basic Info').should('exist')
-    cy.contains('button', 'Basic Info').click({ force: true })
+    cy.contains('button', 'Basic Info', { matchCase: false }).should('exist')
+    cy.contains('button', 'Basic Info', { matchCase: false }).click({ force: true })
     cy.get('input[placeholder = "Enter product name"]').should('exist')
     cy.get('input[placeholder = "Enter product name"]').type('Product Measuarement cannot be submited without Units')
     cy.get('input[placeholder="Enter product measurement"]').should('exist')
@@ -371,7 +371,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.expectedMessageCreateProduct('Invalid Barcode, Barcodes must be 8, 12, or 13 digits long')
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Selecting a Supplier created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProduct()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Supplier','{enter}','{enter}','{enter}','{enter}')
     cy.filloutProductInventoryInfo('{enter}','{enter}','{enter}','{enter}')
@@ -380,10 +380,10 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.contains('h3', 'Suppliers').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('label>span','Supplier Name').parent().next('div').find('input').type('Automated Supplier', { force: true, delay: 50 })
-    cy.contains('span','Supplier Description').parent().next('div').find('textarea').eq(0).type('Automated Supplier', { force: true, delay: 50 })
+    cy.contains('label>span','Supplier Name', { matchCase: false }).parent().next('div').find('input').type('Automated Supplier', { force: true, delay: 50 })
+    cy.contains('span','Supplier Description', { matchCase: false }).parent().next('div').find('textarea').eq(0).type('Automated Supplier', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span', 'Supplier created successfully').should('exist')
+    cy.contains('span', 'Supplier created successfully', { matchCase: false }).should('exist')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 })
