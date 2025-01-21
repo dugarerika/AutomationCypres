@@ -131,7 +131,7 @@ describe('Staging - Old Vendor Admin | Inventory | Create products| logged with 
   it('Verify Product is create successfully by filling up Price Name and Selecting a Brand created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductov()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'BFrand').should('exist')
+    cy.contains('label>span', 'Brand').should('exist')
     cy.contains('label>span', 'Brand').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Brands').should('exist')
     cy.wait(2000)
