@@ -131,7 +131,7 @@ describe('Staging - Old Vendor Admin | Inventory | Create products| logged with 
   it('Verify Product is create successfully by filling up Price Name and Selecting a Brand created from the Create product form - Admin credentials', () => {
     cy.accessToCreateProductov()
     cy.filloutProductBasicInfo('Product filled up with Price Name and Brand','{enter}','{enter}','{enter}','{enter}')
-    cy.contains('label>span', 'Brand').should('exist')
+    cy.contains('label>span', 'BFrand').should('exist')
     cy.contains('label>span', 'Brand').parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Brands').should('exist')
     cy.wait(2000)
@@ -349,10 +349,10 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.contains('h3', 'Suppliers').should('exist')
     cy.wait(2000)
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span','Supplier Name', { matchCase: false }).parent().next('div').find('input').type('Automated Supplier', { force: true, delay: 50 })
-    cy.contains('span','Supplier Description').parent().next('div').find('textarea').eq(0).type('Automated Supplier', { force: true, delay: 50 })
+    cy.contains('label>span','Supplier Name', { matchCase: false }).parent().next('div').find('input').type('Automated Supplier', { force: true, delay: 50 })
+    cy.contains('span','Supplier Description', { matchCase: false }).parent().next('div').find('textarea').eq(0).type('Automated Supplier', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span', 'Supplier created successfully').should('exist')
+    cy.contains('span', 'Supplier created successfully', { matchCase: false }).should('exist')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
 
