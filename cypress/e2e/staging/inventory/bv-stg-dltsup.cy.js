@@ -124,7 +124,7 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
 
     it.only('Verify it is possible delete suplliers from the Inventory/Supplier list section- Admin credentials', () => {
        //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-        ccy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Supplier').should('exist')
