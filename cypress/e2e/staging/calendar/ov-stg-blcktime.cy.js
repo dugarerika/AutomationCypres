@@ -21,7 +21,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
     })
 
     beforeEach(() => {
-        cy.loginovprd('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+        cy.loginov('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
     })
 
     afterEach(() => {
@@ -117,7 +117,7 @@ describe('Staging - Old Vendor Staff | Calendar| Create Blocktime on the Calenda
     })
 
     beforeEach(() => {
-        cy.loginovprd('Staff Section', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
+        cy.loginov('Staff Section', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
     })
 
     afterEach(() => {
@@ -213,7 +213,7 @@ describe('Staging - Old Vendor Receptionist | Calendar| Create Blocktime on the 
     })
 
     beforeEach(() => {
-        cy.loginovprd('Receptionist Section', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
+        cy.loginov('Receptionist Section', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
     })
 
     afterEach(() => {
@@ -309,7 +309,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
     })
 
     beforeEach(() => {
-        cy.loginovprd('ReadOnly Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
+        cy.loginov('ReadOnly Section', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
     })
 
     afterEach(() => {
