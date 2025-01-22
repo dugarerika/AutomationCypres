@@ -38,6 +38,7 @@
 
     "//": "PRODUCTION - CALENDAR",
     "triggerAllTests-OldVendor-Production-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js",
+    "triggerAllTests-BetaVendor-Production-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Production-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-blcktime.cy.js",
     "triggerAllTests-OldVendor-Production-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-blcktime.cy.js",
 
