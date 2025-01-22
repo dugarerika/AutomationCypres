@@ -46,6 +46,7 @@
     "triggerAllTests-OldVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/production/inventory/bv-prod-crtprod.cy.js",
     "triggerAllTests-OldVendor-Production-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/production/inventory/ov-prod-dltprod.cy.js",
+    "triggerAllTests-BetaVendor-Production-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/production/inventory/bv-prod-dltprod.cy.js",
 
     "npm run triggerAllTests-BetaVendor-Staging-Employee-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",
     "triggerAllTests-BetaVendor-Staging-Employee-DeleteEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-dltemply.cy.js",

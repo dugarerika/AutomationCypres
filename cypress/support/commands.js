@@ -48,9 +48,9 @@ Cypress.Commands.add('loginprod', (name, username, password) => {
 // -- This is a parent command to login into the Old Vendor STAGING--
 Cypress.Commands.add('loginov', (name, username, password) => {
     cy.session(name,() => {
-        cy.visit(Cypress.env("URL_OldVendor_Staging"))
-        cy.url().should('include', Cypress.env("URL_OldVendor_Staging") + 'auth')
-        cy.wait(900)
+        cy.visit(Cypress.env("URL_OldVendor_Staging")+ 'auth?nativeLogout=true')
+        // cy.url().should('include', Cypress.env("URL_OldVendor_Staging") + 'auth')
+        cy.wait(1500)
         cy.get('#username').should('be.visible');
         cy.get('#password').should('be.visible');
         cy.xpath('//button[text()="Sign in"]').should('be.visible');
@@ -70,7 +70,7 @@ Cypress.Commands.add('loginovprd', (name, username, password) => {
     cy.session(name,() => {
         //cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
         cy.visit(Cypress.env("URL_OldVendor_Production") + 'auth?nativeLogout=true')
-        cy.wait(900)
+        cy.wait(1000)
         // cy.get('#username').should('be.visible');
         // cy.get('#password').should('be.visible');
         cy.xpath('//button[text()="Sign in"]').should('be.visible');
