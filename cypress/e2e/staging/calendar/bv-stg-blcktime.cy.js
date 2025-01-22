@@ -10,8 +10,8 @@ const newBlockTime = () => {
     cy.wait(1000)
     cy.contains('li','New Block Time').should('be.visible')
     cy.contains('li','New Block Time').click({force: true})
-    cy.contains('div>h3','Create Block Time').should('be.visible')
-    cy.contains('div>h3','Create Block Time').click({force: true})
+    cy.contains('div>h3','Create Blocked Time', { matchCase: false }).should('be.visible')
+    cy.contains('div>h3','Create Blocked Time', { matchCase: false }).click({force: true})
 }
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
@@ -103,7 +103,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 
     it('Verify it is possible to delete a blocktime from the Calendar - Admin credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-        cy.contains('span', 'Block Time for').next('span','Helen').click({force: true})
+        cy.contains('span', 'Block Time for', { matchCase: false }).next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
         cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
     })
