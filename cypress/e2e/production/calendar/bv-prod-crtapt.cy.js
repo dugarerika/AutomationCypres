@@ -37,7 +37,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
 
 beforeEach(() => {
-    cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+  cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
 })
 
 afterEach(() => {
