@@ -40,7 +40,7 @@ const searchApt = (staff, start_time) => {
 describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    cy.loginov('Staff Session', 'zumba11','1234567890')
+    cy.loginov('Staff Session', 'erikat123','1234567890')
   })
 
   after(() => {
