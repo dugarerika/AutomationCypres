@@ -10,8 +10,8 @@ const newBlockTime = () => {
     cy.wait(1000)
     cy.contains('li','New Block Time').should('be.visible')
     cy.contains('li','New Block Time').click({force: true})
-    cy.contains('div>h3','New Blocked Time').should('be.visible')
-    cy.contains('div>h3','New Blocked Time').click({force: true})
+    cy.contains('div>h3','Create Blocked Time').should('be.visible')
+    cy.contains('div>h3','Create Blocked Time').click({force: true})
   }
 describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
