@@ -45,7 +45,7 @@ afterEach(() => {
 })
 
 it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
-  searchTimeSlot('Susan one','08:00') 
+  searchTimeSlot('Susan one','03:00') 
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
   cy.contains('Add New Item').should('exist')  
@@ -168,7 +168,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Receptionist credentials', () => {
-    searchTimeSlot('Zstaff ','08:00')
+    searchTimeSlot('Zstaff ','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -300,7 +300,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','08:00')
+    searchTimeSlot('Zumba Zumba','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -406,14 +406,14 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
   })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
-    searchTimeSlot('Naomi Naomi','08:00')
+    searchTimeSlot('Naomi Naomi','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
     cy.contains('Create Appointment').should('not.be.visible')
   })
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
-    searchTimeSlot('Naomi Naomi','08:00')  
+    searchTimeSlot('Naomi Naomi','03:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  

@@ -52,7 +52,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','08:00')  
+    searchTimeSlot('Zumba Zumba','03:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -72,7 +72,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   }) 
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','08:00') 
+    searchTimeSlot('Zumba Zumba','03:00') 
     cy.contains('Zumba Zumba').should('exist')
   })
   
@@ -216,7 +216,7 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clickin
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
-    searchTimeSlot('Susan one','08:00')  
+    searchTimeSlot('Susan one','03:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -313,7 +313,7 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Receptionist credentials', () => {
     cy.visit('https://vendor.bookr-dev.com//calendar')
     let staff1 = "Zstaff "
-    let start_time = "08:00"
+    let start_time = "03:00"
     let color
     cy.get('.tool-datepicker-next').should('be.visible')
     cy.get('.tool-datepicker-next').click()
@@ -330,7 +330,7 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointment by Clicking
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Receptionist credentials', () => {
-    searchTimeSlot('Marly william ','08:00') 
+    searchTimeSlot('Marly william ','03:00') 
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -415,7 +415,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking
   })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
-    searchTimeSlot('Zstaff','08:00') 
+    searchTimeSlot('Zstaff','03:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/validate/slots').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -426,7 +426,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create appointments by Clicking
   })
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
-    searchTimeSlot('Zstaff ','08:00')  
+    searchTimeSlot('Zstaff ','03:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
