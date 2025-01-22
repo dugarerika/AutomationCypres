@@ -52,7 +52,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
-    searchTimeSlot('ErkaT ','03:00')  
+    searchTimeSlot('ErikaT ','03:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -72,13 +72,13 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   }) 
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
-    searchTimeSlot('ErkaT ','03:00') 
-    cy.contains('ErkaT ').should('exist')
+    searchTimeSlot('ErikaT ','03:00') 
+    cy.contains('ErikaT ').should('exist')
   })
   
   it('Verify it is possible to scrool down on the calendar an create a new appointment- Staff credentials', () => {
     cy.visit('https://vendor.bookr-dev.com//calendar')
-    let staff = "ErkaT "
+    let staff = "ErikaT "
     let start_time = "18:00"
     let color
     // cy.get('.tool-datepicker-next').should('be.visible')
@@ -103,7 +103,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 
   it('Verify it is possible to create a new appointment - Staff credentials', () => {
-    searchTimeSlot('ErkaT ','06:00') 
+    searchTimeSlot('ErikaT ','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -115,7 +115,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
 
 
   it('Verify it is possible to create an appointment over and already taken time slot - Staff credentials', () => {
-    searchTimeSlot('ErkaT ','06:00')  
+    searchTimeSlot('ErikaT ','06:00')  
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.contains('Warning: ').should('be.visible')
@@ -127,7 +127,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 
   it('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('ErkaT ','05:00')  
+    searchTimeSlot('ErikaT ','05:00')  
     cy.wait(70)
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -141,11 +141,11 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     })
     cy.contains('New Appointment').should('not.be.visible')
     cy.wait(700)
-    // searchApt('ErkaT ','05:00')
+    // searchApt('ErikaT ','05:00')
   })
 
   it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('ErkaT ','04:00')  
+    searchTimeSlot('ErikaT ','04:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('38717494{enter}{enter}',{force: true, delay: 1000})
@@ -157,12 +157,12 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     })
     cy.contains('New Appointment').should('not.be.visible')
     cy.wait(700)
-    searchApt('ErkaT ','04:00') 
+    searchApt('ErikaT ','04:00') 
     cy.contains('div>p','+973').should('exist')
   })
 
   it.skip('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('ErkaT ','02:00')  
+    searchTimeSlot('ErikaT ','02:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('97338717494{enter}{enter}',{force: true, delay: 1000})
@@ -173,13 +173,13 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
-    searchApt('ErkaT ','02:00') 
+    searchApt('ErikaT ','02:00') 
     cy.wait(700)
     cy.contains('div>p','+973').should('exist')
   })
 
   it.skip('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('ErkaT ','03:00')  
+    searchTimeSlot('ErikaT ','03:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('+97338717494{enter}{enter}',{force: true, delay: 1000})
@@ -190,7 +190,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
-    searchApt('ErkaT ','03:00') 
+    searchApt('ErikaT ','03:00') 
     cy.wait(700)
     cy.contains('div>p','+973').should('exist')
   })
@@ -211,8 +211,8 @@ describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clickin
   })
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Admin credentials', () => {
-    searchTimeSlot('ErkaT ','07:00')  
-    cy.contains('ErkaT ').should('exist')
+    searchTimeSlot('ErikaT ','07:00')  
+    cy.contains('ErikaT ').should('exist')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
