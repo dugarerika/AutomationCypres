@@ -324,7 +324,6 @@ Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
     cy.contains('New Appointment').should('exist')
 })
 
-
 Cypress.Commands.add('searchBlockTime', (staff,start_time) => {
     cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     let color
@@ -338,13 +337,20 @@ Cypress.Commands.add('searchBlockTime', (staff,start_time) => {
     cy.contains('Appointment Details').should('be.visible')
 })
 
+
+Cypress.Commands.add('expectedMessageCompleteSale', (message) => {
+    cy.contains('button','Complete Sale').should('be.visible')
+    cy.contains('button','Complete Sale').click({force: true})
+    cy.contains('span', message).should('exist')
+})
+
 // --------------------------------- Promotions/Offers section
 
-const expectedMessageCreateOffer = (offer_message) => {
-    cy.contains('button', 'Save').should('exist')
-    cy.contains('button', 'Save').click({ force: true })
-    cy.contains('span', offer_message_message).should('exist')
-}
+// const expectedMessageCreateOffer = (offer_message) => {
+//     cy.contains('button', 'Save').should('exist')
+//     cy.contains('button', 'Save').click({ force: true })
+//     cy.contains('span', offer_message_message).should('exist')
+// }
 
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
