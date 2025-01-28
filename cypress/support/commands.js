@@ -344,6 +344,37 @@ Cypress.Commands.add('expectedMessageCompleteSale', (message) => {
     cy.contains('span', message).should('exist')
 })
 
+Cypress.Commands.add('newCheckout', () => {
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+    cy.contains('button','Add New').should('be.visible')
+    cy.contains('button','Add New').click({force: true})
+    cy.wait(1000)
+    cy.contains('li','New Checkout').should('be.visible')
+    cy.contains('li','New Checkout').click({force: true})
+})
+
+Cypress.Commands.add('addItemService', (name) => {
+    cy.contains('div','Search customer..').should('be.visible')
+    cy.contains('button','Walk In').should('be.visible')
+    cy.contains('button','Walk In').click({force: true})
+    cy.contains('button','Add New').should('be.visible')
+    cy.contains('button','Add New').click({force: true})
+    cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
+    cy.contains('label>span', 'search').parents('label').next('div').find('input').type(name)
+    cy.contains('div', name).parents('li').find('button').click({force: true})
+    cy.get('div[role="presentation"]').click({force: true}).type('{esc}')
+})
+
+Cypress.Commands.add('fillButton', (method) => {
+    let balance
+
+    cy.contains('label', method).parent('div').parent('div').next('div').find('button').click({force: true})
+    cy.contains('h6','Balance').next('span').then(($span) => {
+        balance = $span.text().substring(4)
+        cy.contains('label', method).parent('div').find('input').should('have.value',balance)
+    })
+})
+
 // --------------------------------- Promotions/Offers section
 
 // const expectedMessageCreateOffer = (offer_message) => {
