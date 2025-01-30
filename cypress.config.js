@@ -62,8 +62,8 @@ module.exports = defineConfig({
       URL_Deeplink_Staging_artnailcorner: "https://customer.bookr-dev.com/vendors/athary-world-nail-",
       Vendor0_Admin_Username_Staging: "billingbh",
       Vendor0_Admin_Password_Staging: "1234567890",
-      Vendor1_Admin_Username_Staging: "beautiquespa",
-      Vendor1_Admin_Password_Staging: "1234567890",
+      // Vendor1_Admin_Username_Staging: "beautiquespa",
+      // Vendor1_Admin_Password_Staging: "1234567890",
       //STAGING - Beta Vendor
       Vendor_Admin_Username_Staging: "artnailcorner",
       Vendor_Admin_Password_Staging: "1234567890",
@@ -76,12 +76,12 @@ module.exports = defineConfig({
       Vendor_Receptionist_Username_Staging: "recep6",
       Vendor_Receptionist_Password_Staging: "1234567890",   
        //STAGING - Beta Vendor 
-       Vendor1_Admin_Username_Staging: "cococutsalon",
-       Vendor1_Admin_Password_Staging: "1234567890",
-       Vendor1_Staff_Username_Staging: "zumbacococut",
-       Vendor1_Staff_Password_Staging: "1234567890", 
-       Vendor1_ReadOnly_Username_Staging: "readonlyerika2",
-       Vendor1_ReadOnly_Password_Staging: "1234567890",  
+      Vendor1_Admin_Username_Staging: "cococutsalon",
+      Vendor1_Admin_Password_Staging: "1234567890",
+      Vendor1_Staff_Username_Staging: "zumbacococut",
+      Vendor1_Staff_Password_Staging: "1234567890", 
+      Vendor1_ReadOnly_Username_Staging: "readonlyerika2",
+      Vendor1_ReadOnly_Password_Staging: "1234567890",  
       
       /// PRODUCTION  
       Vendor_Admin_Username_Production: "qatartestsalon3@mailinator.com",

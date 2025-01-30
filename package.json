@@ -30,6 +30,7 @@
 
     "//": "STAGING - EMPLOYEES",
     "triggerAllTests-OldVendor-Staging-Calendar-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",
+    "triggerAllTests-BetaVendor-Staging-Calendar-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",
 
     "//": "PRODUCTION",
     "triggerAllTests-Production": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js cypress/e2e/production/calendar/bv-prod-blcktime.cy.js" ,

@@ -36,8 +36,6 @@ it('Verify it is possible access to the Employee section- Admin credentials', ()
 })
 
 // Add Employee Successfully
-
-
 it('Verify it is possible to add an Employee with role Readonly by filling up All the required info, selecting all services and adding ', () => {
     employeeSection()
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
@@ -49,7 +47,6 @@ it('Verify it is possible to add an Employee with role Readonly by filling up Al
     cy.filloutCommissionsInfo()
     cy.expectedMessageCreateEmployee('Employee created')
 })
-
 
 it('Verify it is possible to add an Employee with role receptionist by filling up All the required info, selecting all services and adding ', () => {
     employeeSection()
@@ -74,7 +71,7 @@ it('Verify it is possible to add an Employee by filling up All the required info
     cy.expectedMessageCreateEmployee('Employee created')
 })
 
-it.skip('Verify it is possible to Add an Employee by filling up only the First Name, 4 character Username, 5 character Password and Permission Level |username longer or equal to 3 characteres is required|', () => {
+it('Verify it is possible to Add an Employee by filling up only the First Name, 4 character Username, 5 character Password and Permission Level |username longer or equal to 3 characteres is required|', () => {
     employeeSection()
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
