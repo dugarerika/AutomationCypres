@@ -387,7 +387,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by C
   })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {git
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
