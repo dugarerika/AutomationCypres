@@ -53,7 +53,7 @@ it('Verify it is possible to create a new appointment for 1 service and 1 offer 
   cy.contains('Add Offer').should('exist')  
   cy.contains('Add Offer').click()
   cy.contains('div','Offer').should('exist')  
-  cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
+  cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer 255{enter}')
   cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{enter}')
   cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -176,7 +176,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.contains('Add Offer').should('exist')  
     cy.contains('Add Offer').click()
     cy.contains('div','Offer').should('exist')  
-    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
+    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer 255{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -279,7 +279,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -308,7 +308,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.contains('Add Offer').should('exist')  
     cy.contains('Add Offer').click()
     cy.contains('div','Offer').should('exist')  
-    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
+    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer 255{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{downarrow}{downarrow}{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -387,7 +387,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -421,7 +421,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     cy.contains('Add Offer').should('exist')  
     cy.contains('Add Offer').click()
     cy.contains('div','Offer').should('exist')  
-    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
+    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer 255{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('nao{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
