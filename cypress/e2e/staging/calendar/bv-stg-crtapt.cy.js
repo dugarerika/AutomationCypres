@@ -163,7 +163,6 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   after(() => {
-    //https://vendor.beta.bookr-dev.com/auth
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   })
 
@@ -290,7 +289,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by C
   })
 
   afterEach(() => {
-    cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
+    // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })    
 
@@ -387,7 +386,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by C
   })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {git
+describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -410,6 +409,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create appointments by Cl
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
     cy.contains('Create Appointment').click({force: true})
+    cy.contains('span','User does not have enough permissions to use this service').should('be.visible')  
   })
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
@@ -426,5 +426,6 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create appointments by Cl
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
     cy.contains('Create Appointment').click({force: true})
+    cy.contains('span','User does not have enough permissions to use this service').should('be.visible') 
     }) 
 })
