@@ -155,7 +155,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
   
   beforeEach(() => {
-    cy.login('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
+    cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
   })
 
   afterEach(() => {
@@ -286,7 +286,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
   
   beforeEach(() => {
-    cy.login('Staff Session', Cypress.env("Vendor_Staff_Username_Production"), Cypress.env("Vendor_Staff_Password_Production"))
+    cy.loginprod('Staff Session', Cypress.env("Vendor_Staff_Username_Production"), Cypress.env("Vendor_Staff_Password_Production"))
   })
 
   afterEach(() => {
@@ -394,7 +394,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create appointments by Clic
   })
 
   beforeEach(() => {
-    cy.login('ReadOnly Session', Cypress.env("Vendor_ReadOnly_Username_Production"), Cypress.env("Vendor_ReadOnly_Password_Production"))
+    cy.loginprod('ReadOnly Session', Cypress.env("Vendor_ReadOnly_Username_Production"), Cypress.env("Vendor_ReadOnly_Password_Production"))
   })
 
   afterEach(() => {
