@@ -55,7 +55,7 @@ module.exports = defineConfig({
     env: {
       
       //STAGING
-      URL_OldVendor_Staging: "https://vendor.bookr-dev.com/auth?nativeLogout=true",
+      URL_OldVendor_Staging: "https://vendor.bookr-dev.com/",
       URL_BetaVendor_Staging: "https://vendor.beta.bookr-dev.com/",
       URL_OldVendor_Production: "https://vendor.bookr.co/",
       URL_BetaVendor_Production: "https://vendor-beta.bookr.co/",

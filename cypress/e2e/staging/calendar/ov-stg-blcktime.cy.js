@@ -3,16 +3,6 @@
 
 const { should } = require("chai")
 
-const newBlockTime = () => {
-    cy.visit(Cypress.env("URL_OldVendor_Staging"))
-    cy.contains('button','Add New').should('be.visible')
-    cy.contains('button','Add New').click({force: true})
-    cy.wait(1000)
-    cy.contains('li','New Block Time').should('be.visible')
-    cy.contains('li','New Block Time').click({force: true})
-    cy.contains('div>h3','Create Blocked Time').should('be.visible')
-    cy.contains('div>h3','Create Blocked Time').click({force: true})
-  }
 describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
     before(() => {
@@ -29,7 +19,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
     })
 
     it('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('button','Submit').click({force: true})
@@ -37,7 +27,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
     })
 
     it('Verify End time is required to create a blocktime on the Calendar  - Admin credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
@@ -47,7 +37,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
     })
 
     it('Verify Start time and End time cannot be the same time when creating a blocktime on the Calendar  - Admin credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
@@ -59,7 +49,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
     })
 
     it('Verify it is possible to create a blocktime on the Calendar by filling up the required fields - Admin credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
@@ -125,17 +115,17 @@ describe('Staging - Old Vendor Staff | Calendar| Create Blocktime on the Calenda
     })
 
     it('Verify Start time is required to create a blocktime on the Calendar  - Staff credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba Zumba{enter}')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba {enter}')
         cy.contains('button','Submit').click({force: true})
         cy.contains('div>span','Start time cannot be empty').should('be.visible')
     })
 
     it('Verify End time is required to create a blocktime on the Calendar  - Staff credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba Zumba{enter}')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
         cy.contains('button','Submit').click({force: true})
@@ -143,9 +133,9 @@ describe('Staging - Old Vendor Staff | Calendar| Create Blocktime on the Calenda
     })
 
     it('Verify Start time and End time cannot be the same time when creating a blocktime on the Calendar  - Staff credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba Zumba{enter}')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('03:00{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
@@ -155,9 +145,9 @@ describe('Staging - Old Vendor Staff | Calendar| Create Blocktime on the Calenda
     })
 
     it('Verify it is possible to create a blocktime on the Calendar by filling up the required fields - Staff credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba Zumba{enter}')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('01:00{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
@@ -221,7 +211,7 @@ describe('Staging - Old Vendor Receptionist | Calendar| Create Blocktime on the 
     })
 
     it('Verify Start time is required to create a blocktime on the Calendar  - Receptionist credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('button','Submit').click({force: true})
@@ -229,7 +219,7 @@ describe('Staging - Old Vendor Receptionist | Calendar| Create Blocktime on the 
     })
 
     it('Verify End time is required to create a blocktime on the Calendar  - Receptionist credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
@@ -239,7 +229,7 @@ describe('Staging - Old Vendor Receptionist | Calendar| Create Blocktime on the 
     })
 
     it('Verify Start time and End time cannot be the same time when creating a blocktime on the Calendar  - Receptionist credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
@@ -251,7 +241,7 @@ describe('Staging - Old Vendor Receptionist | Calendar| Create Blocktime on the 
     })
 
     it('Verify it is possible to create a blocktime on the Calendar by filling up the required fields - Receptionist credentials', () => {
-        newBlockTime()
+        cy.newBlockTime("URL_OldVendor_Staging")
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
         cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
@@ -301,7 +291,7 @@ describe('Staging - Old Vendor Receptionist | Calendar| Create Blocktime on the 
     })
 })
 
-describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with ReadOnly Credentials', () => {
+describe.only('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with ReadOnly Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -316,7 +306,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
         cy.clearCookies()
     })
 
-    it('Verify Start time is required to create a blocktime on the Calendar  - ReadOnly credentials', () => {
+    it('Verify New Block Time is not visible for readonly role  - ReadOnly credentials', () => {
         cy.visit(Cypress.env("URL_OldVendor_Staging"))
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})

@@ -290,9 +290,8 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
 
   afterEach(() => {
-    cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
-    cy.clearCookies()
-  })    
+    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth?nativeLogout=true')
+  })
 
   after(() => {
     //https://vendor.beta.bookr-dev.com/auth

@@ -21,12 +21,14 @@
     "triggerAllTests-BetaVendor-Staging-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-EditProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-edtprod.cy.js",
     "triggerAllTests-BetaVendor-Staging-Inventory-DeleteSupplier": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltsup.cy.js",
+    "triggerAllTests-BetaVendor-Staging-Inventory-DeleteCategory": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltscat.cy.js",
     
     "//": "STAGING - CALENDAR",
-    "triggerAllTests-OldVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
-    "triggerAllTests-BetaVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js",
-    "triggerAllTests-OldVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js",
-    "triggerAllTests-BetaVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js",
+    "OldVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
+    "BetaVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js",
+    "OldVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js",
+    "BetaVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js",
+    "BetaVendor-Staging-Calendar-New Checkout": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-newchck.cy.js",
 
     "//": "STAGING - EMPLOYEES",
     "triggerAllTests-OldVendor-Staging-Calendar-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",

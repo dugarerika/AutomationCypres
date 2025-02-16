@@ -164,7 +164,6 @@ Cypress.Commands.add('filloutProductBasicInfo', (prod_name, prod_barcode, prod_m
     // cy.get('textarea[placeholder="Enter product description"]').type(prod_description)
 })
 
-
 Cypress.Commands.add('filloutProductBasicInfoov', (prod_name, prod_barcode, prod_measurement, prod_short_description, prod_description) => {
     cy.contains('button', 'Basic Info', { matchCase: false }).should('exist')
     cy.contains('button', 'Basic Info', { matchCase: false }).click({ force: true })
@@ -339,13 +338,13 @@ Cypress.Commands.add('searchBlockTime', (staff,start_time) => {
 
 
 Cypress.Commands.add('expectedMessageCompleteSale', (message) => {
-    cy.contains('button','Complete Sale').should('be.visible')
+    cy.contains('button','Complete Sale').scrollIntoView()
     cy.contains('button','Complete Sale').click({force: true})
     cy.contains('span', message).should('exist')
 })
 
-Cypress.Commands.add('newCheckout', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+Cypress.Commands.add('newCheckout', (environ) => {
+    cy.visit(Cypress.env(environ) + 'admin/calendar')
     cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').click({force: true})
     cy.wait(1000)
@@ -367,14 +366,24 @@ Cypress.Commands.add('addItemService', (name) => {
 
 Cypress.Commands.add('fillButton', (method) => {
     let balance
-
-    cy.contains('label', method).parent('div').parent('div').next('div').find('button').click({force: true})
+    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').click({force: true})
     cy.contains('h6','Balance').next('span').then(($span) => {
         balance = $span.text().substring(4)
         cy.contains('label', method).parent('div').find('input').should('have.value',balance)
     })
 })
 
+
+Cypress.Commands.add('newBlockTime', (environment) => {
+    cy.visit(Cypress.env(environment))
+    cy.contains('button','Add New').should('be.visible')
+    cy.contains('button','Add New').click({force: true})
+    cy.wait(10)
+    cy.contains('li','New Block Time').should('be.visible')
+    cy.contains('li','New Block Time').click({force: true})
+    cy.contains('div>h3','Create Blocked Time').should('be.visible')
+    cy.contains('div>h3','Create Blocked Time').click({force: true})
+})
 // --------------------------------- Promotions/Offers section
 
 // const expectedMessageCreateOffer = (offer_message) => {

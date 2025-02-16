@@ -23,7 +23,7 @@ const login = (name, username, password) => {
 
 const accessCategory = () => {
   //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
+  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
   cy.contains('Options').should('exist')
@@ -68,13 +68,15 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
 
     it('Verify it is possible delete category- Admin credentials', () => {
         //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'calendar')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
+        cy.contains('Products').should('exist')
+        cy.contains('Products').click({ force: true })
         cy.contains('Options').should('exist')
         cy.contains('Options').click({ force: true })
-        cy.contains('Category').should('exist')
-        cy.contains('Category').click({ force: true })
+        cy.contains('li','Category').should('exist')
+        cy.contains('li','Category').click({ force: true })
     })
     
 })

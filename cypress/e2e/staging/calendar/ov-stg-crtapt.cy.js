@@ -42,7 +42,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 
   after(() => {
-    cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
+    cy.visit('https://vendor.bookr-dev.com/auth?nativeLogout=true')
   })
 
   afterEach(() => {
@@ -146,7 +146,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
     searchTimeSlot('Zumba Zumba','04:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
-    cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('38972467{enter}{enter}',{force: true, delay: 1000})
+    cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('38714494{enter}{enter}',{force: true, delay: 1000})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -194,7 +194,7 @@ describe('Staging - Old Vendor Admin | Calendar |Create appointments by Clicking
   })
 })
 
-describe.only('Staging - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+describe('Staging - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
     cy.loginov('Admin Section', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
