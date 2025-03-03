@@ -50,7 +50,7 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','08:00')  
+    searchTimeSlot('Zumba Zumba','01:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -70,7 +70,7 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
   }) 
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','08:00') 
+    searchTimeSlot('Zumba Zumba','01:00') 
     cy.contains('Zumba Zumba').should('exist')
   })
   

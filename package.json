@@ -28,7 +28,7 @@
     "BetaVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js",
     "OldVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js",
     "BetaVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js",
-    "BetaVendor-Staging-Calendar-New Checkout": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-newchck.cy.js",
+    "BetaVendor-Staging-Calendar-NewCheckout": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-newchck.cy.js",
 
     "//": "STAGING - EMPLOYEES",
     "triggerAllTests-OldVendor-Staging-Calendar-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",
