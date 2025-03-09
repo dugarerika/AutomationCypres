@@ -95,7 +95,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('span', 'Blocked Time for', { matchCase: false }).next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 
@@ -191,7 +191,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('span', 'Blocked Time for').next('span','Zumba Zumba').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 
@@ -287,7 +287,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('span', 'Blocked Time for').next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 
@@ -308,9 +308,17 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 
     it('Verify The option to add Block Time is not available for Readonlyu Role - Read-Only credentials', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-        cy.contains('button','Add New').should('be.visible')
-        cy.contains('button','Add New').click({force: true})
-        cy.wait(1000)
-        cy.contains('li','New Block Time').should('not.exist')
+        // cy.contains('button','Add New').should('be.visible')
+        // cy.contains('button','Add New').click({force: true})
+        // cy.wait(1000)
+        cy.newBlockTime("URL_BetaVendor_Staging")
+        cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
+        cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
+        cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('01:00{enter}')
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','User does not have enough permissions to use this service').should('be.visible')
     })
 })
