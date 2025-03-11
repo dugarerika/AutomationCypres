@@ -374,50 +374,45 @@ Cypress.Commands.add('addItemGiftCard', (name) => {
 })
 
 Cypress.Commands.add('fillButton', (method) => {
-    let balance
-    let money
     cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').click({force: true})
     cy.contains('h6','Balance').next('span').then(($span) => {
         //balance = $span.text().substring(4)
-        balance = $span.text()
-        cy.log(eval(balance))
+        const balance = $span.text().split(" ")
+        cy.log(eval(balance[1]))
         cy.contains('label', method).parent('div').find('input').then(($input) => {
-            money = $span.text()
+            const money = $span.text()
             cy.log(money)
         })
-        cy.contains('label', method).parent('div').find('input').should('have.value',eval(balance))
+        cy.contains('label', method).parent('div').find('input').should('have.value',eval(balance[1]))
     })
 })
 
 Cypress.Commands.add('checkBreakdownNoDiscount', (service) => {
-    let price
-    let subtotal
-    let tax
-    let total
         cy.contains('h6', service).parent('div').next('div').find('h4').then(($h4) =>{
-            price = $h4.text().split(" ")
+            const price = $h4.text().split(" ")
             cy.log(price[0])
             cy.contains('h6','Sub Total').next('span').then(($span0) => {
-                subtotal = $span0.text().split(" ")
+                const subtotal = $span0.text().split(" ")
                 cy.log(subtotal[1])
                 expect(price[0]).to.equal(subtotal[1])
             })
             cy.contains('h6','Tax 15%').next('span').then(($span1) => {
-                tax = $span1.text().split(" ")
-                cy.log(tax)
+                const tax = $span1.text().split(" ")
+                cy.log(tax[1])
                 expect(price[0]*0.15).to.equal(eval(tax[1]))
-            })
-            cy.contains('h6', /^Total$/).next('span').then(($span2) => {
-                total = $span2.text().split(" ")
-                cy.log(total)
-                expect(eval(price[0]) + eval(tax[1])).to.equal(eval(total[1]))
+            
+                cy.contains('h6', /^Total$/).next('span').then(($span2) => {
+                    const total = $span2.text().split(" ")
+                    cy.log(total[1])
+                    expect(eval(price[0]) + eval(tax[1])).to.equal(eval(total[1]))
+                })
             })
         })
 })
 
 Cypress.Commands.add('addPercentageDiscount', (service,percentage) => {
-    let perc1 = percentage/100
-    let perc2 = (100 - percentage)/100
+    const perc1 = percentage/100
+    const perc2 = (100 - percentage)/100
     cy.contains('button','Percentage').click()
     cy.get('input[placeholder="Type Percentage"]').type(percentage)
     cy.contains('button','Apply').click()

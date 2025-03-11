@@ -106,7 +106,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
         cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
         cy.contains('span', 'Blocked Time for').next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 
@@ -202,7 +202,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
         cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
         cy.contains('span', 'Blocked Time for').next('span','Zumba Zumba').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 
@@ -298,7 +298,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
         cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
         cy.contains('span', 'Blocked Time for').next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 
