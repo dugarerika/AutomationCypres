@@ -35,10 +35,10 @@ const searchApt = (staff, start_time) => {
   })
   cy.contains('Appointment Details').should('be.visible')
 }
-describe('Production - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe.only('Production - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
-    cy.loginovprd('Staff Session', Cypress.env("Vendor_Staff_Username_Production"), Cypress.env("Vendor_Staff_Password_Production"))
+    cy.loginovprd('Staff Session', Cypress.env("Vendor1_Staff_Username_Production"), Cypress.env("Vendor1_Staff_Password_Production"))
   })
 
   after(() => {
@@ -50,7 +50,7 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','01:00')  
+    searchTimeSlot('Aura','01:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -70,13 +70,13 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
   }) 
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','01:00') 
-    cy.contains('Zumba Zumba').should('exist')
+    searchTimeSlot('Aura','01:00') 
+    cy.contains('Aura').should('exist')
   })
   
   it('Verify it is possible to scrool down on the calendar an create a new appointment- Staff credentials', () => {
     cy.visit(Cypress.env("URL_OldVendor_Production") + 'calendar')
-    let staff = "Zumba Zumba"
+    let staff = "Aura"
     let start_time = "18:00"
     let color
     // cy.get('.tool-datepicker-next').should('be.visible')
@@ -101,7 +101,7 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
   })
 
   it('Verify it is possible to create a new appointment - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','06:00') 
+    searchTimeSlot('Aura','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -113,7 +113,7 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
 
 
   it('Verify it is possible to create an appointment over and already taken time slot - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','06:00')  
+    searchTimeSlot('Aura','06:00')  
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.contains('Warning: ').should('be.visible')
@@ -125,7 +125,7 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
   })
 
   it('Verify it is possible to create an appointment searching customer name on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','05:00')  
+    searchTimeSlot('Aura','05:00')  
     cy.wait(70)
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
@@ -139,11 +139,11 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
     })
     cy.contains('New Appointment').should('not.be.visible')
     cy.wait(700)
-    searchApt('Zumba Zumba','05:00')
+    searchApt('Aura','05:00')
   })
 
   it('Verify it is possible to create an appointment searching Phone number without country code on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','04:00')  
+    searchTimeSlot('Aura','04:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('38972467{enter}{enter}',{force: true, delay: 1000})
@@ -155,12 +155,12 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
     })
     cy.contains('New Appointment').should('not.be.visible')
     cy.wait(700)
-    searchApt('Zumba Zumba','04:00') 
+    searchApt('Aura','04:00') 
     cy.contains('div>p','+973').should('exist')
   })
 
   it.skip('Verify it is possible to create an appointment searching Phone number with country code without + on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','02:00')  
+    searchTimeSlot('Aura','02:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('97338717494{enter}{enter}',{force: true, delay: 1000})
@@ -171,13 +171,13 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
-    searchApt('Zumba Zumba','02:00') 
+    searchApt('Aura','02:00') 
     cy.wait(700)
     cy.contains('div>p','+973').should('exist')
   })
 
   it.skip('Verify it is possible to create an appointment searching Phone number with country code with + on the New Appointment modal - Staff credentials', () => {
-    searchTimeSlot('Zumba Zumba','03:00')  
+    searchTimeSlot('Aura','03:00')  
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().should('exist')
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().click({force: true})
     cy.contains('h2','New Appointment').parents('div').next('div').find('input').first().type('+97338717494{enter}{enter}',{force: true, delay: 1000})
@@ -188,7 +188,7 @@ describe('Production - Old Vendor Admin | Calendar |Create appointments by Click
       expect(interception.response.statusCode).to.equal(200)
     })
     cy.contains('New Appointment').should('not.be.visible')
-    searchApt('Zumba Zumba','03:00') 
+    searchApt('Aura','03:00') 
     cy.wait(700)
     cy.contains('div>p','+973').should('exist')
   })

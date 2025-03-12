@@ -64,7 +64,7 @@ module.exports = defineConfig({
       Vendor0_Admin_Password_Staging: "1234567890",
       // Vendor1_Admin_Username_Staging: "beautiquespa",
       // Vendor1_Admin_Password_Staging: "1234567890",
-      //STAGING - Beta Vendor
+      //STAGING - BETA VENDOR
       Vendor_Admin_Username_Staging: "artnailcorner",
       Vendor_Admin_Password_Staging: "1234567890",
       Vendor_Staff_Username_Staging: "zumba11",
@@ -75,7 +75,8 @@ module.exports = defineConfig({
       Vendor_ReadOnly_Password_Staging: "1234567890",   
       Vendor_Receptionist_Username_Staging: "recep6",
       Vendor_Receptionist_Password_Staging: "1234567890",   
-       //STAGING - Old Vendor 
+      
+      //STAGING - OLD VENDOR
       Vendor1_Admin_Username_Staging: "cococutsalon",
       Vendor1_Admin_Password_Staging: "1234567890",
       Vendor1_Staff_Username_Staging: "zumbacococut",
@@ -83,7 +84,7 @@ module.exports = defineConfig({
       Vendor1_ReadOnly_Username_Staging: "readonlyerika2",
       Vendor1_ReadOnly_Password_Staging: "1234567890",  
       
-      /// PRODUCTION  
+      /// PRODUCTION - BETA VENDOR
       Vendor_Admin_Username_Production: "qatartestsalon3@mailinator.com",
       Vendor_Admin_Password_Production: "1234567890",
       Vendor_Staff_Username_Production: "zumbacococut",
@@ -93,7 +94,19 @@ module.exports = defineConfig({
       Vendor_Receptionist_Username_Production: "recepcococut",
       Vendor_Receptionist_Password_Production: "1234567890",    
       Vendor_Admin_Username_Production1: "testsalon",
-      Vendor_Admin_Password_Production1: "testsalon1o"
+      Vendor_Admin_Password_Production1: "testsalon1o",
+
+      /// PRODUCTION - OLD VENDOR
+      Vendor1_Admin_Username_Production: "testsalon",
+      Vendor1_Admin_Password_Production: "testsalon@1o",
+      Vendor1_Staff_Username_Production: "aura",
+      Vendor1_Staff_Password_Production: "1234567890",
+      Vendor1_ReadOnly_Username_Production: "readonlyerika2",
+      Vendor1_ReadOnly_Password_Production: "1234567890",   
+      Vendor1_Receptionist_Username_Production: "recepcococut",
+      Vendor1_Receptionist_Password_Production: "1234567890",    
+      Vendor1_Admin_Username_Production1: "testsalon",
+      Vendor1_Admin_Password_Production1: "testsalon1o"
     }
   },
 });
