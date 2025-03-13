@@ -291,7 +291,7 @@ describe('Staging - Old Vendor Receptionist | Calendar| Create Blocktime on the 
     })
 })
 
-describe.only('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with ReadOnly Credentials', () => {
+describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with ReadOnly Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

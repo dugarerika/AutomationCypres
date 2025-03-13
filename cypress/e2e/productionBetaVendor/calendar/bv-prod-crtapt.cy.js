@@ -6,7 +6,7 @@ const { should } = require("chai")
 const searchTimeSlot = (staff,start_time) => {
   cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
   let color
-  const regex = new RegExp('^' + staff, 'i')
+  const regex = new RegExp('^' + staff, 'i') // regex to match the start of the sentence
   cy.contains('div>span',regex).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)

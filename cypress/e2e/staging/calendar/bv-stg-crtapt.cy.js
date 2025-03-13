@@ -333,7 +333,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by C
     searchTimeSlot('Zumba Zumba','07:00')
     cy.contains('New Appointment').parents('div').next('div').find('div').contains("Search customer..").next('div').should('exist')
     cy.contains('New Appointment').parents('div').next('div').find('div').contains("Search customer..").next('div').children('input').click({force: true})
-    cy.contains('New Appointment').parents('div').next('div').find('div').contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
+    cy.contains('New Appointment').parents(div).next('div').find('div').contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})

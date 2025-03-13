@@ -35,7 +35,7 @@ const searchApt = (staff, start_time) => {
   })
   cy.contains('Appointment Details').should('be.visible')
 }
-describe.only('Production - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe('Production - Old Vendor Admin | Calendar |Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
 
   beforeEach(() => {
     cy.loginovprd('Staff Session', Cypress.env("Vendor1_Staff_Username_Production"), Cypress.env("Vendor1_Staff_Password_Production"))
@@ -58,7 +58,7 @@ describe.only('Production - Old Vendor Admin | Calendar |Create appointments by 
     cy.contains('Add Offer').should('exist')  
     cy.contains('Add Offer').click()
     cy.contains('div','Offer').should('exist')  
-    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
+    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('test offer{enter}')
     cy.get('.css-ltr-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
@@ -197,7 +197,7 @@ describe.only('Production - Old Vendor Admin | Calendar |Create appointments by 
 describe('Production - Old Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    cy.loginovprd('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+    cy.loginovprd('Admin Section', Cypress.env("Vendor1_Admin_Username_Production"), Cypress.env("Vendor1_Admin_Password_Production"))
   })
 
   after(() => {
@@ -209,17 +209,17 @@ describe('Production - Old Vendor Admin | Calendar | Create appointments by Clic
   })
 
   it('Verify the Staff shown in the New appointment modal is the one clicked on the calendar - Admin credentials', () => {
-    searchTimeSlot('Zumba Zumba','07:00')  
-    cy.contains('Zumba Zumba').should('exist')
+    searchTimeSlot('Sam','07:00')  
+    cy.contains('Erika').should('exist')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
-    searchTimeSlot('Susan one','08:00')  
+    searchTimeSlot('Sam','08:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-ltr-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()
-    cy.contains('Add Offer').should('exist')  
+    cy.contains('Add Offe r').should('exist')  
     cy.contains('Add Offer').click()
     cy.contains('div','Offer').should('exist')  
     cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
@@ -234,7 +234,7 @@ describe('Production - Old Vendor Admin | Calendar | Create appointments by Clic
     }) 
 
   it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin credentials', () => {
-    searchTimeSlot('Susan one','07:00')  
+    searchTimeSlot('Erika','07:00')  
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -245,7 +245,7 @@ describe('Production - Old Vendor Admin | Calendar | Create appointments by Clic
   })
 
   it('Verify it is possible to create an appointment searching and selecting customer from vendor - Admin credentials', () => {
-    searchTimeSlot('Zstaff ','07:00')  
+    searchTimeSlot('Susan','07:00')  
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
     cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
@@ -259,7 +259,7 @@ describe('Production - Old Vendor Admin | Calendar | Create appointments by Clic
   })
 
   it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment - Admin credentials', () => {
-    searchTimeSlot('Zstaff ','07:00')   
+    searchTimeSlot('Jaira','07:00')   
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
@@ -272,7 +272,7 @@ describe('Production - Old Vendor Admin | Calendar | Create appointments by Clic
   })
 
   it('Verify it is possible to create an appointment over and already taken time slot - Admin Credentials', () => {
-    searchTimeSlot('Zstaff ','07:00')  
+    searchTimeSlot('Joan Permission','07:00')  
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.contains('Warning: ').should('be.visible')
