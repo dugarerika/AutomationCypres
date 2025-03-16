@@ -570,6 +570,16 @@ Cypress.Commands.add('newBlockTime', (environment) => {
     cy.contains('div>h3','Create Blocked Time').should('be.visible')
     cy.contains('div>h3','Create Blocked Time').click({force: true})
 })
+
+
+Cypress.Commands.add('newAppt', (environment) => {
+    cy.visit(Cypress.env(environment))
+    cy.contains('button','Add New').should('be.visible')
+    cy.contains('button','Add New').click({force: true})
+    cy.wait(10)
+    cy.contains('li','New Appointment').should('be.visible')
+    cy.contains('li','New Appointment').click({force: true})
+})
 // --------------------------------- Promotions/Offers section
 
 // const expectedMessageCreateOffer = (offer_message) => {
