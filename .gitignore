@@ -2,19 +2,6 @@ node_modules
 cypress/reports/html/
 cypress/screenshots/stg-old-adm-crtappt.cy.js/Vendor Admin  logged with Admin credentials -- Verify it is possible to add a new staff - Admin credentials -- before each hook (failed).png
 cypress/downloads/downloads.htm
-mochawesome-report
-mochawesome-report/mochawesome.json
-mochawesome-report/assets/app.css
-mochawesome-report/assets/app.js
-mochawesome-report/assets/app.js.LICENSE.txt
-mochawesome-report/assets/MaterialIcons-Regular.woff
-mochawesome-report/assets/MaterialIcons-Regular.woff2
-mochawesome-report/assets/roboto-light-webfont.woff
-mochawesome-report/assets/roboto-light-webfont.woff2
-mochawesome-report/assets/roboto-medium-webfont.woff
-mochawesome-report/assets/roboto-medium-webfont.woff2
-mochawesome-report/assets/roboto-regular-webfont.woff
-mochawesome-report/assets/roboto-regular-webfont.woff2
 cypress.config.js
 .gitignore
 cypress/screenshots/*
