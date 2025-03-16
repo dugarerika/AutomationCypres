@@ -17,9 +17,18 @@ function getConfigurationByFile(file) {
 module.exports = defineConfig({
   viewportWidth: 1200,
   viewportHeight: 1000,
-  reporter: 'reporters/custom.js',
+  // reporter: 'reporters/custom.js',
   projectId: 'mevvq9',
   e2e: {
+    "reporter": "mochawesome",
+    "reporterOptions": {
+      "reportDir": "cypress/reports/mochawesome-report",
+      "overwrite": false,
+      "inline": true,
+      "html": true,
+      "json": true,
+      "charts": true
+    },
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
 
@@ -35,7 +44,7 @@ module.exports = defineConfig({
     experimentalSessionAndOrigin: true,
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 120000,
-    screenshotOnRunFailure: true,
+    screenshotOnRunFailure: false,
     trashAssetsBeforeRuns: true,
     video: false,
     videoUploadOnPasses: false,
@@ -91,8 +100,8 @@ module.exports = defineConfig({
       Vendor_Admin_Password_Production: "1234567890",
       Vendor_Staff_Username_Production: "zumbacococut",
       Vendor_Staff_Password_Production: "1234567890",
-      Vendor_Staff_Username_Production: "naomicococut",
-      Vendor_Staff_Password_Production: "1234567890",
+      Vendor_Staff1_Username_Production: "naomicococut",
+      Vendor_Staff1_Password_Production: "1234567890",
       Vendor_ReadOnly_Username_Production: "readonlyerika2",
       Vendor_ReadOnly_Password_Production: "1234567890",   
       Vendor_Receptionist_Username_Production: "recepcococut",

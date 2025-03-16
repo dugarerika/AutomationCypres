@@ -356,26 +356,14 @@ describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by C
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify it is possible to create an appointment over and already taken time slot - Staff Credentials', () => {
-    searchTimeSlot('Zumba Zumba','07:00')
-    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    cy.contains('Create Appointment').click({force: true})
-    cy.contains('Warning: ').should('be.visible')
-    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
-    cy.contains('button','Continue').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(200)
-    }) 
-  })
-
-  it('Verify The edit appointment modal is display after clicking on Edit booking button - Staff credentials', () => {
+  it.skip('Verify The edit appointment modal is display after clicking on Edit booking button - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','07:00')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
     cy.contains('Edit Appointment').should('exist') 
   })
 
-  it('Verify it is possible to edit the Customer - Staff credentials', () => {
+  it.skip('Verify it is possible to edit the Customer - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','07:00')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})

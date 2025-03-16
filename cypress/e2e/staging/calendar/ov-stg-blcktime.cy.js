@@ -95,7 +95,7 @@ describe('Staging - Old Vendor Admin | Calendar| Create Blocktime on the Calenda
         cy.visit(Cypress.env("URL_OldVendor_Staging"))
         cy.contains('span', 'Blocked Time for').next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 
@@ -191,7 +191,7 @@ describe('Staging - Old Vendor Staff | Calendar| Create Blocktime on the Calenda
         cy.visit(Cypress.env("URL_OldVendor_Staging"))
         cy.contains('span', 'Blocked Time for').next('span','Zumba Zumba').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 
@@ -287,7 +287,7 @@ describe('Staging - Old Vendor Receptionist | Calendar| Create Blocktime on the 
         cy.visit(Cypress.env("URL_OldVendor_Staging"))
         cy.contains('span', 'Blocked Time for').next('span','Helen').click({force: true})
         cy.contains('button','Delete').click({force: true})
-        cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
+        cy.contains('div>span','Employee Blocktime deleted successfully').should('be.visible')
     })
 })
 

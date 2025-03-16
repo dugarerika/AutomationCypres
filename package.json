@@ -4,67 +4,56 @@
   "description": "Cypress Automation Framework",
   "main": "index.js",
   "scripts": {
-    "cypress open":"./node_modules/.bin/cypress open",
+    "cypress open": "./node_modules/.bin/cypress open",
+    "delete:reportFolder": "rm -rf mochawesome-report/",
+    "merge:reports": "mochawesome-merge mochawesome-report/*.json > cypress-combined-report.json",
+    "create:html:report": "npm run merge:reports && marge --reportDir TestReport cypress-combined-report.json",
     "triggerAllTests-headless": "npx cypress run",
     "triggerAllTests-headed": "npx cypress run --headed",
     "triggerAllTests-chrome": "npx cypress run --browser chrome",
     "triggerAllTests-dashboard": "npx cypress run --record --key 3025d595-10bc-4aad-91ed-5802e5896b45",
     "triggerAllTests-autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
-
-    "//": "STAGING",
-    "triggerAllTests-Staging": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js" ,
+    
+    "//": "PRODUCTION - INVENTORY",
+    "triggerAllTests-Staging": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js",
     "OldVendor-Staging": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
     "BetaVendor-Staging": "npx cypress run --spec cypress/e2e/staging/calendar/bv-stg-blcktime.cy.js cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js cypress/e2e/staging/calendar/bv-stg-crtapt.cy.js",
-
-    "//": "STAGING - INVENTORY",
     "OldVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/staging/inventory/ov-stg-crtprod.cy.js",
     "BetaVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-crtprod.cy.js",
     "BetaVendor-Staging-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltprod.cy.js",
     "BetaVendor-Staging-Inventory-EditProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-edtprod.cy.js",
     "BetaVendor-Staging-Inventory-DeleteSupplier": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltsup.cy.js",
     "BetaVendor-Staging-Inventory-DeleteCategory": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltscat.cy.js",
-    
-    "//": "STAGING - CALENDAR",
     "OldVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
     "BetaVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-crtapt.cy.js",
     "OldVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js",
     "BetaVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js",
     "BetaVendor-Staging-Calendar-NewCheckout": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js",
-
-    "//": "STAGING - EMPLOYEES",
     "triggerAllTests-OldVendor-Staging-Calendar-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",
     "triggerAllTests-BetaVendor-Staging-Calendar-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",
-
-    "//": "PRODUCTION",
-    "triggerAllTests-Production": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js cypress/e2e/production/calendar/bv-prod-blcktime.cy.js" ,
+    "triggerAllTests-Production": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js cypress/e2e/production/calendar/bv-prod-blcktime.cy.js",
     "triggerAllTests-OldVendor-Production": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Production": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-blcktime.cy.js",
-
-    "//": "PRODUCTION - CALENDAR",
-    "triggerAllTests-BetaVendor-Production-Calendar": "npx cypress run --spec cypress/e2e/productionBetaVendor/calendar/*.js",
+    "BetaVendor-Production-Calendar": "npx cypress run --reporter mochawesome --spec cypress/e2e/productionBetaVendor/calendar/*.js",
     "triggerAllTests-OldVendor-Production-Calendar": "npx cypress run --spec 'cypress/e2e/productionOldVendor/*.js",
     "triggerAllTests-OldVendor-Production-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Production-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-crtapt.cy.js",
     "triggerAllTests-BetaVendor-Production-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-blcktime.cy.js",
     "triggerAllTests-OldVendor-Production-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/production/calendar/ov-prod-blcktime.cy.js",
     "triggerAllTests-BetaVendor-Production-Calendar-NewCheckout": "npx cypress run --spec cypress/e2e/production/calendar/bv-prod-newchck.cy.js",
-    
-    "//": "PRODUCTION - INVENTORY",
     "triggerAllTests-BetaVendor-Production-Inventory": "npx cypress run --spec cypress/e2e/productionBetaVendor/inventory/*.js",
     "triggerAllTests-Production-Inventory-CreateProduct-DeleteProduct": "npx cypress run --spec cypress/e2e/productionOldVendor/inventory/ov-prod-crtprod.cy.js cypress/e2e/production/inventory/bv-prod-crtprod.cy.js triggerAllTests-OldVendor-Production-Inventory-DeleteProduct",
     "triggerAllTests-OldVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/productionOldVendor/inventory/ov-prod-crtprod.cy.js",
     "triggerAllTests-BetaVendor-Production-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/productionBetaVendor/inventory/bv-prod-crtprod.cy.js",
     "triggerAllTests-OldVendor-Production-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/productionOldVendor/inventory/ov-prod-dltprod.cy.js",
     "triggerAllTests-BetaVendor-Production-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/productionBetaVendor/inventory/bv-prod-dltprod.cy.js",
-
     "npm run triggerAllTests-BetaVendor-Staging-Employee-CreateEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-crtemply.cy.js",
     "triggerAllTests-BetaVendor-Staging-Employee-DeleteEmployee": "npx cypress run --spec cypress/e2e/staging/employees/bv-stg-dltemply.cy.js",
     "triggerAllTests-OldVendor-Staging-Employee-CreateStaff": "npx cypress run --spec cypress/e2e/staging/employees/ov-stg-staff.cy.js",
-    
     "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
     "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
     "delete-results": "rm -rf cypress/results/* || true",
-    "mochawesome-merge": "npx mochawesome-merge cypress/results/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json",
+    "mochawesome-merge": "npx mochawesome-merge cypress/reports/*.json > mochawesome.json && npx marge mochawesome.json",
     "delete-mochawesome-report": "rm -rf mochawesome-report/* || true",
     "cypress-regression-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run triggerAllTests-headless && npm run mochawesome-merge",
     "triggerAllTests-staging": "npx cypress run --env configFile=staging",
@@ -80,9 +69,10 @@
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-multi-reporters": "s^1.6.1",
     "cypress-xpath": "^2.0.1",
+    "mocha": "^10.8.2",
     "mocha-junit-reporter": "^2.0.2",
     "mochawesome": "^7.1.3",
-    "mochawesome-merge": "^4.2.1",
+    "mochawesome-merge": "^4.4.1",
     "mochawesome-report-generator": "^6.2.0"
   },
   "cypress-cucumber-preprocessor": {
@@ -91,7 +81,6 @@
   },
   "dependencies": {
     "-": "0.0.1",
-    "mocha": "^10.7.0",
     "save-dev": "0.0.1-security"
   }
 }
