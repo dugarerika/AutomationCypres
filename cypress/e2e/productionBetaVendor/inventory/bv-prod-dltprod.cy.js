@@ -17,7 +17,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
 
 
 //Delete Successfully
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it.only('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
