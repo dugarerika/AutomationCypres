@@ -15,20 +15,12 @@ function getConfigurationByFile(file) {
 }
 
 module.exports = defineConfig({
+  
   viewportWidth: 1200,
   viewportHeight: 1000,
   // reporter: 'reporters/custom.js',
   projectId: 'mevvq9',
   e2e: {
-    "reporter": "mochawesome",
-    "reporterOptions": {
-      "reportDir": "cypress/reports/mochawesome-report",
-      "overwrite": false,
-      "inline": true,
-      "html": true,
-      "json": true,
-      "charts": true
-    },
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
 
@@ -51,7 +43,11 @@ module.exports = defineConfig({
     viewportHeight: 1080,
     viewportWidth: 1920,
     numTestsKeptInMemory: 10,
-    reporter: 'cypress-mochawesome-reporter',
+    // reporter: 'cypress-mochawesome-reporter',
+    reporter: "cypress-multi-reporters",
+    reporterOptions: {
+      configFile: "reporterOpts.json"
+    },
     e2e: {
       setupNodeEvents(on, config) {
         require('cypress-mochawesome-reporter/plugin')(on);
@@ -62,7 +58,8 @@ module.exports = defineConfig({
       openMode: 1
     },
     env: {
-      
+      SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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',
+
       //STAGING
       URL_OldVendor_Staging: "https://vendor.bookr-dev.com/",
       URL_BetaVendor_Staging: "https://vendor.beta.bookr-dev.com/",
