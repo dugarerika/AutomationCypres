@@ -5,4 +5,4 @@ workflows:
   test:
     jobs:
       - cypress/run:
-          cypress-command: npm run "BetaVendor-Staging-Calendar-NewAppt"
+          cypress-command: "BetaVendor-Staging-Calendar-NewAppt"
