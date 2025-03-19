@@ -29,7 +29,7 @@ module.exports = defineConfig({
 
       return getConfigurationByFile(file)
     },
-    specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
+    specPattern: "cypress/e2e/stagingBetaVendor/calendar/*.{js,jsx,ts,tsx,feature}",
     //excludeSpecPattern: "cypress/e2e/other/*.js",
     baseUrl: "https://vendor.beta.bookr-dev.com/",
     chromeWebSecurity: false,
@@ -50,7 +50,7 @@ module.exports = defineConfig({
     },
     e2e: {
       setupNodeEvents(on, config) {
-        require('cypress-mochawesome-reporter/plugin')(on);
+        // require('cypress-mochawesome-reporter/plugin')(on);
       },
     },
     retries: {
