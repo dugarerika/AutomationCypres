@@ -5,4 +5,4 @@ workflows:
   test:
     jobs:
       - cypress/run:
-          cypress-command: "BetaVendor-Staging-Calendar-NewAppt"
+          cypress-command: 'npx cypress run --component'
