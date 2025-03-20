@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="15.032" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2025-03-19T12:19:41" tests="0" file="cypress\e2e\stagingBetaVendor\calendar\bv-stg-newchck.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials" timestamp="2025-03-19T12:19:41" tests="1" time="15.002" failures="0">
+    <testcase name="Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials Verify it is not possible to complete New Checkout without adding payment - Admin credentials" time="14.867" classname="Verify it is not possible to complete New Checkout without adding payment - Admin credentials">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,131 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-03-19T12:17:54.761Z",
+    "end": "2025-03-19T12:19:28.551Z",
+    "duration": 93790,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c44f2cf7-9d39-4718-8171-cafac6b53a75",
+      "title": "",
+      "fullFile": "cypress\\e2e\\stagingBetaVendor\\calendar\\bv-stg-newAppt.cy.js",
+      "file": "cypress\\e2e\\stagingBetaVendor\\calendar\\bv-stg-newAppt.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3d14304c-5345-45d5-b5d7-94da43afbd14",
+          "title": "Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar  - Admin credentials",
+              "fullTitle": "Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar  - Admin credentials",
+              "timedOut": null,
+              "duration": 10589,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.newAppt(\"URL_BetaVendor_Staging\");\ncy.contains('New Appointment').should('be.visible');",
+              "err": {},
+              "uuid": "2e6bdc6d-a828-4aa8-90cf-15aa804b8f73",
+              "parentUUID": "3d14304c-5345-45d5-b5d7-94da43afbd14",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify it is possible to create an appointment changing the date - Admin credentials",
+              "fullTitle": "Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials Verify it is possible to create an appointment changing the date - Admin credentials",
+              "timedOut": null,
+              "duration": 29553,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "var options = {\n  day: \"numeric\"\n};\nvar dayNow = eval(new Date().toLocaleDateString(\"en-US\", options)) + 1;\ncy.log(dayNow);\ncy.newAppt(\"URL_BetaVendor_Staging\");\ncy.contains('New Appointment').should('be.visible');\ncy.contains('label', 'Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}');\ncy.contains('label', 'Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}');\ncy.contains('label', 'Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}');\ncy.contains('label', 'Date').parent('div').find('input').click();\ncy.get('.react-calendar__month-view__days').contains('button>abbr', dayNow).click();\ncy.contains('button', 'Create Appointment').click({\n  force: true\n});\ncy.contains('div>span', 'Booking Created Successfully').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Booking Created Successfully' within the selector: 'div>span' but never did.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Booking Created Successfully' within the selector: 'div>span' but never did.\n    at Context.eval (cypress/e2e/stagingBetaVendor/calendar/bv-stg-newAppt.cy.js:76:63)",
+                "diff": null
+              },
+              "uuid": "717107f5-9c0c-4960-839a-0e83e181cae8",
+              "parentUUID": "3d14304c-5345-45d5-b5d7-94da43afbd14",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2e6bdc6d-a828-4aa8-90cf-15aa804b8f73"
+          ],
+          "failures": [
+            "717107f5-9c0c-4960-839a-0e83e181cae8"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 40142,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quiet": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

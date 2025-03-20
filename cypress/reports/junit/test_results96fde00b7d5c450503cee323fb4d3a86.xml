@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="93.790" tests="2" failures="1">
+  <testsuite name="Root Suite" timestamp="2025-03-19T12:17:54" tests="0" file="cypress\e2e\stagingBetaVendor\calendar\bv-stg-newAppt.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials" timestamp="2025-03-19T12:17:54" tests="2" time="93.766" failures="1">
+    <testcase name="Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar  - Admin credentials" time="10.589" classname="Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar  - Admin credentials">
+    </testcase>
+    <testcase name="Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials Verify it is possible to create an appointment changing the date - Admin credentials" time="33.037" classname="Verify it is possible to create an appointment changing the date - Admin credentials">
+      <failure message="Timed out retrying after 10000ms: Expected to find content: &apos;Booking Created Successfully&apos; within the selector: &apos;div&gt;span&apos; but never did." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Booking Created Successfully' within the selector: 'div>span' but never did.
+    at Context.eval (cypress/e2e/stagingBetaVendor/calendar/bv-stg-newAppt.cy.js:76:63)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

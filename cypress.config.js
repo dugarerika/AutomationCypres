@@ -44,13 +44,14 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     numTestsKeptInMemory: 10,
     // reporter: 'cypress-mochawesome-reporter',
-    reporter: "cypress-multi-reporters",
+    reporter: '../node_modules/cypress-mochawesome-reporter',
+    video: true,
     reporterOptions: {
-      configFile: "reporterOpts.json"
-    },
+        reportDir: 'reports/mochawesome',
+      },
     e2e: {
       setupNodeEvents(on, config) {
-        // require('cypress-mochawesome-reporter/plugin')(on);
+        require('cypress-mochawesome-reporter/plugin')(on);
       },
     },
     retries: {
