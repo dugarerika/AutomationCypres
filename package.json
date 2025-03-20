@@ -26,6 +26,7 @@
     "BetaVendor-Staging-Inventory-EditProduct": "npx cypress run --spec cypress/e2e/stagingBetaVendor/inventory/bv-stg-edtprod.cy.js",
     "BetaVendor-Staging-Inventory-DeleteSupplier": "npx cypress run --spec cypress/e2e/stagingBetaVendor/inventory/bv-stg-dltsup.cy.js",
     "BetaVendor-Staging-Inventory-DeleteCategory": "npx cypress run --spec cypress/e2e/stagingBetaVendor/inventory/bv-stg-dltscat.cy.js",
+    "BetaVendor-Staging-Calendar": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/*.cy.js",
     "BetaVendor-Staging-Calendar-NewAppt": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-newappt.cy.js",
     "OldVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
     "BetaVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-crtapt.cy.js",
