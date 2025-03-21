@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="5.139" tests="36" failures="2">
+  <testsuite name="Root Suite" timestamp="2025-03-20T10:18:24" tests="0" file="cypress\e2e\bv-stg-crtsubs.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Beta Vendor Admin | Employee | Create Subscription| logged with Admin credentials" timestamp="2025-03-20T10:18:24" tests="18" time="2.778" failures="1">
+    <testcase name="Beta Vendor Admin | Employee | Create Subscription| logged with Admin credentials &quot;before each&quot; hook for &quot;Verify it is possible access to the Subscription section- Admin credentials&quot;" time="0.632" classname="&quot;before each&quot; hook for &quot;Verify it is possible access to the Subscription section- Admin credentials&quot;">
+      <failure message="`cy.visit()` failed trying to load:
+
+https://beta.vendor.bookr-dev.com/
+
+We attempted to make an http request to this URL but the request failed without a response.
+
+We received this error at the network level:
+
+  &gt; Error: getaddrinfo ENOTFOUND beta.vendor.bookr-dev.com
+
+Common situations why this would fail:
+  - you don&apos;t have internet access
+  - you forgot to run / boot your web server
+  - your web server isn&apos;t accessible
+  - you have weird network configuration settings on your computer
+
+This error occurred while creating session. Because the session setup failed, we failed the test.
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Beta Vendor Admin | Employe...`" type="CypressError"><![CDATA[CypressError: `cy.visit()` failed trying to load:
+
+https://beta.vendor.bookr-dev.com/
+
+We attempted to make an http request to this URL but the request failed without a response.
+
+We received this error at the network level:
+
+  > Error: getaddrinfo ENOTFOUND beta.vendor.bookr-dev.com
+
+Common situations why this would fail:
+  - you don't have internet access
+  - you forgot to run / boot your web server
+  - your web server isn't accessible
+  - you have weird network configuration settings on your computer
+
+This error occurred while creating session. Because the session setup failed, we failed the test.
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Beta Vendor Admin | Employe...`
+    at <unknown> (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:142341:82)
+    at visitFailedByErr (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:141629:12)
+    at <unknown> (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:142340:11)
+    at tryCatcher (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:11318:23)
+    at Promise._settlePromiseFromHandler (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:9253:31)
+    at Promise._settlePromise (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:9310:18)
+    at Promise._settlePromise0 (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:9355:10)
+    at Promise._settlePromises (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:9431:18)
+    at _drainQueueStep (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:6025:12)
+    at _drainQueue (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:6018:9)
+    at ../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:6034:5)
+    at Async.drainQueues (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:5904:14)
+From Your Spec Code:
+    at Object.eval [as setup] (cypress/e2e/bv-stg-crtsubs.cy.js:16:11)
+
+From Node.js Internals:
+  Error: getaddrinfo ENOTFOUND beta.vendor.bookr-dev.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Beta Vendor Admin | Employee | Update Subscription| logged with Admin credentials" timestamp="2025-03-20T10:18:27" tests="18" time="2.326" failures="1">
+    <testcase name="Beta Vendor Admin | Employee | Update Subscription| logged with Admin credentials &quot;before each&quot; hook for &quot;Verify that the Update Subscription allows the user to remove services&quot;" time="0.722" classname="&quot;before each&quot; hook for &quot;Verify that the Update Subscription allows the user to remove services&quot;">
+      <failure message="`cy.visit()` failed trying to load:
+
+https://beta.vendor.bookr-dev.com/
+
+We attempted to make an http request to this URL but the request failed without a response.
+
+We received this error at the network level:
+
+  &gt; Error: getaddrinfo ENOTFOUND beta.vendor.bookr-dev.com
+
+Common situations why this would fail:
+  - you don&apos;t have internet access
+  - you forgot to run / boot your web server
+  - your web server isn&apos;t accessible
+  - you have weird network configuration settings on your computer
+
+This error occurred while creating session. Because the session setup failed, we failed the test.
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Beta Vendor Admin | Employe...`" type="CypressError"><![CDATA[CypressError: `cy.visit()` failed trying to load:
+
+https://beta.vendor.bookr-dev.com/
+
+We attempted to make an http request to this URL but the request failed without a response.
+
+We received this error at the network level:
+
+  > Error: getaddrinfo ENOTFOUND beta.vendor.bookr-dev.com
+
+Common situations why this would fail:
+  - you don't have internet access
+  - you forgot to run / boot your web server
+  - your web server isn't accessible
+  - you have weird network configuration settings on your computer
+
+This error occurred while creating session. Because the session setup failed, we failed the test.
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Beta Vendor Admin | Employe...`
+    at <unknown> (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:142341:82)
+    at visitFailedByErr (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:141629:12)
+    at <unknown> (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:142340:11)
+    at tryCatcher (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:11318:23)
+    at Promise._settlePromiseFromHandler (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:9253:31)
+    at Promise._settlePromise (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:9310:18)
+    at Promise._settlePromise0 (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:9355:10)
+    at Promise._settlePromises (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:9431:18)
+    at _drainQueueStep (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:6025:12)
+    at _drainQueue (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:6018:9)
+    at ../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:6034:5)
+    at Async.drainQueues (https://vendor.beta.bookr-dev.com/__cypress/runner/cypress_runner.js:5904:14)
+From Your Spec Code:
+    at Object.eval [as setup] (cypress/e2e/bv-stg-crtsubs.cy.js:16:11)
+
+From Node.js Internals:
+  Error: getaddrinfo ENOTFOUND beta.vendor.bookr-dev.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

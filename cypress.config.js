@@ -21,6 +21,7 @@ module.exports = defineConfig({
   // reporter: 'reporters/custom.js',
   projectId: 'mevvq9',
   e2e: {
+    specPattern: 'cypress/e2e/stagingBetaVendor/inventory/bv-stg-dltscat.cy.js',
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
 
@@ -29,7 +30,7 @@ module.exports = defineConfig({
 
       return getConfigurationByFile(file)
     },
-    specPattern: "cypress/e2e/stagingBetaVendor/calendar/*.{js,jsx,ts,tsx,feature}",
+  
     //excludeSpecPattern: "cypress/e2e/other/*.js",
     baseUrl: "https://vendor.beta.bookr-dev.com/",
     chromeWebSecurity: false,
