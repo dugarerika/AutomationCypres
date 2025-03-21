@@ -18,7 +18,7 @@ const accessToEditProduct = () => {
     cy.wait(100)
     cy.contains('h3', 'Product Details', { matchCase: false }).should('exist')
     cy.contains('button', 'Edit', { matchCase: false }).should('exist')
-    cy.contains('button', 'Edit', { matchCase: false }).click({ force: true })
+    cy.contains('h6','Basic info').parent('div').next('div').find('button', 'Edit', { matchCase: false }).click({ force: true })
 }
 
 const clearProductBasicInfo = () => {
@@ -136,7 +136,7 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.wait(100)
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Product Bar Code - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Product Bar Code - Admin credentials', () => {
     accessToEditProduct()
     clearProductBasicInfo()
     filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789020','{enter}','{enter}','{enter}')
@@ -145,7 +145,7 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.wait(100)
   })
 
-  it.only('Verify Product is create successfully by filling up Price Name and Product Measurement with Mililiter Unit - Admin credentials', () => {
+  it('Verify Product is create successfully by filling up Price Name and Product Measurement with Mililiter Unit - Admin credentials', () => {
     accessToEditProduct()
     clearProductBasicInfo()
     filloutProductBasicInfo('Product filled up with and Product Measurement with Mililiter Unit','{enter}','123','{enter}','{enter}')
