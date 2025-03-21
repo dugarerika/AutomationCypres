@@ -66,7 +66,7 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
         cy.clearCookies()
     })
 
-    it('Verify it is possible delete category- Admin credentials', () => {
+    it.only('Verify it is possible delete category- Admin credentials', () => {
         //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
         cy.contains('Inventory').should('exist')
@@ -77,6 +77,88 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
         cy.contains('Options').click({ force: true })
         cy.contains('li','Category').should('exist')
         cy.contains('li','Category').click({ force: true })
+        cy.wait(100)
+        cy.get('section>div>ul>li>*').eq(2).click()
+        cy.contains('button','Delete').click({ force: true })
+        cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')
+        cy.wait(100)
+        
     })
+
+    it('Verify it is possible delete category- Admin credentials', () => {
+      //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+      cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+      cy.contains('Inventory').should('exist')
+      cy.contains('Inventory').click({ force: true })
+      cy.contains('Products').should('exist')
+      cy.contains('Products').click({ force: true })
+      cy.contains('Options').should('exist')
+      cy.contains('Options').click({ force: true })
+      cy.contains('li','Category').should('exist')
+      cy.contains('li','Category').click({ force: true })
+      cy.wait(100)
+      cy.get('section>div>ul>li>*').eq(2).click()
+      cy.contains('button','Delete').click({ force: true })
+      cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')
+      cy.wait(100)
+      
+  })
+
+  it('Verify it is possible delete category- Admin credentials', () => {
+    //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.contains('Inventory').should('exist')
+    cy.contains('Inventory').click({ force: true })
+    cy.contains('Products').should('exist')
+    cy.contains('Products').click({ force: true })
+    cy.contains('Options').should('exist')
+    cy.contains('Options').click({ force: true })
+    cy.contains('li','Category').should('exist')
+    cy.contains('li','Category').click({ force: true })
+    cy.wait(100)
+    cy.get('section>div>ul>li>*').eq(2).click()
+    cy.contains('button','Delete').click({ force: true })
+    cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')
+    cy.wait(100)
+    
+})
+
+it('Verify it is possible delete category- Admin credentials', () => {
+  //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  cy.contains('Inventory').should('exist')
+  cy.contains('Inventory').click({ force: true })
+  cy.contains('Products').should('exist')
+  cy.contains('Products').click({ force: true })
+  cy.contains('Options').should('exist')
+  cy.contains('Options').click({ force: true })
+  cy.contains('li','Category').should('exist')
+  cy.contains('li','Category').click({ force: true })
+  cy.wait(100)
+  cy.get('section>div>ul>li>*').eq(2).click()
+  cy.contains('button','Delete').click({ force: true })
+  cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')
+  cy.wait(100)
+  
+})
+
+it('Verify it is possible delete category- Admin credentials', () => {
+  //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  cy.contains('Inventory').should('exist')
+  cy.contains('Inventory').click({ force: true })
+  cy.contains('Products').should('exist')
+  cy.contains('Products').click({ force: true })
+  cy.contains('Options').should('exist')
+  cy.contains('Options').click({ force: true })
+  cy.contains('li','Category').should('exist')
+  cy.contains('li','Category').click({ force: true })
+  cy.wait(100)
+  cy.get('section>div>ul>li>*').eq(2).click()
+  cy.contains('button','Delete').click({ force: true })
+  cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')
+  cy.wait(100)
+  
+})
     
 })
