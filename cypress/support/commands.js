@@ -218,14 +218,15 @@ Cypress.Commands.add('accessToCreateSuppliers', () =>{
         cy.contains('Suppliers').should('exist')
         cy.contains('Suppliers').click({ force: true })
         cy.contains('h6', 'Suppliers').should('exist')
-        cy.contains('button', 'Add New').should('exist')
-        cy.contains('button', 'Add New').click({ force: true })
-        cy.contains('h3', 'Add New Supplier').should('exist')
+        cy.contains('button', 'Add New', { matchCase: false }).should('exist')
+        cy.contains('button', 'Add New', { matchCase: false }).click({ force: true })
+        cy.contains('h3', 'Add supplier').should('exist')
+        
 })
 
-Cypress.Commands.add('filloutSupplierForm', (sup_name, sup_description, sup_first_name, sup_last_name, sup_contact_mobile, sup_contact_emaily) =>{
-    cy.contains('h3', 'Add New Supplier').should('exist')
-    cy.contains('h6', 'Supplier Details').should('exist')
+Cypress.Commands.add('filloutSupplierForm', (sup_name, sup_description, sup_first_name, sup_last_name, sup_contact_mobile, sup_contact_email) =>{
+    cy.contains('h3', 'Add supplier').should('exist')
+    cy.contains('h6', 'Supplier Details', { matchCase: false }).should('exist')
     cy.contains('label>span', 'Supplier name').should('exist')
     cy.contains('label>span', 'Supplier name').parent().next('div').find('input').type(sup_name)
     cy.contains('label>span', 'Supplier description').should('exist')

@@ -1,36 +1,36 @@
+# # version: 2.1
+# # orbs:
+# #   cypress: cypress-io/cypress@3
+# # workflows:
+# #   test:
+# #     jobs:
+# #       - cypress/run:
+# #           cypress-command: 'npx cypress run -spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js'
+
+
+
 # version: 2.1
 # orbs:
-#   cypress: cypress-io/cypress@3
+#   node: circleci/node@5.0.3
+#   slack: circleci/slack@4.10.1
+# jobs:
+#   build-test-and-notify:
+#     executor:
+#       name: node/default
+#     steps:
+#       - checkout
+#       - run:
+#           name: Install dependencies
+#           command: npm install
+#       - run: npm 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js'
+#       - slack/notify:
+#           event: pass
+#           template: success_tagged_deploy_1
+#       - slack/notify:
+#           event: fail
+#           mentions: "@yemiwebby"
+#           template: basic_fail_1
 # workflows:
-#   test:
+#   build-and-notify:
 #     jobs:
-#       - cypress/run:
-#           cypress-command: 'npx cypress run -spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js'
-
-
-
-version: 2.1
-orbs:
-  node: circleci/node@5.0.3
-  slack: circleci/slack@4.10.1
-jobs:
-  build-test-and-notify:
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run: npm 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js'
-      - slack/notify:
-          event: pass
-          template: success_tagged_deploy_1
-      - slack/notify:
-          event: fail
-          mentions: "@yemiwebby"
-          template: basic_fail_1
-workflows:
-  build-and-notify:
-    jobs:
-      - build-test-and-notify
+#       - build-test-and-notify

@@ -59,10 +59,10 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
 
     
-    it.only('Verify it is possible to create an appointment changing the date - Admin credentials', () => {
+    it('Verify it is possible to create an appointment changing the date - Admin credentials', () => {
         const options = {
             day: "numeric",
-          };
+        };
         const dayNow = eval(new Date().toLocaleDateString("en-US",options)) + 1
         cy.log(dayNow)
         cy.newAppt("URL_BetaVendor_Staging")
