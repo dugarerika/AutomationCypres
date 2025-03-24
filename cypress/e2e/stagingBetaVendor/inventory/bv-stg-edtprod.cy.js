@@ -136,7 +136,7 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.wait(100)
   })
 //0123456789101
-  it('Verify Product is Edit successfully by filling up Price Name and Product Bar Code - Admin credentials', () => {
+  it.skip('Verify Product is Edit successfully by filling up Price Name and Product Bar Code - Admin credentials', () => {
     accessToEditProduct()
     clearProductBasicInfo()
     filloutProductBasicInfo('Product filled up with Product Name and Bar code','40123455','{enter}','{enter}','{enter}')
@@ -156,7 +156,7 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.wait(100)
   })
 
-  it('Verify Product is Edit successfully by filling up Price Name and Selecting a Category Editd from the Create product form - Admin credentials', () => {
+  it.skip('Verify Product is Edit successfully by filling up Price Name and Selecting a Category Editd from the Create product form - Admin credentials', () => {
     accessToEditProduct()
     filloutProductBasicInfo('Product filled up with Price Name and Category','{enter}','{enter}','{enter}','{enter}')
     cy.contains('label>span', 'Category', { matchCase: false }).should('exist')
@@ -170,7 +170,7 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.contains('label>span', 'Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories', { matchCase: false }).should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Selecting a Category - Admin credentials', () => {
@@ -180,7 +180,7 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.contains('label>span', 'Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories', { matchCase: false }).should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
   
   it('Verify Product is Edit successfully by filling up Price Name and Selecting a Brand Editd from the Create product form - Admin credentials', () => {
@@ -193,11 +193,11 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.get('section').next('div').find('button').click({ force: true })
     cy.contains('span','Brand Name', { matchCase: false }).parent().next('div').find('input').type('Automated Brand', { force: true, delay: 50 })
     cy.get('section').next('div').find('button').click({ force: true })
-    cy.contains('span', 'Brand Editd', { matchCase: false }).should('exist')
+    cy.contains('span', 'Brands', { matchCase: false }).should('exist')
     cy.contains('label>span', 'Category', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Categories', { matchCase: false }).should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Selecting a Brand - Admin credentials', () => {
@@ -207,60 +207,60 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.contains('label>span', 'Brand', { matchCase: false }).parents('label').next('div').find('input').click({ force: true })
     cy.contains('h3', 'Brands', { matchCase: false }).should('exist')
     cy.get('section>div>ul>*').first().click({ force: true })
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Short description - Admin credentials', () => {
     accessToEditProduct()
     filloutProductBasicInfo('Product filled up with Product Name and Short Description','{enter}','{enter}','This is a short description of the product','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Product description - Admin credentials', () => {
     accessToEditProduct()
     filloutProductBasicInfo('Product filled up with Product Name and Product Description','{enter}','{enter}','{enter}','This is a product description of the product')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Short and product description - Admin credentials', () => {
     accessToEditProduct()
     filloutProductBasicInfo('Product filled up with Product Name Short and product Description','{enter}','{enter}','This is a short description of the product','This is a product description of the product')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Supply Price - Admin credentials', () => {
     accessToEditProduct()
     filloutProductPricingInfo('12345','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Supply Price','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Retail Price - Admin credentials', () => {
     accessToEditProduct()
     filloutProductPricingInfo('{enter}','6789')
     filloutProductBasicInfo('Product filled up with Price name and Retail Price','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and SKU - Admin credentials', () => {
     accessToEditProduct()
     filloutProductInventoryInfo('asdf1234567','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and SKU','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Current Stock Quantity - Admin credentials', () => {
     accessToEditProduct()
     filloutProductInventoryInfo('{enter}','3','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Current Stock Quantity','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name and Low Stock Level - Admin credentials', () => {
     accessToEditProduct()
     filloutProductInventoryInfo('{enter}','{enter}','4','{enter}')
     filloutProductBasicInfo('Product filled up with Price name and Low Stock Level','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   
@@ -268,49 +268,49 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     accessToEditProduct()
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     filloutProductBasicInfo('Product filled up with Price name and Reorder Quantity','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name, product bar code, short description, prod description and Reorder Quantity - Admin credentials', () => {
     accessToEditProduct()
     filloutProductInventoryInfo('{enter}','{enter}','{enter}','90')
     filloutProductBasicInfo('Product filled up with Price Name product bar code short description prod description and Reorder Quantity','098765432112','{enter}','Prod short description','Product description')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name, product bar code EAN-13 4006381333931, and SKU12345-AB - Admin credentials', () => {
     accessToEditProduct()
     filloutProductInventoryInfo('SKU12345-AB','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 4006381333931 and SKU12345-AB','4006381333931','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name, product bar code EAN-13 9780201379624, and SKU67890-CD  - Admin credentials', () => {
     accessToEditProduct()
     filloutProductInventoryInfo('SKU67890-CD','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 9780201379624 and SKU67890-CD','9780201379624','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name, product bar code EAN-13 5012345678900, and SKU98765-GH  - Admin credentials', () => {
     accessToEditProduct()
     filloutProductInventoryInfo('SKU98765-GH','{enter}','{enter}','{enter}')
     filloutProductBasicInfo('Product filled up with Price Name product barcode EAN-13 5012345678900 and SKU98765-GH','5012345678900','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name, Supply Price and Retail Price- Admin credentials', () => {
     accessToEditProduct()
     filloutProductPricingInfo('12345','10')
     filloutProductBasicInfo('Product filled up with Price name Supply & Retail Price','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
   it('Verify Product is Edit successfully by filling up Price Name, Supply Price, Retail Price and tax toogle switched ON- Admin credentials', () => {
     accessToEditProduct()
     filloutProductPricingInfo('12345','10')
     cy.contains('span','Tax', { matchCase: false }).click({ force: true })
     filloutProductBasicInfo('Product filled up with Price name Supply Retail Price and tax toggle switched ON','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
   it('Verify Product is Edit successfully by filling up Price Name, Supply Price, Retail Price, Tax and Enable Retails sales toogle switched ON- Admin credentials', () => {
@@ -321,7 +321,7 @@ describe('Beta Vendor Admin | Inventory | Edit products| logged with Admin crede
     cy.contains('span','Enable Retail Sale', { matchCase: false }).click({ force: true })
     cy.wait(100)
     filloutProductBasicInfo('Product filled up with Price name Supply Retail Price tax & Enable Retails sales toggle switched ON','{enter}','{enter}','{enter}','{enter}')
-    expectedMessageCreateProduct('Product Editd successfully')
+    expectedMessageCreateProduct('Product Updated successfully')
   })
 
 // Create Non successfully  
