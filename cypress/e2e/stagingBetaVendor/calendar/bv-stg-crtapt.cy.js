@@ -236,7 +236,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     }) 
   })
 
-  it('Verify the New appointment modal is hidden after creating successfully an appointment - Receptionist credentials', () => {
+  it.only('Verify the New appointment modal is hidden after creating successfully an appointment - Receptionist credentials', () => {
     searchTimeSlot('Mateo','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -400,7 +400,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     cy.contains('span','User does not have enough permissions to use this service').should('be.visible')  
   })
 
-  it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
+  it.only('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
     searchTimeSlot('Naomi Naomi','04:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')

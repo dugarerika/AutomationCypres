@@ -362,7 +362,8 @@ Cypress.Commands.add('addItemService', (name) => {
     cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
     cy.contains('label>span', 'search').parents('label').next('div').find('input').type(name)
     cy.contains('div', name).parents('li').find('button').click({force: true})
-    cy.get('div[role="presentation"]').click({force: true}).type('{esc}')
+    cy.get('div[role="presentation"]').trigger('click')
+    //cy.get('div[role="presentation"]').click({force: true}).type('{esc}')
 })
 
 Cypress.Commands.add('addItemGiftCard', (name) => {
