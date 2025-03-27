@@ -376,7 +376,7 @@ Cypress.Commands.add('addItemGiftCard', (name) => {
 })
 
 Cypress.Commands.add('fillButton', (method) => {
-    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').click({force: true})
+    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').click()
     cy.contains('h6','Balance').next('span').then(($span) => {
         //balance = $span.text().substring(4)
         const balance = $span.text().split(" ")

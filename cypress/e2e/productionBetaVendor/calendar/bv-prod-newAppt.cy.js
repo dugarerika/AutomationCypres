@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
+describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -19,20 +19,20 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
 
     it('Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar  - Admin credentials', () => {
-        cy.newAppt("URL_BetaVendor_Staging")
+        cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')  
 
     })
 
     it('Verify duration is required in the New Appointment form on the Calendar  - Admin credentials', () => {
-        cy.newAppt("URL_BetaVendor_Staging")
+        cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Duration must be at least 1min').should('be.visible')
     })
 
     it('Verify employee is required in the New Appointment form on the Calendar  - Admin credentials', () => {
-        cy.newAppt("URL_BetaVendor_Staging")
+        cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('button','Create Appointment').click({force: true})
@@ -40,7 +40,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
 
     it('Verify service is required in the New Appointment form on the Calendar  - Admin credentials', () => {
-        cy.newAppt("URL_BetaVendor_Staging")
+        cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}')
@@ -49,7 +49,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
 
     it('Verify customer is not required in the New Appointment form on the Calendar  - Admin credentials', () => {
-        cy.newAppt("URL_BetaVendor_Staging")
+        cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}')
@@ -65,7 +65,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         };
         const dayNow = eval(new Date().toLocaleDateString("en-US",options)) + 1
         cy.log(dayNow)
-        cy.newAppt("URL_BetaVendor_Staging")
+        cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}')
