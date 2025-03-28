@@ -43,7 +43,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{enter}')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Some services are not available').should('be.visible')
     })
@@ -59,19 +59,25 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
     })
 
     
-    it('Verify it is possible to create an appointment changing the date - Admin credentials', () => {
+    it.only('Verify it is possible to create an appointment changing the date - Admin credentials', () => {
         const options = {
+            year: "numeric",
+            month: "long",
             day: "numeric",
         };
-        const dayNow = eval(new Date().toLocaleDateString("en-US",options)) + 1
+        const dayNow = new Date().toLocaleDateString("en-US",options)
         cy.log(dayNow)
+        //
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
-        cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Date').parent('div').find('input').click()
-        cy.get('.react-calendar__month-view__days').contains('button>abbr',dayNow).click()
+        // cy.get('.react-calendar__month-view__days').contains('button>abbr',dayNow).click()
+        cy.get(`[aria-label ="${dayNow}"]`).parent('button').next('button').click({force: true})
+        cy.get('body').trigger('click')
+        cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{enter}')
+        cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('label','Start Time').parent('div').find('input').click().type('08:00 PM{enter}')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
