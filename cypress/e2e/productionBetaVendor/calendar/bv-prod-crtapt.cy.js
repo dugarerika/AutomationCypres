@@ -48,7 +48,6 @@ afterEach(() => {
 it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
   searchTimeSlot('Susan one','03:00') 
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-  // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
   cy.contains('Add New Item').should('exist')  
   cy.contains('Add New Item').click()
   cy.contains('Add Offer').should('exist')  
@@ -164,14 +163,12 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
 
   after(() => {
-    //https://vendor.beta.bookr-dev.com/auth
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Receptionist credentials', () => {
     searchTimeSlot('Zstaff ','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()
     cy.contains('Add Offer').should('exist')  
@@ -295,14 +292,12 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
 
   after(() => {
-    //https://vendor.beta.bookr-dev.com/auth
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
     searchTimeSlot('Zumba Zumba','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()
     cy.contains('Add Offer').should('exist')  
@@ -408,14 +403,11 @@ describe('Production - Beta Vendor Admin | Calendar| Create appointments by Clic
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
     searchTimeSlot('Naomi Naomi','03:00')
     cy.contains('New Appointment').should('not.be.visible')
-    // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    // cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
     
   })
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
     searchTimeSlot('Naomi Naomi','03:00')  
-    // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()

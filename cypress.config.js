@@ -55,7 +55,7 @@ module.exports = defineConfig({
     },
     retries: {
       runMode: 2,
-      openMode: 1
+      openMode: 2
     },
     env: {
       SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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',
