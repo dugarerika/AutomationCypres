@@ -39,7 +39,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('div>span','Employee is required').should('be.visible')
     })
 
-    it.only('Verify service is required in the New Appointment form on the Calendar  - Admin credentials', () => {
+    it('Verify service is required in the New Appointment form on the Calendar  - Admin credentials', () => {
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
         // cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -61,17 +61,21 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     
     it('Verify it is possible to create an appointment changing the date - Admin credentials', () => {
         const options = {
+            year: "numeric",
+            month: "long",
             day: "numeric",
         };
-        const dayNow = eval(new Date().toLocaleDateString("en-US",options)) + 1
+        const dayNow = new Date().toLocaleDateString("en-US",options)
         cy.log(dayNow)
-        cy.newAppt("URL_BetaVendor_Staging")
+        cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
-        cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Date').parent('div').find('input').click()
-        cy.get('.react-calendar__month-view__days').contains('button>abbr',dayNow).click()
+        cy.get(`[aria-label ="${dayNow}"]`).parent('button').next('button').click({force: true})
+        cy.get('body').trigger('click')
+        cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{enter}')
+        cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('label','Start Time').parent('div').find('input').click().type('08:00 PM{enter}')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })

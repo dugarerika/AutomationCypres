@@ -49,7 +49,6 @@ Cypress.Commands.add('loginprod', (name, username, password) => {
 Cypress.Commands.add('loginov', (name, username, password) => {
     cy.session(name,() => {
         cy.visit(Cypress.env("URL_OldVendor_Staging")+ 'auth?nativeLogout=true')
-        // cy.url().should('include', Cypress.env("URL_OldVendor_Staging") + 'auth')
         cy.wait(1500)
         cy.get('#username').should('be.visible');
         cy.get('#password').should('be.visible');
