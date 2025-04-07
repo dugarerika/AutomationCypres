@@ -5,7 +5,7 @@ const { should } = require("chai")
 
 // Important:  before running this test cases the product list must be empty
 
-describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with Admin credentials', () => {
+describe('Production - Beta Vendor Admin | Inventory | Delete products| logged with Admin credentials', () => {
 
   beforeEach(() => {
     cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))  })
