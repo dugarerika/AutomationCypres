@@ -28,6 +28,32 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
         cy.clearCookies()
     })
 
+    it('Verify Staff is required to create a blocktime by filling out Start time and End time only on the Calendar  - Admin credentials', () => {
+        newBlockTime()
+        cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
+    })
+
+    it('Verify Staff is required to create a blocktime by filling out Start time on the Calendar  - Admin credentials', () => {
+        newBlockTime()
+        cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
+    })
+
+    it('Verify Staff is required to create a blocktime by filling out End time on the Calendar  - Admin credentials', () => {
+        newBlockTime()
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
+    })
+    
     it('Verify Start time is required to create a blocktime on the Calendar  - Admin credentials', () => {
         newBlockTime()
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
@@ -122,6 +148,32 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
         cy.clearCookies()
     })
 
+    it('Verify Staff is required to create a blocktime filling out Start time and End time on the Calendar  - Staff credentials', () => {
+        newBlockTime()
+        cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
+    })
+
+    it('Verify Staff is required to create a blocktime filling out Start time on the Calendar  - Staff credentials', () => {
+        newBlockTime()
+        cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
+    })
+
+    it('Verify Staff is required to create a blocktime filling out End time and End time on the Calendar  - Staff credentials', () => {
+        newBlockTime()
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
+    })
+
     it('Verify Start time is required to create a blocktime on the Calendar  - Staff credentials', () => {
         newBlockTime()
         cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
@@ -214,6 +266,32 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
 
     afterEach(() => {
         cy.clearCookies()
+    })
+
+    it('Verify Staff is required to create a blocktime filling out Start time and End time on the Calendar  - Receptionist credentials', () => {
+        newBlockTime()
+        cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
+    })
+
+    it('Verify Staff is required to create a blocktime filling out Start time on the Calendar  - Receptionist credentials', () => {
+        newBlockTime()
+        cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Start Time').parent().next('div').find('input').type('{enter}{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
+    })
+
+    it('Verify Staff is required to create a blocktime filling out End time and End time on the Calendar  - Receptionist credentials', () => {
+        newBlockTime()
+        cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','End Time').parent().next('div').find('input').type('03:00{enter}')
+        cy.contains('button','Submit').click({force: true})
+        cy.contains('div>span','Employee cannot be empty').should('be.visible')
     })
 
     it('Verify Start time is required to create a blocktime on the Calendar  - Receptionist credentials', () => {

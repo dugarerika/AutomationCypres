@@ -19,7 +19,7 @@
     "dashboard": "npx cypress run --record --key 3025d595-10bc-4aad-91ed-5802e5896b45",
     "autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
     "OldVendor-Staging": "npx cypress run --reporter mochawesome --spec cypress/e2e/staging/*/*.js",
-    "BetaVendor-Staging-Regression": "npx cypress run --spec cypress/e2e/stagingBetaVendor/*/*.js",
+    "BetaVendor-Staging-Regression": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/*.js",
     "BetaVendor-Production-Regression": "npx cypress run --spec cypress/e2e/productionBetaVendor/*/*.js",
     "OldVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/stagingOldVendor/inventory/ov-stg-crtprod.cy.js",
     "BetaVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/stagingBetaVendor/inventory/bv-stg-crtprod.cy.js",

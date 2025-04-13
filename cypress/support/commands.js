@@ -210,7 +210,6 @@ Cypress.Commands.add('filloutProductInventoryInfo', (prod_ksu, prod_stock_qty, p
 // ------------------------------ Inventory/Supppliers Section --------------------------------
 
 Cypress.Commands.add('accessToCreateSuppliers', () =>{
-        //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
@@ -222,6 +221,20 @@ Cypress.Commands.add('accessToCreateSuppliers', () =>{
         cy.contains('h3', 'Add supplier').should('exist')
         
 })
+
+Cypress.Commands.add('accessToCreateSuppliersProd', () =>{
+    cy.visit(Cypress.env("URL_BetaVendor_production") + 'admin/calendar')
+    cy.contains('Inventory').should('exist')
+    cy.contains('Inventory').click({ force: true })
+    cy.contains('Suppliers').should('exist')
+    cy.contains('Suppliers').click({ force: true })
+    cy.contains('h6', 'Suppliers').should('exist')
+    cy.contains('button', 'Add New', { matchCase: false }).should('exist')
+    cy.contains('button', 'Add New', { matchCase: false }).click({ force: true })
+    cy.contains('h3', 'Add supplier').should('exist')
+    
+})
+
 
 Cypress.Commands.add('filloutSupplierForm', (sup_name, sup_description, sup_first_name, sup_last_name, sup_contact_mobile, sup_contact_email) =>{
     cy.contains('h3', 'Add supplier').should('exist')

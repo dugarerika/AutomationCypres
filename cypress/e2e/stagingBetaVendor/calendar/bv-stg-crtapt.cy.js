@@ -31,10 +31,10 @@ const searchApt = (staff,start_time) => {
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
-  before(() => {
+before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
-  })
+})
 
 beforeEach(() => {
     cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
@@ -47,7 +47,6 @@ afterEach(() => {
 it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
   searchTimeSlot('Susan one','03:00') 
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-  // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
   cy.contains('Add New Item').should('exist')  
   cy.contains('Add New Item').click()
   cy.contains('Add Offer').should('exist')  
@@ -77,6 +76,8 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
 
 it('Verify it is possible to create an appointment searching and selecting customer from vendor - Admin credentials', () => {
   searchTimeSlot('Naomi Naomi','07:00') 
+  // cy.contains('h2','New Appointment').parent('div').next('div').find('div','Search customer..').next('div').children('input').click({force: true})
+  // cy.contains('h2','New Appointment').parent('div').next('div').find('div','Search customer..').next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
   cy.contains("Search customer..").next('div').should('exist')
   cy.contains("Search customer..").next('div').children('input').click({force: true})
   cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
@@ -236,7 +237,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     }) 
   })
 
-  it.only('Verify the New appointment modal is hidden after creating successfully an appointment - Receptionist credentials', () => {
+  it('Verify the New appointment modal is hidden after creating successfully an appointment - Receptionist credentials', () => {
     searchTimeSlot('Mateo','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -400,7 +401,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     cy.contains('span','User does not have enough permissions to use this service').should('be.visible')  
   })
 
-  it.only('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
+  it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
     searchTimeSlot('Naomi Naomi','04:00')  
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
