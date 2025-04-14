@@ -93,7 +93,7 @@ const clearUpdateForm = () => {
 describe('Beta Vendor Admin | Employee | Create Subscription| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    login('Admin Section', 'pinkdoor', '1234567890')
+    login('Admin Section', 'cococutsalon', '1234567890')
 })
 
 afterEach(() => {
