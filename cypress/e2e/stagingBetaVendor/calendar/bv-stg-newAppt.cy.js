@@ -42,6 +42,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     it('Verify service is required in the New Appointment form on the Calendar  - Admin credentials', () => {
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
+        cy.contains('New Appointment').should('be.visible')
+        cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('Helen{enter}')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Some services are not available').should('be.visible')
