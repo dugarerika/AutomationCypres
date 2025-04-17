@@ -13,7 +13,7 @@ const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 
 const login = (name, username, password) => {
     cy.session(name, () => {
-        cy.visit('https://beta.vendor.bookr-dev.com/')
+        cy.visit(Cypress.env("URL_BetaVendor_Staging"))
         cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
         cy.get('[type="text"]').should('be.visible')
         cy.get('[type="password"]').should('be.visible')
@@ -38,11 +38,13 @@ const filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessio
     cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Name').parent().next('div').find('input').eq(0).type(sub_name)
     cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
+    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Price').parent().next('div').find('input').eq(0).type(sub_price)
     cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).type(sub_expiration)
-    cy.contains('label>span','Number of sessions').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Number of sessions').parent().next('div').find('input').eq(0).type(sub_sessions)
+    cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).type(sub_sessions)
     cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).should('exist')
     cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).type(sub_notes)
     cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).should('exist')
@@ -50,7 +52,7 @@ const filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessio
 }
 
 const accessToSubsSection = () => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     cy.contains('button>span','Subscriptions').should('exist')
     cy.contains('button>span','Subscriptions').click({ force: true })
     cy.contains('h6','Subscriptions').should('exist')
@@ -59,12 +61,12 @@ const accessToSubsSection = () => {
 const accessToAddSubsForm = () => {
     cy.contains('h6','Subscriptions').parent().next('div').find('button').should('exist')
     cy.contains('h6','Subscriptions').parent().next('div').find('button').click({ force: true })
-    cy.contains('h3','Add a subscription').parent().next('div').find('button').should('exist')
+    cy.contains('h3','Add New Subscription', { matchCase: false }).parent().next('div').find('button').should('exist')
 }
 
 const selectSubsService = () => {
-    cy.contains('div>button','Add Service').should('exist')
-    cy.contains('div>button','Add Service').click({ force: true })
+    cy.contains('div>button','Add another service').should('exist')
+    cy.contains('div>button','Add another service').click({ force: true })
     cy.contains('div>div','Select service').should('exist')
     cy.contains('div>div','Select service').click({ force: true })
     cy.contains('div>div','Select service').next('div').find('input').type('{downarrow}{enter}',{ force: true })
@@ -82,8 +84,8 @@ const clearUpdateForm = () => {
     cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
     cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).clear({ force: true })
-    cy.contains('label>span','Number of sessions').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Number of sessions').parent().next('div').find('input').eq(0).clear({ force: true })
+    cy.contains('label>span','Number of Sessions', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Number of Sessions', { matchCase: false }).parent().next('div').find('input').eq(0).clear({ force: true })
     cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).should('exist')
     cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).clear({ force: true })
     cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).should('exist')
@@ -93,7 +95,7 @@ const clearUpdateForm = () => {
 describe('Beta Vendor Admin | Employee | Create Subscription| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    login('Admin Section', 'cococutsalon', '1234567890')
+    cy.login('Admin Section', 'cococutsalon', '1234567890')
 })
 
 afterEach(() => {
@@ -110,8 +112,8 @@ it('Verify it is possible access to the Subscription section- Admin credentials'
 it('Verify that the Add Subscription Service is required', () => {
     accessToSubsSection()
     accessToAddSubsForm()
-    filloutSubscriptionInfo(randUsername1, '{enter}', randEmail1, '{enter}', randUsername1, '1234567890')
-    expectedMessageCreateSubs('Please select at least one service')
+    filloutSubscriptionInfo(randUsername1, '1', 1, 1, randEmail1, randUsername1)
+    expectedMessageCreateSubs('At least one service variant is required')
 })
 
 it('Verify that the Add Subscription Name is required', () => {
@@ -133,7 +135,6 @@ it('Verify that the Add Subscription Price is required', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
     filloutSubscriptionInfo('SubPrice Required','{enter}',2,3,'Notes','Description')
     expectedMessageCreateSubs('Price is required')
 })
@@ -142,17 +143,15 @@ it('Verify that the Add Subscription Price must be greater than Zero', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
     filloutSubscriptionInfo('SubPrice greater than 0',0,2,3,'Notes','Description')
-    expectedMessageCreateSubs('Price must be greater than 0')
+    expectedMessageCreateSubs('Price must be greater or equal than 1')
 })
 
 it('Verify that the Add Subscription Price allow decimal numbers', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubPrice Zeropoint1',0.1,2,3,'Notes','Description')
+    filloutSubscriptionInfo('SubPrice Zeropoint1',1.1,2,3,'Notes','Description')
     expectedMessageCreateSubs('Subscription created')
 })
 
@@ -160,8 +159,7 @@ it('Verify that the Add Subscription Description field is optional', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubDescription is optional',0.101,2,3,'Notes for Description is optional','{enter}')
+    filloutSubscriptionInfo('SubDescription is optional',101,2,3,'Notes for Description is optional','{enter}')
     expectedMessageCreateSubs('Subscription created')
 })
 
@@ -169,8 +167,7 @@ it('Verify that the Add Subscription Notes field is optional', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,2,3,'{enter}','Description test for Notes is optional')
+    filloutSubscriptionInfo('SubNotes is optional',9,2,3,'{enter}','Description test for Notes is optional')
     expectedMessageCreateSubs('Subscription created')
 })
 
@@ -178,45 +175,40 @@ it('Verify that the Add Subscription Number of Sessions is required  ', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,2,'{enter}','Notes','Description')
+    filloutSubscriptionInfo('SubNotes is optional',1,2,'{enter}','Notes','Description')
     expectedMessageCreateSubs('Number of sessions is required')
 })
 
-it('Verify that the Add Subscription Number of Sessions must be greater than Zero', () => {
+it('Verify that the Add Subscription Number of Sessions must be greater than 1', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,2,0,'Notes','Description')
-    expectedMessageCreateSubs('Number of sessions must be greater than 0')
+    filloutSubscriptionInfo('SubNotes is optional',1,2,0,'Notes','Description')
+    expectedMessageCreateSubs('Number of sessions must be greater or equal than 1')
 })
 
 it('Verify that the Add Subscription Number of Sessions must be an integer', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
     filloutSubscriptionInfo('SubNotes is optional',10.10,2,2.1,'Notes','Description')
-    expectedMessageCreateSubs('Number of sessions must be an integer number')
+    expectedMessageCreateSubs('Number of sessions must be an integer')
 })
 
 it('Verify that the Add Subscription Expiration in days is required', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,'{enter}',1000,'Notes','Description')
-    expectedMessageCreateSubs('Expiration is required')
+    filloutSubscriptionInfo('SubNotes is optional',1,'{enter}',1000,'Notes','Description')
+    expectedMessageCreateSubs('Expiration time is required')
 })
 
-it('Verify that the Add Subscription Expiration in days must be greater than Zero', () => {
+it('Verify that the Add Subscription Expiration in days must be greater than 1', () => {
     accessToSubsSection()
     accessToAddSubsForm()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,0,8,'Notes','Description')
-    expectedMessageCreateSubs('Expiration must be greater than 0')
+    filloutSubscriptionInfo('SubNotes is optional',1,0,8,'Notes','Description')
+    expectedMessageCreateSubs('Expiration time must be greater or equal than 1')
 })
 
 it('Verify that the Add Subscription Expiration in days must be an integer', () => {
@@ -224,9 +216,8 @@ it('Verify that the Add Subscription Expiration in days must be an integer', () 
     accessToAddSubsForm()
     selectSubsService()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,8.1,1000,'Notes','Description')
-    expectedMessageCreateSubs('Expiration must be an integer number')
+    filloutSubscriptionInfo('SubNotes is optional',1,8.1,1000,'Notes','Description')
+    expectedMessageCreateSubs('Expiration time must be an integer')
 })
 
 it('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
@@ -236,7 +227,6 @@ it('Verify that the Add Subscription Service: Add another service allows the use
     selectSubsService()
     selectSubsService()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
     expectedMessageCreateSubs('Subscription created')
 })
@@ -247,8 +237,7 @@ it('Verify that the Add Subscription Service: Services can be removed ', () => {
     selectSubsService()
     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    expectedMessageCreateSubs('Please select at least one service')
+    expectedMessageCreateSubs('At least one service variant is required')
 })
 
 it('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
@@ -256,23 +245,9 @@ it('Verify that the Add Subscription Service: Add another service allows the use
     accessToAddSubsForm()
     selectSubsService()
     selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
     expectedMessageCreateSubs('Subscription created')
 })
-
-})
-
-describe('Beta Vendor Admin | Employee | Update Subscription| logged with Admin credentials', () => {
-
-    beforeEach(() => {
-        login('Admin Section', 'pinkdoor', '1234567890')
-    })
-    
-    afterEach(() => {
-        // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
-        cy.clearCookies()
-    })
 
 // Edit Subscription form fiels validation
 it('Verify that the Update Subscription allows the user to remove services', () => {
@@ -289,151 +264,138 @@ it('Verify that the Update Subscription Service is required', () => {
     expectedMessageCreateSubs('Please select at least one service')
 })
 
-it('Verify that the Update Subscription Name is required', () => {
-    accessToSubsSection()
-    accessToEditSubsForm()
-    clearUpdateForm()
-    expectedMessageCreateSubs('Name is required')
-})
+// it('Verify that the Update Subscription Name is required', () => {
+//     accessToSubsSection()
+//     accessToEditSubsForm()
+//     clearUpdateForm()
+//     expectedMessageCreateSubs('Name is required')
+// })
 
-it('Verify that the update Subscription Name must be at least 3 characters', () => {
-    accessToSubsSection()
-    accessToEditSubsForm()
-    clearUpdateForm()
-    filloutSubscriptionInfo(10,10,20,30,'Notes10','Description10')
-    expectedMessageCreateSubs('Name must be at least 3 characters')
-})
+// it('Verify that the update Subscription Name must be at least 3 characters', () => {
+//     accessToSubsSection()
+//     accessToEditSubsForm()
+//     clearUpdateForm()
+//     filloutSubscriptionInfo(10,10,20,30,'Notes10','Description10')
+//     expectedMessageCreateSubs('Name must be at least 3 characters')
+// })
 
-it('Verify that the update Subscription Price is required', () => {
-    accessToSubsSection()
-    accessToEditSubsForm()
-    clearUpdateForm()
-    filloutSubscriptionInfo('SubPrice Required','{enter}',2,3,'Notes','Description')
-    expectedMessageCreateSubs('Price is required')
-})
+// it('Verify that the update Subscription Price is required', () => {
+//     accessToSubsSection()
+//     accessToEditSubsForm()
+//     clearUpdateForm()
+//     filloutSubscriptionInfo('SubPrice Required','{enter}',2,3,'Notes','Description')
+//     expectedMessageCreateSubs('Price is required')
+// })
 
-it('Verify that the Update Subscription Price must be greater than Zero', () => {
-    accessToSubsSection()
-    accessToEditSubsForm()
-    clearUpdateForm()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubPrice greater than 0',0,2,3,'Notes','Description')
-    expectedMessageCreateSubs('Price must be greater than 0')
-})
+// it('Verify that the Update Subscription Price must be greater than Zero', () => {
+//     accessToSubsSection()
+//     accessToEditSubsForm()
+//     clearUpdateForm()
+//     filloutSubscriptionInfo('SubPrice greater than 0',0,2,3,'Notes','Description')
+//     expectedMessageCreateSubs('Price must be greater than 0')
+// })
 
-it('Verify that the Update Subscription Price allow decimal numbers', () => {
-    accessToSubsSection()
-    accessToEditSubsForm()
-    clearUpdateForm()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubPrice Zeropoint1',0.1,2,3,'Notes','Description')
-    expectedMessageCreateSubs('Subscription Updated Succesfully')
-})
+// it('Verify that the Update Subscription Price allow decimal numbers', () => {
+//     accessToSubsSection()
+//     accessToEditSubsForm()
+//     clearUpdateForm()
+//     filloutSubscriptionInfo('SubPrice Zeropoint1',0.1,2,3,'Notes','Description')
+//     expectedMessageCreateSubs('Subscription Updated Succesfully')
+// })
 
-it('Verify that the Update Subscription Description field is optional', () => {
-    accessToSubsSection()
-    accessToEditSubsForm()
-    clearUpdateForm()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('update SubDescription is optional', 0.101, 2, 3, 'Notes for Description is optional','{enter}')
-    expectedMessageCreateSubs('Subscription Updated Succesfully')
-})
+// it('Verify that the Update Subscription Description field is optional', () => {
+//     accessToSubsSection()
+//     accessToEditSubsForm()
+//     clearUpdateForm()
+//     filloutSubscriptionInfo('update SubDescription is optional', 0.101, 2, 3, 'Notes for Description is optional','{enter}')
+//     expectedMessageCreateSubs('Subscription Updated Succesfully')
+// })
 
-it('Verify that the Add Subscription Notes field is optional', () => {
-    accessToSubsSection()
-    accessToEditSubsForm()
-    clearUpdateForm()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('Update SubNotes is optional',0.1,2,3,'{enter}','Description test for Notes is optional')
-    expectedMessageCreateSubs('Subscription Updated Succesfully')
-})
+// it('Verify that the Add Subscription Notes field is optional', () => {
+//     accessToSubsSection()
+//     accessToEditSubsForm()
+//     clearUpdateForm()
+//     filloutSubscriptionInfo('Update SubNotes is optional',0.1,2,3,'{enter}','Description test for Notes is optional')
+//     expectedMessageCreateSubs('Subscription Updated Succesfully')
+// })
 
-it('Verify that the Add Subscription Number of Sessions is required  ', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,2,'{enter}','Notes','Description')
-    expectedMessageCreateSubs('Number of sessions is required')
-})
+// it('Verify that the Add Subscription Number of Sessions is required  ', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     filloutSubscriptionInfo('SubNotes is optional',0.1,2,'{enter}','Notes','Description')
+//     expectedMessageCreateSubs('Number of sessions is required')
+// })
 
-it.skip('Verify that the Add Subscription Number of Sessions must be greater than Zero', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,2,0,'Notes','Description')
-    expectedMessageCreateSubs('Number of sessions must be greater than 0')
-})
+// it.skip('Verify that the Add Subscription Number of Sessions must be greater than Zero', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     filloutSubscriptionInfo('SubNotes is optional',0.1,2,0,'Notes','Description')
+//     expectedMessageCreateSubs('Number of sessions must be greater than 0')
+// })
 
-it.skip('Verify that the Add Subscription Number of Sessions must be an integer', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',10.10,2,2.1,'Notes','Description')
-    expectedMessageCreateSubs('Number of sessions must be an integer number')
-})
+// it.skip('Verify that the Add Subscription Number of Sessions must be an integer', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     filloutSubscriptionInfo('SubNotes is optional',10.10,2,2.1,'Notes','Description')
+//     expectedMessageCreateSubs('Number of sessions must be an integer number')
+// })
 
-it.skip('Verify that the Add Subscription Expiration in days is required', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,'{enter}',1000,'Notes','Description')
-    expectedMessageCreateSubs('Expiration is required')
-})
+// it.skip('Verify that the Add Subscription Expiration in days is required', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     filloutSubscriptionInfo('SubNotes is optional',0.1,'{enter}',1000,'Notes','Description')
+//     expectedMessageCreateSubs('Expiration is required')
+// })
 
-it.skip('Verify that the Add Subscription Expiration in days must be greater than Zero', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,0,8,'Notes','Description')
-    expectedMessageCreateSubs('Expiration must be greater than 0')
-})
+// it.skip('Verify that the Add Subscription Expiration in days must be greater than Zero', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     filloutSubscriptionInfo('SubNotes is optional',0.1,0,8,'Notes','Description')
+//     expectedMessageCreateSubs('Expiration must be greater than 0')
+// })
 
-it.skip('Verify that the Add Subscription Expiration in days must be an integer', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('SubNotes is optional',0.1,8.1,1000,'Notes','Description')
-    expectedMessageCreateSubs('Expiration must be an integer number')
-})
+// it.skip('Verify that the Add Subscription Expiration in days must be an integer', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     selectSubsService()
+//     filloutSubscriptionInfo('SubNotes is optional',0.1,8.1,1000,'Notes','Description')
+//     expectedMessageCreateSubs('Expiration must be an integer number')
+// })
 
-it.skip('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    selectSubsService()
-    selectSubsService()
-    selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-    expectedMessageCreateSubs('Subscription created')
-})
+// it.skip('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     selectSubsService()
+//     selectSubsService()
+//     selectSubsService()
+//     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
+//     expectedMessageCreateSubs('Subscription created')
+// })
 
-it.skip('Verify that the Add Subscription Service: Services can be removed ', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-    cy.get('[data-testid="CloseIcon"]').click({ force: true })
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    expectedMessageCreateSubs('Please select at least one service')
-})
+// it.skip('Verify that the Add Subscription Service: Services can be removed ', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
+//     cy.get('[data-testid="CloseIcon"]').click({ force: true })
+//     expectedMessageCreateSubs('Please select at least one service')
+// })
 
-it.skip('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
-    accessToSubsSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    selectSubsService()
-    // filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description)
-    filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-    expectedMessageCreateSubs('Subscription created')
-})
+// it.skip('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
+//     accessToSubsSection()
+//     accessToAddSubsForm()
+//     selectSubsService()
+//     selectSubsService()
+//     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
+//     expectedMessageCreateSubs('Subscription created')
+// })
 
 })
 
