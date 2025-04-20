@@ -34,7 +34,7 @@
     "OldVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-crtapt.cy.js",
     "BetaVendor-Staging-Calendar-CreateAppt": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-crtapt.cy.js",
     "BetaVendor-Staging-Calendar-CreateSubs": "npx cypress run --spec cypress/e2e/stagingBetaVendor/subscriptions/bv-stg-crtsubs.cy.js",
-    "BetaVendor-Staging-Calendar-DeleteSubs": "npx cypress run --spec cypress/e2e/stagingBetaVendor/subscriptions/bv-stg-dltsubs.cy.js",
+    "BetaVendor-Staging-Calendar-DeleteSubs": "npx cypress run --spec cypress/e2e/staging/subscriptions/bv-stg-dltsubs.cy.js",
     "OldVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/staging/calendar/ov-stg-blcktime.cy.js",
     "BetaVendor-Staging-Calendar-BlockTime": "npx cypress run --spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js",
     "BetaVendor-Staging-Calendar-NewCheckout": "npx cypress run --reporter mochawesome --spec cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js",
