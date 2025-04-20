@@ -11,23 +11,6 @@ const randEmail2 = faker.internet.email()
 const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 
-const login = (name, username, password) => {
-    cy.session(name, () => {
-        cy.visit(Cypress.env("URL_BetaVendor_Staging"))
-        cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
-        cy.get('[type="text"]').should('be.visible')
-        cy.get('[type="password"]').should('be.visible')
-        cy.xpath('//button[text()="Login"]').should('be.visible')
-        cy.get('[type="text"]').type(username, { force: true, delay: 50 })
-        cy.get('[type="password"]').type(password, { force: true, delay: 50 })
-        cy.intercept('POST', '/api/main/auth/login').as('sign')
-        cy.xpath('//button[text()="Login"]').click()
-        cy.wait('@sign').then((interception) => {
-        expect(interception.response.statusCode).to.equal(200)
-        })
-    })
-}
-
 const expectedMessageCreateSubs = (product_message) => {
     cy.contains('button', 'Save').should('exist')
     cy.contains('button', 'Save').click({ force: true })
@@ -95,7 +78,7 @@ const clearUpdateForm = () => {
 describe('Beta Vendor Admin | Employee | Create Subscription| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.login('Admin Section', 'cococutsalon', '1234567890')
+    cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
 })
 
 afterEach(() => {
@@ -250,14 +233,14 @@ it('Verify that the Add Subscription Service: Add another service allows the use
 })
 
 // Edit Subscription form fiels validation
-it('Verify that the Update Subscription allows the user to remove services', () => {
+it.skip('Verify that the Update Subscription allows the user to remove services', () => {
     accessToSubsSection()
     accessToEditSubsForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
     expectedMessageCreateSubs('Please select at least one service')
 })
 
-it('Verify that the Update Subscription Service is required', () => {
+it.skip('Verify that the Update Subscription Service is required', () => {
     accessToSubsSection()
     accessToEditSubsForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })

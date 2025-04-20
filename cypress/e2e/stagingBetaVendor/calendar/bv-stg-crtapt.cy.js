@@ -166,7 +166,6 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   it('Verify it is possible to create a new appointment for 1 service and 1 offer - Receptionist credentials', () => {
     searchTimeSlot('Zstaff ','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()
     cy.contains('Add Offer').should('exist')  
@@ -408,7 +407,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     cy.contains('Add Offer').should('exist')  
     cy.contains('Add Offer').click()
     cy.contains('div','Offer').should('exist')  
-    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer 255{enter}')
+    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('nao{enter}')
     cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
