@@ -21,7 +21,6 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
     it('Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar  - Admin credentials', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')  
-
     })
 
     it('Verify duration is required in the New Appointment form on the Calendar  - Admin credentials', () => {

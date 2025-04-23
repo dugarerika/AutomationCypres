@@ -17,25 +17,9 @@ const expectedMessageCreateSubs = (product_message) => {
     cy.contains('div>span', product_message).should('exist')
 }
 
-const filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description) => {
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).type(sub_name)
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).type(sub_price)
-    cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).type(sub_expiration)
-    cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).type(sub_sessions)
-    cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).should('exist')
-    cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).type(sub_notes)
-    cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).should('exist')
-    cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).type(sub_description)
-}
 
 const accessToSubsSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
     cy.contains('button>span','Subscriptions').should('exist')
     cy.contains('button>span','Subscriptions').click({ force: true })
     cy.contains('h6','Subscriptions').should('exist')
@@ -49,10 +33,10 @@ const accessToSubsSection = () => {
       cy.contains('span', 'Subscription deleted successfully').should('exist')
 }
 
-describe('Beta Vendor Admin | Employee | Delete Subscription| logged with Admin credentials', () => {
+describe('Production - Beta Vendor Admin | Employee | Delete Subscription| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
+    cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
 })
 
 afterEach(() => {

@@ -223,7 +223,7 @@ Cypress.Commands.add('accessToCreateSuppliers', () =>{
 })
 
 Cypress.Commands.add('accessToCreateSuppliersProd', () =>{
-    cy.visit(Cypress.env("URL_BetaVendor_production") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Suppliers').should('exist')

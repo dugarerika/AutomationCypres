@@ -12,17 +12,20 @@ const expectedMessageCreateSupplier = (supplier_message) => {
 
 describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin credentials', () =>{
 
+  before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearAllSavedSessions)
+  }) 
+
   beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+    cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
   })
 
   afterEach(() => {
-    // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })
 
   it('Verify it is possible access to the Inventory/Suplliers section- Admin credentials', () => {
-    //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
