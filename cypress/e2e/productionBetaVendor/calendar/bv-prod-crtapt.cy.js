@@ -45,7 +45,7 @@ afterEach(() => {
   cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth?nativeLogout=true')
 })
 
-it('Verify it is possible to create a new appointment for 1 service and 1 offer - Admin credentials', () => {
+it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
   searchTimeSlot('Susan one','03:00') 
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.contains('Add New Item').should('exist')  
@@ -64,7 +64,7 @@ it('Verify it is possible to create a new appointment for 1 service and 1 offer 
   cy.contains('New Appointment').should('not.be.visible')  
   }) 
 
-it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin credentials', () => {
+it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
   searchTimeSlot('Susan one','07:00') 
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -75,7 +75,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
   cy.contains('New Appointment').should('not.be.visible')  
 })
 
-it('Verify it is possible to create an appointment searching and selecting customer from vendor - Admin credentials', () => {
+it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
   searchTimeSlot('Naomi Naomi','07:00') 
   cy.contains("Search customer..").next('div').should('exist')
   cy.contains("Search customer..").next('div').children('input').click({force: true})
@@ -89,7 +89,7 @@ it('Verify it is possible to create an appointment searching and selecting custo
   cy.contains('New Appointment').should('not.be.visible')  
 })
 
-it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment - Admin credentials', () => {
+it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
   searchTimeSlot('Naomi Naomi','07:00')  
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.contains('Create Appointment').click({force: true})
@@ -102,7 +102,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ov
   cy.contains('New Appointment').should('not.be.visible')  
 })
 
-it('Verify it is possible to create an appointment over and already taken time slot - Admin Credentials', () => {
+it('Verify it is possible to create an appointment over and already taken time slot', () => {
   searchTimeSlot('Naomi Naomi','07:00') 
   cy.contains('New Appointment').should('exist')
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
@@ -115,7 +115,7 @@ it('Verify it is possible to create an appointment over and already taken time s
   }) 
 })
 
-it('Verify the New appointment modal is hidden after creating successfully an appointment - Admin credentials', () => {
+it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
   searchTimeSlot('ALEX ALEX','07:00')  
   cy.contains('New Appointment').should('exist')
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
@@ -127,7 +127,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
   cy.contains('New Appointment').should('not.be.visible')  
 })
 
-it('Verify The edit appointment modal is display after clicking on Edit booking button - Admin credentials', () => {
+it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
   searchApt('ALEX ALEX','07:00') 
   cy.log('Test completed')
   cy.contains('Appointment Details').should('be.visible')
@@ -136,7 +136,7 @@ it('Verify The edit appointment modal is display after clicking on Edit booking 
   cy.contains('Edit Appointment').should('exist') 
 })
 
-it('Verify it is possible to edit the Customer - Admin credentials', () => {
+it('Verify it is possible to edit the Customer', () => {
   searchApt('ALEX ALEX','07:00') 
   cy.contains('Appointment Details').should('be.visible')
   cy.contains('Edit Booking').should('be.visible')
@@ -166,7 +166,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   })
 
-  it('Verify it is possible to create a new appointment for 1 service and 1 offer - Receptionist credentials', () => {
+  it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
     searchTimeSlot('Zstaff ','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -185,7 +185,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
     }) 
 
-  it('Verify the New appointment modal is hidden after creating successfully an appointment - Receptionist credentials', () => {
+  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
     searchTimeSlot('Mateo','03:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -196,7 +196,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify it is possible to create an appointment searching and selecting customer from vendor - Receptionist credentials', () => {
+  it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
     searchTimeSlot('Zstaff ','06:00') 
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
@@ -210,7 +210,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment - Receptionist credentials', () => {
+  it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
     searchTimeSlot('Zstaff ','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
@@ -223,7 +223,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify it is possible to create an appointment over and already taken time slot - Receptionist Credentials', () => {
+  it('Verify it is possible to create an appointment over and already taken time slot', () => {
     searchTimeSlot('Zstaff ','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
@@ -235,7 +235,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     }) 
   })
 
-  it('Verify the New appointment modal is hidden after creating successfully an appointment - Receptionist credentials', () => {
+  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
     searchTimeSlot('Mateo ','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -246,7 +246,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify the New appointment modal is hidden after creating successfully an appointment - Receptionist Credentials', () => {
+  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
     searchTimeSlot('Jaira ','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -257,7 +257,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify The edit appointment modal is display after clicking on Edit booking button - Receptionist credentials', () => {
+  it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
     searchApt('Mateo ','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
@@ -265,7 +265,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('Edit Appointment').should('exist') 
   })
 
-  it('Verify it is possible to edit the Customer - Receptionist credentials', () => {
+  it('Verify it is possible to edit the Customer', () => {
     searchApt('Mateo ','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
@@ -295,7 +295,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   })
 
-  it('Verify it is possible to create a new appointment for 1 service and 1 offer - Staff credentials', () => {
+  it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
     searchTimeSlot('Zumba Zumba','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -314,7 +314,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
     }) 
     
-  it('Verify the New appointment modal is hidden after creating successfully an appointment - Staff credentials', () => {
+  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
     searchTimeSlot('Zumba Zumba','05:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -325,7 +325,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify it is possible to create an appointment searching and selecting customer from vendor - Staff credentials', () => {
+  it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
     searchTimeSlot('Zumba Zumba','07:00')
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
@@ -339,7 +339,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment - Staff credentials', () => {
+  it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
     searchTimeSlot('Zumba Zumba','05:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
@@ -352,7 +352,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify it is possible to create an appointment over and already taken time slot - Staff Credentials', () => {
+  it('Verify it is possible to create an appointment over and already taken time slot', () => {
     searchTimeSlot('Zumba Zumba','05:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
@@ -364,14 +364,14 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
     }) 
   })
 
-  it('Verify The edit appointment modal is display after clicking on Edit booking button - Staff credentials', () => {
+  it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
     searchApt('Zumba Zumba','07:00')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
     cy.contains('Edit Appointment').should('exist') 
   })
 
-  it('Verify it is possible to edit the Customer - Staff credentials', () => {
+  it('Verify it is possible to edit the Customer', () => {
     searchApt('Zumba Zumba','07:00')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
@@ -400,7 +400,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create appointments by Clic
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   })
 
-  it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
+  it('Verify it is not possible to create an appointment when loggeed with readonly creadentials', () => {
     searchTimeSlot('Naomi Naomi','03:00')
     cy.contains('New Appointment').should('not.be.visible')
     

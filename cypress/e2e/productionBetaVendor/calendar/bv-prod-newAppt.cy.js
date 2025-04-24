@@ -42,7 +42,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Some services are not available').should('be.visible')
     })

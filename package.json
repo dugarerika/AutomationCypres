@@ -20,6 +20,7 @@
     "autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
     "OldVendor-Staging": "npx cypress run --reporter mochawesome --spec cypress/e2e/staging/*/*.js",
     "BetaVendor-Staging-Regression": "npx cypress run --spec cypress/e2e/stagingBetaVendor/*/*.js",
+    "BetaVendor-Production-Clear": "npx cypress run --spec cypress/e2e/production/clear/*.js",
     "BetaVendor-Production-Regression": "npx cypress run --spec cypress/e2e/productionBetaVendor/*/*.js",
     "OldVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/stagingOldVendor/inventory/ov-stg-crtprod.cy.js",
     "BetaVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/stagingBetaVendor/inventory/bv-stg-crtprod.cy.js",
