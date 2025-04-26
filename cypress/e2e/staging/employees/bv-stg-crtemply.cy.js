@@ -12,12 +12,11 @@ const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 
 const employeeSection = () => {
-    //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
-    cy.contains('div','Employees').should('exist')
-    cy.contains('div','Employees').click({ force: true })
+    cy.contains('li>button','All Employees').should('exist')
+    cy.contains('li>button','All Employees').click({ force: true })
 }
 
 describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin credentials', () => {
@@ -26,17 +25,32 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
     })
 
-afterEach(() => {
-    // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
-    cy.clearCookies()
-})
+    afterEach(() => {
+        // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
+        cy.clearCookies()
+    })
 
-it('Verify it is possible access to the Employee section- Admin credentials', () => {
-    employeeSection()
-})
+    it('Verify it is possible access to the Employee section- Admin credentials', () => {
+        employeeSection()
+    })
 
 // Add Employee Successfully
-it('Verify it is possible to add an Employee with role Readonly by filling up All the required info, selecting all services and adding ', () => {
+
+// LOW Permission Level
+it.only('Verify it is possible to add an Employee with role Readonly by filling up All the required info, selecting all services and adding ', () => {
+    employeeSection()
+    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
+    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+    cy.filloutProfileInfo(randUsername1, '{enter}', randEmail1, '{enter}', randUsername1, '1234567890')
+    cy.contains('span','Permission Level').parent().next('select').should('exist')
+    cy.contains('span','Permission Level').parent().next('select').select('Medium')
+    cy.selectAllServices()
+
+    cy.expectedMessageCreateEmployee('Employee created')
+})
+
+// MEDIUM Permission Level
+it('Verify it is possible to add an Employee with role receptionist(Medium Permission Level) by filling up All the required info, selecting all services and adding ', () => {
     employeeSection()
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
@@ -44,22 +58,10 @@ it('Verify it is possible to add an Employee with role Readonly by filling up Al
     cy.contains('span','Permission Level').parent().next('select').should('exist')
     cy.contains('span','Permission Level').parent().next('select').select('Medium')
     cy.selectAllServices()
-    cy.filloutCommissionsInfo()
     cy.expectedMessageCreateEmployee('Employee created')
 })
 
-it('Verify it is possible to add an Employee with role receptionist by filling up All the required info, selecting all services and adding ', () => {
-    employeeSection()
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo(randUsername1, '{enter}', randEmail1, '{enter}', randUsername1, '1234567890')
-    cy.contains('span','Permission Level').parent().next('select').should('exist')
-    cy.contains('span','Permission Level').parent().next('select').select('Medium')
-    cy.selectAllServices()
-    cy.filloutCommissionsInfo()
-    cy.expectedMessageCreateEmployee('Employee created')
-})
-
+// HIGH Permission Level
 it('Verify it is possible to add an Employee by filling up All the required info and selecting all services', () => {
     employeeSection()
     cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
@@ -68,6 +70,7 @@ it('Verify it is possible to add an Employee by filling up All the required info
     cy.contains('span','Permission Level').parent().next('select').should('exist')
     cy.contains('span','Permission Level').parent().next('select').select('High')
     cy.selectAllServices()
+    cy.filloutCommissionsInfo()
     cy.expectedMessageCreateEmployee('Employee created')
 })
 

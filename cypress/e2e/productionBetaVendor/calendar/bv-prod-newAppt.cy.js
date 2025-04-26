@@ -18,19 +18,19 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.clearCookies()
     })
 
-    it('Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar  - Admin credentials', () => {
+    it('Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')  
     })
 
-    it('Verify duration is required in the New Appointment form on the Calendar  - Admin credentials', () => {
+    it('Verify duration is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Duration must be at least 1min').should('be.visible')
     })
 
-    it('Verify employee is required in the New Appointment form on the Calendar  - Admin credentials', () => {
+    it('Verify employee is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -38,7 +38,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Employee is required').should('be.visible')
     })
 
-    it('Verify service is required in the New Appointment form on the Calendar  - Admin credentials', () => {
+    it('Verify service is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -47,7 +47,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Some services are not available').should('be.visible')
     })
 
-    it('Verify customer is not required in the New Appointment form on the Calendar  - Admin credentials', () => {
+    it('Verify customer is not required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -57,7 +57,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
     
-    it('Verify it is possible to create an appointment changing the date - Admin credentials', () => {
+    it('Verify it is possible to create an appointment changing the date', () => {
         const options = {
             year: "numeric",
             month: "long",
@@ -78,7 +78,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 
-    it('Verify Start time for the offer is required in the New Appointment form on the Calendar  - Admin credentials', () => {
+    it('Verify Start time for the offer is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -95,7 +95,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Please Select Start Time for all Offer Services').should('be.visible')
     })
 
-    it('Verify offer is required in the New Appointment form on the Calendar  - Admin credentials', () => {
+    it('Verify offer is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -110,7 +110,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Some offers are not available').should('be.visible')
     })
 
-    it('Verify it is possible to create a new appointment only for an offer - Admin credentials', () => {
+    it('Verify it is possible to create a new appointment only for an offer', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('Add New Item').should('exist')  

@@ -68,39 +68,39 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
     cy.clearCookies()
   })
 
-  it('Verify the it is possible access to the Edit Suppliers form - Admin credentials', () => {
+  it('Verify the it is possible access to the Edit Suppliers form', () => {
     accessToEditSuppliers()
   })
 
   //Unsuccessfully suplier edit
-  it('Verify suppliers Name is the required field by trying to edit new supplier leaving empty all the fields- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit new supplier leaving empty all the fields', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the supplier Description- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the supplier Description', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('{enter}','Supplier Description','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the Contact First Name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the Contact First Name', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('{enter}','{enter}','contact first name','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the Contact Last Name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the Contact Last Name', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('{enter}','{enter}','{enter}','contact last name','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier name is required')
   })
   
-  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the Contact Mobile- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the Contact Mobile', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('{enter}','{enter}','{enter}','{enter}','581199141','{enter}')
@@ -108,21 +108,21 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
   })
 
 
-  it('Verify suppliers Name is the required field by trying to edit a supplier filling only email- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit a supplier filling only email', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('{enter}','{enter}','{enter}','{enter}','{enter}','tests@gmail.com')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the Contact Mobile and email- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the Contact Mobile and email', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('{enter}','{enter}','{enter}','{enter}','581199141','tests@gmail.com')
     expectedMessageCreateSupplier('Supplier name is required')
   })
 
-  it('Verify suppliers Name is the required field by trying to edit a supplier filling all the form fiels exepct Supplliers name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit a supplier filling all the form fiels exepct Supplliers name', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('{enter}','Suppliers description','contact fisrt name','contact last name','581199141','tests@gmail.com')
@@ -130,42 +130,42 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
   })
 
   //Successfully suplier edit
-  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the supplier name- Admin credentials', () => {
+  it('Verify suppliers Name is the required field by trying to edit a supplier filling only the supplier name', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier with only supplier name filed out','{enter}','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })
 
-  it('Verify new supplier is added successfully by filling up Supplier name and description inputs fields- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up Supplier name and description inputs fields', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - description','Supplier Description','{enter}','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })  
 
-  it('Verify new supplier is added successfully by filling up Supplier name, description and contact first name inputs fields- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up Supplier name, description and contact first name inputs fields', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - description - contact first name','Supplier Description','contact First Name','{enter}','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })  
 
-  it('Verify new supplier is added successfully by filling up Supplier name, description, contact first name and last name inputs fields- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up Supplier name, description, contact first name and last name inputs fields', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - description - first name - last name','Supplier Description','contact First Name','Contact Last Name','{enter}','{enter}')
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })  
 
-  it('Verify new supplier is added successfully by filling up Supplier name, description, contact first name and last name inputs fields- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up Supplier name, description, contact first name and last name inputs fields', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - description - first name - last name - mobile','Supplier Description','contact First Name','Contact Last Name','38972467','{enter}')
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })  
 
-  it('Verify new supplier is added successfully by filling up all the inputs fields- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up all the inputs fields', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','38717494','3@gmail.com')
@@ -173,7 +173,7 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })
 
-  it('Verify new supplier is added successfully by filling up supplier name, last name, mobile and email- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up supplier name, last name, mobile and email', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - last name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
@@ -181,7 +181,7 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })
 
-  it('Verify new supplier is added successfully by filling up supplier name, mobile and email- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up supplier name, mobile and email', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - Contact Last Name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
@@ -190,14 +190,14 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
   })
 
 
-  it('Verify new supplier is added successfully by filling up Supplier name, description and contact first name inputs fields- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up Supplier name, description and contact first name inputs fields', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - contact Last Name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })  
 
-  it('Verify new supplier is added successfully by filling up supplier name, mobile and email- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up supplier name, mobile and email', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - mobile - email','{enter}','{enter}','{enter}','38972467','3@gmail.com')
@@ -206,7 +206,7 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
   })
 
   
-  it('Verify new supplier is added successfully by filling up supplier name and email- Admin credentials', () => {
+  it('Verify new supplier is added successfully by filling up supplier name and email', () => {
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - email','{enter}','{enter}','{enter}','{enter}','3@gmail.com')

@@ -66,8 +66,10 @@ module.exports = defineConfig({
       URL_OldVendor_Production: "https://vendor.bookr.co/",
       URL_BetaVendor_Production: "https://vendor-beta.bookr.co/",
       URL_Deeplink_Staging_artnailcorner: "https://customer.bookr-dev.com/vendors/athary-world-nail-",
-      Vendor0_Admin_Username_Staging: "billingbh",
+      Vendor0_Admin_Username_Staging: "naqanails",
       Vendor0_Admin_Password_Staging: "1234567890",
+      Vendor9_Admin_Username_Staging: "billingbh",// it has billing pendin to pay
+      Vendor9_Admin_Password_Staging: "1234567890",
       // Vendor1_Admin_Username_Staging: "beautiquespa",
       // Vendor1_Admin_Password_Staging: "1234567890",
       //STAGING - BETA VENDOR

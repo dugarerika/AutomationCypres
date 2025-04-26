@@ -34,7 +34,7 @@ describe('Production - Beta Vendor Admin | Inventory | Delete products| logged w
   }
 
 //Delete Successfully
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -57,110 +57,110 @@ describe('Production - Beta Vendor Admin | Inventory | Delete products| logged w
     // })
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
-    deleteProduct()
-  })
-
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
+    deleteProduct()
+  })
+
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
   
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
-    deleteProduct()
-  })
-
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
+    deleteProduct()
+  })
+
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
 })

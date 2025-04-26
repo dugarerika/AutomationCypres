@@ -308,8 +308,8 @@ Cypress.Commands.add('selectAllServices', () => {
 })
 
 Cypress.Commands.add('filloutCommissionsInfo', () => {
-    cy.contains('div>button', 'Commissions').scrollIntoView()
-    cy.contains('div>button', 'Commissions').click({force: true})
+    cy.contains('div>button', 'Commission').scrollIntoView()
+    cy.contains('div>button', 'Commission').click({force: true})
     cy.contains('label>span','Service').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Service').parent().next('div').find('input').eq(0).type('10')
 })

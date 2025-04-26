@@ -17,7 +17,6 @@ const expectedMessageCreateSubs = (product_message) => {
     cy.contains('div>span', product_message).should('exist')
 }
 
-
 const accessToSubsSection = () => {
     cy.visit(Cypress.env("URL_BetaVendor_Production"))
     cy.contains('button>span','Accounting').should('exist')
@@ -56,6 +55,80 @@ describe('Production - Beta Vendor Admin | Employee | Cancel Appointments| logge
     // })
 
     // Add Subscription form fiels validation
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+    
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
 
     it('Cancel Appointment', () => {
         accessToSubsSection()
