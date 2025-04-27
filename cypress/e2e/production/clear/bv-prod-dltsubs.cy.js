@@ -47,11 +47,28 @@ describe('Production - Beta Vendor Admin | Employee | Delete Subscription| logge
 
     it('Delete subscription', () => {
         accessToSubsSection()
-        accessToSubsSection()
-        accessToSubsSection()
-        accessToSubsSection()
+    })
+
+    it('Delete subscription', () => {
         accessToSubsSection()
     })
+
+    it('Delete subscription', () => {
+        accessToSubsSection()
+    })
+
+    it('Delete subscription', () => {
+        accessToSubsSection()
+    })
+    
+    it('Delete subscription', () => {
+        accessToSubsSection()
+    })
+
+    it('Delete subscription', () => {
+        accessToSubsSection()
+    })
+    
 })
 
 
