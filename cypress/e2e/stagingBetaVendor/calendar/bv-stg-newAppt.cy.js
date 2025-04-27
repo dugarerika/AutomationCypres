@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
-
 const { should } = require("chai")
 
 describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
@@ -51,7 +50,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
@@ -71,7 +70,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.get(`[aria-label ="${dayNow}"]`).parent('button').next('button').click({force: true})
         cy.get('body').trigger('click')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Start Time').parent('div').find('input').click().type('08:00 PM{enter}')
         cy.contains('button','Create Appointment').click({force: true})
@@ -82,7 +81,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Start Time').parent('div').find('input').click().type('01:00 AM{enter}')
         cy.contains('Add New Item').should('exist')  
@@ -99,7 +98,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Start Time').parent('div').find('input').click().type('03:00 AM{enter}')
         cy.contains('Add New Item').should('exist')  

@@ -133,6 +133,22 @@ describe('Production - Beta Vendor Admin | Employee | Cancel Appointments| logge
     it('Cancel Appointment', () => {
         accessToSubsSection()
     })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
+
+    it('Cancel Appointment', () => {
+        accessToSubsSection()
+    })
 })
 
 

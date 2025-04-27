@@ -159,8 +159,4 @@ describe('Production - Beta Vendor Admin | Inventory | Delete products| logged w
   it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     deleteProduct()
   })
-
-  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
-    deleteProduct()
-  })
 })

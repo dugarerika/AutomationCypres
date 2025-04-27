@@ -35,32 +35,23 @@ const accessToSubsSection = () => {
 
 describe('Production - Beta Vendor Admin | Employee | Delete Subscription| logged with Admin credentials', () => {
 
-beforeEach(() => {
-    cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
-})
+    beforeEach(() => {
+        cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+    })
 
-afterEach(() => {
-    cy.clearCookies()
-})
+    afterEach(() => {
+        cy.clearCookies()
+    })
 
 // Add Subscription form fiels validation
 
-it('Delete subscription', () => {
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-    accessToSubsSection()
-})
-
-
+    it('Delete subscription', () => {
+        accessToSubsSection()
+        accessToSubsSection()
+        accessToSubsSection()
+        accessToSubsSection()
+        accessToSubsSection()
+    })
 })
 
 

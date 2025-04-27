@@ -49,18 +49,6 @@ describe('Production - Beta Vendor Admin | Inventory | Delete Cateogories| logge
   })
 
   it('Verify it is possible delete category', () => {
-    accessCategory()
-  })
-
-  it('Verify it is possible delete category', () => {
-    accessCategory()
-  })
-
-  it('Verify it is possible delete category', () => {
-    accessCategory()
-  })
-
-  it('Verify it is possible delete category', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })

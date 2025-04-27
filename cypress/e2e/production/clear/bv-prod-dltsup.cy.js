@@ -40,16 +40,6 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
     accessToDeleteSuppliers()
     accessToDeleteSuppliers()
     accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
-    accessToDeleteSuppliers()
   })
     
   it('Verify it is possible delete suplliers from the Inventory/Supplier list section', () => {
