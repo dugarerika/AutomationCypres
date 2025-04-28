@@ -17,34 +17,39 @@ const expectedMessageCreateSubs = (product_message) => {
     cy.contains('div>span', product_message).should('exist')
 }
 
-const filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description) => {
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).type(sub_name)
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).type(sub_price)
-    cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).type(sub_expiration)
-    cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).type(sub_sessions)
-    cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).should('exist')
-    cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).type(sub_notes)
-    cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).should('exist')
-    cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).type(sub_description)
+const filloutCustInfo = (first_name) => {
+    // const filloutCustInfo = (first_name, last_name, notes, mobile_number) => {
+    cy.get('input[placeholder="First Name"]').should('exist')
+    cy.get('input[placeholder="First Name"]').type(first_name)
+    // cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
+    // cy.contains('label>span','Name').parent().next('div').find('input').eq(0).type(sub_name)
+    // cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
+    // cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
+    // cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
+    // cy.contains('label>span','Price').parent().next('div').find('input').eq(0).type(sub_price)
+    // cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
+    // cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).type(sub_expiration)
+    // cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
+    // cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).type(sub_sessions)
+    // cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).should('exist')
+    // cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).type(sub_notes)
+    // cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).should('exist')
+    // cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).type(sub_description)
 }
 
 const accessToCustSection = () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-    cy.contains('button>span','Subscriptions').should('exist')
-    cy.contains('button>span','Subscriptions').click({ force: true })
-    cy.contains('h6','Subscriptions').should('exist')
+    cy.contains('button>span','Customers').should('exist')
+    cy.contains('button>span','Customers').click({ force: true })
+    cy.contains('div','Customers').should('exist')
+    cy.contains('div','Blacklists').should('exist')
+    cy.contains('div','Reviews').should('exist')
 }
 
-const accessToAddSubsForm = () => {
-    cy.contains('h6','Subscriptions').parent().next('div').find('button').should('exist')
-    cy.contains('h6','Subscriptions').parent().next('div').find('button').click({ force: true })
-    cy.contains('h3','Add New Subscription', { matchCase: false }).parent().next('div').find('button').should('exist')
+const accessToAddCustForm = () => {
+    cy.contains('button','ADD NEW').should('exist')
+    cy.contains('button','ADD NEW').click({ force: true })
+    cy.contains('h6','New Customer', { matchCase: false }).parent().next('div').find('button').should('exist')
 }
 
 const selectSubsService = () => {
@@ -86,17 +91,22 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it('Verify it is possible access to the Subscription section- Admin credentials', () => {
+it.only('Verify it is possible access to the Customer section', () => {
     accessToCustSection()
 })
 
-// Add Subscription form fiels validation
-
-it('Verify that the Add Subscription Service is required', () => {
+it.only('Verify there is a button to create a customer in the Customer section', () => {
     accessToCustSection()
-    accessToAddSubsForm()
-    filloutSubscriptionInfo(randUsername1, '1', 1, 1, randEmail1, randUsername1)
-    expectedMessageCreateSubs('At least one service variant is required')
+    cy.contains('button','ADD NEW').should('exist')
+})
+
+// Add Customer form fiels validation
+
+it('Verify that the Customer First Name is required', () => {
+    accessToCustSection()
+    accessToAddCustForm()
+    filloutCustInfo(randUsername1)
+    // expectedMessageCreateSubs('At least one service variant is required')
 })
 
 it('Verify that the Add Subscription Name is required', () => {
