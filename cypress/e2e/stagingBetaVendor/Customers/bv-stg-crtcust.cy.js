@@ -17,24 +17,15 @@ const expectedMessageCreateSubs = (product_message) => {
     cy.contains('div>span', product_message).should('exist')
 }
 
-const filloutCustInfo = (first_name) => {
-    // const filloutCustInfo = (first_name, last_name, notes, mobile_number) => {
+const filloutCustInfo = (first_name, last_name, notes, mobile_number) => {
     cy.get('input[placeholder="First Name"]').should('exist')
     cy.get('input[placeholder="First Name"]').type(first_name)
-    // cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
-    // cy.contains('label>span','Name').parent().next('div').find('input').eq(0).type(sub_name)
-    // cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    // cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
-    // cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    // cy.contains('label>span','Price').parent().next('div').find('input').eq(0).type(sub_price)
-    // cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
-    // cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).type(sub_expiration)
-    // cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
-    // cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).type(sub_sessions)
-    // cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).should('exist')
-    // cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).type(sub_notes)
-    // cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).should('exist')
-    // cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).type(sub_description)
+    cy.get('input[placeholder="Last Name"]').should('exist')
+    cy.get('input[placeholder="Last Name"]').type(last_name)
+    cy.get('textarea[placeholder="Notes"]').should('exist')
+    cy.get('textarea[placeholder="Notes"]').type(notes)
+    cy.get('input[placeholder="Mobile Number"]').should('exist')
+    cy.get('input[placeholder="Mobile Number"]').type(mobile_number)
 }
 
 const accessToCustSection = () => {
@@ -49,7 +40,7 @@ const accessToCustSection = () => {
 const accessToAddCustForm = () => {
     cy.contains('button','ADD NEW').should('exist')
     cy.contains('button','ADD NEW').click({ force: true })
-    cy.contains('h6','New Customer', { matchCase: false }).parent().next('div').find('button').should('exist')
+    cy.contains('h6','New Customer', { matchCase: false }).should('exist')
 }
 
 const selectSubsService = () => {
@@ -80,7 +71,7 @@ const clearUpdateForm = () => {
     cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).clear({ force: true })
 }
 
-describe('Beta Vendor Admin | Employee | Create Customer| logged with Admin credentials', () => {
+describe('Staging - Beta Vendor Admin | Customer | Create Customer| logged with Admin credentials', () => {
 
 beforeEach(() => {
     cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
@@ -91,21 +82,21 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it.only('Verify it is possible access to the Customer section', () => {
+it('Verify it is possible access to the Customer section', () => {
     accessToCustSection()
 })
 
-it.only('Verify there is a button to create a customer in the Customer section', () => {
+it('Verify there is a button to create a customer in the Customer section', () => {
     accessToCustSection()
     cy.contains('button','ADD NEW').should('exist')
 })
 
 // Add Customer form fiels validation
 
-it('Verify that the Customer First Name is required', () => {
+it.only('Verify that the Customer First Name is required', () => {
     accessToCustSection()
     accessToAddCustForm()
-    filloutCustInfo(randUsername1)
+    filloutCustInfo(randUsername1, '{enter}', '{enter}', '{enter}')
     // expectedMessageCreateSubs('At least one service variant is required')
 })
 
