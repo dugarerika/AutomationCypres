@@ -345,4 +345,8 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.contains('span', 'Supplier created successfully').should('exist')
     cy.expectedMessageCreateProduct('Product created successfully')
   })
+
+// Verify Product search is working properly by Searching barcode manually
+// Verify Product search is working properly by Searching SKU manually
+// Verify Product search is working properly by Searching Product Name manually
 })

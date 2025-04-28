@@ -40,7 +40,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.expectedMessageCompleteSale('Add at least one payment')
     })
 
-    it('Verify it is not possible to complete New Checkout with the cart empty  - Admin credentials', () => {
+    it('Verify it is not possible to complete New Checkout with the cart empty', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         // cy.contains('div','Search customer..').should('be.visible')
         // cy.contains('button','Walk In').should('be.visible')
@@ -51,7 +51,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.wait(10)
     })
       
-    it('Verify it is not possible to complete New Checkout for a service linking it to an employee  - Admin credentials', () => {
+    it('Verify it is not possible to complete New Checkout for a service linking it to an employee', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         // cy.contains('div','Search customer..').should('be.visible')
         // cy.contains('button','Walk In').should('be.visible')
@@ -68,7 +68,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.wait(10)
     })
 
-    it('Verify it is not possible to complete New Checkout for a service linking it to an employee  - Admin credentials', () => {
+    it('Verify it is not possible to complete New Checkout for a service linking it to an employee', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         // cy.contains('div','Search customer..').should('be.visible')
         // cy.contains('button','Walk In').should('be.visible')
@@ -109,26 +109,26 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.fillButton('Other')
     })
 
-    it('Verify the breakdown is correct after adding a service  - Admin credentials', () => {
+    it('Verify the breakdown is correct after adding a service', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemService('Hair Cut')
         cy.checkBreakdownNoDiscount('Hair Cut')
         
     })
 
-    it.skip('Verify the breakdown is correct after applying a coupon to a service  - Admin credentials', () => {
+    it.skip('Verify the breakdown is correct after applying a coupon to a service', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemService('Hair Cut')
         cy.addCouponDiscount('Long Hair','10')
     })
 
-    it('Verify the breakdown is correct after applying a fixed discount to a service  - Admin credentials', () => {
+    it('Verify the breakdown is correct after applying a fixed discount to a service', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemService('Long Hair')
         cy.addFixedDiscount('Long Hair','1')
     })
 
-    it('Verify the breakdown is correct after applying a percentage discount to a service  - Admin credentials', () => {
+    it('Verify the breakdown is correct after applying a percentage discount to a service', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemService('Hair Cut')
         cy.addPercentageDiscount('Hair Cut','20')
