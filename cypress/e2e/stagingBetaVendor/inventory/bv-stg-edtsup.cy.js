@@ -37,6 +37,8 @@ const filloutEditSupplierForm = (sup_name, sup_description, sup_first_name, sup_
 
 const clearEditSupplierForm = () => {
     cy.contains('h3', 'Edit Supplier Details', { matchCase: false }).should('exist')
+    cy.contains('label>span', 'Supplier Name', { matchCase: false }).should('exist')
+    cy.contains('label>span', 'Supplier Name', { matchCase: false }).parent().next('div').find('input').clear({ force: true })
     cy.contains('label>span', 'Supplier Description', { matchCase: false }).should('exist')
     cy.contains('label>span', 'Supplier Description', { matchCase: false }).parent().next('div').find('textarea').first().clear({ force: true })
     cy.contains('label>span', 'Contact First Name', { matchCase: false }).should('exist')
