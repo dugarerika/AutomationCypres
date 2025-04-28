@@ -17,15 +17,15 @@ const expectedMessageCreateSubs = (product_message) => {
     cy.contains('div>span', product_message).should('exist')
 }
 
-const accessToSubsSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production"))
+const deleteAppt = () => {
+    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
     cy.contains('button>span','Accounting').should('exist')
     cy.contains('button>span','Accounting').click({ force: true })
     cy.contains('li>button','Reports').should('exist')
     cy.contains('li>button','Reports').click({ force: true })
     cy.contains('div>div','Bookings').should('exist')
     cy.contains('div>div','Bookings').click({ force: true })
-    cy.visit('https://vendor-beta.bookr.co/admin/accounting/reports/bookings')
+    cy.visit('https://vendor.beta.bookr-dev.com/admin/accounting/reports/bookings')
     cy.get('input[placeholder="Filters"]').next('div').click({ force: true })
     cy.contains('div>div>p','Booking status').should('exist')
     cy.contains('div>div>p','Booking status').click({ force: true })
@@ -39,7 +39,7 @@ const accessToSubsSection = () => {
     cy.contains('button', 'Proceed').click({ force: true })
 }
 
-describe('Production - Beta Vendor Admin | Employee | Cancel Appointments| logged with Admin credentials', () => {
+describe('Staging - Beta Vendor Admin | Employee | Cancel Appointments| logged with Admin credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -57,97 +57,97 @@ describe('Production - Beta Vendor Admin | Employee | Cancel Appointments| logge
     // Add Subscription form fiels validation
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
     it('Cancel Appointment', () => {
-        accessToSubsSection()
-    })
-
-    it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
     })
     
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
     it('Cancel Appointment', () => {
-        accessToSubsSection()
-    })
-
-    it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
     })
 
     it('Cancel Appointment', () => {
-        accessToSubsSection()
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
     })
 })
 
