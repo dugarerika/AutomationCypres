@@ -86,7 +86,7 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it('Verify it is possible access to the Subscription section- Admin credentials', () => {
+it('Verify it is possible access to the Subscription section', () => {
     accessToSubsSection()
 })
 

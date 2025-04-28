@@ -42,7 +42,7 @@ describe('Beta Vendor Admin | Inventory | Delete Brands| logged with Admin crede
         cy.clearCookies()
     })
 
-    it('Verify it is possible delete brand - Admin credentials', () => {
+    it.only('Verify it is possible delete brand', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Products').click({ force: true })
@@ -53,7 +53,7 @@ describe('Beta Vendor Admin | Inventory | Delete Brands| logged with Admin crede
         cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist')
     })
 
-    it('Verify it is possible delete brand - Admin credentials', () => {
+    it('Verify it is possible delete brand', () => {
       cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
       cy.contains('Inventory').should('exist')
       cy.contains('Inventory').click({ force: true })
@@ -68,7 +68,7 @@ describe('Beta Vendor Admin | Inventory | Delete Brands| logged with Admin crede
       cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist')
   })
 
-  it('Verify it is possible delete brand - Admin credentials', () => {
+  it('Verify it is possible delete brand', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -83,7 +83,7 @@ describe('Beta Vendor Admin | Inventory | Delete Brands| logged with Admin crede
     cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist') 
 })
 
-it('Verify it is possible delete brand - Admin credentials', () => {
+it('Verify it is possible delete brand', () => {
   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
@@ -98,7 +98,7 @@ it('Verify it is possible delete brand - Admin credentials', () => {
   cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist')
 })
 
-it('Verify it is possible delete brand - Admin credentials', () => {
+it('Verify it is possible delete brand', () => {
   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
@@ -113,7 +113,7 @@ it('Verify it is possible delete brand - Admin credentials', () => {
   cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist')
 })
 
-it('Verify it is possible delete brand - Admin credentials', () => {
+it('Verify it is possible delete brand', () => {
   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
@@ -128,7 +128,7 @@ it('Verify it is possible delete brand - Admin credentials', () => {
   cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist')
 })
 
-it('Verify it is possible delete brand - Admin credentials', () => {
+it('Verify it is possible delete brand', () => {
 cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
 cy.contains('Inventory').should('exist')
 cy.contains('Inventory').click({ force: true })
@@ -143,7 +143,7 @@ cy.contains('button','Delete').click({ force: true })
 cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist')
 })
 
-it('Verify it is possible delete brand - Admin credentials', () => {
+it('Verify it is possible delete brand', () => {
 cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
 cy.contains('Inventory').should('exist')
 cy.contains('Inventory').click({ force: true })
@@ -158,7 +158,7 @@ cy.contains('button','Delete').click({ force: true })
 cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist')
 })
 
-it('Verify it is possible delete brand - Admin credentials', () => {
+it('Verify it is possible delete brand', () => {
 cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
 cy.contains('Inventory').should('exist')
 cy.contains('Inventory').click({ force: true })
@@ -173,7 +173,7 @@ cy.contains('button','Delete').click({ force: true })
 cy.contains('span', 'Brand deleted', { matchCase: false }).should('exist')
 })
 
-it('Verify it is possible delete brand - Admin credentials', () => {
+it('Verify it is possible delete brand', () => {
 cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
 cy.contains('Inventory').should('exist')
 cy.contains('Inventory').click({ force: true })

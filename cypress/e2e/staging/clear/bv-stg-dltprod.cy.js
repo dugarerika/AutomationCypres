@@ -18,7 +18,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
 
 
 //Delete Successfully
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -36,7 +36,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -54,7 +54,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -72,7 +72,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -90,7 +90,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -108,7 +108,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -126,7 +126,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -144,7 +144,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -162,7 +162,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -180,7 +180,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -198,7 +198,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -216,7 +216,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -234,7 +234,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -252,7 +252,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -270,7 +270,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -288,7 +288,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -306,7 +306,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -324,7 +324,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -342,7 +342,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -360,7 +360,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -378,7 +378,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
   
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -396,7 +396,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -414,7 +414,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -432,7 +432,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -450,7 +450,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
@@ -468,7 +468,7 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
     cy.contains('span', 'Product deleted successfully').should('exist')
   })
 
-  it('Verify it is possible Delete products from the Inventory/Product list section- Admin credentials', () => {
+  it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
