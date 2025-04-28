@@ -37,6 +37,8 @@ const filloutEditSupplierForm = (sup_name, sup_description, sup_first_name, sup_
 
 const clearEditSupplierForm = () => {
     cy.contains('h3', 'Edit Supplier Details').should('exist')
+    cy.contains('label>span', 'Supplier Name').should('exist')
+    cy.contains('label>span', 'Supplier Name').parent().next('div').find('input').clear({ force: true })
     cy.contains('label>span', 'Supplier Description').should('exist')
     cy.contains('label>span', 'Supplier Description').parent().next('div').find('textarea').first().clear({ force: true })
     cy.contains('label>span', 'Contact First Name').should('exist')
@@ -47,8 +49,6 @@ const clearEditSupplierForm = () => {
     cy.contains('label>span', 'Contact Mobile').parent().next('div').find('input').clear({ force: true })
     cy.contains('label>span', 'Contact email').should('exist')
     cy.contains('label>span', 'Contact email').parent().next('div').find('input').clear({ force: true })
-    cy.contains('label>span', 'Supplier Name').should('exist')
-    cy.contains('label>span', 'Supplier Name').parent().next('div').find('input').clear({ force: true })
 }
 
 const expectedMessageCreateSupplier = (supplier_message) => {
