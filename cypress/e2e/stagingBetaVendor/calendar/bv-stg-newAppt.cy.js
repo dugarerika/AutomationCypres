@@ -109,7 +109,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('div>span','Some offers are not available').should('be.visible')
     })
 
-    it.only('Verify it is possible to create a new appointment only for an offer', () => {
+    
+    it('Verify it is possible to create a new appointment only for an offer', () => {
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('Add New Item').should('exist')  
@@ -118,7 +119,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('Add Offer').click()
         cy.contains('div','Offer').should('exist')  
         cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
-        cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('Mateo{downarrow}{enter}')
+        cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('ALEX ALEX{downarrow}{enter}')
         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
         cy.contains('div>div>div>div','Service').parent('div').parent('div').parent('div').find('button').click({force: true})
         cy.contains('button','Create Appointment').click({force: true})

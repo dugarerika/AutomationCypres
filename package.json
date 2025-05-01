@@ -25,7 +25,7 @@
     "BetaVendor-Production-Regression": "npx cypress run --spec cypress/e2e/productionBetaVendor/*/*.js",
     "OldVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/stagingOldVendor/inventory/ov-stg-crtprod.cy.js",
     "BetaVendor-Staging-Inventory-CreateProduct": "npx cypress run --spec cypress/e2e/stagingBetaVendor/inventory/bv-stg-crtprod.cy.js",
-    "BetaVendor-Staging-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltprod.cy.js",
+    "BetaVendor-Staging-Inventory-DeleteProduct": "npx cypress run --spec cypress/e2e/staging/clear/bv-stg-dltprod.cy.js",
     "BetaVendor-Staging-Inventory-EditProduct": "npx cypress run --spec cypress/e2e/stagingBetaVendor/inventory/bv-stg-edtprod.cy.js",
     "BetaVendor-Staging-Inventory-CreateSupplier": "npx cypress run --spec cypress/e2e/stagingBetaVendor/inventory/bv-stg-crtsup.cy.js",
     "BetaVendor-Staging-Inventory-DeleteSupplier": "npx cypress run --spec cypress/e2e/staging/inventory/bv-stg-dltsup.cy.js",

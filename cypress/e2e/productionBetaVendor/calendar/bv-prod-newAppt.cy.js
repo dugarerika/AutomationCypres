@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
-
 const { should } = require("chai")
 
 describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
