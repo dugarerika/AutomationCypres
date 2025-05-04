@@ -72,12 +72,12 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Start Time').parent('div').find('input').click().type('08:00 PM{enter}')
+        cy.contains('label','Start Time').parent('div').find('input').click().type('09:00 PM{enter}')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 
-    it('Verify Start time for the offer is required in the New Appointment form on the Calendar', () => {
+    it('Verify Start time for the offer (1 service) is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -110,7 +110,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
 
     
-    it('Verify it is possible to create a new appointment only for an offer', () => {
+    it.only('Verify it is possible to create a new appointment only for an offer (1 service)', () => {
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('Add New Item').should('exist')  
@@ -121,7 +121,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('ErikaT{downarrow}{enter}')
         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
-        cy.contains('div>div>div>div','Service').parent('div').parent('div').parent('div').find('button').click({force: true})
+        cy.get('.css-1dukv94').eq(0).children('button').click({force: true})
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
