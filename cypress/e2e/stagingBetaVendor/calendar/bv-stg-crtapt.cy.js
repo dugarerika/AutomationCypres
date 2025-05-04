@@ -234,17 +234,6 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-    searchTimeSlot('Mateo','06:00') 
-    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
-    cy.contains('Create Appointment').click({force: true})
-    cy.wait('@new-user').then((interception) => {
-      expect(interception.response.statusCode).to.equal(200)
-    })
-    cy.contains('New Appointment').should('not.be.visible')  
-  })
-
-  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
     searchTimeSlot('ErikaT','06:00') 
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
