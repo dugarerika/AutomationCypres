@@ -109,7 +109,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Some offers are not available').should('be.visible')
     })
 
-    it.only('Verify it is possible to create a new appointment only for an offer', () => {
+    it('Verify it is possible to create a new appointment only for an offer', () => {
         cy.newAppt("URL_BetaVendor_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('Add New Item').should('exist')  
