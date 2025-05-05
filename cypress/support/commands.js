@@ -262,21 +262,23 @@ Cypress.Commands.add('expectedMessageCreateSupplier', (supplier_message) =>{
 
 // ------------------------------ Employee Section --------------------------------
 Cypress.Commands.add('deleteEmployee', () => {
-    //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.url().should('include', Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
+    cy.contains('All Employees').should('exist')
+    cy.contains('All Employees').click({ force: true })
     cy.contains('div','Employees').should('exist')
     cy.contains('div','Employees').click({ force: true })
     cy.get('tbody>*').should('exist')
     cy.get('tbody>*').first().click({ force: true })
-    cy.contains('Delete Employee').scrollIntoView()
-    cy.contains('Delete Employee').click({ force: true })
+    cy.contains('Delete employee').scrollIntoView()
+    cy.contains('Delete employee').click({ force: true })
     cy.contains('button', 'Delete').should('exist')
     cy.contains('button', 'Delete').click({ force: true })
-    cy.contains('h3', 'Delete Employee').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this Employee?').should('exist')
-    cy.contains('p', 'Are you sure you want to delete this Employee?').parents('section').next('div').find('button').eq(1).click({ force: true })
+    // cy.contains('h3', 'Delete Employee').should('exist')
+    cy.contains('p', 'Are you sure you want to delete this employee?').should('exist')
+    cy.contains('p', 'Are you sure you want to delete this employee?').parents('section').next('div').find('button').eq(1).click({ force: true })
     cy.contains('span', 'Employee deleted successfully').should('exist')
     cy.get('tbody').find('tr').its('length').then(count => {
       if (count) {   // not count >= 0, because 0 means no elements

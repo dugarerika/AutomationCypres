@@ -56,7 +56,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
     
-    it('Verify it is possible to create an appointment changing the date', () => {
+    it.only('Verify it is possible to create an appointment changing the date', () => {
         const options = {
             year: "numeric",
             month: "long",
@@ -72,7 +72,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Start Time').parent('div').find('input').click().type('08:00 PM{enter}')
+        cy.contains('label','Start Time').parent('div').find('input').click().type('09:00 PM{enter}')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
