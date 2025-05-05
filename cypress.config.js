@@ -85,6 +85,9 @@ module.exports = defineConfig({
       Vendor_Receptionist_Password_Staging: "1234567890",   
       
       //STAGING - OLD VENDOR
+      Vendor2_Admin_Username_Staging: "poshinpolish",
+      Vendor2_Admin_Password_Staging: "1234567890",
+      //STAGING - OLD VENDOR
       Vendor1_Admin_Username_Staging: "cococutsalon",
       Vendor1_Admin_Password_Staging: "1234567890",
       Vendor1_Staff_Username_Staging: "zumbacococut",

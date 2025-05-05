@@ -110,7 +110,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
 
     
-    it.only('Verify it is possible to create a new appointment only for an offer (1 service)', () => {
+    it('Verify it is possible to create a new appointment only for an offer (1 service)', () => {
         cy.newAppt("URL_BetaVendor_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('Add New Item').should('exist')  
