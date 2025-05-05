@@ -56,7 +56,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
     
-    it.only('Verify it is possible to create an appointment changing the date', () => {
+    it('Verify it is possible to create an appointment changing the date', () => {
         const options = {
             year: "numeric",
             month: "long",
