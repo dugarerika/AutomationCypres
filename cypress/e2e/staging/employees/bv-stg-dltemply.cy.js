@@ -30,12 +30,4 @@ describe('Staging - Beta Vendor Admin | Employee | Delete Employee| logged with 
   it('Verify it is possible Delete Employee from the Employees list section', () => {
     cy.deleteEmployee()
   })
-
-  it('Verify it is possible Delete Employee from the Employees list section', () => {
-    cy.deleteEmployee()
-  })
-
-  it('Verify it is possible Delete Employee from the Employees list section', () => {
-    cy.deleteEmployee()
-  })
 })
