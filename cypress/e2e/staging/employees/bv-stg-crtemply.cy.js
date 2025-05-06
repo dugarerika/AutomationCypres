@@ -8,8 +8,12 @@ const { faker } = require('@faker-js/faker');
 
 const randEmail1 = faker.internet.email()
 const randEmail2 = faker.internet.email()
+const randEmail3 = faker.internet.email()
+const randEmail4 = faker.internet.email()
 const randUsername1 = `${faker.person.firstName()}testnai${faker.number.int({ min: 10, max: 100 })}`
 const randUsername2 = `${faker.person.firstName()}sttest${faker.number.int({ min: 10, max: 100 })}`
+const randUsername3 = `${faker.person.firstName()}sttest${faker.number.int({ min: 10, max: 100 })}`
+const randUsername4 = `${faker.person.firstName()}sttest${faker.number.int({ min: 10, max: 100 })}`
 
 const employeeSection = () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
@@ -26,7 +30,6 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
     })
 
     afterEach(() => {
-        // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
         cy.clearCookies()
     })
 
@@ -35,7 +38,6 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
     })
 
 // Add Employee Successfully
-
 // LOW Permission Level
     it('Verify it is possible to add an Employee with role Readonly by filling up All the required info, selecting all services and adding ', () => {
         employeeSection()
@@ -54,7 +56,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         employeeSection()
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
-        cy.filloutProfileInfo(randUsername2, '{enter}', randEmail1, '{enter}', randUsername1, '1234567890')
+        cy.filloutProfileInfo(randUsername3, '{enter}', randEmail1, '{enter}', randUsername3, '1234567890')
         cy.contains('span','Permission Level').parent().next('select').should('exist')
         cy.contains('span','Permission Level').parent().next('select').select('Medium')
         cy.selectAllServices()
@@ -78,7 +80,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         employeeSection()
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
-        cy.filloutProfileInfo(randUsername1, '{enter}', '{enter}', '{enter}', randUsername2, '12345')
+        cy.filloutProfileInfo(randUsername4, '{enter}', '{enter}', '{enter}', randUsername4, '12345')
         cy.contains('span','Permission Level').parent().next('select').should('exist')
         cy.contains('span','Permission Level').parent().next('select').select('High')
         cy.expectedMessageCreateEmployee('Employee created')
@@ -96,129 +98,128 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.expectedMessageCreateEmployee('Username already exist')
     })
 
-it('Verify it is not possible to Add an Employee by leaving all the fields empty, |First Name, username, Password and Permission Level are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
-    cy.expectedMessageCreateEmployee('Please enter username')
-})
+    it('Verify it is not possible to Add an Employee by leaving all the fields empty, |First Name, username, Password and Permission Level are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+        cy.expectedMessageCreateEmployee('Please enter username')
+    })
 
-it('Verify it is not possible to Add an Employee by filling up only the First Name |username, Password and Permission Level are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', '{enter}', '{enter}')
-    cy.expectedMessageCreateEmployee('user.password must be longer than or equal to 5 characters')
-})
+    it('Verify it is not possible to Add an Employee by filling up only the First Name |username, Password and Permission Level are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', '{enter}', '{enter}')
+        cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters')
+    })
 
-it('Verify it is not possible to Add an Employee by filling up only the username |First Name, Password and Permission Level are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+    it('Verify it is not possible to Add an Employee by filling up only the username |First Name, Password and Permission Level are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+            // cy.filloutProfileInfo = (first_name, last_name, email, order, username, password)
+        cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', 'Hightestbeta', '{enter}')
+        cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters')
+    })
+
+    it('Verify it is not possible to Add an Employee by filling up only the Password |First Name, Username and Permission Level are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+            // cy.filloutProfileInfo = (first_name, last_name, email, order, username, password)
+        cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', '{enter}', '1234567890')
+        cy.expectedMessageCreateEmployee('Username is required Please enter a valid username First name is required firstName must be a string Please Select a Permission Level for the employee')
+    })
+
+    it('Verify it is not possible to Add an Employee by filling up only the Permission Level |First Name, Username and Password are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+        cy.contains('span','Permission Level').parent().next('select').should('exist')
+        cy.contains('span','Permission Level').parent().next('select').select('High')
+        cy.expectedMessageCreateEmployee('Please enter username')
+    })
+
+    it('Verify it is not possible to Add an Employee by filling up only the First Name and Username | Password and Permission Level are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'username10', '{enter}')
+        cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters')
+    })
+
+    it('Verify it is not possible to Add an Employee by filling up only the First Name, and Password | Username and Permission Level are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', '{enter}', '1234567890')
+        cy.expectedMessageCreateEmployee('username is required')
+    })
+
+    it('Verify it is not possible to Add an Employee by filling up only the First Name, and Permission Level | Username and Password are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', '{enter}', '{enter}')
+        cy.contains('span','Permission Level').parent().next('select').should('exist')
+        cy.contains('span','Permission Level').parent().next('select').select('High')
+        cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters password must be a string Username is required Please enter a valid username')
+    })
+
+    it('Verify it is not possible to Add an Employee by filling up only the Username and Password | First Name and Permission Level are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', 'username10', '1234567890')
+        cy.expectedMessageCreateEmployee('First name is requiredFirst name is required firstName must be a stringVPlease Select a Permission Level for the employee')
+    })
+
+    it('Verify it is not possible to Add an Employee by filling up only the Username and Permission Level | First Name and Password are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', 'username10', '{enter}')
+        cy.contains('span','Permission Level').parent().next('select').should('exist')
+        cy.contains('span','Permission Level').parent().next('select').select('High')
+        cy.expectedMessageCreateEmployee('First name is requiredFirst name is required firstName must be a string')
+    })
+
+    it('Verify it is not possible to Add an Employee by filling up only the Password and Permission Level | First Name and Username are required|', () => {
+        employeeSection()
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
         // cy.filloutProfileInfo = (first_name, last_name, email, order, username, password)
-    cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', 'Hightestbeta', '{enter}')
-    cy.expectedMessageCreateEmployee('user.password must be longer than or equal to 5 characters')
-})
+        cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', '{enter}', '1234567890')
+        cy.contains('span','Permission Level').parent().next('select').should('exist')
+        cy.contains('span','Permission Level').parent().next('select').select('High')
+        cy.expectedMessageCreateEmployee('username must be longer than or equal to 3 characters')
+    })
 
-it('Verify it is not possible to Add an Employee by filling up only the Password |First Name, Username and Permission Level are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
-        // cy.filloutProfileInfo = (first_name, last_name, email, order, username, password)
-    cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', '{enter}', '1234567890')
-    cy.expectedMessageCreateEmployee('username is required')
-})
+    it('Verify it is not possible to Add an Employee by filling up only the First Name, Username and Password |Permission Level is required|', () => {
+        employeeSection()
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'Hightest', '1234567890')
+        cy.expectedMessageCreateEmployee('role must be one of the following values: High, receptionist, readonly')
+    })
 
-it('Verify it is not possible to Add an Employee by filling up only the Permission Level |First Name, Username and Password are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
-    cy.contains('span','Permission Level').parent().next('select').should('exist')
-    cy.contains('span','Permission Level').parent().next('select').select('High')
-    cy.expectedMessageCreateEmployee('Please enter username')
-})
+    it('Verify it is not possible to Add an Employee by filling up only the First Name, 2 character Username, 5 character Password and Permission Level |password must be longer or equal to 5 characteres is required|', () => {
+        employeeSection()
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'st', '12345')
+        cy.contains('span','Permission Level').parent().next('select').should('exist')
+        cy.contains('span','Permission Level').parent().next('select').select('High')
+        cy.expectedMessageCreateEmployee('username must be longer than or equal to 3 characters')
+    })
 
-it('Verify it is not possible to Add an Employee by filling up only the First Name and Username | Password and Permission Level are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'username10', '{enter}')
-    cy.expectedMessageCreateEmployee('user.password must be longer than or equal to 5 characters')
-})
-
-it('Verify it is not possible to Add an Employee by filling up only the First Name, and Password | Username and Permission Level are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', '{enter}', '1234567890')
-    cy.expectedMessageCreateEmployee('username is required')
-})
-
-it('Verify it is not possible to Add an Employee by filling up only the First Name, and Permission Level | Username and Password are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', '{enter}', '{enter}')
-    cy.contains('span','Permission Level').parent().next('select').should('exist')
-    cy.contains('span','Permission Level').parent().next('select').select('High')
-    cy.expectedMessageCreateEmployee('user.password must be longer than or equal to 5 characters')
-})
-
-it('Verify it is not possible to Add an Employee by filling up only the Username and Password | First Name and Permission Level are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', 'username10', '1234567890')
-    cy.expectedMessageCreateEmployee('user.firstName must be longer than or equal to 1 characters')
-})
-
-it('Verify it is not possible to Add an Employee by filling up only the Username and Permission Level | First Name and Password are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', 'username10', '{enter}')
-    cy.contains('span','Permission Level').parent().next('select').should('exist')
-    cy.contains('span','Permission Level').parent().next('select').select('High')
-    cy.expectedMessageCreateEmployee('user.password must be longer than or equal to 5 characters')
-})
-
-it('Verify it is not possible to Add an Employee by filling up only the Password and Permission Level | First Name and Username are required|', () => {
-    employeeSection()
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
-    // cy.filloutProfileInfo = (first_name, last_name, email, order, username, password)
-    cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', '{enter}', '1234567890')
-    cy.contains('span','Permission Level').parent().next('select').should('exist')
-    cy.contains('span','Permission Level').parent().next('select').select('High')
-    cy.expectedMessageCreateEmployee('user.username must be longer than or equal to 3 characters')
-})
-
-it('Verify it is not possible to Add an Employee by filling up only the First Name, Username and Password |Permission Level is required|', () => {
-    employeeSection()
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'Hightest', '1234567890')
-    cy.expectedMessageCreateEmployee('role must be one of the following values: High, receptionist, readonly')
-})
-
-it('Verify it is not possible to Add an Employee by filling up only the First Name, 2 character Username, 5 character Password and Permission Level |password must be longer or equal to 5 characteres is required|', () => {
-    employeeSection()
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'st', '12345')
-    cy.contains('span','Permission Level').parent().next('select').should('exist')
-    cy.contains('span','Permission Level').parent().next('select').select('High')
-    cy.expectedMessageCreateEmployee('user.username must be longer than or equal to 3 characters')
-})
-
-it('Verify it is not possible to Add an Employee by filling up only the First Name, 3 character Username, 4 character Password and Permission Level |username must be longer or equal to 3 characteres is required|', () => {
-    employeeSection()
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
-    cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
-    cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'sta', '1234')
-    cy.contains('span','Permission Level').parent().next('select').should('exist')
-    cy.contains('span','Permission Level').parent().next('select').select('High')
-    cy.expectedMessageCreateEmployee('user.password must be longer than or equal to 5 characters')
-})
-
+    it('Verify it is not possible to Add an Employee by filling up only the First Name, 3 character Username, 4 character Password and Permission Level |username must be longer or equal to 3 characteres is required|', () => {
+        employeeSection()
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).should('exist')
+        cy.contains('h6','employees').parent().next('div').find('button').eq(1).click({ force: true })
+        cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', 'sta', '1234')
+        cy.contains('span','Permission Level').parent().next('select').should('exist')
+        cy.contains('span','Permission Level').parent().next('select').select('High')
+        cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters')
+    })
 })
