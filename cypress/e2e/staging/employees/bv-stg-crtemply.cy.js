@@ -148,7 +148,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters')
     })
 
-    it.only('Verify it is not possible to Add an Employee by filling up only the First Name, and Password | Username and Permission Level are required|', () => {
+    it('Verify it is not possible to Add an Employee by filling up only the First Name, and Password | Username and Permission Level are required|', () => {
         employeeSection()
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
