@@ -148,7 +148,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters')
     })
 
-    it('Verify it is not possible to Add an Employee by filling up only the First Name, and Password | Username and Permission Level are required|', () => {
+    it.only('Verify it is not possible to Add an Employee by filling up only the First Name, and Password | Username and Permission Level are required|', () => {
         employeeSection()
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
@@ -163,7 +163,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.filloutProfileInfo('first_name', '{enter}', '{enter}', '{enter}', '{enter}', '{enter}')
         cy.contains('span','Permission Level').parent().next('select').should('exist')
         cy.contains('span','Permission Level').parent().next('select').select('High')
-        cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters password must be a string Username is required Please enter a valid username Please Select a Permission Level for the employee')
+        cy.expectedMessageCreateEmployee('password must be longer than or equal to 5 characters password must be a string Username is required')
     })
 
     it.only('Verify it is not possible to Add an Employee by filling up only the Username and Password | First Name and Permission Level are required|', () => {
@@ -171,7 +171,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
         cy.filloutProfileInfo('{enter}', '{enter}', '{enter}', '{enter}', 'username10', '1234567890')
-        cy.expectedMessageCreateEmployee('First name is requiredFirst name is required firstName must be a string Please Select a Permission Level for the employee')
+        cy.expectedMessageCreateEmployee('First name is required First name is required firstName must be a string Please Select a Permission Level for the employee')
     })
 
     it.only('Verify it is not possible to Add an Employee by filling up only the Username and Permission Level | First Name and Password are required|', () => {

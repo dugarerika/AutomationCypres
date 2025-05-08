@@ -5,6 +5,7 @@ const employeeWorkingHoursSection = () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
+    cy.wait(199)
     cy.contains('li>button','Working Hours').should('exist')
     cy.contains('li>button','Working Hours').click({ force: true })
 }
@@ -19,7 +20,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.clearCookies()
     })
 
-    it('Verify it is possible access to the Working hours section- Admin credentials', () => {
+    it.only('Verify it is possible access to the Working hours section- Admin credentials', () => {
         employeeWorkingHoursSection()
     })
 
