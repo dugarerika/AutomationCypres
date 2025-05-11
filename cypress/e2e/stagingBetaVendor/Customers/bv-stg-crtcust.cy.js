@@ -11,9 +11,9 @@ const randEmail2 = faker.internet.email()
 const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 
-const expectedMessageCreateSubs = (product_message) => {
-    cy.contains('button', 'Save').should('exist')
-    cy.contains('button', 'Save').click({ force: true })
+const expectedMessageCreateCustomer = (product_message) => {
+    cy.contains('button', 'Create').should('exist')
+    cy.contains('button', 'Create').click({ force: true })
     cy.contains('div>span', product_message).should('exist')
 }
 
@@ -82,23 +82,49 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it('Verify it is possible access to the Customer section', () => {
-    accessToCustSection()
-})
+    it('Verify it is possible access to the Customer section', () => {
+        accessToCustSection()
+    })
 
-it('Verify there is a button to create a customer in the Customer section', () => {
-    accessToCustSection()
-    cy.contains('button','ADD NEW').should('exist')
-})
+    it('Verify there is a button to create a customer in the Customer section', () => {
+        accessToCustSection()
+        cy.contains('button','ADD NEW').should('exist')
+    })
 
 // Add Customer form fiels validation
 
-    it.only('Verify that the Customer First Name is required', () => {
+    it('Verify it is not possible to submit an empty new customer form', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo(randUsername1, '{enter}', '{enter}', '{enter}')
-        // expectedMessageCreateSubs('At least one service variant is required')
+        expectedMessageCreateCustomer('Customer first name is required')
     })
 
+    it('Verify that the Customer First Name is required', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo('{enter}', randUsername1, '{enter}', '{enter}')
+        expectedMessageCreateCustomer('Customer first name is required')
+    })
+
+    it('Verify that the Customer Mobile is required', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, randUsername1, '{enter}', '{enter}')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    it('Verify that the Phone Number is validated', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, randUsername1, '{enter}', '78689008')
+        expectedMessageCreateCustomer('Invalid mobile number')
+    })
+
+    it.only('Verify that the Phone Number is validated', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', '78689008')
+        expectedMessageCreateCustomer('Invalid mobile number')
+    })
 })
 
