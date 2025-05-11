@@ -70,8 +70,8 @@ module.exports = defineConfig({
       Vendor0_Admin_Password_Staging: "1234567890",
       Vendor9_Admin_Username_Staging: "billingbh",// it has billing pendin to pay
       Vendor9_Admin_Password_Staging: "1234567890",
-      // Vendor1_Admin_Username_Staging: "beautiquespa",
-      // Vendor1_Admin_Password_Staging: "1234567890",
+      Vendor10_Admin_Username_Staging: "beautiquespa",
+      Vendor10_Admin_Password_Staging: "1234567890",
       //STAGING - BETA VENDOR
       Vendor_Admin_Username_Staging: "artnailcorner",
       Vendor_Admin_Password_Staging: "1234567890",
@@ -82,7 +82,9 @@ module.exports = defineConfig({
       Vendor_ReadOnly_Username_Staging: "readonly835",
       Vendor_ReadOnly_Password_Staging: "1234567890",   
       Vendor_Receptionist_Username_Staging: "recep6",
-      Vendor_Receptionist_Password_Staging: "1234567890",   
+      Vendor_Receptionist_Password_Staging: "1234567890",
+      Vendor7_Admin_Username_Staging: "testsalon",
+      Vendor7_Admin_Password_Staging: "testsalon1o",   
       
       //STAGING - OLD VENDOR
       Vendor2_Admin_Username_Staging: "poshinpolish",

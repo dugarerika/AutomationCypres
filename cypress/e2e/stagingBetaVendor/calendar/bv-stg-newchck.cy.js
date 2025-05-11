@@ -8,7 +8,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     before(() => {
         // ensure clean test slate for these tests
         cy.then(Cypress.session.clearAllSavedSessions)
-    })
+    })  
     
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
@@ -86,7 +86,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.wait(10)
     })
 
-    // Fillout buttons (is it pending gift card)
+    // Fillout buttons (it is pending gift card)
     it('Verify that After clicking the Fill button for Debit, the Debit text field is populated with the correct balance', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
@@ -160,7 +160,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.addEmptyDiscount('Coupon')
     })
 
-    // Services
+    // Services checkout validations
     it('Verify the breakdown is correct after adding a service ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
@@ -186,25 +186,31 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.addItemService('Hair Cut')
     })
 
-    // Giftcards
-    it('Verify the Gift card must be the only item in the cart - Admin credentials', () => {
+    // Giftcards checkout validations
+    it('Verify the Gift card must be the only item in the cart', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard('243.48 SAR Gift Card')
         cy.addItemService('long Hair')
         cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
     })
 
-    it.skip('Verify Adjust button must be disable for Gift cards - Admin credentials', () => {
+    it('Verify Adjust button must be disable for Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard('243.48 SAR Gift Card')
-        cy.addItemService('long Hair')
-        cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
+        cy.contains('button', 'Adjust').should('be.disabled')
     })
 
-    it.skip('Verify taxes are not changed on Gift cards - Admin credentials', () => {
+    it.only('Verify taxes are not changed on Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard('243.48 SAR Gift Card')
-        cy.addItemService('long Hair')
+        cy.contains('h6', 'Tax 15%').should('not.exist')
+    })
+
+    // Subscriptions checkout validations
+    it('Verify after having a Subscription in the cart it is not possible to add a Giftcard', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemSubscription('Subscription B')
+        cy.addItemGiftCard('12 BHD Gift Card')
         cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
     })
 
@@ -235,7 +241,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     })  
 
     // checkout successfully - Giftcards
-    it('Verify it is possible to complete a checkout for Gift card - Admin credentials', () => {
+    it('Verify it is possible to complete a checkout for Gift card', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard('243.48 SAR Gift Card')
         cy.fillButton('Cash')
@@ -258,19 +264,12 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
         cy.clearCookies()
     })
 
-    it('Verify it is possible to add new service after removing one leaving the cart empty', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemService('long Hair')
-        cy.removeService('long Hair','Yes')
-        cy.addItemService('Hair Cut')
-    })
-
-    // checkout successfully
+    // Checkout successfully - Services
     it('Verify it is possible to complete a checkout successfully for 1 service', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Short Hair')
         cy.fillButton('Cash')
-        cy.addEmployee('Helen')
+        cy.addEmployee('ErikaT')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
     it('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
@@ -278,7 +277,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
         cy.addItemService('Hair Cut')
         cy.addPercentageDiscount('Hair Cut','40')
         cy.fillButton('Cash')
-        cy.addEmployee('Helen')
+        cy.addEmployee('ErikaT')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 
@@ -287,7 +286,15 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
         cy.addItemService('long Hair')
         cy.addFixedDiscount('long Hair','5')
         cy.fillButton('Cash')
-        cy.addEmployee('Helen')
+        cy.addEmployee('ErikaT')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })  
+
+    // checkout successfully - Giftcards
+    it('Verify it is possible to complete a checkout for Gift card', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 })
@@ -307,12 +314,12 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
         cy.clearCookies()
     })
 
-    // checkout successfully
+    // Checkout successfully - Services
     it('Verify it is possible to complete a checkout successfully for 1 service', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Short Hair')
         cy.fillButton('Cash')
-        cy.addEmployee('Zumba')
+        cy.addEmployee('ErikaT')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
     it('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
@@ -320,7 +327,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
         cy.addItemService('Hair Cut')
         cy.addPercentageDiscount('Hair Cut','40')
         cy.fillButton('Cash')
-        cy.addEmployee('Zumba')
+        cy.addEmployee('ErikaT')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 
@@ -329,7 +336,15 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
         cy.addItemService('long Hair')
         cy.addFixedDiscount('long Hair','5')
         cy.fillButton('Cash')
-        cy.addEmployee('Zumba')
+        cy.addEmployee('ErikaT')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })  
+
+    // checkout successfully - Giftcards
+    it('Verify it is possible to complete a checkout for Gift card', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 })
