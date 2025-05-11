@@ -1,13 +1,13 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-const payrollSection = () => {
+const attendancesSection = () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
     cy.wait(199)
-    cy.contains('li>button','Payroll').should('exist')
-    cy.contains('li>button','Payroll').click({ force: true })
+    cy.contains('li>button','Attendances').should('exist')
+    cy.contains('li>button','Attendances').click({ force: true })
 }
 
 describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin credentials', () => {
@@ -20,9 +20,9 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.clearCookies()
     })
 
-    it.only('Verify it is possible access to the payroll section- Admin credentials', () => {
-        payrollSection()
-        cy.contains('div>h6','Payrolls').should('exist')
+    it.only('Verify it is possible access to the Attendances section- Admin credentials', () => {
+        attendancesSection()
+        cy.contains('div>h6','Attendances').should('exist')
     })
 
 // Add Employee Successfully
