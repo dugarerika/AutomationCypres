@@ -207,6 +207,11 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.fillButton('Cash')
         cy.addEmployee('ErikaT')
         cy.expectedMessageCompleteSale('Sale Completed')
+    })  
+    it.only('Verify the Gift card must be the only item in the cart - Admin credentials', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.fillButton('Cash')
     })
 })
 
