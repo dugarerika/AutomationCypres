@@ -183,15 +183,281 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.addItemService('Hair Cut')
     })
 
-    it.skip('Verify the Gift card must be the only item in the cart', () => {
+    it.only('Verify it is possible to complete a checkout successfully for 1 service', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
-        // cy.addItemService('long Hair')
-        // cy.addItemGiftCard('243.48 SAR Gift Card')
-        // cy.addEmptyDiscount('Coupon')
+        cy.addItemService('Short Hair')
+        cy.fillButton('Cash')
+        cy.addEmployee('ErikaT')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.addPercentageDiscount('Hair Cut','40')
+        cy.fillButton('Cash')
+        cy.addEmployee('ErikaT')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+
+    it.only('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.addFixedDiscount('long Hair','5')
+        cy.fillButton('Cash')
+        cy.addEmployee('ErikaT')
+        cy.expectedMessageCompleteSale('Sale Completed')
     })
 })
 
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
+
+    before(() => {
+        // ensure clean test slate for these tests
+        cy.then(Cypress.session.clearAllSavedSessions)
+    })
+    
+    beforeEach(() => {
+        cy.login('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
+    })
+
+    afterEach(() => {
+        cy.clearCookies()
+    })
+
+    it('Verify it is not possible to complete New Checkout without adding item and payment', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        // cy.contains('div','Search customer..').should('be.visible')
+        // cy.contains('button','Walk In').should('be.visible')
+        // cy.contains('button','Walk In').click({force: true})
+        cy.expectedMessageCompleteSale('Add at least one payment')
+    })
+
+    it('Verify it is not possible to complete New Checkout without adding payment', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        // cy.contains('div','Search customer..').should('be.visible')
+        // cy.contains('button','Walk In').should('be.visible')
+        // cy.contains('button','Walk In').click({force: true})
+        cy.contains('button','Add New').should('be.visible')
+        cy.contains('button','Add New').click({force: true})
+        cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
+        cy.contains('label>span', 'search').parents('label').next('div').find('input').type('Hair Cut')
+        cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
+        cy.get('div[role="presentation"]').trigger('click')
+        cy.expectedMessageCompleteSale('Add at least one payment')
+    })
+
+    it('Verify it is not possible to complete New Checkout with the cart empty ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        // cy.contains('div','Search customer..').should('be.visible')
+        // cy.contains('button','Walk In').should('be.visible')
+        // cy.contains('button','Walk In').click({force: true})
+        cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
+        cy.wait(10)
+        cy.expectedMessageCompleteSale('Add at least one payment')
+        cy.wait(10)
+    })
+
+    it('Verify it is not possible to complete New Checkout for a service without linking it to an employee ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        // cy.contains('div','Search customer..').should('be.visible')
+        // cy.contains('button','Walk In').should('be.visible')
+        // cy.contains('button','Walk In').click({force: true})
+        cy.contains('button','Add New').should('be.visible')
+        cy.contains('button','Add New').click({force: true})
+        cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
+        cy.contains('label>span', 'search').parents('label').next('div').find('input').type('Hair Cut')
+        cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
+        cy.get('div[role="presentation"]').trigger('click')
+        cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
+        cy.wait(10)
+        cy.expectedMessageCompleteSale('Add at least one payment')
+        cy.wait(10)
+    })
+
+    it('Verify it is not possible to complete New Checkout for a service linking it to an employee ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        // cy.contains('div','Search customer..').should('be.visible')
+        // cy.contains('button','Walk In').should('be.visible')
+        // cy.contains('button','Walk In').click({force: true})
+        cy.contains('button','Add New').should('be.visible')
+        cy.contains('button','Add New').click({force: true})
+        cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
+        cy.contains('label>span', 'search').parents('label').next('div').find('input').type('Hair Cut')
+        cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
+        cy.get('div[role="presentation"]').trigger('click')
+        cy.fillButton('Cash')
+        cy.wait(10)
+        cy.expectedMessageCompleteSale('Employee must be present')
+        cy.wait(10)
+    })
+
+    it('Verify that After clicking the Fill button for Debit, the Debit text field is populated with the correct balance', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.fillButton('Debit')
+    })
+
+    it('Verify that After clicking the Fill button for Credit, the Credit text field is populated with the correct balance', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.fillButton('Credit')
+    })
+
+    it('Verify that After clicking the Fill button for Cash, the Cash text field is populated with the correct balance', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.fillButton('Cash')
+    })
+
+    it('Verify that After clicking the Fill button for Other, the Other text field is populated with the correct balance', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.fillButton('Other')
+    })
+
+    it('Verify that After clicking the Fill button for Hisabe, the Hisabe text field is populated with the correct balance', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.fillButton('Hisabe')
+    })
+
+    it('Verify the breakdown is correct after adding a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.checkBreakdownNoDiscount('Hair Cut')
+        
+    })
+
+    it.skip('Verify the breakdown is correct after applying a coupon to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.addCouponDiscount('long Hair','10')
+    })
+
+    it('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.addFixedDiscount('long Hair','1')
+    })
+
+    it('Verify the breakdown is correct after applying a percentage discount to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.addPercentageDiscount('Hair Cut','20')
+    })
+
+    it('Verify it is not possible to apply a fixed discount greather than the service price', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.addFixedDiscount('long Hair','20')
+    })
+
+    it('Verify it is not possible to apply a fixed discount when leaving the discount empty', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.addEmptyDiscount('Fixed')
+    })
+
+    it('Verify it is not possible to apply a Percentage discount when leaving the discount empty', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.addEmptyDiscount('Percentage')
+    })
+
+    it('Verify it is not possible to apply a Coupon discount when leaving the discount empty', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.addEmptyDiscount('Coupon')
+    })
+
+    it('Verify that it is possible to remove a service from the cart after confirming do you want to delete it', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.removeService('long Hair','Yes')
+    })
+
+    it('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.removeService('long Hair','Cancel')
+    })
+
+    it('Verify it is possible to add new service after removing one leaving the cart empty', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.removeService('long Hair','Yes')
+        cy.addItemService('Hair Cut')
+    })
+
+    // checkout successfully
+    it.only('Verify it is possible to complete a checkout successfully for 1 service', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Short Hair')
+        cy.fillButton('Cash')
+        cy.addEmployee('Helen')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.addPercentageDiscount('Hair Cut','40')
+        cy.fillButton('Cash')
+        cy.addEmployee('Helen')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+
+    it.only('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.addFixedDiscount('long Hair','5')
+        cy.fillButton('Cash')
+        cy.addEmployee('Helen')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+})
+
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+
+    before(() => {
+        // ensure clean test slate for these tests
+        cy.then(Cypress.session.clearAllSavedSessions)
+    })
+    
+    beforeEach(() => {
+        cy.login('Staff Session', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
+    })
+
+    afterEach(() => {
+        cy.clearCookies()
+    })
+
+    // checkout successfully
+
+    it.only('Verify it is possible to complete a checkout successfully for 1 service', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Short Hair')
+        cy.fillButton('Cash')
+        cy.addEmployee('Zumba')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.addPercentageDiscount('Hair Cut','40')
+        cy.fillButton('Cash')
+        cy.addEmployee('Zumba')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+
+    it.only('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('long Hair')
+        cy.addFixedDiscount('long Hair','5')
+        cy.fillButton('Cash')
+        cy.addEmployee('Zumba')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+})
 
 // During the Appointment Checkout:
 

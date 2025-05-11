@@ -379,6 +379,15 @@ Cypress.Commands.add('addItemService', (name) => {
     cy.get('div[role="presentation"]').trigger('click')
 })
 
+Cypress.Commands.add('addEmployee', (name) => {
+    cy.contains('button','Edit').should('be.visible')
+    cy.contains('button','Edit').click({force: true})
+    cy.contains('label>span', 'Staff').parents('label').next('div').find('input').type(`${name}{enter}`)
+    cy.contains('button', 'Save').click({force: true})
+    // cy.get('div[role="presentation"]').trigger('click')
+})
+
+
 Cypress.Commands.add('addItemGiftCard', (name) => {
     // cy.contains('button','Add New').should('be.visible')
     // cy.contains('button','Add New').click({force: true})
