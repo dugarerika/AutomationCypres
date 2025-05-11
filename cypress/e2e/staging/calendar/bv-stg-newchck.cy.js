@@ -20,17 +20,11 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
 
     it('Verify it is not possible to complete New Checkout without adding item and payment - Admin credentials', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        // cy.contains('div','Search customer..').should('be.visible')
-        // cy.contains('button','Walk In').should('be.visible')
-        // cy.contains('button','Walk In').click({force: true})
         cy.expectedMessageCompleteSale('Add at least one payment')
     })
 
     it('Verify it is not possible to complete New Checkout without adding payment - Admin credentials', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        // cy.contains('div','Search customer..').should('be.visible')
-        // cy.contains('button','Walk In').should('be.visible')
-        // cy.contains('button','Walk In').click({force: true})
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
@@ -42,9 +36,6 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
 
     it('Verify it is not possible to complete New Checkout with the cart empty  - Admin credentials', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        // cy.contains('div','Search customer..').should('be.visible')
-        // cy.contains('button','Walk In').should('be.visible')
-        // cy.contains('button','Walk In').click({force: true})
         cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
         cy.wait(10)
         cy.expectedMessageCompleteSale('Add at least one payment')
@@ -53,9 +44,6 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
       
     it('Verify it is not possible to complete New Checkout for a service linking it to an employee  - Admin credentials', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        // cy.contains('div','Search customer..').should('be.visible')
-        // cy.contains('button','Walk In').should('be.visible')
-        // cy.contains('button','Walk In').click({force: true})
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
@@ -68,11 +56,8 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.wait(10)
     })
 
-    it('Verify it is not possible to complete New Checkout for a service linking it to an employee  - Admin credentials', () => {
+    it('Verify it is not possible to complete New Checkout for a service without linking it to an employee  - Admin credentials', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        // cy.contains('div','Search customer..').should('be.visible')
-        // cy.contains('button','Walk In').should('be.visible')
-        // cy.contains('button','Walk In').click({force: true})
         cy.contains('button','Add New').should('be.visible')
         cy.contains('button','Add New').click({force: true})
         cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
@@ -183,9 +168,9 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.addItemService('Hair Cut')
     })
 
-    it.skip('Verify the Gift card must be the only item in the cart - Admin credentials', () => {
+    it.only('Verify the Gift card must be the only item in the cart - Admin credentials', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemService('long Hair')
+        cy.addItemGiftCard('243.48 SAR Gift Card')
         cy.addEmptyDiscount('Coupon')
     })
 })
