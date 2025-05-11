@@ -18,6 +18,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.clearCookies()
     })
 
+    // Required field during checkout
     it('Verify it is not possible to complete New Checkout without adding item and payment', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         // cy.contains('div','Search customer..').should('be.visible')
@@ -85,6 +86,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.wait(10)
     })
 
+    // Fillout buttons (is it pending gift card)
     it('Verify that After clicking the Fill button for Debit, the Debit text field is populated with the correct balance', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
@@ -115,13 +117,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.fillButton('Hisabe')
     })
 
-    it('Verify the breakdown is correct after adding a service ', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemService('Hair Cut')
-        cy.checkBreakdownNoDiscount('Hair Cut')
-        
-    })
-
+    // Discounts
     it.skip('Verify the breakdown is correct after applying a coupon to a service ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
@@ -164,6 +160,13 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.addEmptyDiscount('Coupon')
     })
 
+    // Services
+    it('Verify the breakdown is correct after adding a service ', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Hair Cut')
+        cy.checkBreakdownNoDiscount('Hair Cut')   
+    })
+
     it('Verify that it is possible to remove a service from the cart after confirming do you want to delete it', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('long Hair')
@@ -183,7 +186,15 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.addItemService('Hair Cut')
     })
 
-    // checkout successfully
+    // Giftcards
+    it('Verify the Gift card must be the only item in the cart - Admin credentials', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemService('long Hair')
+        cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
+    })
+
+    // Checkout successfully - Services
     it('Verify it is possible to complete a checkout successfully for 1 service', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Short Hair')
@@ -208,10 +219,13 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.addEmployee('ErikaT')
         cy.expectedMessageCompleteSale('Sale Completed')
     })  
-    it.only('Verify the Gift card must be the only item in the cart - Admin credentials', () => {
+
+    // checkout successfully - Giftcards
+    it('Verify it is possible to complete a checkout for Gift card - Admin credentials', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard('243.48 SAR Gift Card')
         cy.fillButton('Cash')
+        cy.expectedMessageCompleteSale('Sale Completed')
     })
 })
 
