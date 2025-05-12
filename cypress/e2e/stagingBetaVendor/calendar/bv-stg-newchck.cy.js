@@ -202,7 +202,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
 
     it('Verify taxes are not changed on Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemGiftCard('100 SAR Gift Card')
         cy.contains('h6', 'Tax 15%').should('not.exist')
     })
 
@@ -210,7 +210,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     it('Verify after having a Subscription in the cart it is not possible to add a Giftcard', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemSubscription('Subscription B')
-        cy.addItemGiftCard('12 BHD Gift Card')
+        cy.addItemGiftCard('100 SAR Gift Card')
         cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
     })
 
