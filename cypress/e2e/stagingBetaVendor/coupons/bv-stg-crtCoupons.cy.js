@@ -44,8 +44,8 @@ const accessToCouponSection = () => {
 }
 
 const accessToAddCouponForm = () => {
-    cy.contains('h6','Offers').parent().next('div').find('button').should('exist')
-    cy.contains('h6','Offers').parent().next('div').find('button').click({ force: true })
+    cy.contains('h6','Coupons').parent().next('div').find('button').should('exist')
+    cy.contains('h6','Coupons').parent().next('div').find('button').click({ force: true })
     cy.contains('h3','Add New Coupon', { matchCase: false }).parent().next('div').find('button').should('exist')
 }
 
@@ -88,11 +88,11 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it.only('Verify it is possible access to the Offers section', () => {
+it.only('Verify it is possible access to the Coupons section', () => {
     accessToCouponSection()
 })
 
-it.only('Verify it is possible access to the Add Offers form', () => {
+it.only('Verify it is possible access to the Add Coupons form', () => {
     accessToCouponSection()
     accessToAddCouponForm()
 })
