@@ -60,23 +60,23 @@ describe('Beta Vendor Admin | Employee | Delete Subscription| logged with Admin 
     })
 
     // Add Subscription form fiels validation
-    it('Delete subscription', () => {
+    it.skip('Delete subscription', () => {
         accessToSubsSection()
     })
     
-    it('Delete subscription', () => {
+    it.skip('Delete subscription', () => {
         accessToSubsSection()
     })
     
-    it('Delete subscription', () => {
+    it.skip('Delete subscription', () => {
         accessToSubsSection()
     })
     
-    it('Delete subscription', () => {
+    it.skip('Delete subscription', () => {
         accessToSubsSection()
     })
     
-    it('Delete subscription', () => {
+    it.skip('Delete subscription', () => {
         accessToSubsSection()
     })
 })

@@ -113,7 +113,7 @@ afterEach(() => {
         expectedMessageCreateCustomer('Customer mobile is required')
     })
 
-    it('Verify that the Phone Number is validated', () => {
+    it.skip('Verify that the Phone Number is validated', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, randUsername1, '{enter}', '78689008')

@@ -78,7 +78,7 @@ const clearUpdateForm = () => {
 describe('Beta Vendor Admin | Subscriptions | Create Subscription| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.env("Vendor10_Admin_Username_Staging"), Cypress.env("Vendor10_Admin_Password_Staging"))
 })
 
 afterEach(() => {
