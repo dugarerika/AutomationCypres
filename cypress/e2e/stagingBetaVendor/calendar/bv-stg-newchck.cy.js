@@ -200,7 +200,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.contains('button', 'Adjust').should('be.disabled')
     })
 
-    it.only('Verify taxes are not changed on Gift cards', () => {
+    it('Verify taxes are not changed on Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard('243.48 SAR Gift Card')
         cy.contains('h6', 'Tax 15%').should('not.exist')
