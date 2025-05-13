@@ -194,7 +194,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
     })
 
-    it.only('Verify Adjust button must be disable for Gift cards', () => {
+    it('Verify Adjust button must be disable for Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard("243.48 SAR Gift Card")
         cy.contains('button', 'Adjust').should('be.disabled')
