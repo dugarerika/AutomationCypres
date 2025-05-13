@@ -299,7 +299,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
