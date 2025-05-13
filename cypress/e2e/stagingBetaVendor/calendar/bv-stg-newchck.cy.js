@@ -299,7 +299,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -319,7 +319,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Short Hair')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zumba')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
     it('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
@@ -327,7 +327,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
         cy.addItemService('Hair Cut')
         cy.addPercentageDiscount('Hair Cut','40')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zumba')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 
@@ -336,7 +336,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
         cy.addItemService('long Hair')
         cy.addFixedDiscount('long Hair','5')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zumba')
         cy.expectedMessageCompleteSale('Sale Completed')
     })  
 
