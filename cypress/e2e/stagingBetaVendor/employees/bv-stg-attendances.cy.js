@@ -10,7 +10,7 @@ const attendancesSection = () => {
     cy.contains('li>button','Attendances').click({ force: true })
 }
 
-describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin credentials', () => {
+describe('Beta Vendor Admin | Employee | Create Attendances| logged with Admin credentials', () => {
 
     beforeEach(() => {
         cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
