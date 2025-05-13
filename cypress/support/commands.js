@@ -370,40 +370,41 @@ Cypress.Commands.add('newCheckout', (environ) => {
     cy.contains('button','Walk In').click({force: true})
 })
 
-Cypress.Commands.add('addItemService', (name) => {
+Cypress.Commands.add('addItemService', (service) => {
     cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').click({force: true})
     cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
-    cy.contains('label>span', 'search').parents('label').next('div').find('input').type(name)
-    cy.contains('div', name).parents('li').find('button').click({force: true})
+    cy.contains('label>span', 'search').parents('label').next('div').find('input').type(service)
+    cy.contains('div', service).parents('li').find('button').click({force: true})
     cy.get('div[role="presentation"]').trigger('click')
 })
 
-Cypress.Commands.add('addEmployee', (name) => {
+Cypress.Commands.add('addEmployee', (employee) => {
     cy.contains('button','Edit').should('be.visible')
     cy.contains('button','Edit').click({force: true})
-    cy.contains('label>span', 'Staff').parents('label').next('div').find('input').type(`${name}{enter}`)
+    cy.contains('label>span', 'Staff').parents('label').next('div').find('input').type(`${employee}{enter}`)
     cy.contains('button', 'Save').click({force: true})
     // cy.get('div[role="presentation"]').trigger('click')
 })
 
 
-Cypress.Commands.add('addItemGiftCard', (name) => {
+Cypress.Commands.add('addItemGiftCard', (gift) => {
     cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').click({force: true})
     cy.get('div[role="tablist"]').find('button').eq(3).click()
     cy.wait(100)
     // cy.contains('label>span', 'search').parents('label').next('div').find('input').type(name)
-    cy.contains('div', name).parents('li').find('button').click({force: true})
+    cy.contains('div', gift).parents('li').find('button').click({force: true})
+    // cy.get('div>ul').find('button').eq(0).click({force: true})
     cy.get('div[role="presentation"]').trigger('click')
 })
 
-Cypress.Commands.add('addItemSubscription', (name) => {
+Cypress.Commands.add('addItemSubscription', (subs) => {
     cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').click({force: true})
     cy.get('div[role="tablist"]').find('button').eq(2).click({force: true})
-    cy.contains('label>span', 'search').parents('label').next('div').find('input').type(name)
-    cy.contains('div', name).parents('li').find('button').click({force: true})
+    cy.contains('label>span', 'search').parents('label').next('div').find('input').type(subs)
+    cy.contains('div', subs).parents('li').find('button').click({force: true})
     cy.get('div[role="presentation"]').trigger('click')
 })
 

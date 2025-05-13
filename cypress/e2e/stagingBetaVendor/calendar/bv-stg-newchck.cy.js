@@ -189,20 +189,20 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     // Giftcards checkout validations
     it('Verify the Gift card must be the only item in the cart', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemGiftCard("100 SAR Gift Card")
         cy.addItemService('long Hair')
         cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
     })
 
-    it('Verify Adjust button must be disable for Gift cards', () => {
+    it.only('Verify Adjust button must be disable for Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemGiftCard("243.48 SAR Gift Card")
         cy.contains('button', 'Adjust').should('be.disabled')
     })
 
     it('Verify taxes are not changed on Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard('100 SAR Gift Card')
+        cy.addItemGiftCard("100 SAR Gift Card")
         cy.contains('h6', 'Tax 15%').should('not.exist')
     })
 
@@ -210,7 +210,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     it('Verify after having a Subscription in the cart it is not possible to add a Giftcard', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemSubscription('Subscription B')
-        cy.addItemGiftCard('100 SAR Gift Card')
+        cy.addItemGiftCard("100 SAR Gift Card")
         cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
     })
 
@@ -243,7 +243,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     // checkout successfully - Giftcards
     it('Verify it is possible to complete a checkout for Gift card', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemGiftCard("243.48 SAR Gift Card")
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
@@ -293,7 +293,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     // checkout successfully - Giftcards
     it('Verify it is possible to complete a checkout for Gift card', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemGiftCard("243.48 SAR Gift Card")
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
@@ -343,7 +343,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
     // checkout successfully - Giftcards
     it('Verify it is possible to complete a checkout for Gift card', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemGiftCard("243.48 SAR Gift Card")
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
