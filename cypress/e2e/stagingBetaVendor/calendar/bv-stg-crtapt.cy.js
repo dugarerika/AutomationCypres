@@ -195,9 +195,6 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 
   it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
     searchTimeSlot('Mateo','06:00') 
-    // cy.contains("Search customer..").next('div').should('exist')
-    // cy.contains("Search customer..").next('div').children('input').click({force: true})
-    // cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
     cy.contains('h2','New Appointment').parent('div').next('div').find('div','Search customer..').next('div').children('input').type('erika{downarrow}{enter}',{force: true, delay: 1000})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -275,19 +272,16 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   afterEach(() => {
-    // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
   })    
 
   after(() => {
-    //https://vendor.beta.bookr-dev.com/auth
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
     searchTimeSlot('Zumba Zumba','03:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
-    // cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()
     cy.contains('Add Offer').should('exist')  
@@ -386,7 +380,6 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
     searchTimeSlot('Naomi Naomi','04:00')  
-    // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()
