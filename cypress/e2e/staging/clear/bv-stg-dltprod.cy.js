@@ -20,7 +20,6 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
 //Delete Successfully
   it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-    //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -38,7 +37,6 @@ describe('Staging - Beta Vendor Admin | Inventory | Delete products| logged with
 
   it('Verify it is possible Delete products from the Inventory/Product list section', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-    //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
