@@ -36,16 +36,13 @@ const filloutOfferInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub
 
 const accessToOfferSection = () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-    cy.contains('button>span','Promotions').should('exist')
-    cy.contains('button>span','Promotions').click({ force: true })
-    cy.contains('li>button','Offers').should('exist')
-    cy.contains('li>button','Offers').click({ force: true })
+    cy.contains('button>span','Promotions').should('exist').click({ force: true })
+    cy.contains('li>button','Offers').should('exist').click({ force: true })
     cy.contains('h6','Offers').should('exist')
 }
 
 const accessToAddOffersForm = () => {
-    cy.contains('h6','Offers').parent().next('div').find('button').should('exist')
-    cy.contains('h6','Offers').parent().next('div').find('button').click({ force: true })
+    cy.contains('h6','Offers').parent().next('div').find('button').should('exist').click({ force: true })
     cy.contains('h3','Add New Offer', { matchCase: false }).parent().next('div').find('button').should('exist')
 }
 
@@ -84,7 +81,6 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-    // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
 })
 

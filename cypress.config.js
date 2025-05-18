@@ -16,8 +16,6 @@ function getConfigurationByFile(file) {
 
 module.exports = defineConfig({
   
-  viewportWidth: 1200,
-  viewportHeight: 1000,
   // reporter: 'reporters/custom.js',
   projectId: 'mevvq9',
   e2e: {
@@ -40,9 +38,9 @@ module.exports = defineConfig({
     trashAssetsBeforeRuns: true,
     video: false,
     videoUploadOnPasses: false,
-    viewportHeight: 1080,
     viewportWidth: 1920,
-    numTestsKeptInMemory: 10,
+    viewportHeight: 1080,
+    numTestsKeptInMemory: 0,
     // reporter: 'cypress-mochawesome-reporter',
     reporter: "cypress-multi-reporters",
     reporterOptions: {
@@ -70,8 +68,8 @@ module.exports = defineConfig({
       Vendor0_Admin_Password_Staging: "1234567890",
       Vendor9_Admin_Username_Staging: "billingbh",// it has billing pendin to pay
       Vendor9_Admin_Password_Staging: "1234567890",
-      Vendor10_Admin_Username_Staging: "beautiquespa",
-      Vendor10_Admin_Password_Staging: "1234567890",
+        Vendor10_Admin_Username_Staging: "beautiquespa",
+        Vendor10_Admin_Password_Staging: "1234567890",
       //STAGING - BETA VENDOR
       Vendor_Admin_Username_Staging: "artnailcorner",
       Vendor_Admin_Password_Staging: "1234567890",

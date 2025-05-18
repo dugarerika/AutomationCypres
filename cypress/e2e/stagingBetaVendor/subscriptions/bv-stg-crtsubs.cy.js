@@ -12,16 +12,13 @@ const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 
 const expectedMessageCreateSubs = (product_message) => {
-    cy.contains('button', 'Save').should('exist')
-    cy.contains('button', 'Save').click({ force: true })
+    cy.contains('button', 'Save').should('exist').click({ force: true })
     cy.contains('div>span', product_message).should('exist')
 }
 
 const filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description) => {
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).type(sub_name)
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
+    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist').type(sub_name)
+    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist').clear({ force: true })
     cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Price').parent().next('div').find('input').eq(0).type(sub_price)
     cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')

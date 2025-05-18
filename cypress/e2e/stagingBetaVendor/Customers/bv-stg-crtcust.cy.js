@@ -78,7 +78,6 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-    // cy.visit('https://beta.vendor.bookr-dev.com/auth?nativeLogout=true')
     cy.clearCookies()
 })
 

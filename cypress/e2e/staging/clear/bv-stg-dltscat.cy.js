@@ -44,11 +44,11 @@ describe('Beta Vendor Admin | Inventory | Delete Cateogories| logged with Admin 
       cy.clearCookies()
   })
 
-  it('Verify it is possible delete category', () => {
+  it.only('Verify it is possible delete category', () => {
     accessCategory()
   })
 
-  it('Verify it is possible delete category', () => {
+  it.only('Verify it is possible delete category', () => {
     accessCategory()
   })
 

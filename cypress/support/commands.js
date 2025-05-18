@@ -224,10 +224,10 @@ Cypress.Commands.add('accessToCreateSuppliers', () =>{
 
 Cypress.Commands.add('accessToCreateSuppliersProd', () =>{
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
-    cy.contains('Inventory').should('exist')
-    cy.contains('Inventory').click({ force: true })
-    cy.contains('Suppliers').should('exist')
-    cy.contains('Suppliers').click({ force: true })
+    // cy.contains('Inventory').should('exist')
+    cy.contains('Inventory').should('be.visible').click({ force: true })
+    // cy.contains('Suppliers').should('exist')
+    cy.contains('Suppliers').should('be.visible').click({ force: true })
     cy.contains('h6', 'Suppliers').should('exist')
     cy.contains('button', 'Add New', { matchCase: false }).should('exist')
     cy.contains('button', 'Add New', { matchCase: false }).click({ force: true })
@@ -254,8 +254,8 @@ Cypress.Commands.add('filloutSupplierForm', (sup_name, sup_description, sup_firs
 })
 
 Cypress.Commands.add('expectedMessageCreateSupplier', (supplier_message) =>{
-    cy.contains('button', 'Save').should('exist')
-    cy.contains('button', 'Save').click()
+    // cy.contains('button', 'Save').should('exist')
+    cy.contains('button', 'Save').should('be.visible').click()
     cy.wait(100)
     cy.contains('span', supplier_message).should('exist')
 })
@@ -264,18 +264,18 @@ Cypress.Commands.add('expectedMessageCreateSupplier', (supplier_message) =>{
 Cypress.Commands.add('deleteEmployee', () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.url().should('include', Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-    cy.contains('Employees').should('exist')
-    cy.contains('Employees').click({ force: true })
-    cy.contains('All Employees').should('exist')
-    cy.contains('All Employees').click({ force: true })
-    cy.contains('div','Employees').should('exist')
-    cy.contains('div','Employees').click({ force: true })
+    // cy.contains('Employees').should('exist')
+    cy.contains('Employees').should('be.visible').click({ force: true })
+    // cy.contains('All Employees').should('exist')
+    cy.contains('All Employees').should('be.visible').click({ force: true })
+    // cy.contains('div','Employees').should('exist')
+    cy.contains('div','Employees').should('be.visible').click({ force: true })
     cy.get('tbody>*').should('exist')
     cy.get('tbody>*').first().click({ force: true })
     cy.contains('Delete employee').scrollIntoView()
     cy.contains('Delete employee').click({ force: true })
-    cy.contains('button', 'Delete').should('exist')
-    cy.contains('button', 'Delete').click({ force: true })
+    // cy.contains('button', 'Delete').should('exist')
+    cy.contains('button', 'Delete').should('be.visible').click({ force: true })
     // cy.contains('h3', 'Delete Employee').should('exist')
     cy.contains('p', 'Are you sure you want to delete this employee?').should('exist')
     cy.contains('p', 'Are you sure you want to delete this employee?').parents('section').next('div').find('button').eq(1).click({ force: true })
@@ -288,37 +288,37 @@ Cypress.Commands.add('deleteEmployee', () => {
 })
 
 Cypress.Commands.add('filloutProfileInfo', (first_name, last_name, email, order, username, password) => {
-    cy.contains('span','First name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('span','First name').parent().next('div').find('input').eq(0).type(first_name)
-    cy.contains('span','Username').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('span','Username').parent().next('div').find('input').eq(0).type(username)
-    cy.contains('span','Password').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('span','Password').parent().next('div').find('input').eq(0).type(password)
-    cy.contains('span','Last name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('span','Last name').parent().next('div').find('input').eq(0).type(last_name)
-    cy.contains('span','Email').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('span','Email').parent().next('div').find('input').eq(0).type(email)
-    cy.contains('span','Order').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('span','Order').parent().next('div').find('input').eq(0).type(order)
+    // cy.contains('span','First name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','First name').parent().next('div').find('input').eq(0).should('be.visible').type(first_name)
+    // cy.contains('span','Username').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Username').parent().next('div').find('input').eq(0).should('be.visible').type(username)
+    // cy.contains('span','Password').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Password').parent().next('div').find('input').eq(0).should('be.visible').type(password)
+    // cy.contains('span','Last name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Last name').parent().next('div').find('input').eq(0).should('be.visible').type(last_name)
+    // cy.contains('span','Email').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Email').parent().next('div').find('input').eq(0).should('be.visible').type(email)
+    // cy.contains('span','Order').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('span','Order').parent().next('div').find('input').eq(0).should('be.visible').type(order)
 })
 
 
 Cypress.Commands.add('selectAllServices', () => {
     cy.contains('div>button', 'Profile').scrollIntoView()
-    cy.contains('div>button', 'Services').click({force: true})
-    cy.contains('span','All Services').parent('label').find('input').click({force:true})
+    cy.contains('div>button', 'Services').should('be.visible').click({force: true})
+    cy.contains('span','All Services').parent('label').find('input').should('be.visible').click({force:true})
 })
 
 Cypress.Commands.add('filloutCommissionsInfo', () => {
     cy.contains('div>button', 'Commission').scrollIntoView()
     cy.contains('div>button', 'Commission').click({force: true})
-    cy.contains('label>span','Service').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Service').parent().next('div').find('input').eq(0).type('10')
+    // cy.contains('label>span','Service').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Service').parent().next('div').find('input').eq(0).should('be.visible').type('10')
 })
 
 Cypress.Commands.add('expectedMessageCreateEmployee', (product_message) => {
-    cy.contains('button', 'Save').should('exist')
-    cy.contains('button', 'Save').click({ force: true })
+    // cy.contains('button', 'Save').should('exist')
+    cy.contains('button', 'Save').should('be.visible').click({ force: true })
     cy.contains('div>span', product_message).should('exist')
     cy.wait(300)
 })
@@ -331,8 +331,8 @@ Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
     cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
-        cy.xpath(`//div[@data-schedule-time="${start_time}" and @color="${color}"]`).should('be.visible')
-        cy.xpath(`//div[@data-schedule-time="${start_time}" and @color="${color}"]`).click({force: true})
+        // cy.xpath(`//div[@data-schedule-time="${start_time}" and @color="${color}"]`).should('be.visible')
+        cy.xpath(`//div[@data-schedule-time="${start_time}" and @color="${color}"]`).should('be.visible').click({force: true})
         cy.log('Test completed')
     })
     cy.contains('New Appointment').should('exist')
@@ -344,8 +344,8 @@ Cypress.Commands.add('searchBlockTime', (staff,start_time) => {
     cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
-        cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).should('be.visible')
-        cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).click()
+        // cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).should('be.visible')
+        cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).should('be.visible').click()
         cy.log('Test completed')
     })
     cy.contains('Appointment Details').should('be.visible')
@@ -354,55 +354,45 @@ Cypress.Commands.add('searchBlockTime', (staff,start_time) => {
 
 Cypress.Commands.add('expectedMessageCompleteSale', (message) => {
     cy.contains('button','Complete Sale').scrollIntoView()
-    cy.contains('button','Complete Sale').click({force: true})
+    cy.contains('button','Complete Sale').should('be.visible').click({force: true})
         cy.contains('span', message).should('exist')
 })
 
 Cypress.Commands.add('newCheckout', (environ) => {
     cy.visit(Cypress.env(environ) + 'admin/calendar')
-    cy.contains('button','Add New').should('be.visible')
-    cy.contains('button','Add New').click({force: true})
+    cy.contains('button','Add New').should('be.visible').click({force: true})
     cy.wait(1000)
-    cy.contains('li','New Checkout').should('be.visible')
-    cy.contains('li','New Checkout').click({force: true})
+    cy.contains('li','New Checkout').should('be.visible').click({force: true})
     cy.contains('div','Search customer..').should('be.visible')
-    cy.contains('button','Walk In').should('be.visible')
-    cy.contains('button','Walk In').click({force: true})
+    cy.contains('button','Walk In').should('be.visible').click({force: true})
 })
 
 Cypress.Commands.add('addItemService', (service) => {
-    cy.contains('button','Add New').should('be.visible')
-    cy.contains('button','Add New').click({force: true})
-    cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
-    cy.contains('label>span', 'search').parents('label').next('div').find('input').type(service)
-    cy.contains('div', service).parents('li').find('button').click({force: true})
-    cy.get('div[role="presentation"]').trigger('click')
+    cy.contains('button','Add New').should('be.visible').click({force: true})
+    cy.get('div[role="tablist"]').find('button').eq(0).should('be.visible').click({force: true})
+    cy.contains('label>span', 'search').parents('label').next('div').find('input').should('be.visible').type(service)
+    cy.contains('div', service).parents('li').find('button').should('be.visible').click({force: true})
+    cy.get('div[role="presentation"]').should('be.visible').trigger('click')
 })
 
 Cypress.Commands.add('addEmployee', (employee) => {
-    cy.contains('button','Edit').should('be.visible')
-    cy.contains('button','Edit').click({force: true})
-    cy.contains('label>span', 'Staff').parents('label').next('div').find('input').type(`${employee}{enter}`)
+    cy.contains('button','Edit').should('be.visible').click({force: true})
+    cy.contains('label>span', 'Staff').parents('label').next('div').find('input').should('be.visible').type(`${employee}{enter}`)
     cy.contains('button', 'Save').click({force: true})
-    // cy.get('div[role="presentation"]').trigger('click')
 })
 
 
 Cypress.Commands.add('addItemGiftCard', (gift) => {
-    cy.contains('button','Add New').should('be.visible')
-    cy.contains('button','Add New').click({force: true})
-    cy.get('div[role="tablist"]').find('button').eq(3).click()
+    cy.contains('button','Add New').should('be.visible').click({force: true})
+    cy.get('div[role="tablist"]').find('button').eq(3).should('be.visible').click()
     cy.wait(100)
-    // cy.contains('label>span', 'search').parents('label').next('div').find('input').type(name)
-    cy.contains('div', gift).parents('li').find('button').click({force: true})
-    // cy.get('div>ul').find('button').eq(0).click({force: true})
-    cy.get('div[role="presentation"]').trigger('click')
+    cy.contains('div', gift).parents('li').find('button').should('be.visible').click({force: true})
+    cy.get('div[role="presentation"]').should('be.visible').trigger('click')
 })
 
 Cypress.Commands.add('addItemSubscription', (subs) => {
-    cy.contains('button','Add New').should('be.visible')
-    cy.contains('button','Add New').click({force: true})
-    cy.get('div[role="tablist"]').find('button').eq(2).click({force: true})
+    cy.contains('button','Add New').should('be.visible').click({force: true})
+    cy.get('div[role="tablist"]').find('button').eq(2).should('be.visible').click({force: true})
     cy.contains('label>span', 'search').parents('label').next('div').find('input').type(subs)
     cy.contains('div', subs).parents('li').find('button').click({force: true})
     cy.get('div[role="presentation"]').trigger('click')
@@ -411,7 +401,6 @@ Cypress.Commands.add('addItemSubscription', (subs) => {
 Cypress.Commands.add('fillButton', (method) => {
     cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').click()
     cy.contains('h6','Balance').next('span').then(($span) => {
-        //balance = $span.text().substring(4)
         const balance = $span.text().split(" ")
         cy.log(eval(balance[1]))
         cy.contains('label', method).parent('div').find('input').then(($input) => {
@@ -448,9 +437,9 @@ Cypress.Commands.add('checkBreakdownNoDiscount', (service) => {
 Cypress.Commands.add('addPercentageDiscount', (service,percentage) => {
     const perc1 = percentage/100
     const perc2 = (100 - percentage)/100
-    cy.contains('button','Percentage').click()
-    cy.get('input[placeholder="Type Percentage"]').type(percentage)
-    cy.contains('button','Apply').click()
+    cy.contains('button','Percentage'.should('be.visible')).click()
+    cy.get('input[placeholder="Type Percentage"]').should('be.visible').type(percentage)
+    cy.contains('button','Apply').should('be.visible').click()
     cy.contains('span', "Discount Applied Successfully").should('exist')
     cy.contains('h6', service).parent('div').next('div').find('h4').then(($h4) =>{
         const price = $h4.text().split(" ")
