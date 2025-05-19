@@ -158,9 +158,9 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth?nativeLogout=true')
   })
 
-  after(() => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-  })
+  // after(() => {
+  //   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  // })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
     searchTimeSlot('Zstaff ','06:00')
@@ -365,9 +365,9 @@ describe('Staging - Beta Vendor Admin | Calendar| Create appointments by Clickin
     cy.clearCookies()
   })
 
-  after(() => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-  })
+  // after(() => {
+  //   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  // })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
     searchTimeSlot('Naomi Naomi','03:00')
