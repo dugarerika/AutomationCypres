@@ -87,31 +87,31 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     })
 
     // Fillout buttons (it is pending gift card)
-    it('Verify that After clicking the Fill button for Debit, the Debit text field is populated with the correct balance', () => {
+    it('Verify that After clicking the Fill button for Debit, the Debit text field is populated with the correct Total', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
         cy.fillButton('Debit')
     })
 
-    it('Verify that After clicking the Fill button for Credit, the Credit text field is populated with the correct balance', () => {
+    it('Verify that After clicking the Fill button for Credit, the Credit text field is populated with the correct Total', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
         cy.fillButton('Credit')
     })
 
-    it('Verify that After clicking the Fill button for Cash, the Cash text field is populated with the correct balance', () => {
+    it('Verify that After clicking the Fill button for Cash, the Cash text field is populated with the correct Total', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
         cy.fillButton('Cash')
     })
 
-    it('Verify that After clicking the Fill button for Other, the Other text field is populated with the correct balance', () => {
+    it('Verify that After clicking the Fill button for Other, the Other text field is populated with the correct Total', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
         cy.fillButton('Other')
     })
 
-    it('Verify that After clicking the Fill button for Hisabe, the Hisabe text field is populated with the correct balance', () => {
+    it('Verify that After clicking the Fill button for Hisabe, the Hisabe text field is populated with the correct Total', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
         cy.fillButton('Hisabe')
@@ -187,7 +187,14 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     })
 
     // Giftcards checkout validations
-    it('Verify the Gift card must be the only item in the cart', () => {
+    it('Verify the Gift card must be the only item in the cart trying to add a subscription', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemGiftCard("100 SAR Gift Card")
+        cy.addItemSubscription('Subscription B')
+        cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
+    })
+
+    it('Verify the Gift card must be the only item in the cart trying to add a service', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard("100 SAR Gift Card")
         cy.addItemService('long Hair')

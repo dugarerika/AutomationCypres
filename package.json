@@ -48,7 +48,6 @@
     "cy:coupons:crtcoupons": "cypress run --spec 'cypress/e2e/stagingBetaVendor/coupons/bv-stg-crtCoupons.cy.js'",
   
     "cy:customers:crtcust": "cypress run --spec 'cypress/e2e/stagingBetaVendor/customers/bv-stg-crtcust.cy.js'",
-  
     "cy:employees:attendances": "cypress run --spec 'cypress/e2e/stagingBetaVendor/employees/bv-stg-attendances.cy.js'",
     "cy:employees:contracts": "cypress run --spec 'cypress/e2e/stagingBetaVendor/employees/bv-stg-contracts.cy.js'",
     "cy:employees:crtemply": "cypress run --spec 'cypress/e2e/stagingBetaVendor/employees/bv-stg-crtemply.cy.js'",
