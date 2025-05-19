@@ -41,9 +41,8 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth?nativeLogout=true')
+  cy.clearCookies()
 })
-
 it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
   searchTimeSlot('Susan one','03:00') 
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
