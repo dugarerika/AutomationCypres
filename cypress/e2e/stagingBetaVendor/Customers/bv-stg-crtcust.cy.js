@@ -98,31 +98,90 @@ afterEach(() => {
         expectedMessageCreateCustomer('Customer first name is required')
     })
 
-    it('Verify that the Customer First Name is required', () => {
+    it('Verify that the First Name field is required when only the Last Name is filled', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo('{enter}', randUsername1, '{enter}', '{enter}')
         expectedMessageCreateCustomer('Customer first name is required')
     })
 
-    it('Verify that the Customer Mobile is required', () => {
+    it('Verify that the First Name field is required when Last Name and Mobile Number are filled.', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo('{enter}', randUsername1, '{enter}', '508277835')
+        expectedMessageCreateCustomer('Customer first name is required')
+    })
+
+    it('Verify that the First Name field is required when Last Name, Mobile Number, and Notes are filled', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo('{enter}', randUsername1, 'Notes', '508277835')
+        expectedMessageCreateCustomer('Customer first name is required')
+    })
+
+    it('Verify that the Mobile Number field is required when only the First Name is filled', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', '{enter}')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    
+    it('Verify that the Mobile Number field is required when First Name and Last Name are filled', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, randUsername1, '{enter}', '{enter}')
         expectedMessageCreateCustomer('Customer mobile is required')
     })
 
-    it.skip('Verify that the Phone Number is validated', () => {
+    
+    it('Verify that the Mobile Number field is required when First Name, Last Name, and Notes are filled.', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo(randUsername2, randUsername1, '{enter}', '78689008')
+        filloutCustInfo(randUsername2, randUsername1, '{enter}', '{enter}')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    it('Verify Genders Male and Female are available', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        cy.get('select').select('Female').should('exist')
+        cy.get('select').select('Male').should('exist')
+    })
+
+    it('Verify Gender is required when when First Name and mobile number is filled', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', '50827783')
+        expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
+    })
+
+    it('Verify Gender is required when when First Name, Last Name and Mobile Number is filled', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, randUsername1, '{enter}', '50827783')
+        expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
+    })
+
+    it('Verify Gender is required when when First Name, Last Name, Notes and Mobile Number is filled', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, randUsername1, 'NOTES', '50827783')
+        expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
+    })
+
+    it('Verify that the Phone Number is validated', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', '50827783')
+        cy.get('select').select('Female')
         expectedMessageCreateCustomer('Invalid mobile number')
     })
 
     it.skip('Verify that the Phone Number is validated', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', '78689008')
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', '508277835')
         expectedMessageCreateCustomer('Invalid mobile number')
     })
 })

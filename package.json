@@ -4,7 +4,7 @@
   "description": "Cypress Automation Framework",
   "main": "index.js",
   "scripts": {
-    "cypress open": "./node_modules/.bin/cypress open",
+    "cypress open": "npx cypress open",
     "delete:reportFolder": "rm -rf mochawesome-report/",
     "delete-mochawesome-separated-json-reports": "rm -rf cypress/reports/mochawesome-report/*.json || true",
     "delete-mochawesome-separated-html-reports": "rm -rf cypress/reports/mochawesome-report/*.html || true",
@@ -19,7 +19,6 @@
     "dashboard": "npx cypress run --record --key 3025d595-10bc-4aad-91ed-5802e5896b45",
     "autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
     "cy:run:staging-clear": "cypress run --spec 'cypress/e2e/staging/clear/*.cy.js'",
-
     "cy:staging-clear:cancelappts": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-cancelappts.cy.js'",
     "cy:staging-clear:dltemply": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltemply.cy.js'",
     "cy:staging-clear:dltprod": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltprod.cy.js'",
@@ -27,11 +26,8 @@
     "cy:staging-clear:dltscat": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltscat.cy.js'",
     "cy:staging-clear:dltsubs": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltsubs.cy.js'",
     "cy:staging-clear:dltsup": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltsup.cy.js'",
-
     "cy:run:all-except-newcheckout": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/{bv-stg-blcktime.cy.js,bv-stg-crtapt.cy.js,bv-stg-newAppt.cy.js},cypress/e2e/stagingBetaVendor/{coupons,customers,employees,inventory,offers,subscriptions}/*.cy.js'",
-
-    "cy:run:all": "cypress run --browser chrome --spec 'cypress/e2e/stagingBetaVendor/**/*.cy.js'",
-
+    "cy:run:all": "cypress run --spec 'cypress/e2e/stagingBetaVendor/**/*.cy.js'",
     "cy:run:calendar": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/*.cy.js'",
     "cy:run:coupons": "cypress run --spec 'cypress/e2e/stagingBetaVendor/coupons/*.cy.js'",
     "cy:run:customers": "cypress run --spec 'cypress/e2e/stagingBetaVendor/customers/*.cy.js'",
@@ -39,29 +35,22 @@
     "cy:run:inventory": "cypress run --spec 'cypress/e2e/stagingBetaVendor/inventory/*.cy.js'",
     "cy:run:offers": "cypress run --spec 'cypress/e2e/stagingBetaVendor/offers/*.cy.js'",
     "cy:run:subscriptions": "cypress run --spec 'cypress/e2e/stagingBetaVendor/subscriptions/*.cy.js'",
-  
     "cy:calendar:blcktime": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js'",
     "cy:calendar:crtapt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-crtapt.cy.js'",
     "cy:calendar:newappt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newAppt.cy.js'",
     "cy:calendar:newchck": "cypress run --browser chrome --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js'",
-  
     "cy:coupons:crtcoupons": "cypress run --spec 'cypress/e2e/stagingBetaVendor/coupons/bv-stg-crtCoupons.cy.js'",
-  
     "cy:customers:crtcust": "cypress run --spec 'cypress/e2e/stagingBetaVendor/customers/bv-stg-crtcust.cy.js'",
     "cy:employees:attendances": "cypress run --spec 'cypress/e2e/stagingBetaVendor/employees/bv-stg-attendances.cy.js'",
     "cy:employees:contracts": "cypress run --spec 'cypress/e2e/stagingBetaVendor/employees/bv-stg-contracts.cy.js'",
     "cy:employees:crtemply": "cypress run --spec 'cypress/e2e/stagingBetaVendor/employees/bv-stg-crtemply.cy.js'",
     "cy:employees:payroll": "cypress run --spec 'cypress/e2e/stagingBetaVendor/employees/bv-stg-payroll.cy.js'",
     "cy:employees:wrknghours": "cypress run --spec 'cypress/e2e/stagingBetaVendor/employees/bv-stg-wrknghours.cy.js'",
-  
     "cy:inventory:crtprod": "cypress run --spec 'cypress/e2e/stagingBetaVendor/inventory/bv-stg-crtprod.cy.js'",
     "cy:inventory:crtsup": "cypress run --spec 'cypress/e2e/stagingBetaVendor/inventory/bv-stg-crtsup.cy.js'",
     "cy:inventory:edtsup": "cypress run --spec 'cypress/e2e/stagingBetaVendor/inventory/bv-stg-edtsup.cy.js'",
-  
     "cy:offers:crtsoffer": "cypress run --spec 'cypress/e2e/stagingBetaVendor/offers/bv-stg-crtsoffer.cy.js'",
-  
     "cy:subscriptions:crtsubs": "cypress run --spec 'cypress/e2e/stagingBetaVendor/subscriptions/bv-stg-crtsubs.cy.js'",
-    
     "junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
     "delete-junit-report": "rm -rf cypress/results/junit/results.xml",
     "delete-results": "rm -rf cypress/results/* || true",
@@ -74,7 +63,7 @@
   "devDependencies": {
     "@cypress/xpath": "^2.0.3",
     "@faker-js/faker": "^9.6.0",
-    "cypress": "^10.11.0",
+    "cypress": "^14.3.3",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-multi-reporters": "^1.6.4",
