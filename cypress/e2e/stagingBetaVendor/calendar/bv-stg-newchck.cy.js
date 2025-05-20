@@ -354,6 +354,16 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
+
+    it('Verify after completing a checkout successfully it is possible to send the invoice thru email', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemGiftCard("243.48 SAR Gift Card")
+        cy.fillButton('Cash')
+        cy.expectedMessageCompleteSale('Sale Completed')
+        cy.contains('button','Send').should('be.visible')
+        cy.contains('button','Send').click({force: true})
+        cy.contains('h3','Send Email').should('be.visible')
+    })
 })
 
 // test cases pendingDuring the Appointment Checkout:
