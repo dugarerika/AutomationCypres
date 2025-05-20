@@ -178,11 +178,62 @@ afterEach(() => {
         expectedMessageCreateCustomer('Invalid mobile number')
     })
 
-    it.skip('Verify that the Phone Number is validated', () => {
+    it('Verify that the Mobile Number field accepts only valid phone number formats', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', '508277835')
-        expectedMessageCreateCustomer('Invalid mobile number')
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('exist')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    it.skip('Verify it is possible to close the new customer form', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('exist')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+// Customer list sort
+    it.skip('Verify it is possible to sor the customer list by Created At (Oldest to Newest)', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('exist')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    it.skip('Verify it is possible to sor the customer list by Created At (Newest to Oldest)', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('exist')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    it.skip('Verify it is possible to sor the customer list by First Name (A-Z)', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('exist')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    it.skip('Verify it is possible to sor the customer list by First Name (Z-A)', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('exist')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+// Customer Details
+    it.skip('Verify it is possible to access to customer details', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('exist')
+        expectedMessageCreateCustomer('Customer mobile is required')
     })
 })
 
