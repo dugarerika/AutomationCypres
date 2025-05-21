@@ -195,7 +195,7 @@ afterEach(() => {
     })
 
 // Customer List Sort
-    it.skip('Verify it is possible to sor the customer list by Created At (Oldest to Newest)', () => {
+    it.skip('Verify it is possible to sort the customer list by Created At (Oldest to Newest)', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
@@ -228,6 +228,38 @@ afterEach(() => {
     })
 
 // Customer List Filter 
+    it.skip('Verify it is possible to Filet by Higtest Spend with Time of Period Past Month', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('be.visible')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    
+    it.skip('Verify it is possible to Filet by Higtest Spend with Time of Period Past 3 Months', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('be.visible')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    it.skip('Verify it is possible to Filet by Has a Birthday with Time of Period Next Month', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('be.visible')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
+
+    it.skip('Verify it is possible to Filet by Has a Birthday with Time of Period Past Month', () => {
+        accessToCustSection()
+        accessToAddCustForm()
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
+        cy.contains('span','Value contains no numbers').should('be.visible')
+        expectedMessageCreateCustomer('Customer mobile is required')
+    })
 
 // Customer Details
     it.skip('Verify it is possible to access to customer details', () => {
