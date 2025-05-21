@@ -30,7 +30,9 @@
     "cy:staging-clear:dltsup": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltsup.cy.js'",
 
     "cy:run:all-except-newcheckout": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/{bv-stg-blcktime.cy.js,bv-stg-crtapt.cy.js,bv-stg-newAppt.cy.js,bv-stg-invoices.cy.js},cypress/e2e/stagingBetaVendor/{coupons,customers,employees,inventory,offers,subscriptions}/*.cy.js'",
-    
+    "cy:run:all-except-newchk-crtapt": "cypress run --spec \"cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js,cypress/e2e/stagingBetaVendor/calendar/bv-stg-invoices.cy.js,cypress/e2e/stagingBetaVendor/calendar/bv-stg-newAppt.cy.js,cypress/e2e/stagingBetaVendor/coupons/bv-stg-crtCoupons.cy.js,cypress/e2e/stagingBetaVendor/customers/bv-stg-crtcust.cy.js,cypress/e2e/stagingBetaVendor/employees/bv-stg-attendances.cy.js,cypress/e2e/stagingBetaVendor/employees/bv-stg-contracts.cy.js,cypress/e2e/stagingBetaVendor/employees/bv-stg-crtemplcy.cy.js,cypress/e2e/stagingBetaVendor/employees/bv-stg-payroll.cy.js,cypress/e2e/stagingBetaVendor/employees/bv-stg-wrknghours.cy.js,cypress/e2e/stagingBetaVendor/inventory/bv-stg-crtprod.cy.js,cypress/e2e/stagingBetaVendor/inventory/bv-stg-crtsup.cy.js,cypress/e2e/stagingBetaVendor/inventory/bv-stg-edtsup.cy.js,cypress/e2e/stagingBetaVendor/offers/bv-stg-crtsoffer.cy.js,cypress/e2e/stagingBetaVendor/subscriptions/bv-stg-crtsubs.cy.js\""
+,
+
     "cy:run:all": "cypress run --spec 'cypress/e2e/stagingBetaVendor/**/*.cy.js'",
     "cy:run:calendar": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/*.cy.js'",
     "cy:run:coupons": "cypress run --spec 'cypress/e2e/stagingBetaVendor/coupons/*.cy.js'",
@@ -39,7 +41,8 @@
     "cy:run:inventory": "cypress run --spec 'cypress/e2e/stagingBetaVendor/inventory/*.cy.js'",
     "cy:run:offers": "cypress run --spec 'cypress/e2e/stagingBetaVendor/offers/*.cy.js'",
     "cy:run:subscriptions": "cypress run --spec 'cypress/e2e/stagingBetaVendor/subscriptions/*.cy.js'",
-    
+
+    "cy:calendar:all-except-newchk-crtapt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js,cypress/e2e/stagingBetaVendor/calendar/bv-stg-invoices.cy.js,cypress/e2e/stagingBetaVendor/calendar/bv-stg-newAppt.cy.js'",
     "cy:calendar:blcktime": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js'",
     "cy:calendar:crtapt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-crtapt.cy.js'",
     "cy:calendar:invoices": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-invoices.cy.js'",
