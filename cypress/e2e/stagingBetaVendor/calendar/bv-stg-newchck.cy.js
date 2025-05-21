@@ -191,14 +191,14 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard("100 SAR Gift Card")
         cy.addItemSubscription('Subscription B')
-        cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
+        cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
     })
 
     it('Verify the Gift card must be the only item in the cart trying to add a service', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard("100 SAR Gift Card")
         cy.addItemService('long Hair')
-        cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
+        cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
     })
 
     it('Verify Adjust button must be disable for Gift cards', () => {
@@ -218,7 +218,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemSubscription('Subscription B')
         cy.addItemGiftCard("100 SAR Gift Card")
-        cy.contains('span', 'Giftcards must be the only item in the cart').should('exist')
+        cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
     })
 
     // Checkout successfully - Services

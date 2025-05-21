@@ -47,7 +47,7 @@
     "cy:calendar:crtapt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-crtapt.cy.js'",
     "cy:calendar:invoices": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-invoices.cy.js'",
     "cy:calendar:newappt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newAppt.cy.js'",
-    "cy:calendar:newchck": "cypress run --browser chrome --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js'",
+    "cy:calendar:newchck": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js'",
     
     "cy:coupons:crtcoupons": "cypress run --spec 'cypress/e2e/stagingBetaVendor/coupons/bv-stg-crtCoupons.cy.js'",
     

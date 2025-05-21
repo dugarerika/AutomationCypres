@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Invoices generate from New Checkout | logged with Admin Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
