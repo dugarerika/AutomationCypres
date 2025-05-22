@@ -37,6 +37,16 @@ const accessToCustSection = () => {
     cy.contains('div','Reviews').should('be.visible')
 }
 
+const accessToBlackTab = () => {
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.contains('button>span','Customers').should('be.visible')
+    cy.contains('button>span','Customers').click({ force: true })
+    cy.contains('div','Customers').should('be.visible')
+    cy.contains('div','Blacklists').should('be.visible')
+    cy.contains('div','Blacklists').click({ force: true })
+    cy.contains('div','Reviews').should('be.visible')
+}
+
 const accessToAddCustForm = () => {
     cy.contains('button','ADD NEW').should('be.visible')
     cy.contains('button','ADD NEW').click({ force: true })
@@ -83,6 +93,10 @@ afterEach(() => {
 
     it('Verify it is possible access to the Customer section', () => {
         accessToCustSection()
+    })
+
+    it('Verify it is possible access to the Blacklist section', () => {
+        accessToBlackTab()
     })
 
     it('Verify there is a button to create a customer in the Customer section', () => {
@@ -187,82 +201,6 @@ afterEach(() => {
     })
 
     it.skip('Verify it is possible to close the new customer form', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-// Customer List Sort
-    it.skip('Verify it is possible to sort the customer list by Created At (Oldest to Newest)', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-    it.skip('Verify it is possible to sor the customer list by Created At (Newest to Oldest)', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-    it.skip('Verify it is possible to sor the customer list by First Name (A-Z)', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-    it.skip('Verify it is possible to sor the customer list by First Name (Z-A)', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-// Customer List Filter 
-    it.skip('Verify it is possible to Filet by Higtest Spend with Time of Period Past Month', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-    
-    it.skip('Verify it is possible to Filet by Higtest Spend with Time of Period Past 3 Months', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-    it.skip('Verify it is possible to Filet by Has a Birthday with Time of Period Next Month', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-    it.skip('Verify it is possible to Filet by Has a Birthday with Time of Period Past Month', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
-    })
-
-// Customer Details
-    it.skip('Verify it is possible to access to customer details', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')

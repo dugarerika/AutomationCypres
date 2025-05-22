@@ -32,7 +32,7 @@ describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin cre
     cy.clearCookies()
   })
 
-  it.only('Verify it is possible delete suplliers from the Inventory/Supplier list section', () => {
+  it('Verify it is possible delete suplliers from the Inventory/Supplier list section', () => {
     accessToDeleteSuppliers()
     accessToDeleteSuppliers()
     accessToDeleteSuppliers()

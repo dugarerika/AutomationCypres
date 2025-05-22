@@ -8,7 +8,7 @@ const { faker } = require('@faker-js/faker');
 
 const randEmail1 = faker.internet.email()
 const randEmail2 = faker.internet.email()
-const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
+const randUsername1 = `teststf${faker.number.int({ min: 100, max: 1000 })}`
 const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
 
 const expectedMessageCreateSubs = (product_message) => {
@@ -17,8 +17,10 @@ const expectedMessageCreateSubs = (product_message) => {
 }
 
 const filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description) => {
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist').type(sub_name)
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist').clear({ force: true })
+    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).clear({ force: true })
+    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).type(sub_name)
+    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
     cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Price').parent().next('div').find('input').eq(0).type(sub_price)
     cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
@@ -92,7 +94,7 @@ it('Verify it is possible access to the Subscription section', () => {
 it('Verify that the Add Subscription Service is required', () => {
     accessToSubsSection()
     accessToAddSubsForm()
-    filloutSubscriptionInfo(randUsername1, '1', 1, 1, randEmail1, randUsername1)
+    filloutSubscriptionInfo('randUsername1', '1', 1, 1, randEmail1, randUsername1)
     expectedMessageCreateSubs('At least one service variant is required')
 })
 
