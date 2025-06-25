@@ -18,8 +18,17 @@ function getConfigurationByFile(file) {
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+            on("before:browser:launch", (browser, launchOptions) => {
+        if (["chrome", "edge"].includes(browser.name)) {
+          launchOptions.args.push("--no-sandbox");
+          launchOptions.args.push("--disable-gl-drawing-for-tests");
+          launchOptions.args.push("--disable-gpu");
+          launchOptions.args.push("--js-flags=--max-old-space-size=3500");
+        }
+        return launchOptions;
+      });
       // Cucumber plugin
-      on('file:preprocessor', cucumber());
+      // on('file:preprocessor', cucumber());
 
       // ⚠️ Must be called before returning config
       allureWriter(on, config);
@@ -37,11 +46,12 @@ module.exports = defineConfig({
     video: false,
     viewportWidth: 1920,
     viewportHeight: 1080,
+    experimentalMemoryManagement: true,
     numTestsKeptInMemory: 0,
-    reporter: 'mochawesome',
-    reporterOptions: {
-      configFile: "reporterOpts.json"
-    },
+    // reporter: 'mochawesome',
+    // reporterOptions: {
+    //   configFile: "reporterOpts.json"
+    // },
     retries: {
       runMode: 2,
       openMode: 2
@@ -70,8 +80,8 @@ module.exports = defineConfig({
       Vendor_ReadOnly_Password_Staging: "1234567890",
       Vendor_Receptionist_Username_Staging: "recep6",
       Vendor_Receptionist_Password_Staging: "1234567890",
-      Vendor7_Admin_Username_Staging: "testsalon",
-      Vendor7_Admin_Password_Staging: "testsalon1o",
+      Vendor1_Admin_Username_Staging: "testsalon",
+      Vendor1_Admin_Password_Staging: "testsalon1o",
       Vendor2_Admin_Username_Staging: "poshinpolish",
       Vendor2_Admin_Password_Staging: "1234567890",
       Vendor1_Admin_Username_Staging: "cococutsalon",

@@ -390,7 +390,7 @@ Cypress.Commands.add('addEmployee', (employee) => {
 
 Cypress.Commands.add('addItemGiftCard', (gift) => {
     cy.contains('button','Add New').should('be.visible').click({force: true})
-    cy.get('div[role="tablist"]').find('button').eq(3).click()
+    cy.get('div[role="tablist"]').find('button').eq(4).click()
     cy.wait(100)
     // cy.contains('label>span', 'search').parents('label').next('div').find('input').type(name)
     cy.contains('div', gift).parents('li').find('button').click({force: true})
@@ -401,7 +401,7 @@ Cypress.Commands.add('addItemGiftCard', (gift) => {
 Cypress.Commands.add('addItemSubscription', (subs) => {
     // cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').should('be.visible').click({force: true})
-    cy.get('div[role="tablist"]').find('button').eq(2).click({force: true})
+    cy.get('div[role="tablist"]').find('button').eq(3).click()
     cy.contains('label>span', 'search').parents('label').next('div').find('input').type(subs)
     cy.contains('div', subs).parents('li').find('button').click({force: true})
     cy.get('div[role="presentation"]').trigger('click')

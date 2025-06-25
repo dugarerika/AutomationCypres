@@ -23,8 +23,9 @@ const searchApt = (staff,start_time) => {
   cy.contains('div>span',regex).parent('div').then(($div) => {
     color = $div.attr('color')
     cy.log(color)
-    cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).should('be.visible')
-    cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).click()
+    // cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).should('be.visible')
+    // cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]`).click()
+    cy.get(`div[color="${color}"]`).find('.event-time').contains('span',`${start_time} AM`).should('be.visible').click();
     cy.log('Test completed')
   })
   cy.contains('Appointment Details').should('be.visible')
