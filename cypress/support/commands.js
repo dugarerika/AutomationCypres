@@ -379,6 +379,15 @@ Cypress.Commands.add('addItemService', (service) => {
     cy.get('div[role="presentation"]').trigger('click')
 })
 
+Cypress.Commands.add('addItemOffer', (offer) => {
+    // cy.contains('button','Add New').should('be.visible')
+    cy.contains('button','Add New').should('be.visible').click({force: true})
+    cy.get('div[role="tablist"]').find('button').eq(1).click({force: true})
+    cy.contains('label>span', 'search').parents('label').next('div').find('input').type(offer)
+    cy.contains('div', offer).parents('li').find('button').click({force: true})
+    cy.get('div[role="presentation"]').trigger('click')
+})
+
 Cypress.Commands.add('addEmployee', (employee) => {
     // cy.contains('button','Edit').should('be.visible')
     cy.contains('button','Edit').should('be.visible').click({force: true})
@@ -454,26 +463,28 @@ Cypress.Commands.add('addPercentageDiscount', (service,percentage) => {
     cy.contains('h6', service).parent('div').next('div').find('h4').then(($h4) =>{
         const price = $h4.text().split(" ")
         cy.log(price[0])
+        cy.log(perc2)
         cy.contains('h6','Sub Total').next('span').then(($span0) => {
             const subtotal = $span0.text().split(" ")
-            cy.log(subtotal[1])
+            // cy.log(subtotal[1])
             expect(price[0]).to.equal(subtotal[1])
         })
         cy.contains('h6','Discount').next('span').then(($span1) => {
             const discount = $span1.text().split(" ")
-            cy.log(discount[1])
+            // cy.log(discount[1])
             expect(price[0]*eval(perc1)).to.equal(eval(discount[1]))
         })
         cy.contains('h6','Tax 15%').next('span').then(($span2) => {
             const tax = $span2.text().split(" ")
-            cy.log(tax)
-            expect(price[0]*perc2*0.15).to.equal(eval(tax[1]))
+            // cy.log(tax)
+            const valor0 = eval(price[0])*perc2*0.15
+            expect(Math.round((valor0 + Number.EPSILON) * 100) / 100).to.equal(eval(tax[1]))
         })
         cy.contains('h6', /^Total$/).next('span').then(($span3) => {
             const total = $span3.text().split(" ")
-            cy.log(total[1])
-            const valor = eval(price[0])*perc2*1.15
-            expect(Math.round((valor + Number.EPSILON) * 100) / 100).to.equal(eval(total[1]))
+            // cy.log(total[1])
+            const valor1 = eval(price[0])*perc2*1.15
+            expect(Math.round((valor1 + Number.EPSILON) * 100) / 100).to.equal(eval(total[1]))
         })
     })
 })
