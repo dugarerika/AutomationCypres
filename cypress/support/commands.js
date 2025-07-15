@@ -323,6 +323,19 @@ Cypress.Commands.add('expectedMessageCreateEmployee', (product_message) => {
     cy.wait(300)
 })
 
+
+// ------------------------------ Customer Section --------------------------------
+Cypress.Commands.add('deleteCustomer', () => {
+    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+    cy.url().should('include', Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+    cy.contains('Customers').should('exist')
+    cy.contains('Customers').click({ force: true })
+    // cy.get('tbody>tr>td:nth-child(7)>span>div>svg:nth-child(1)').should('exist')
+    cy.get('table tbody').find('tr').eq(0).find('td').eq(7).find('span>div>svg').eq(1).should('exist')
+    cy.get('table tbody').find('tr').eq(0).find('td').eq(7).find('span>div>svg').eq(1).click()
+    cy.contains('button','Yes').click()
+})
+
 // ------------------------------ Calendar Section --------------------------------
 
 Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {

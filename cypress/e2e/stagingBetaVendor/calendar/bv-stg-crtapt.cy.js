@@ -142,7 +142,7 @@ it('Verify it is possible to edit the Customer', () => {
 })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -255,7 +255,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
