@@ -6,7 +6,7 @@ const { should } = require("chai")
 describe('Staging - Beta Vendor Admin | Employee | Delete Employee| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor2_Admin_Username_Staging"), Cypress.env("Vendor2_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.env("Vendor8_Admin_Username_Staging"), Cypress.env("Vendor8_Admin_Password_Staging"))
   })
 
   afterEach(() => {
