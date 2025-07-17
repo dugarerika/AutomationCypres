@@ -66,6 +66,8 @@ module.exports = defineConfig({
       URL_Deeplink_Staging_artnailcorner: "https://customer.bookr-dev.com/vendors/athary-world-nail-",
       Vendor0_Admin_Username_Staging: "nailedit",
       Vendor0_Admin_Password_Staging: "1234567890",
+      Vendor6_Admin_Username_Staging: "pinkdoor",
+      Vendor6_Admin_Password_Staging: "1234567890",
       Vendor7_Admin_Username_Staging: "naqanails",
       Vendor7_Admin_Password_Staging: "1234567890",
       Vendor8_Admin_Username_Staging: "tigiconcept",
