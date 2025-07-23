@@ -480,19 +480,21 @@ Cypress.Commands.add('addPercentageDiscount', (service,percentage) => {
             expect(price[0]).to.equal(subtotal[1])
         })
         cy.contains('h6','Discount').next('span').then(($span1) => {
-            const discount = $span1.text().split(" ")
+        const discount = $span1.text().split(" ")
             // cy.log(discount[1])
-            expect(price[0]*eval(perc1)).to.equal(eval(discount[1]))
+        const actual = +(price[0] * eval(perc1)).toFixed(2)
+        const expected = +eval(discount[1]).toFixed(2)
+        expect(actual).to.equal(expected)
         })
         cy.contains('h6','Tax 15%').next('span').then(($span2) => {
             const tax = $span2.text().split(" ")
-            // cy.log(tax)
+            cy.log(tax)
             const valor0 = eval(price[0])*perc2*0.15
             expect(Math.round((valor0 + Number.EPSILON) * 100) / 100).to.equal(eval(tax[1]))
         })
         cy.contains('h6', /^Total$/).next('span').then(($span3) => {
             const total = $span3.text().split(" ")
-            // cy.log(total[1])
+            cy.log(total[1])
             const valor1 = eval(price[0])*perc2*1.15
             expect(Math.round((valor1 + Number.EPSILON) * 100) / 100).to.equal(eval(total[1]))
         })

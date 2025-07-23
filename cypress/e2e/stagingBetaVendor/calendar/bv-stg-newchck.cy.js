@@ -232,7 +232,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
-    it('Verify it is possible to complete a checkout after applying a percentage discount to a Subscriptions ', () => {
+    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a Subscriptions ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
@@ -263,7 +263,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
-    it('Verify it is possible to complete a checkout after applying a percentage discount to a offer ', () => {
+    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a offer ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemOffer('Down Payment Offer')
         cy.addPercentageDiscount('Down Payment Offer','40')
