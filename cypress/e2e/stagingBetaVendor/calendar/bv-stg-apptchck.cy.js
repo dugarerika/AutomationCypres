@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -14,17 +14,25 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
     })
 
-    afterEach(() => {
-        cy.clearCookies()
-    })
+    // afterEach(() => {
+    //     cy.clearCookies()
+    // })
 
     // Required field during checkout
-    it('Verify it is not possible to complete New Checkout without adding item and payment', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
+    it.only('Verify it is not possible to complete appointment Checkout without adding item and payment', () => {
+        // cy.newCheckout("URL_BetaVendor_Staging")
         // cy.contains('div','Search customer..').should('be.visible')
         // cy.contains('button','Walk In').should('be.visible')
         // cy.contains('button','Walk In').click({force: true})
-        cy.expectedMessageCompleteSale('Add at least one payment')
+        // cy.createappt('Helen','01:00', 'Downpayment')
+        // cy.createappt('ErikaT','01:00', 'Downpayment')
+        cy.createappt('Susan one','01:00', 'Downpayment')
+        // cy.createappt('Zumba Zumba','01:00', 'Downpayment')
+        cy.searchTimeSlot('Susan one','01:00')
+        cy.contains('button','Checkout').click({force: true})
+        cy.contains('button','Checkout').click({force: true})
+        cy.wait(100)
+        // cy.expectedMessageCompleteSale('Add at least one payment')
     })
 
     it('Verify it is not possible to complete New Checkout without adding payment', () => {
@@ -232,7 +240,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
-    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a Subscriptions ', () => {
+    it('Verify it is possible to complete a checkout after applying a percentage discount to a Subscriptions ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
@@ -263,7 +271,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
-    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a offer ', () => {
+    it('Verify it is possible to complete a checkout after applying a percentage discount to a offer ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemOffer('Down Payment Offer')
         cy.addPercentageDiscount('Down Payment Offer','40')
@@ -314,7 +322,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
     })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

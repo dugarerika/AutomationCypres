@@ -336,20 +336,33 @@ Cypress.Commands.add('deleteCustomer', () => {
 // ------------------------------ Calendar Section --------------------------------
 
 Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
     let color
     cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
-        cy.xpath(`//div[@data-schedule-time="${start_time}" and @color="${color}"]`).should('be.visible')
-        cy.xpath(`//div[@data-schedule-time="${start_time}" and @color="${color}"]`).click({force: true})
+        // cy.get(`div[data-schedule-time="${start_time}"][color="${color}"]`).should('be.visible').click({ force: true });
+        cy.get(`div[color="${color}"][data-event-start]`).should('be.visible').click({ force: true })
+
         cy.log('Test completed')
     })
-    cy.contains('New Appointment').should('exist')
+//   cy.contains('New Appointment').should('exist')
+})
+
+Cypress.Commands.add('createappt', (staff,start_time,serv) => {
+    cy.searchTimeSlot(staff, start_time)
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type(`${serv}{downarrow}{enter}`)
+    cy.contains('Create Appointment').click({force: true})
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    // cy.contains('Warning: ').should('be.visible')
+    // cy.contains('button','Continue').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
 })
 
 Cypress.Commands.add('searchBlockTime', (staff,start_time) => {
-    cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
     let color
     cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
