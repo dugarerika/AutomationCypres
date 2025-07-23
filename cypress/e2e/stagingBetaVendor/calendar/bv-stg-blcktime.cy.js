@@ -60,8 +60,10 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 
     it('Verify it is possible to create a blocktime on the Calendar by filling up the required fields', () => {
         cy.newBlockTime("URL_BetaVendor_Staging")
-        cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
+        // cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
+        // cy.contains('div','Choose a staff').next('div').find('input').click().type('Helen {enter}')
+        cy.contains('span','Staff').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Staff').parent().next('div').find('input').type('Helen {enter}')
         cy.contains('span','Start Time').parent().next('div').find('input').should('be.visible')
         cy.contains('span','Start Time').parent().next('div').find('input').type('01:00{enter}')
         cy.contains('span','End Time').parent().next('div').find('input').should('be.visible')
