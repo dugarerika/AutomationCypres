@@ -12,11 +12,12 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
+        cy.createappt('Susan one','01:00', 'Downpayment')
     })
 
-    // afterEach(() => {
-    //     cy.clearCookies()
-    // })
+    afterEach(() => {
+        cy.clearCookies()
+    })
 
     // Required field during checkout
     it.only('Verify it is not possible to complete appointment Checkout without adding item and payment', () => {
@@ -26,7 +27,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         // cy.contains('button','Walk In').click({force: true})
         // cy.createappt('Helen','01:00', 'Downpayment')
         // cy.createappt('ErikaT','01:00', 'Downpayment')
-        cy.createappt('Susan one','01:00', 'Downpayment')
+        // cy.createappt('Susan one','01:00', 'Downpayment')
         // cy.createappt('Zumba Zumba','01:00', 'Downpayment')
         cy.searchTimeSlot('Susan one','01:00')
         cy.contains('button','Checkout').click({force: true})
