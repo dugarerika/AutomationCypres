@@ -25,7 +25,7 @@ const deleteAppt = () => {
     cy.contains('li>button', /^Reports$/).click({ force: true })
     cy.contains('div>div','Bookings').should('exist')
     cy.contains('div>div','Bookings').click({ force: true })
-    cy.visit('https://vendor.beta.bookr-dev.com/admin/accounting/reports/bookings')
+    cy.visit('https://vendor.bookr-dev.com/admin/accounting/reports/bookings')
     cy.get('input[placeholder="Filters"]').next('div').click({ force: true })
     cy.contains('div>div>p','Booking status').should('exist')
     cy.contains('div>div>p','Booking status').click({ force: true })
