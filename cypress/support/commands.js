@@ -335,7 +335,7 @@ Cypress.Commands.add('deleteCustomer', () => {
 
 // ------------------------------ Calendar Section --------------------------------
 
-Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
+Cypress.Commands.add('searchAppt', (staff,start_time) => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging"))
     let color
     cy.contains(`${staff}`).parent('div').then(($div) => {
@@ -347,6 +347,19 @@ Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
         cy.log('Test completed')
     })
 //   cy.contains('New Appointment').should('exist')
+})
+
+
+Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
+    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
+    let color
+    cy.contains(`${staff}`).parent('div').then(($div) => {
+        color = $div.attr('color')
+        cy.log(color)
+        cy.get(`div[data-schedule-time="${start_time}"][color="${color}"]`).should('be.visible').click({ force: true })
+        cy.log('Test completed')
+    })
+  cy.contains('New Appointment').should('exist')
 })
 
 Cypress.Commands.add('createappt', (staff,start_time,serv) => {

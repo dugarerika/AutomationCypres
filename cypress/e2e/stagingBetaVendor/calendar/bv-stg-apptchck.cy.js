@@ -12,15 +12,15 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
-        cy.createappt('Susan one','01:00', 'Downpayment')
+        // cy.createappt('Susan one','01:00', 'Downpayment')
     })
 
-    afterEach(() => {
-        cy.clearCookies()
-    })
+    // afterEach(() => {
+    //     cy.clearCookies()
+    // })
 
     // Required field during checkout
-    it.only('Verify it is not possible to complete appointment Checkout without adding item and payment', () => {
+    it('Verify it is not possible to complete appointment Checkout without adding item and payment', () => {
         // cy.newCheckout("URL_BetaVendor_Staging")
         // cy.contains('div','Search customer..').should('be.visible')
         // cy.contains('button','Walk In').should('be.visible')
@@ -29,24 +29,19 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         // cy.createappt('ErikaT','01:00', 'Downpayment')
         // cy.createappt('Susan one','01:00', 'Downpayment')
         // cy.createappt('Zumba Zumba','01:00', 'Downpayment')
-        cy.searchTimeSlot('Susan one','01:00')
+        cy.searchAppt('Susan one','01:00')
         cy.contains('button','Checkout').click({force: true})
         cy.contains('button','Checkout').click({force: true})
         cy.wait(100)
         // cy.expectedMessageCompleteSale('Add at least one payment')
     })
 
-    it('Verify it is not possible to complete New Checkout without adding payment', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
-        // cy.contains('div','Search customer..').should('be.visible')
-        // cy.contains('button','Walk In').should('be.visible')
-        // cy.contains('button','Walk In').click({force: true})
-        cy.contains('button','Add New').should('be.visible')
-        cy.contains('button','Add New').click({force: true})
-        cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
-        cy.contains('label>span', 'search').parents('label').next('div').find('input').type('Hair Cut')
-        cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
-        cy.get('div[role="presentation"]').trigger('click')
+    it.only('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
+        cy.searchAppt('Susan one','01:00')
+        cy.contains('button','Checkout').click({force: true})
+        cy.contains('button','Checkout').click({force: true})
+        cy.wait(100)
+        cy.contains('button','Walk In').should('be.visible').click({force: true})
         cy.expectedMessageCompleteSale('Add at least one payment')
     })
 
