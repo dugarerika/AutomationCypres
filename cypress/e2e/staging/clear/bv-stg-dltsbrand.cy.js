@@ -42,7 +42,7 @@ describe('Beta Vendor Admin | Inventory | Delete Brands| logged with Admin crede
         cy.clearCookies()
     })
 
-    it.only('Verify it is possible delete brand', () => {
+    it('Verify it is possible delete brand', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Products').click({ force: true })

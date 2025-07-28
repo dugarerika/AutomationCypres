@@ -474,20 +474,22 @@ Cypress.Commands.add('fillButtonDonwpayment', (method) => {
 })
 
 Cypress.Commands.add('disableDownpaymentSwitch', () => {
-    cy.contains('Amount to pay').parent('div').find('input[type="checkbox"]').then(($switch) => {
-    cy.wait(500); // shorter wait is better
-    const isChecked = $switch.prop('checked');
-    cy.log(`Switch checked: ${isChecked}`);
-    if (isChecked) {
-        cy.log('Switch is enabled');
-        cy.wait(500); // shorter wait is better
-        cy.wrap($switch).uncheck(); // use force just in case
-        cy.log('Switch unchecked)');
-        cy.contains('div','Downpayment should be done first').should('be.visible')
-    } else {
-        cy.log('Switch is already checked (disabled case)');
-        cy.contains('div','Downpayment should be done first').should('be.visible')
-    }
+  cy.contains('Amount to pay')
+    .parentsUntil('body') // safer than .parent('div') if nested
+    .find('input[type="checkbox"]')
+    .should('exist')
+    .then(($switch) => {
+      const isChecked = $switch.prop('checked');
+      cy.log(`Switch checked: ${isChecked}`);
+
+      if (isChecked) {
+        cy.log('Switch is enabled. Attempting to disable it.')
+        cy.wrap($switch).click({ force: true }) // click instead of uncheck
+        cy.contains('div', 'Downpayment should be done first').should('be.visible')
+      } else {
+        cy.log('Switch is already disabled.')
+        cy.contains('div', 'Downpayment should be done first').should('be.visible')
+      }
     })
 })
 
