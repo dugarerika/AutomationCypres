@@ -37,7 +37,7 @@ module.exports = defineConfig({
       return getConfigurationByFile(file);
     },
     specPattern: "cypress/e2e/*/*/*.{js,jsx,ts,tsx,feature}",
-    baseUrl: "https://vendor.beta.bookr-dev.com/",
+    // baseUrl: "https://vendor.bookr-dev.com/",
     chromeWebSecurity: false,
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 120000,

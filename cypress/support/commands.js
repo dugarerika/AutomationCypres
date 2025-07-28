@@ -335,13 +335,11 @@ Cypress.Commands.add('deleteCustomer', () => {
 
 // ------------------------------ Calendar Section --------------------------------
 
-Cypress.Commands.add('searchAppt', (staff,start_time) => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
+Cypress.Commands.add('searchAppt', (staff) => {
     let color
     cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
-        // cy.get(`div[data-schedule-time="${start_time}"][color="${color}"]`).should('be.visible').click({ force: true });
         cy.get(`div[color="${color}"][data-event-start]`).should('be.visible').click({ force: true })
 
         cy.log('Test completed')
@@ -349,9 +347,7 @@ Cypress.Commands.add('searchAppt', (staff,start_time) => {
 //   cy.contains('New Appointment').should('exist')
 })
 
-
 Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
     let color
     cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
@@ -363,12 +359,11 @@ Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
 })
 
 Cypress.Commands.add('createappt', (staff,start_time,serv) => {
+    // cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
     cy.searchTimeSlot(staff, start_time)
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type(`${serv}{downarrow}{enter}`)
     cy.contains('Create Appointment').click({force: true})
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
-    // cy.contains('Warning: ').should('be.visible')
-    // cy.contains('button','Continue').click({force: true})
     cy.wait('@new-user').then((interception) => {
       expect(interception.response.statusCode).to.equal(200)
     })
@@ -387,11 +382,10 @@ Cypress.Commands.add('searchBlockTime', (staff,start_time) => {
     cy.contains('Appointment Details').should('be.visible')
 })
 
-
 Cypress.Commands.add('expectedMessageCompleteSale', (message) => {
     cy.contains('button','Complete Sale').scrollIntoView()
     cy.contains('button','Complete Sale').click({force: true})
-        cy.contains('span', message).should('exist')
+    cy.contains('span', message).should('exist')
 })
 
 Cypress.Commands.add('newCheckout', (environ) => {
@@ -432,7 +426,6 @@ Cypress.Commands.add('addEmployee', (employee) => {
     // cy.get('div[role="presentation"]').trigger('click')
 })
 
-
 Cypress.Commands.add('addItemGiftCard', (gift) => {
     cy.contains('button','Add New').should('be.visible').click({force: true})
     cy.get('div[role="tablist"]').find('button').eq(4).click()
@@ -466,27 +459,59 @@ Cypress.Commands.add('fillButton', (method) => {
     })
 })
 
+Cypress.Commands.add('fillButtonDonwpayment', (method) => {
+    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').click()
+    cy.contains('h6', /^Down Payment$/).next('span').then(($span) => {
+        //total = $span.text().substring(4)
+        const total = $span.text().split(" ")
+        cy.log(eval(total[1]))
+        cy.contains('label', method).parent('div').find('input').then(($input) => {
+            const money = $span.text()
+            cy.log(money)
+        })
+        cy.contains('label', method).parent('div').find('input').should('have.value',eval(total[1]))
+    })
+})
+
+Cypress.Commands.add('disableDownpaymentSwitch', () => {
+    cy.contains('Amount to pay').parent('div').find('input[type="checkbox"]').then(($switch) => {
+    cy.wait(500); // shorter wait is better
+    const isChecked = $switch.prop('checked');
+    cy.log(`Switch checked: ${isChecked}`);
+    if (isChecked) {
+        cy.log('Switch is enabled');
+        cy.wait(500); // shorter wait is better
+        cy.wrap($switch).uncheck(); // use force just in case
+        cy.log('Switch unchecked)');
+        cy.contains('div','Downpayment should be done first').should('be.visible')
+    } else {
+        cy.log('Switch is already checked (disabled case)');
+        cy.contains('div','Downpayment should be done first').should('be.visible')
+    }
+    })
+})
+
 Cypress.Commands.add('checkBreakdownNoDiscount', (service) => {
-        cy.contains('h6', service).parent('div').next('div').find('h4').then(($h4) =>{
-            const price = $h4.text().split(" ")
-            cy.log(price[0])
-            cy.contains('h6','Sub Total').next('span').then(($span0) => {
-                const subtotal = $span0.text().split(" ")
-                cy.log(subtotal[1])
-                expect(price[0]).to.equal(subtotal[1])
-            })
-            cy.contains('h6','Tax 15%').next('span').then(($span1) => {
-                const tax = $span1.text().split(" ")
-                cy.log(tax[1])
-                expect(price[0]*0.15).to.equal(eval(tax[1]))
-            
-                cy.contains('h6', /^Total$/).next('span').then(($span2) => {
-                    const total = $span2.text().split(" ")
-                    cy.log(total[1])
-                    expect(eval(price[0]) + eval(tax[1])).to.equal(eval(total[1]))
-                })
+    cy.contains('h6', service).parent('div').next('div').find('h4').then(($h4) =>{
+        const price = $h4.text().split(" ")
+        cy.log(price[0])
+        cy.contains('h6','Sub Total').next('span').then(($span0) => {
+            const subtotal = $span0.text().split(" ")
+            cy.log(subtotal[1])
+            expect(price[0]).to.equal(subtotal[1])
+        })
+        cy.contains('h6','Tax 15%').next('span').then(($span1) => {
+            const tax = $span1.text().split(" ")
+            cy.log(tax[1])
+            expect(price[0]*0.15).to.equal(eval(tax[1]))
+        
+            cy.contains('h6', /^Total$/).next('span').then(($span2) => {
+                const total = $span2.text().split(" ")
+                cy.log(total[1])
+                expect(eval(price[0]) + eval(tax[1])).to.equal(eval(total[1]))
             })
         })
+    })
 })
 
 Cypress.Commands.add('addPercentageDiscount', (service,percentage) => {
@@ -539,7 +564,6 @@ Cypress.Commands.add('removeService', (service, info) => {
     }
 })
 
-
 Cypress.Commands.add('addEmptyDiscount', (discountType) => {
     cy.contains('div>button', discountType).click({force: true})
     cy.contains('button','Apply').click()
@@ -587,8 +611,6 @@ Cypress.Commands.add('addFixedDiscount', (service, fixed) => {
       }
     })
 })
-
-
 
 // Cypress.Commands.add('addCouponDiscount', (coupon) => {
 //     let discount
@@ -653,7 +675,6 @@ Cypress.Commands.add('newBlockTime', (environment) => {
     // cy.contains('div>h3','Create Blocked Time').should('be.visible')
     cy.contains('div>h3','Create Blocked Time').should('be.visible').click({force: true})
 })
-
 
 Cypress.Commands.add('newAppt', (environment) => {
     cy.visit(Cypress.env(environment))

@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -161,7 +161,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
     })
 
     // Services checkout validations
-    it('Verify the breakdown is correct after adding a service ', () => {
+    it('Verify the breakdown is correct after adding a normal service ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
         cy.checkBreakdownNoDiscount('Hair Cut')   
@@ -232,7 +232,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
-    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a Subscriptions ', () => {
+    it('Verify it is possible to complete a checkout after applying a percentage discount to a Subscriptions ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
@@ -263,7 +263,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
-    it.only('Verify it is possible to complete a checkout after applying a percentage discount to a offer ', () => {
+    it('Verify it is possible to complete a checkout after applying a percentage discount to a offer ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemOffer('Down Payment Offer')
         cy.addPercentageDiscount('Down Payment Offer','40')
@@ -279,7 +279,16 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         cy.expectedMessageCompleteSale('Sale Completed')
     })  
 
-    // Checkout successfully - Services
+    // Checkout successfully - Downpayment Services
+    it.only('Verify it is possible to complete a checkout successfully for 1 Donwpayment service', () => {
+        cy.newCheckout("URL_BetaVendor_Staging")
+        cy.addItemService('Downpayment')
+        cy.fillButton('Cash')
+        cy.addEmployee('ErikaT')
+        cy.expectedMessageCompleteSale('Sale Completed')
+    })
+
+    // Checkout successfully - Normal Services
     it('Verify it is possible to complete a checkout successfully for 1 service', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Short Hair')
@@ -287,6 +296,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         cy.addEmployee('ErikaT')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
+
     it('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Hair Cut')
@@ -314,7 +324,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
     })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

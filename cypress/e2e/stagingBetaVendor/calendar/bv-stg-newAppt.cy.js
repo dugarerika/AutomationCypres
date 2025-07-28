@@ -126,8 +126,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 })
-
-describe.only('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Receptionist Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
