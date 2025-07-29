@@ -16,7 +16,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.clearCookies()
   })
   it('Verify it is possible access to the Inventory/Product section', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
     cy.contains('Inventory', { matchCase: false }).should('exist')
     cy.contains('Inventory', { matchCase: false }).click({ force: true })
     cy.contains('Products', { matchCase: false }).should('exist')
