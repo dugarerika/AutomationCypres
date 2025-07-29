@@ -349,7 +349,18 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     cy.get('input[placeholder = "Enter product name"]').type('Product Measuarement cannot be submited without Units')
     cy.get('input[placeholder="Enter product measurement"]').should('exist')
     cy.get('input[placeholder="Enter product measurement"]').type('123')
-    cy.expectedMessageCreateProduct('unit must be one of the following values: ml, l, g, kg, oz, lb, cm, ft, in, whole')
+    cy.expectedMessageCreateProduct('You selected an amount of measurement but did not enter an unit. Please provide a unit.')
+  })
+
+    it('Verify Units cannot be submited without Product Measuarement  ', () => {
+    cy.accessToCreateProduct()
+    cy.contains('button', 'Basic Info', { matchCase: false }).should('exist')
+    cy.contains('button', 'Basic Info', { matchCase: false }).click({ force: true })
+    cy.get('input[placeholder = "Enter product name"]').should('exist')
+    cy.get('input[placeholder = "Enter product name"]').type('Product Measuarement cannot be submited without Units')
+    cy.contains('option', 'Select Unit', { matchCase: false }).should('exist')
+    cy.get('select').select('l')
+    cy.expectedMessageCreateProduct('You selected a unit of measurement but did not enter an amount. Please provide a quantity.')
   })
 
   it('Verify Product cannot be create when bar code is less than 12 digits ', () => {
