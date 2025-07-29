@@ -284,7 +284,7 @@ it.skip('Verify it is no possible to create a Product by filling up Price Name a
   cy.expectedMessageCreateProduct('Product with this SKU already exists')
 })
 
-it('Verify it is not possible to create a Product by filling up Price Name and already added Produce barcode ', () => {
+it.only('Verify it is not possible to create a Product by filling up Price Name and already added Produce barcode ', () => {
   cy.accessToCreateProductbvprod()
   cy.filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this Barcode already exists')
@@ -398,9 +398,9 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
   })
 
   
-  it('Verify brand name is required when creating a brand', () => {
+  it.only('Verify brand name is required when creating a brand', () => {
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -419,9 +419,9 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
     // cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')   
 })
 
-it('Verify category name is required when creating a category', () => {
+it.only('Verify category name is required when creating a category', () => {
   //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
   cy.contains('Products').should('exist')
@@ -440,9 +440,9 @@ it('Verify category name is required when creating a category', () => {
   // cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')   
 })
 
-it('Verify bookr category is required when creating a category', () => {
+it.only('Verify bookr category is required when creating a category', () => {
   //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
   cy.contains('Products').should('exist')
