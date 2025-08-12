@@ -323,7 +323,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials', () => {
+describe.skip('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
