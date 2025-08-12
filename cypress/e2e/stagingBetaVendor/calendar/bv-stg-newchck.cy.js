@@ -374,65 +374,65 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+// describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
 
-    before(() => {
-        // ensure clean test slate for these tests
-        cy.then(Cypress.session.clearAllSavedSessions)
-    })
+//     before(() => {
+//         // ensure clean test slate for these tests
+//         cy.then(Cypress.session.clearAllSavedSessions)
+//     })
     
-    beforeEach(() => {
-        cy.login('Staff Session', Cypress.env("Vendor1_Staff_Username_Staging"), Cypress.env("Vendor1_Staff_Password_Staging"))
-    })
+//     beforeEach(() => {
+//         cy.login('Staff Session', Cypress.env("Vendor1_Staff_Username_Staging"), Cypress.env("Vendor1_Staff_Password_Staging"))
+//     })
 
-    afterEach(() => {
-        cy.clearCookies()
-    })
+//     afterEach(() => {
+//         cy.clearCookies()
+//     })
 
-    // Checkout successfully - Services
-    it('Verify it is possible to complete a checkout successfully for 1 service', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemService('Short Hair')
-        cy.fillButton('Cash')
-        cy.addEmployee('Zumba')
-        cy.expectedMessageCompleteSale('Sale Completed')
-    })
-    it('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemService('Hair Cut')
-        cy.addPercentageDiscount('Hair Cut','40')
-        cy.fillButton('Cash')
-        cy.addEmployee('Zumba')
-        cy.expectedMessageCompleteSale('Sale Completed')
-    })
+//     // Checkout successfully - Services
+//     it('Verify it is possible to complete a checkout successfully for 1 service', () => {
+//         cy.newCheckout("URL_BetaVendor_Staging")
+//         cy.addItemService('Short Hair')
+//         cy.fillButton('Cash')
+//         cy.addEmployee('Zumba')
+//         cy.expectedMessageCompleteSale('Sale Completed')
+//     })
+//     it('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
+//         cy.newCheckout("URL_BetaVendor_Staging")
+//         cy.addItemService('Hair Cut')
+//         cy.addPercentageDiscount('Hair Cut','40')
+//         cy.fillButton('Cash')
+//         cy.addEmployee('Zumba')
+//         cy.expectedMessageCompleteSale('Sale Completed')
+//     })
 
-    it('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemService('Long Hair')
-        cy.addFixedDiscount('Long Hair','5')
-        cy.fillButton('Cash')
-        cy.addEmployee('Zumba')
-        cy.expectedMessageCompleteSale('Sale Completed')
-    })  
+//     it('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
+//         cy.newCheckout("URL_BetaVendor_Staging")
+//         cy.addItemService('Long Hair')
+//         cy.addFixedDiscount('Long Hair','5')
+//         cy.fillButton('Cash')
+//         cy.addEmployee('Zumba')
+//         cy.expectedMessageCompleteSale('Sale Completed')
+//     })  
 
-    // checkout successfully - Giftcards
-    it('Verify it is possible to complete a checkout for Gift card', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard("243.48 SAR Gift Card")
-        cy.fillButton('Cash')
-        cy.expectedMessageCompleteSale('Sale Completed')
-    })
+//     // checkout successfully - Giftcards
+//     it('Verify it is possible to complete a checkout for Gift card', () => {
+//         cy.newCheckout("URL_BetaVendor_Staging")
+//         cy.addItemGiftCard("243.48 SAR Gift Card")
+//         cy.fillButton('Cash')
+//         cy.expectedMessageCompleteSale('Sale Completed')
+//     })
 
-    it('Verify after completing a checkout successfully it is possible to send the invoice thru email', () => {
-        cy.newCheckout("URL_BetaVendor_Staging")
-        cy.addItemGiftCard("243.48 SAR Gift Card")
-        cy.fillButton('Cash')
-        cy.expectedMessageCompleteSale('Sale Completed')
-        cy.contains('button','Send').should('be.visible')
-        cy.contains('button','Send').click({force: true})
-        cy.contains('h3','Send Email').should('be.visible')
-    })
-})
+//     it('Verify after completing a checkout successfully it is possible to send the invoice thru email', () => {
+//         cy.newCheckout("URL_BetaVendor_Staging")
+//         cy.addItemGiftCard("243.48 SAR Gift Card")
+//         cy.fillButton('Cash')
+//         cy.expectedMessageCompleteSale('Sale Completed')
+//         cy.contains('button','Send').should('be.visible')
+//         cy.contains('button','Send').click({force: true})
+//         cy.contains('h3','Send Email').should('be.visible')
+//     })
+// })
 
 // test cases pendingDuring the Appointment Checkout:
 

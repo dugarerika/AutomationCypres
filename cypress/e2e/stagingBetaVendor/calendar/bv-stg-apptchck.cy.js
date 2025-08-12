@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -315,7 +315,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
     })
 })
 
-describe.skip('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

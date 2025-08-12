@@ -180,9 +180,9 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 
     it('Verify it is possible to edit staff on a blocktime from the Calendar', () => {
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-        cy.contains('span', 'Blocked Time for').next('span','Zumba Zumba').click({force: true})
-        cy.contains('div','Choose a staff').next('div').find('input').should('be.visible')
-        cy.contains('div','Choose a staff').next('div').find('input').click().type('Zumba {enter}')
+        cy.contains('span', 'Blocked Time for').next('span','Helen').click({force: true})
+        cy.contains('span','Staff').parent().next('div').find('input').should('be.visible')
+        cy.contains('span','Staff').parent().next('div').find('input').type('Zumba {enter}')
         cy.contains('button','Update').click({force: true})
         cy.contains('div>span','Employee Blocktime updated successfully').should('be.visible')
     })
