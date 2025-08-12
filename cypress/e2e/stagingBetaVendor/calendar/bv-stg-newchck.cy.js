@@ -280,7 +280,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     })  
 
     // Checkout successfully - Downpayment Services
-    it.only('Verify it is possible to complete a checkout successfully for 1 Donwpayment service', () => {
+    it('Verify it is possible to complete a checkout successfully for 1 Donwpayment service', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Downpayment')
         cy.fillButton('Cash')
@@ -374,7 +374,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

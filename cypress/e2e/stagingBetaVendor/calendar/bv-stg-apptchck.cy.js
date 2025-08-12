@@ -45,7 +45,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         cy.searchAppt('Helen')
         cy.contains('button','Checkout').click()
         cy.fillButtonDonwpayment('Credit')
-    cy.wait(999)
+        cy.wait(999)
     })
 
     it('Verify that clicking "Fill" for Cash sets the field with the paid Downpayment amount for a Downpayment service.', () => {
