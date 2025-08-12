@@ -284,7 +284,7 @@ it.skip('Verify it is no possible to create a Product by filling up Price Name a
   cy.expectedMessageCreateProduct('Product with this SKU already exists')
 })
 
-it.only('Verify it is not possible to create a Product by filling up Price Name and already added Produce barcode ', () => {
+it('Verify it is not possible to create a Product by filling up Price Name and already added Produce barcode ', () => {
   cy.accessToCreateProductbvprod()
   cy.filloutProductBasicInfo('Product filled up with Product Name and Bar code','123456789012','{enter}','{enter}','{enter}')
   cy.expectedMessageCreateProduct('Product with this Barcode already exists')
@@ -398,7 +398,7 @@ it.only('Verify it is not possible to create a Product by filling up Price Name 
   })
 
   
-  it.only('Verify brand name is required when creating a brand', () => {
+  it('Verify brand name is required when creating a brand', () => {
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
     cy.contains('Inventory').should('exist')
@@ -419,7 +419,7 @@ it.only('Verify it is not possible to create a Product by filling up Price Name 
     // cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')   
 })
 
-it.only('Verify category name is required when creating a category', () => {
+it('Verify category name is required when creating a category', () => {
   //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
   cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   cy.contains('Inventory').should('exist')
@@ -440,7 +440,7 @@ it.only('Verify category name is required when creating a category', () => {
   // cy.contains('span', 'Category deleted', { matchCase: false }).should('exist')   
 })
 
-it.only('Verify bookr category is required when creating a category', () => {
+it('Verify bookr category is required when creating a category', () => {
   //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
   cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
   cy.contains('Inventory').should('exist')

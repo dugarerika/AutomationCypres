@@ -158,10 +158,6 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth?nativeLogout=true')
   })
 
-  // after(() => {
-  //   cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
-  // })
-
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
     searchTimeSlot('Zstaff ','06:00')
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')

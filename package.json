@@ -42,6 +42,7 @@
     "cy:run:staging:all": "cypress run --spec 'cypress/e2e/stagingBetaVendor/**/*.cy.js'",
     "cy:run:prod:all": "cypress run --spec 'cypress/e2e/productionBetaVendor/**/*.cy.js'",
     "cy:prod:inventory:crtprod": "cypress run --spec 'cypress/e2e/productionBetaVendor/inventory/bv-prod-crtprod.cy.js'",
+    "cy:prod:inventory:edtsup": "cypress run --spec 'cypress/e2e/productionBetaVendor/inventory/bv-prod-edtsup.cy.js'",
     "cy:run:calendar": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/*.cy.js' --env allure=true",
     "cy:run:coupons": "cypress run --spec 'cypress/e2e/stagingBetaVendor/coupons/*.cy.js' --env allure=true",
     "cy:run:customers": "cypress run --spec 'cypress/e2e/stagingBetaVendor/customers/*.cy.js'",
