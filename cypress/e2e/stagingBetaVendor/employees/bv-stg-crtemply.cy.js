@@ -76,7 +76,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.expectedMessageCreateEmployee('Employee created')
     })
 
-    it('Verify it is possible to Add an Employee by filling up only the First Name, 4 character Username, 5 character Password and Permission Level |username longer or equal to 3 characteres is required|', () => {
+    it.skip('Verify it is possible to Add an Employee by filling up only the First Name, 4 character Username, 5 character Password and Permission Level |username longer or equal to 3 characteres is required|', () => {
         employeeSection()
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).should('exist')
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })

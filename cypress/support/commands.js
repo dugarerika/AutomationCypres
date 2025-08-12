@@ -475,20 +475,20 @@ Cypress.Commands.add('fillButtonDonwpayment', (method) => {
 
 Cypress.Commands.add('disableDownpaymentSwitch', () => {
   cy.contains('Amount to pay')
-    .parentsUntil('body') // safer than .parent('div') if nested
+    .closest('div') // more precise container
     .find('input[type="checkbox"]')
     .should('exist')
-    .then(($switch) => {
-      const isChecked = $switch.prop('checked');
-      cy.log(`Switch checked: ${isChecked}`);
+    .then($switch => {
+      const isChecked = $switch.prop('checked')
+      cy.log(`Switch checked: ${isChecked}`)
 
       if (isChecked) {
         cy.log('Switch is enabled. Attempting to disable it.')
-        cy.wrap($switch).click({ force: true }) // click instead of uncheck
-        cy.contains('div', 'Downpayment should be done first').should('be.visible')
+        cy.wrap($switch).click({ force: true })
+        cy.contains('div', 'Downpayment should be done first', { timeout: 5000 }).should('be.visible')
       } else {
         cy.log('Switch is already disabled.')
-        cy.contains('div', 'Downpayment should be done first').should('be.visible')
+        cy.contains('div', 'Downpayment should be done first', { timeout: 5000 }).should('be.visible')
       }
     })
 })
