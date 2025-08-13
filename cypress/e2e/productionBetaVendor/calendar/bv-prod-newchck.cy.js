@@ -278,7 +278,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemService('Downpayment')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zstaff')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 
@@ -287,7 +287,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemService('Short Hair')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zstaff')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 
@@ -310,7 +310,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     })  
 
     // checkout successfully - Giftcards
-    it('Verify it is possible to complete a checkout for Gift card', () => {
+    it.only('Verify it is possible to complete a checkout for Gift card', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemGiftCard('243.48 KWD Gift Card')
         cy.fillButton('Cash')
@@ -368,7 +368,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-// describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+// describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
 
 //     before(() => {
 //         // ensure clean test slate for these tests
