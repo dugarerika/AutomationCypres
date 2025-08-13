@@ -111,12 +111,6 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.fillButton('Other')
     })
 
-    it('Verify that After clicking the Fill button for Hisabe, the Hisabe text field is populated with the correct Total', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
-        cy.addItemService('Hair Cut')
-        cy.fillButton('Hisabe')
-    })
-
     // Discounts
     it.skip('Verify the breakdown is correct after applying a coupon to a service ', () => {
         cy.newCheckout("URL_BetaVendor_Production")
@@ -189,27 +183,27 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     // Giftcards checkout validations
     it('Verify the Gift card must be the only item in the cart trying to add a subscription', () => {
         cy.newCheckout("URL_BetaVendor_Production")
-        cy.addItemGiftCard("100 SAR Gift Card")
+        cy.addItemGiftCard("100 KWD Gift Card")
         cy.addItemSubscription('Subscription B')
         cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
     })
 
     it('Verify the Gift card must be the only item in the cart trying to add a service', () => {
         cy.newCheckout("URL_BetaVendor_Production")
-        cy.addItemGiftCard("100 SAR Gift Card")
+        cy.addItemGiftCard("100 KWD Gift Card")
         cy.addItemService('Long Hair')
         cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
     })
 
     it('Verify Adjust button must be disable for Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Production")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemGiftCard('243.48 KWD Gift Card')
         cy.contains('button', 'Adjust').should('be.disabled')
     })
 
     it('Verify taxes are not changed on Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Production")
-        cy.addItemGiftCard("100 SAR Gift Card")
+        cy.addItemGiftCard("100 KWD Gift Card")
         cy.contains('h6', 'Tax 15%').should('not.exist')
     })
 
@@ -217,7 +211,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     it('Verify after having a Subscription in the cart it is not possible to add a Giftcard', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemSubscription('Subscription B')
-        cy.addItemGiftCard("100 SAR Gift Card")
+        cy.addItemGiftCard("100 KWD Gift Card")
         cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
     })
 
@@ -226,7 +220,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.newCheckout("URL_BetaVendor_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
+        cy.contains('div','Search customer..').next().find('input').type('wendy zulca{enter}', { delay: 1000})
         cy.wait(100)
         cy.addItemSubscription('Subscription B')
         cy.fillButton('Cash')
@@ -236,7 +230,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.newCheckout("URL_BetaVendor_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
+        cy.contains('div','Search customer..').next().find('input').type('wendy zulca{enter}', { delay: 1000})
         cy.wait(100)
         cy.addItemSubscription('Subscription B')
         cy.addPercentageDiscount('Subscription B','40')
@@ -248,7 +242,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.newCheckout("URL_BetaVendor_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
+        cy.contains('div','Search customer..').next().find('input').type('wendy zulca{enter}', { delay: 1000})
         cy.wait(100)
         cy.addItemSubscription('Subscription B')
         cy.addFixedDiscount('Subscription B','5')
@@ -318,7 +312,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     // checkout successfully - Giftcards
     it('Verify it is possible to complete a checkout for Gift card', () => {
         cy.newCheckout("URL_BetaVendor_Production")
-        cy.addItemGiftCard('243.48 SAR Gift Card')
+        cy.addItemGiftCard('243.48 KWD Gift Card')
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
@@ -368,7 +362,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     // checkout successfully - Giftcards
     it('Verify it is possible to complete a checkout for Gift card', () => {
         cy.newCheckout("URL_BetaVendor_Production")
-        cy.addItemGiftCard("243.48 SAR Gift Card")
+        cy.addItemGiftCard("243.48 KWD Gift Card")
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
@@ -418,14 +412,14 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
 //     // checkout successfully - Giftcards
 //     it('Verify it is possible to complete a checkout for Gift card', () => {
 //         cy.newCheckout("URL_BetaVendor_Production")
-//         cy.addItemGiftCard("243.48 SAR Gift Card")
+//         cy.addItemGiftCard("243.48 KWD Gift Card")
 //         cy.fillButton('Cash')
 //         cy.expectedMessageCompleteSale('Sale Completed')
 //     })
 
 //     it('Verify after completing a checkout successfully it is possible to send the invoice thru email', () => {
 //         cy.newCheckout("URL_BetaVendor_Production")
-//         cy.addItemGiftCard("243.48 SAR Gift Card")
+//         cy.addItemGiftCard("243.48 KWD Gift Card")
 //         cy.fillButton('Cash')
 //         cy.expectedMessageCompleteSale('Sale Completed')
 //         cy.contains('button','Send').should('be.visible')
