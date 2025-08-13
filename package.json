@@ -28,6 +28,7 @@
     "autoTestStore": "npx cypress run --spec cypress/e2e/automation-test-store/*",
     "cy:prod-clear:cancelappts": "cypress run --spec 'cypress/e2e/production/clear/bv-prod-cancelappts.cy.js'",
     "cy:prod-clear:dltprod": "npx cypress run --spec cypress/e2e/production/clear/bv-prod-dltprod.cy.js",
+    "cy:prod-clear:dltsubs": "cypress run --spec 'cypress/e2e/production/clear/bv-prod-dltsubs.cy.js'",
     "cy:prod-clear": "npx cypress run --spec cypress/e2e/production/clear/*.cy.js",
     "cy:run:staging-clear": "npx cypress run --spec cypress/e2e/staging/clear/*.cy.js",
     "cy:staging-clear:cancelappts": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-cancelappts.cy.js'",
