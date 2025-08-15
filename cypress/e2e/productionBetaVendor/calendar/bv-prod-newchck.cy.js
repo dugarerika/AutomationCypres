@@ -296,7 +296,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.addItemService('Hair Cut')
         cy.addPercentageDiscount('Hair Cut','40')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zstaff')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 
@@ -305,12 +305,12 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.addItemService('Long Hair')
         cy.addFixedDiscount('Long Hair','5')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zstaff')
         cy.expectedMessageCompleteSale('Sale Completed')
     })  
 
     // checkout successfully - Giftcards
-    it.only('Verify it is possible to complete a checkout for Gift card', () => {
+    it('Verify it is possible to complete a checkout for Gift card', () => {
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemGiftCard('243.48 KWD Gift Card')
         cy.fillButton('Cash')
@@ -338,7 +338,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
         cy.newCheckout("URL_BetaVendor_Production")
         cy.addItemService('Short Hair')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zstaff')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
     it('Verify it is possible to complete a checkout after applying a percentage discount to a service ', () => {
@@ -346,7 +346,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
         cy.addItemService('Hair Cut')
         cy.addPercentageDiscount('Hair Cut','40')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zstaff')
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 
@@ -355,7 +355,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
         cy.addItemService('Long Hair')
         cy.addFixedDiscount('Long Hair','5')
         cy.fillButton('Cash')
-        cy.addEmployee('ErikaT')
+        cy.addEmployee('Zstaff')
         cy.expectedMessageCompleteSale('Sale Completed')
     })  
 
