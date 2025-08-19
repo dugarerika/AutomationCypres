@@ -1,0 +1,347 @@
+/// <reference types="cypress" />
+/// <reference types="cypress-xpath" />
+
+const { should } = require("chai")
+  
+const searchTimeSlot = (staff,start_time) => {
+  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+  let color
+  cy.contains(`${staff}`).parent('div').then(($div) => {
+    color = $div.attr('color')
+    cy.log(color)
+    cy.get(`div[data-schedule-time="${start_time}"][color="${color}"]`).should('be.visible').click({ force: true });
+    cy.log('Test completed')
+  })
+  cy.contains('New Appointment').should('exist')
+}
+
+const searchApt = (staff,start_time) => {
+  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+  let color
+  cy.contains(`${staff}`).parent('div').then(($div) => {
+    color = $div.attr('color')
+    cy.log(color)
+    cy.get(`div[color="${color}"]`).find('.event-time').contains('span',`${start_time} AM`).should('be.visible').click();
+    cy.log('Test completed')
+  })
+  cy.contains('Appointment Details').should('be.visible')
+}
+
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+
+before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearAllSavedSessions)
+})
+
+beforeEach(() => {
+    cy.login('Admin Session', Cypress.env("Vendor7_Admin_Username_Staging"), Cypress.env("Vendor7_Admin_Password_Staging"))
+})
+
+afterEach(() => {
+  cy.clearCookies()
+})
+it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
+  searchTimeSlot('Obafemi','04:00') 
+  cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+  cy.contains('Add New Item').should('exist')  
+  cy.contains('Add New Item').click()
+  cy.contains('Add Offer').should('exist')  
+  cy.contains('Add Offer').click()
+  cy.contains('div','Offer').should('exist')  
+  cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer{enter}')
+  cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{enter}')
+  cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
+  cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+  cy.contains('Create Appointment').click({force: true})
+  cy.wait('@new-user').then((interception) => {
+    expect(interception.response.statusCode).to.equal(200)
+  })
+  cy.contains('New Appointment').should('not.be.visible')  
+  }) 
+
+it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
+  searchTimeSlot('Obafemi','05:00') 
+  cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+  cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+  cy.contains('Create Appointment').click({force: true})
+  cy.wait('@new-user').then((interception) => {
+    expect(interception.response.statusCode).to.equal(200)
+  })
+  cy.contains('New Appointment').should('not.be.visible')  
+})
+
+it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
+  searchTimeSlot('Marly william','02:00') 
+  cy.get('input[id="react-select-3-input"]').click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
+  cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+  cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+  cy.contains('Create Appointment').click({force: true})
+  cy.wait('@new-user').then((interception) => {
+    expect(interception.response.statusCode).to.equal(200)
+  })
+  cy.contains('New Appointment').should('not.be.visible')  
+})
+
+it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
+  searchTimeSlot('Marly william','03:00')  
+  cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+  cy.contains('Create Appointment').click({force: true})
+  cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+  cy.contains('Warning: ').should('be.visible')
+  cy.contains('button','Continue').click({force: true})
+  cy.wait('@new-user').then((interception) => {
+    expect(interception.response.statusCode).to.equal(200)
+  })
+  cy.contains('New Appointment').should('not.be.visible')  
+})
+
+it('Verify it is possible to create an appointment over and already taken time slot - Admin Credentials', () => {
+  searchTimeSlot('Marly william','04:00') 
+  cy.contains('New Appointment').should('exist')
+  cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+  cy.contains('Create Appointment').click({force: true})
+  cy.contains('Warning: ').should('be.visible')
+  cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+  cy.contains('button','Continue').click({force: true})
+  cy.wait('@new-user').then((interception) => {
+    expect(interception.response.statusCode).to.equal(200)
+  }) 
+})
+
+it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
+  searchTimeSlot('Helen','03:00')  
+  cy.contains('New Appointment').should('exist')
+  cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+  cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+  cy.contains('Create Appointment').click({force: true})
+  cy.wait('@new-user').then((interception) => {
+    expect(interception.response.statusCode).to.equal(200)
+  })
+  cy.contains('New Appointment').should('not.be.visible')  
+})
+
+it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
+  searchApt('Helen','04:00') 
+  cy.log('Test completed')
+  cy.contains('Appointment Details').should('be.visible')
+  cy.contains('Edit Booking').should('be.visible')
+  cy.contains('Edit Booking').click({force: true})
+  cy.contains('Edit Appointment').should('exist') 
+})
+
+it('Verify it is possible to edit the Customer', () => {
+  searchApt('Helen','05:00') 
+  cy.contains('Appointment Details').should('be.visible')
+  cy.contains('Edit Booking').should('be.visible')
+  cy.contains('Edit Booking').click({force: true})
+  cy.contains('Edit Appointment').should('exist') 
+  cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
+  cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
+  cy.wait(1000)
+})
+})
+
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+  before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearAllSavedSessions)
+  })
+  
+  beforeEach(() => {
+    cy.login('Receptionist Session', Cypress.env("Vendor7_Admin_Username_Staging"), Cypress.env("Vendor7_Admin_Password_Staging"))
+  })
+
+  afterEach(() => {
+    cy.clearCookies()
+  })
+
+  it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
+    searchTimeSlot('Zstaff ','06:00')
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+    // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+    cy.contains('Add New Item').should('exist')  
+    cy.contains('Add New Item').click()
+    cy.contains('Add Offer').should('exist')  
+    cy.contains('Add Offer').click()
+    cy.contains('div','Offer').should('exist')  
+    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer{enter}')
+    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{downarrow}{downarrow}{downarrow}{enter}')
+    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+    }) 
+
+  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
+    searchTimeSlot('Obafemi','07:00')
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+  })
+
+  it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
+    searchTimeSlot('Mateo','06:00') 
+    cy.get('input[id="react-select-3-input"]').click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
+    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+  })
+
+  it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
+    searchTimeSlot('Zstaff','06:00')
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+    cy.contains('Create Appointment').click({force: true})
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Warning: ').should('be.visible')
+    cy.contains('button','Continue').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+  })
+
+  it('Verify it is possible to create an appointment over and already taken time slot', () => {
+    searchTimeSlot('Zstaff','06:00')
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+    cy.contains('Create Appointment').click({force: true})
+    cy.contains('Warning: ').should('be.visible')
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('button','Continue').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    }) 
+  })
+
+  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
+    searchTimeSlot('Mateo','06:00')
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+  })
+
+  it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
+    searchApt('Mateo','06:00') 
+    cy.contains('Appointment Details').should('be.visible')
+    cy.contains('Edit Booking').should('be.visible')
+    cy.contains('Edit Booking').click({force: true})
+    cy.contains('Edit Appointment').should('exist') 
+  })
+
+  it('Verify it is possible to edit the Customer', () => {
+    searchApt('Mateo','06:00') 
+    cy.contains('Appointment Details').should('be.visible')
+    cy.contains('Edit Booking').should('be.visible')
+    cy.contains('Edit Booking').click({force: true})
+    cy.contains('Edit Appointment').should('exist') 
+    cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
+    cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
+    cy.wait(1000)
+  })
+})
+
+describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+  before(() => {
+    // ensure clean test slate for these tests
+    cy.then(Cypress.session.clearAllSavedSessions)
+  })
+  
+  beforeEach(() => {
+    cy.login('Staff Session', Cypress.env("Vendor7_Admin_Username_Staging"), Cypress.env("Vendor7_Admin_Password_Staging"))
+  })
+
+  afterEach(() => {
+    cy.clearCookies()
+  })    
+
+  afterEach(() => {
+    cy.clearCookies()
+  })
+
+  it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
+    searchTimeSlot('Zumba Zumba','03:00')
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+    cy.contains('Add New Item').should('exist')  
+    cy.contains('Add New Item').click()
+    cy.contains('Add Offer').should('exist')  
+    cy.contains('Add Offer').click()
+    cy.contains('div','Offer').should('exist')  
+    cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer{enter}')
+    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{downarrow}{downarrow}{enter}')
+    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+    }) 
+    
+  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
+    searchTimeSlot('Zumba Zumba','06:00')
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+  })
+
+  it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
+    searchTimeSlot('Zumba Zumba','05:00')
+    cy.get('input[id="react-select-3-input"]').click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
+    cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Create Appointment').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+  })
+
+  it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
+    searchTimeSlot('Zumba Zumba','06:00')
+    cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
+    cy.contains('Create Appointment').click({force: true})
+    cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
+    cy.contains('Warning: ').should('be.visible')
+    cy.contains('button','Continue').click({force: true})
+    cy.wait('@new-user').then((interception) => {
+      expect(interception.response.statusCode).to.equal(200)
+    })
+    cy.contains('New Appointment').should('not.be.visible')  
+  })
+
+  it.skip('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
+    searchTimeSlot('Zumba Zumba','07:00')
+    cy.contains('Edit Booking').should('be.visible')
+    cy.contains('Edit Booking').click({force: true})
+    cy.contains('Edit Appointment').should('exist') 
+  })
+
+  it.skip('Verify it is possible to edit the Customer', () => {
+    searchTimeSlot('Zumba Zumba','07:00')
+    cy.contains('Edit Booking').should('be.visible')
+    cy.contains('Edit Booking').click({force: true})
+    cy.contains('Edit Appointment').should('exist') 
+    cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
+    cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
+    cy.wait(1000)
+  })
+})

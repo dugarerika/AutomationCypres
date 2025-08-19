@@ -516,9 +516,11 @@ Cypress.Commands.add('checkBreakdownNoDiscount', (service) => {
     })
 })
 
-Cypress.Commands.add('addPercentageDiscount', (service,percentage) => {
+Cypress.Commands.add('addPercentageDiscount', (service,percentage,tax) => {
     const perc1 = percentage/100
     const perc2 = (100 - percentage)/100
+    const perc3 = tax/100
+    const perc4 = 1+perc3
     cy.contains('button','Percentage').click()
     cy.get('input[placeholder="Type Percentage"]').type(percentage)
     cy.contains('button','Apply').click()
@@ -539,16 +541,16 @@ Cypress.Commands.add('addPercentageDiscount', (service,percentage) => {
         const expected = +eval(discount[1]).toFixed(2)
         expect(actual).to.equal(expected)
         })
-        cy.contains('h6','Tax 15%').next('span').then(($span2) => {
+        cy.contains('h6',`Tax ${tax}%`).next('span').then(($span2) => {
             const tax = $span2.text().split(" ")
             cy.log(tax)
-            const valor0 = eval(price[0])*perc2*0.15
+            const valor0 = eval(price[0])*perc2*perc3
             expect(Math.round((valor0 + Number.EPSILON) * 100) / 100).to.equal(eval(tax[1]))
         })
         cy.contains('h6', /^Total$/).next('span').then(($span3) => {
             const total = $span3.text().split(" ")
             cy.log(total[1])
-            const valor1 = eval(price[0])*perc2*1.15
+            const valor1 = eval(price[0])*perc2*perc4
             expect(Math.round((valor1 + Number.EPSILON) * 100) / 100).to.equal(eval(total[1]))
         })
     })
@@ -576,7 +578,7 @@ Cypress.Commands.add('addEmptyDiscount', (discountType) => {
     }
 })
 
-Cypress.Commands.add('addFixedDiscount', (service, fixed) => { 
+Cypress.Commands.add('addFixedDiscount', (service, fixed, tax) => { 
     const regex = new RegExp(service+'$', 'i')
     cy.contains('h6', regex).parent('div').next('div').find('h4').then(($h4) =>{
         const price = $h4.text().split(" ")
@@ -599,7 +601,7 @@ Cypress.Commands.add('addFixedDiscount', (service, fixed) => {
             cy.log(discount[1])
             expect(fixed).to.equal(discount[1])
         })
-        cy.contains('h6','Tax 15%').next('span').then(($span2) => {
+        cy.contains('h6',`Tax ${tax}%`).next('span').then(($span2) => {
             const tax = $span2.text().split(" ")
             cy.log(tax[1])
             expect((price[0] - fixed)*0.15).to.equal(eval(tax[1]))
