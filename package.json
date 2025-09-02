@@ -62,7 +62,7 @@
     "cy:staging-calendar:blcktime": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js'",
     "cy:staging-calendar:crtapt": "cypress run --browser chrome --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-crtapt.cy.js' --env allure=true",
     "cy:staging-calendar:invoices": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-invoices.cy.js'",
-    "cy:staging-calendar:newappt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newAppt.cy.js'",
+    "cy:staging-calendar:newappt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newappt.cy.js'",
     "cy:staging-calendar:newchck": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-newchck.cy.js'",
     "cy:staging-calendar:apptchck": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-apptchck.cy.js'",
     "cy:coupons:crtcoupons": "cypress run --spec 'cypress/e2e/stagingBetaVendor/coupons/bv-stg-crtCoupons.cy.js' --env allure=true",

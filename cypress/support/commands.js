@@ -418,6 +418,15 @@ Cypress.Commands.add('addItemOffer', (offer) => {
     cy.get('div[role="presentation"]').trigger('click')
 })
 
+Cypress.Commands.add('addItemProduct', (product) => {
+    // cy.contains('button','Add New').should('be.visible')
+    cy.contains('button','Add New').should('be.visible').click({force: true})
+    cy.get('div[role="tablist"]').find('button').eq(2).click({force: true})
+    cy.contains('label>span', 'search').parents('label').next('div').find('input').type(product)
+    cy.contains('div', product).parents('li').find('button').click({force: true})
+    cy.get('div[role="presentation"]').trigger('click')
+})
+
 Cypress.Commands.add('addEmployee', (employee) => {
     // cy.contains('button','Edit').should('be.visible')
     cy.contains('button','Edit').should('be.visible').click({force: true})
@@ -505,7 +514,8 @@ Cypress.Commands.add('checkBreakdownNoDiscount', (service) => {
         cy.contains('h6','Tax 15%').next('span').then(($span1) => {
             const tax = $span1.text().split(" ")
             cy.log(tax[1])
-            expect(price[0]*0.15).to.equal(eval(tax[1]))
+            const valor0 = eval(price[0])*0.15
+            expect(Math.round((valor0 + Number.EPSILON) * 100) / 100).to.equal(eval(tax[1]))
         
             cy.contains('h6', /^Total$/).next('span').then(($span2) => {
                 const total = $span2.text().split(" ")
@@ -520,7 +530,7 @@ Cypress.Commands.add('addPercentageDiscount', (service,percentage,tax) => {
     const perc1 = percentage/100
     const perc2 = (100 - percentage)/100
     const perc3 = tax/100
-    const perc4 = 1+perc3
+    const perc4 = 1 + perc3
     cy.contains('button','Percentage').click()
     cy.get('input[placeholder="Type Percentage"]').type(percentage)
     cy.contains('button','Apply').click()
@@ -535,17 +545,17 @@ Cypress.Commands.add('addPercentageDiscount', (service,percentage,tax) => {
             expect(price[0]).to.equal(subtotal[1])
         })
         cy.contains('h6','Discount').next('span').then(($span1) => {
-        const discount = $span1.text().split(" ")
+            const discount = $span1.text().split(" ")
             // cy.log(discount[1])
-        const actual = +(price[0] * eval(perc1)).toFixed(2)
-        const expected = +eval(discount[1]).toFixed(2)
-        expect(actual).to.equal(expected)
+            const actual = +(price[0] * eval(perc1)).toFixed(2)
+            const expected = +eval(discount[1]).toFixed(2)
+            expect(actual).to.equal(expected)
         })
         cy.contains('h6',`Tax ${tax}%`).next('span').then(($span2) => {
             const tax = $span2.text().split(" ")
             cy.log(tax)
             const valor0 = eval(price[0])*perc2*perc3
-            expect(Math.round((valor0 + Number.EPSILON) * 100) / 100).to.equal(eval(tax[1]))
+            expect(Math.round((valor0 + Number.EPSILON) * 10000) / 10000).to.equal(eval(tax[1]))
         })
         cy.contains('h6', /^Total$/).next('span').then(($span3) => {
             const total = $span3.text().split(" ")
@@ -556,7 +566,7 @@ Cypress.Commands.add('addPercentageDiscount', (service,percentage,tax) => {
     })
 })
 
-Cypress.Commands.add('removeService', (service, info) => {
+Cypress.Commands.add('removeItem', (service, info) => {
     const cadena = 'Are you sure you want to delete this item?'
     const regex = new RegExp(service+'$', 'i')
     cy.contains('h6', regex).parents('.content').find('button').contains('Delete').click()
@@ -616,42 +626,53 @@ Cypress.Commands.add('addFixedDiscount', (service, fixed, tax) => {
     })
 })
 
-// Cypress.Commands.add('addCouponDiscount', (coupon) => {
-//     let discount
-//     let price
-//     let subtotal
-//     let tax
-//     let total
-//     let perc1 = percentage/100
-//     cy.contains('button','Percentage').click()
-//     cy.get('input[placeholder="Type Percentage"]').type(percentage)
-//     cy.contains('button','Apply').click()
-//     cy.contains('span', "Discount Applied Successfully").should('exist')
-//     cy.contains('h6', service).parent('div').next('div').find('h4').then(($h4) =>{
-//         price = $h4.text().split(" ")
-//         cy.log(price[0])
-//         cy.contains('h6','Sub Total').next('span').then(($span0) => {
-//             subtotal = $span0.text().split(" ")
-//             cy.log(subtotal[1])
-//             expect(price[0]).to.equal(subtotal[1])
-//         })
-//         cy.contains('h6','Discount').next('span').then(($span1) => {
-//             discount = $span1.text().split(" ")
-//             cy.log(discount[1])
-//             expect(price[0]*eval(perc1)).to.equal(discount[1])
-//         })
-//         cy.contains('h6','Tax 15%').next('span').then(($span2) => {
-//             tax = $span2.text().split(" ")
-//             cy.log(tax)
-//             expect(price[0]*0.15).to.equal(eval(tax[1]))
-//         })
-//         cy.contains('h6', /^Total$/).next('span').then(($span3) => {
-//             total = $span3.text().split(" ")
-//             cy.log(total)
-//             expect(eval(price[0]) + eval(tax[1])).to.equal(eval(total[1]))
-//         })
-//     })
-// })
+Cypress.Commands.add('addCouponDiscount', (service,coupon,percentage,tax) => {
+    const perc1 = percentage/100
+    const perc2 = (100 - percentage)/100
+    const perc3 = tax/100
+    const perc4 = 1 + perc3
+    const regex = new RegExp(service+'$', 'i')
+    cy.contains('h6', regex).parent('div').next('div').find('h4').then(($h4) =>{
+        const price = $h4.text().split(" ")
+        cy.log(price[0])
+        cy.contains('button','Fixed').next('button','Coupon').click({force: true})
+        cy.wait(100)
+        cy.contains('div', /^Type Coupon Code$/).next('div').find('input').type(`${coupon}{enter}`)
+        cy.wait(100)
+        cy.contains('button','Apply').click()
+        cy.contains('span', "Discount Applied Successfully").should('exist')
+        cy.contains('h6', service).parent('div').next('div').find('h4').then(($h4) =>{
+        const price = $h4.text().split(" ")
+        cy.log(price[0])
+        cy.log(perc2)
+        cy.contains('h6','Sub Total').next('span').then(($span0) => {
+            const subtotal = $span0.text().split(" ")
+            // cy.log(subtotal[1])
+            expect(price[0]).to.equal(subtotal[1])
+        })
+        cy.contains('h6','Discount').next('span').then(($span1) => {
+            const discount = $span1.text().split(" ")
+            // cy.log(discount[1])
+            const actual = +(price[0] * eval(perc1)).toFixed(2)
+            const expected = +eval(discount[1]).toFixed(2)
+            expect(actual).to.equal(expected)
+        })
+        cy.contains('h6',`Tax ${tax}%`).next('span').then(($span2) => {
+            const tax = $span2.text().split(" ")
+            cy.log(tax)
+            const valor0 = eval(price[0])*perc2*perc3
+            expect(Math.round((valor0 + Number.EPSILON) * 10000) / 10000).to.equal(eval(tax[1]))
+        })
+        cy.contains('h6', /^Total$/).next('span').then(($span3) => {
+            const total = $span3.text().split(" ")
+            cy.log(total[1])
+            const valor1 = eval(price[0])*perc2*perc4
+            cy.log(valor1)
+            expect(Math.round((valor1 + Number.EPSILON) * 100) / 100).to.equal(eval(total[1]))
+        })
+    })
+})
+})
 
 Cypress.Commands.add('remove discount', (method) => {
     let total

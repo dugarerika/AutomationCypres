@@ -13,8 +13,6 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-        // cy.createappt('Meriam','01:00', 'Downpayment')
-        // cy.createappt('Sara ','01:00', 'Downpayment')
     })
 
     afterEach(() => {
@@ -208,7 +206,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.contains('button', 'Adjust').should('be.disabled')
     })
 
-    it.skip('Verify taxes are not changed on Gift cards', () => {
+    it.skip('Verify taxes are not charged on Gift cards', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard("100 SAR Gift Card")
         cy.contains('h6', 'Tax 15%').should('not.exist')
