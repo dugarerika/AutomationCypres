@@ -54,7 +54,7 @@ module.exports = defineConfig({
     // },
     retries: {
       runMode: 2,
-      openMode: 2
+      openMode: 0
     },
     env: {
       allureReuseAfterSpec: true,
@@ -94,6 +94,8 @@ module.exports = defineConfig({
       Vendor1_Admin_Password_Staging: "1234567890",
       Vendor1_Staff_Username_Staging: "zumbacococut",
       Vendor1_Staff_Password_Staging: "1234567890",
+      Vendor1_Low_Level_Username_Staging: "lowcococut",
+      Vendor1_Low_Level_Password_Staging: "1234567890",
       Vendor1_ReadOnly_Username_Staging: "readonlyerika2",
       Vendor1_ReadOnly_Password_Staging: "1234567890",
       Vendor1_Receptionist_Username_Staging: "recepcococut1",

@@ -430,7 +430,8 @@ Cypress.Commands.add('addItemProduct', (product) => {
 Cypress.Commands.add('addEmployee', (employee) => {
     // cy.contains('button','Edit').should('be.visible')
     cy.contains('button','Edit').should('be.visible').click({force: true})
-    cy.contains('label>span', 'Staff').parents('label').next('div').find('input').type(`${employee}{enter}`)
+    cy.contains('label>span', 'Staff').parents('label').next('div').find('input').type(`${employee}{enter}{enter}`)
+    cy.wait(1000)
     cy.contains('button', 'Save').click({force: true})
     // cy.get('div[role="presentation"]').trigger('click')
 })
@@ -502,7 +503,8 @@ Cypress.Commands.add('disableDownpaymentSwitch', () => {
     })
 })
 
-Cypress.Commands.add('checkBreakdownNoDiscount', (service) => {
+Cypress.Commands.add('checkBreakdownNoDiscount', (service, tax) => {
+    const perc3 = tax/100
     cy.contains('h6', service).parent('div').next('div').find('h4').then(($h4) =>{
         const price = $h4.text().split(" ")
         cy.log(price[0])
@@ -511,11 +513,11 @@ Cypress.Commands.add('checkBreakdownNoDiscount', (service) => {
             cy.log(subtotal[1])
             expect(price[0]).to.equal(subtotal[1])
         })
-        cy.contains('h6','Tax 15%').next('span').then(($span1) => {
+        cy.contains('h6',`Tax ${tax}%`).next('span').then(($span1) => {
             const tax = $span1.text().split(" ")
             cy.log(tax[1])
-            const valor0 = eval(price[0])*0.15
-            expect(Math.round((valor0 + Number.EPSILON) * 100) / 100).to.equal(eval(tax[1]))
+            const valor0 = eval(price[0])*perc3
+            expect(Math.round((valor0 + Number.EPSILON) * 10000) / 10000).to.equal(eval(tax[1]))
         
             cy.contains('h6', /^Total$/).next('span').then(($span2) => {
                 const total = $span2.text().split(" ")
