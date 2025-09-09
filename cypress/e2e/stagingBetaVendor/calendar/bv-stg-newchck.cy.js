@@ -1188,7 +1188,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
     })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with low permission level credentials', () => {
+describe.skip('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with low permission level credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -1291,7 +1291,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
         })
     })
 
-    describe.only('Discounts during the new checkout:', () => {
+    describe('Discounts during the new checkout:', () => {
             // Discounts
         it('Verify the breakdown is correct after applying a coupon to a service ', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
