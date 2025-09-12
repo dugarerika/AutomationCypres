@@ -33,7 +33,7 @@
     "cy:staging-clear": "npx cypress run --spec cypress/e2e/staging/clear/*.cy.js",
     "cy:staging-clear:cancelappts": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-cancelappts.cy.js'",
     "cy:staging-clear:dltemply": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltemply.cy.js' --env allure=true",
-    "cy:staging-clear:dltcustomers": "npx cypress run --spec cypress/e2e/staging/clear/dltcustd.cy.js",
+    "cy:staging-clear:dltcustomers": "npx cypress run --spec cypress/e2e/staging/clear/dltcust.cy.js",
     "cy:staging-clear:dltprod": "npx cypress run --spec cypress/e2e/staging/clear/dltprod.cy.js",
     "cy:staging-clear:dltbrand": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltsbrand.cy.js'",
     "cy:staging-clear:dltscat": "cypress run --spec 'cypress/e2e/staging/clear/bv-stg-dltscat.cy.js'",

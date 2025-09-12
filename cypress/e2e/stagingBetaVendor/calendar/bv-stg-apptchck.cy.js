@@ -21,7 +21,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
 
     describe('Required field during checkout', () => {
         it('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
-            // cy.createappt('Susan one','01:00', 'Downpayment')
+            cy.createappt('Susan one','01:00', 'Downpayment')
             cy.searchAppt('Susan one')
             cy.contains('button','Checkout').click()
             cy.wait(999)
@@ -32,7 +32,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
 
     describe('Fillout buttons with Downpayment (it is pending gift card)', () => {
         it('Verify that clicking "Fill" for Debit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
-            // cy.createappt('Helen','01:00', 'Downpayment')
+            cy.createappt('Helen','01:00', 'Downpayment')
             cy.searchAppt('Helen')
             cy.contains('button','Checkout').click()
             cy.fillButtonDonwpayment('Debit')
@@ -176,7 +176,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
 
     describe(' Services checkout validations', () => {
         // Services checkout validations
-        it.only('Verify the breakdown is correct after adding a service ', () => {
+        it('Verify the breakdown is correct after adding a service ', () => {
             cy.searchAppt('Helen')
             cy.contains('button','Checkout').click()
             cy.checkBreakdownNoDiscount('Downpayment','15')   
@@ -204,7 +204,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
 
     describe('Giftcards checkout validations', () => {
         // Giftcards checkout validations
-        it.only('Verify the Gift card must be the only item in the cart trying to add after a service', () => {
+        it('Verify the Gift card must be the only item in the cart trying to add after a service', () => {
             // cy.createappt('Helen','01:00', 'Downpayment')
             cy.searchAppt('Helen')
             cy.contains('button','Checkout').click()
@@ -269,7 +269,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
         cy.wait(100)
         cy.addItemSubscription('Subscription B')
-        cy.addFixedDiscount('Subscription B','5')
+        cy.addFixedDiscount('Subscription B','5','15')
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })  
@@ -292,7 +292,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     it('Verify it is possible to complete a checkout after applying a fix discount to a offer ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemOffer('Down Payment Offer')
-        cy.addFixedDiscount('Down Payment Offer','5')
+        cy.addFixedDiscount('Down Payment Offer','5','15')
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
     })  
@@ -317,7 +317,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     it('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Long Hair')
-        cy.addFixedDiscount('Long Hair','5')
+        cy.addFixedDiscount('Long Hair','5','15')
         cy.fillButton('Cash')
         cy.addEmployee('Zstaff')
         cy.expectedMessageCompleteSale('Sale Completed')
@@ -417,7 +417,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
     it('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemService('Long Hair')
-        cy.addFixedDiscount('Long Hair','5')
+        cy.addFixedDiscount('Long Hair','5','15')
         cy.fillButton('Cash')
         cy.addEmployee('Zumba')
         cy.expectedMessageCompleteSale('Sale Completed')

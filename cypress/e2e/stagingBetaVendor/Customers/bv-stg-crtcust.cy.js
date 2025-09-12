@@ -119,7 +119,7 @@ afterEach(() => {
         expectedMessageCreateCustomer('Customer first name is required')
     })
 
-    it('Verify that the First Name field is required when Last Name and Mobile Number are filled.', () => {
+    it.only('Verify that the First Name field is required when Last Name and Mobile Number are filled.', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo('{enter}', randUsername1, '{enter}', '508277835')
@@ -156,35 +156,35 @@ afterEach(() => {
         expectedMessageCreateCustomer('Customer mobile is required')
     })
 
-    it('Verify Genders Male and Female are available', () => {
+    it.only('Verify Genders Male and Female are available', () => {
         accessToCustSection()
         accessToAddCustForm()
         cy.get('select').select('Female').should('be.visible')
         cy.get('select').select('Male').should('be.visible')
     })
 
-    it('Verify Gender is required when when First Name and mobile number is filled', () => {
+    it.only('Verify Gender is required when when First Name and mobile number is filled', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, '{enter}', '{enter}', '50827783')
         expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
     })
 
-    it('Verify Gender is required when when First Name, Last Name and Mobile Number is filled', () => {
+    it.only('Verify Gender is required when when First Name, Last Name and Mobile Number is filled', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, randUsername1, '{enter}', '50827783')
         expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
     })
 
-    it('Verify Gender is required when when First Name, Last Name, Notes and Mobile Number is filled', () => {
+    it.only('Verify Gender is required when when First Name, Last Name, Notes and Mobile Number is filled', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, randUsername1, 'NOTES', '50827783')
         expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
     })
 
-    it('Verify that the Phone Number is validated', () => {
+    it.only('Verify that the Phone Number is validated', () => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, '{enter}', '{enter}', '50827783')

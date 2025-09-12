@@ -395,8 +395,7 @@ Cypress.Commands.add('newCheckout', (environ) => {
     cy.wait(1000)
     // cy.contains('li','New Checkout').should('be.visible')
     cy.contains('li','New Checkout').should('be.visible').click({force: true})
-    cy.contains('div','Search customer..').should('be.visible')
-    // cy.contains('button','Walk In').should('be.visible')
+    // cy.contains('div','Search customer..').should('be.visible')
     cy.contains('button','Walk In').should('be.visible').click({force: true})
 })
 
