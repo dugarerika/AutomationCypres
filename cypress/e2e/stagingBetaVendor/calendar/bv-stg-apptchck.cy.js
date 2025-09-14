@@ -34,6 +34,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         it('Verify that clicking "Fill" for Debit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
             cy.createappt('Helen','01:00', 'Downpayment')
             cy.searchAppt('Helen')
+            cy.wait(99)
             cy.contains('button','Checkout').click()
             cy.fillButtonDonwpayment('Debit')
             cy.wait(99)
@@ -129,7 +130,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         })
 
         it('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
-            createappt('Zstaff','1:00','Downpayment')
+            // cy.createappt('Zstaff','1:00','Downpayment')
             cy.searchAppt('Helen')
             cy.contains('button','Checkout').click()
             // cy.addItemService('Downpayment')
@@ -236,6 +237,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemSubscription('Subscription B')
         cy.addItemGiftCard("100 SAR Gift Card")
+        cy.wait(99)
         cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
     })
 
@@ -328,6 +330,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.newCheckout("URL_BetaVendor_Staging")
         cy.addItemGiftCard('243.48 SAR Gift Card')
         cy.fillButton('Cash')
+        cy.wait(99)
         cy.expectedMessageCompleteSale('Sale Completed')
     })
 })

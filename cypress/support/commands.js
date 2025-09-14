@@ -521,7 +521,8 @@ Cypress.Commands.add('checkBreakdownNoDiscount', (service, tax) => {
             cy.contains('h6', /^Total$/).next('span').then(($span2) => {
                 const total = $span2.text().split(" ")
                 cy.log(total[1])
-                expect(eval(price[0]) + eval(tax[1])).to.equal(eval(total[1]))
+                const valor1 = eval(price[0]) + eval(tax[1])
+                expect(Math.round((valor1 + Number.EPSILON) * 100) / 100).to.equal(eval(total[1]))
             })
         })
     })
