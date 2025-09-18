@@ -2,7 +2,7 @@
 /// <reference types="cypress-xpath" />
 
 const payrollSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
     cy.wait(199)
@@ -13,7 +13,7 @@ const payrollSection = () => {
 describe('Beta Vendor Admin | Employee | Payroll | logged with Admin credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
+        cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
     })
 
     afterEach(() => {
