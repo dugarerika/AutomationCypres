@@ -261,7 +261,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create Blocktime on the Cal
     })
 
     beforeEach(() => {
-        cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Staff_Password_Production"))
+        cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
     })
 
     afterEach(() => {

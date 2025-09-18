@@ -122,7 +122,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     describe('Discounts', () => {
     // Discounts
         it('Verify the breakdown is correct after applying a coupon to a service ', () => {
-            cy.createappt('Susan one','01:00', 'Downpayment')
+            // cy.createappt('Susan one','01:00', 'Downpayment')
             cy.searchAppt('Helen')
             cy.contains('button','Checkout').click()
             // cy.addItemService('Downpayment')
