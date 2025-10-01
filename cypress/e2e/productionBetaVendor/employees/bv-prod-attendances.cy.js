@@ -13,7 +13,7 @@ const attendancesSection = () => {
 describe('Beta Vendor Admin | Employee | Create Attendances| logged with Admin credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
+        cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
     })
 
     afterEach(() => {
