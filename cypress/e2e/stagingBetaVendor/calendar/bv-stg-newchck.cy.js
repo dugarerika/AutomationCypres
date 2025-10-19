@@ -378,7 +378,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
             cy.expectedMessageCompleteSale('Sale Completed')
         })
 
-        it.only('Verify it is possible to complete a checkout successfully after applying a fix discount to a service ', () => {
+        it('Verify it is possible to complete a checkout successfully after applying a fix discount to a service ', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','5','15')
@@ -568,7 +568,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.addCouponDiscount('Hair Cut','CPN2','10', '15')
         })
 
-        it.only('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
+        it('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','1','15')
@@ -580,25 +580,25 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.addPercentageDiscount('Hair Cut','20','15')
         })
 
-        it.only('Verify it is not possible to apply a fixed discount greather than the service price', () => {
+        it('Verify it is not possible to apply a fixed discount greather than the service price', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','20','15')
         })
 
-        it.only('Verify it is not possible to apply a fixed discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a fixed discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Fixed')
         })
 
-        it.only('Verify it is not possible to apply a Percentage discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a Percentage discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Percentage')
         })
 
-        it.only('Verify it is not possible to apply a Coupon discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a Coupon discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Coupon')
@@ -613,19 +613,19 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.checkBreakdownNoDiscount('Hair Cut','15')   
         })
 
-        it.only('Verify that it is possible to remove a service from the cart after confirming do you want to delete it', () => {
+        it('Verify that it is possible to remove a service from the cart after confirming do you want to delete it', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Yes')
         })
 
-        it.only('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
+        it('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Cancel')
         })
 
-        it.only('Verify it is possible to add new service after removing one leaving the cart empty', () => {
+        it('Verify it is possible to add new service after removing one leaving the cart empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Yes')
@@ -646,7 +646,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.expectedMessageCompleteSale('Employee must be present')
         })
 
-        it.only('Verify it is possible to add new product after removing one service leaving the cart empty', () => {
+        it('Verify it is possible to add new product after removing one service leaving the cart empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Yes')
@@ -675,7 +675,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
         })
 
-        it.only('Verify the Gift card must be the only item in the cart trying to add a service', () => {
+        it('Verify the Gift card must be the only item in the cart trying to add a service', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemGiftCard("100 SAR Gift Card")
             cy.addItemService('Long Hair')
@@ -719,7 +719,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
         })
 
-        it.only('Verify packages (Subscriptions) cannot be mixed with other items like services', () => {
+        it('Verify packages (Subscriptions) cannot be mixed with other items like services', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemService('Long Hair')
@@ -831,7 +831,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.expectedMessageCompleteSale('Sale Completed')
         })
 
-        it.only('Verify it is possible to complete a checkout successfully after applying a fix discount to a service ', () => {
+        it('Verify it is possible to complete a checkout successfully after applying a fix discount to a service ', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','5','15')
@@ -963,7 +963,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
             cy.addCouponDiscount('Hair Cut','CPN2','10', '15')
         })
 
-        it.only('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
+        it('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','1','15')
@@ -975,25 +975,25 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
             cy.addPercentageDiscount('Hair Cut','20','15')
         })
 
-        it.only('Verify it is not possible to apply a fixed discount greather than the service price', () => {
+        it('Verify it is not possible to apply a fixed discount greather than the service price', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','20','15')
         })
 
-        it.only('Verify it is not possible to apply a fixed discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a fixed discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Fixed')
         })
 
-        it.only('Verify it is not possible to apply a Percentage discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a Percentage discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Percentage')
         })
 
-        it.only('Verify it is not possible to apply a Coupon discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a Coupon discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Coupon')
@@ -1008,19 +1008,19 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
             cy.checkBreakdownNoDiscount('Hair Cut','15')   
         })
 
-        it.only('Verify that it is possible to remove a service from the cart after confirming do you want to delete it', () => {
+        it('Verify that it is possible to remove a service from the cart after confirming do you want to delete it', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Yes')
         })
 
-        it.only('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
+        it('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Cancel')
         })
 
-        it.only('Verify it is possible to add new service after removing one leaving the cart empty', () => {
+        it('Verify it is possible to add new service after removing one leaving the cart empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Yes')
@@ -1041,7 +1041,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
             cy.expectedMessageCompleteSale('Employee must be present')
         })
 
-        it.only('Verify it is possible to add new product after removing one service leaving the cart empty', () => {
+        it('Verify it is possible to add new product after removing one service leaving the cart empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Yes')
@@ -1070,7 +1070,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
             cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
         })
 
-        it.only('Verify the Gift card must be the only item in the cart trying to add a service', () => {
+        it('Verify the Gift card must be the only item in the cart trying to add a service', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemGiftCard("100 SAR Gift Card")
             cy.addItemService('Long Hair')
@@ -1114,7 +1114,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
             cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
         })
 
-        it.only('Verify packages (Subscriptions) cannot be mixed with other items like services', () => {
+        it('Verify packages (Subscriptions) cannot be mixed with other items like services', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemService('Long Hair')
@@ -1226,7 +1226,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
             cy.expectedMessageCompleteSale('Sale Completed')
         })
 
-        it.only('Verify it is possible to complete a checkout successfully after applying a fix discount to a service ', () => {
+        it('Verify it is possible to complete a checkout successfully after applying a fix discount to a service ', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','5','15')
@@ -1358,7 +1358,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with low
             cy.addCouponDiscount('Hair Cut','CPN2','10', '15')
         })
 
-        it.only('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
+        it('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','1','15')
@@ -1370,25 +1370,25 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with low
             cy.addPercentageDiscount('Hair Cut','20','15')
         })
 
-        it.only('Verify it is not possible to apply a fixed discount greather than the service price', () => {
+        it('Verify it is not possible to apply a fixed discount greather than the service price', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addFixedDiscount('Long Hair','20','15')
         })
 
-        it.only('Verify it is not possible to apply a fixed discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a fixed discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Fixed')
         })
 
-        it.only('Verify it is not possible to apply a Percentage discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a Percentage discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Percentage')
         })
 
-        it.only('Verify it is not possible to apply a Coupon discount when leaving the discount empty', () => {
+        it('Verify it is not possible to apply a Coupon discount when leaving the discount empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.addEmptyDiscount('Coupon')
@@ -1403,19 +1403,19 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with low
             cy.checkBreakdownNoDiscount('Hair Cut','15')   
         })
 
-        it.only('Verify that it is possible to remove a service from the cart after confirming do you want to delete it', () => {
+        it('Verify that it is possible to remove a service from the cart after confirming do you want to delete it', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')  
             cy.removeItem('Long Hair','Yes')
         })
 
-        it.only('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
+        it('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Cancel')
         })
 
-        it.only('Verify it is possible to add new service after removing one leaving the cart empty', () => {
+        it('Verify it is possible to add new service after removing one leaving the cart empty', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemService('Long Hair')
             cy.removeItem('Long Hair','Yes')

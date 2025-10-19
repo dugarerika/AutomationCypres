@@ -149,7 +149,7 @@ it('Verify it is possible to edit the Customer', () => {
 })
 })
 
-describe('Production - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+describe.only('Production - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -278,7 +278,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
 })
 
-describe('Production - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe.only('Production - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -383,7 +383,7 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
 })
 
-describe('Production - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe.only('Production - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
