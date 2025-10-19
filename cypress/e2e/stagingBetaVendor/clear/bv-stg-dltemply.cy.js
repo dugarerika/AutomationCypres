@@ -15,19 +15,19 @@ describe('Staging - Beta Vendor Admin | Employee | Delete Employee| logged with 
   })
 
 //Delete Successfully
-  it.only('Verify it is possible Delete Employee from the Employees list section', () => {
+  it('Verify it is possible Delete Employee from the Employees list section', () => {
     cy.deleteEmployee()
   })
 
-  it.only('Verify it is possible Delete Employee from the Employees list section', () => {
+  it('Verify it is possible Delete Employee from the Employees list section', () => {
     cy.deleteEmployee()
   })
 
-  it.only('Verify it is possible Delete Employee from the Employees list section', () => {
+  it('Verify it is possible Delete Employee from the Employees list section', () => {
     cy.deleteEmployee()
   })
 
-  it.only('Verify it is possible Delete Employee from the Employees list section', () => {
+  it('Verify it is possible Delete Employee from the Employees list section', () => {
     cy.deleteEmployee()
   })
 
