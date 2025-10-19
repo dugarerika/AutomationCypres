@@ -3,7 +3,7 @@
 
 const { should } = require("chai")
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged with Admin Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -335,7 +335,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -385,7 +385,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged with Staff Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
