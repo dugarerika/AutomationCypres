@@ -58,6 +58,7 @@
     "cy:offers": "cypress run --spec 'cypress/e2e/stagingBetaVendor/offers/*.cy.js'",
     "cy:subscriptions": "cypress run --spec 'cypress/e2e/stagingBetaVendor/subscriptions/*.cy.js'",
     "cy:staging-calendar:all": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/*.cy.js'",
+    "cy:staging-calendar-inventory": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/*.cy.js, cypress/e2e/stagingBetaVendor/inventory/*.cy.js'",
     "cy:staging-calendar:all-except-newchk-crtapt": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js,cypress/e2e/stagingBetaVendor/calendar/bv-stg-invoices.cy.js,cypress/e2e/stagingBetaVendor/calendar/bv-stg-newAppt.cy.js'",
     "cy:staging-calendar:blcktime": "cypress run --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-blcktime.cy.js'",
     "cy:staging-calendar:crtapt": "cypress run --browser chrome --spec 'cypress/e2e/stagingBetaVendor/calendar/bv-stg-crtapt.cy.js'",
