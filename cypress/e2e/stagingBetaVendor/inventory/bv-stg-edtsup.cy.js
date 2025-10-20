@@ -63,7 +63,7 @@ const expectedMessageCreateSupplier = (supplier_message) => {
 describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin credentials', () =>{
 
   beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor9_Admin_Username_Staging"), Cypress.env("Vendor9_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
   })
 
   afterEach(() => {
