@@ -99,7 +99,7 @@ it.only('Verify that the Add Subscription Service is required', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     filloutOfferInfo(randUsername1, '1', 1, 1, randEmail1, randUsername1)
-    expectedMessageCreateSubs('At least one service variant is required')
+    expectedMessageCreateOffer('At least one service variant is required')
 })
 
 it('Verify that the Add Subscription Name is required', () => {
