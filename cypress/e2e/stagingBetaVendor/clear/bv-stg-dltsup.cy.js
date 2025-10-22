@@ -24,7 +24,7 @@ const accessToDeleteSuppliers = () => {
 describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin credentials', () =>{
 
   beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
   })
 
   afterEach(() => {
