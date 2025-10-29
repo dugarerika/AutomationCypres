@@ -71,6 +71,9 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
     cy.clearCookies()
   })
 
+  it.skip('verify after clicking the Edit button the information on the form is not retrieved and the fields appear empty.', () => {
+    accessToEditSuppliers()
+  })
   it('Verify the it is possible access to the Edit Suppliers form', () => {
     accessToEditSuppliers()
   })
