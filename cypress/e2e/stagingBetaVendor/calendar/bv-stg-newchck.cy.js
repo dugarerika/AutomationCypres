@@ -259,33 +259,61 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
 
     describe('Subscriptions checkout validations during the new checkout:', () => {
     // Subscriptions checkout validations
-        it('Verify after having a Subscription in the cart it is not possible to add a Giftcard', () => {
+        it('Verify after having a Subscription added first in the cart it is not possible to add a Giftcard', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemGiftCard("100 SAR Gift Card")
             cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like services', () => {
+        it('Verify after having a (Subscription added after any other item) in the cart it is not possible to add a Giftcard', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemGiftCard("100 SAR Gift Card")
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like services', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemService('Long Hair')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like offers', () => {
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like services', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemService('Long Hair')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like offers', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemOffer('Down Payment Offer')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like products', () => {
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like offers', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemOffer('Down Payment Offer')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like products', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemProduct('Blond studio 9')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
+
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like products', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemProduct('Blond studio 9')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })    
     })
 
     describe('Checkout successfully for Subscription thru the new checkout:', () => {
@@ -425,8 +453,8 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         })  
     })
 
-    describe.skip('Checkout successfully for a Mix of Services and Products thru the new checkout:', () => {   
-        it('Verify it is possible to complete a checkout successfully for 1 Products', () => {
+    describe('Checkout successfully for a Mix of Services and Products thru the new checkout:', () => {   
+        it.only('Verify it is possible to complete a checkout successfully for 1 Products', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemProduct('Blond studio 9')
             cy.addEmployee('ErikaT')
@@ -712,33 +740,61 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
 
     describe('Subscriptions checkout validations during the new checkout:', () => {
     // Subscriptions checkout validations
-        it('Verify after having a Subscription in the cart it is not possible to add a Giftcard', () => {
+        it('Verify after having a Subscription added first in the cart it is not possible to add a Giftcard', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemGiftCard("100 SAR Gift Card")
             cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like services', () => {
+        it('Verify after having a (Subscription added after any other item) in the cart it is not possible to add a Giftcard', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemGiftCard("100 SAR Gift Card")
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like services', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemService('Long Hair')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like offers', () => {
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like services', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemService('Long Hair')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like offers', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemOffer('Down Payment Offer')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like products', () => {
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like offers', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemOffer('Down Payment Offer')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like products', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemProduct('Blond studio 9')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
+
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like products', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemProduct('Blond studio 9')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })    
     })
 
     describe('Checkout successfully for Subscription during the new checkout:', () => {
@@ -1107,33 +1163,61 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
 
     describe('Subscriptions checkout validations during the new checkout:', () => {
     // Subscriptions checkout validations
-        it('Verify after having a Subscription in the cart it is not possible to add a Giftcard', () => {
+        it('Verify after having a Subscription added first in the cart it is not possible to add a Giftcard', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemGiftCard("100 SAR Gift Card")
             cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like services', () => {
+        it('Verify after having a (Subscription added after any other item) in the cart it is not possible to add a Giftcard', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemGiftCard("100 SAR Gift Card")
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like services', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemService('Long Hair')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like offers', () => {
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like services', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemService('Long Hair')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like offers', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemOffer('Down Payment Offer')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like products', () => {
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like offers', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemOffer('Down Payment Offer')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like products', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemProduct('Blond studio 9')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
+
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like products', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemProduct('Blond studio 9')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })    
     })
 
     describe('Checkout successfully for Subscription during the new checkout:', () => {
@@ -1502,33 +1586,61 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with low
 
     describe('Subscriptions checkout validations during the new checkout:', () => {
     // Subscriptions checkout validations
-        it('Verify after having a Subscription in the cart it is not possible to add a Giftcard', () => {
+        it('Verify after having a Subscription added first in the cart it is not possible to add a Giftcard', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemGiftCard("100 SAR Gift Card")
             cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like services', () => {
+        it('Verify after having a (Subscription added after any other item) in the cart it is not possible to add a Giftcard', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemGiftCard("100 SAR Gift Card")
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Giftcards must be the only item in the cart').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like services', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemService('Long Hair')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like offers', () => {
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like services', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemService('Long Hair')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like offers', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemOffer('Down Payment Offer')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
 
-        it('Verify packages (Subscriptions) cannot be mixed with other items like products', () => {
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like offers', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemOffer('Down Payment Offer')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })
+
+        it('Verify packages (Subscriptions added first) cannot be mixed with other items like products', () => {
             cy.newCheckout("URL_BetaVendor_Staging")
             cy.addItemSubscription('Subscription B')
             cy.addItemProduct('Blond studio 9')
-            cy.contains('span', 'Package cannot be mixed with other item types').should('be.visible')
+            cy.contains('span', 'This item type cannot be mixed with subscriptions.').should('be.visible')
         })
+
+        it('Verify packages (Subscriptions added after any other item) cannot be mixed with other items like products', () => {
+            cy.newCheckout("URL_BetaVendor_Staging")
+            cy.addItemProduct('Blond studio 9')
+            cy.addItemSubscription('Subscription B')
+            cy.contains('span', 'Subscriptions cannot be combined with other items in the same checkout.').should('be.visible')
+        })    
     })
 
     describe('Checkout successfully for Subscription during the new checkout:', () => {

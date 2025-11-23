@@ -224,8 +224,8 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     }) 
   })
 
-  it.only('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-    searchTimeSlot('ErikaT','06:00')
+  it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
+    searchTimeSlot('MaxWayne','06:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -303,8 +303,8 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it.only('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
-    searchTimeSlot('Zumba Zumba','05:00')
+  it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
+    searchTimeSlot('Zumba Zumba','06:00')
     cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
     // cy.get('input[id="react-select-3-input"]').click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
