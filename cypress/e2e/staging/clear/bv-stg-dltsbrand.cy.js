@@ -35,7 +35,7 @@ const accessBrand = () => {
 describe('Beta Vendor Admin | Inventory | Delete Brands| logged with Admin credentials', () =>{
 
     beforeEach(() => {
-      cy.login('Admin Section', Cypress.env("Vendor9_Admin_Username_Staging"), Cypress.env("Vendor9_Admin_Password_Staging"))
+      cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
     })
 
     afterEach(() => {

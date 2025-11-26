@@ -119,17 +119,17 @@ afterEach(() => {
         expectedMessageCreateCustomer('Customer first name is required')
     })
 
-    it.only('Verify that the First Name field is required when Last Name and Mobile Number are filled.', () => {
+    it('Verify that the First Name field is required when Last Name and Mobile Number are filled.', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo('{enter}', randUsername1, '{enter}', '508277835')
+        filloutCustInfo('{enter}', randUsername1, '{enter}', '5688134485')
         expectedMessageCreateCustomer('Customer first name is required')
     })
 
     it('Verify that the First Name field is required when Last Name, Mobile Number, and Notes are filled', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo('{enter}', randUsername1, 'Notes', '508277835')
+        filloutCustInfo('{enter}', randUsername1, 'Notes', '5688134485')
         expectedMessageCreateCustomer('Customer first name is required')
     })
 
@@ -137,7 +137,7 @@ afterEach(() => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, '{enter}', '{enter}', '{enter}')
-        expectedMessageCreateCustomer('Customer mobile is required')
+        expectedMessageCreateCustomer('Mobile Number is too short')
     })
 
     
@@ -145,7 +145,7 @@ afterEach(() => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, randUsername1, '{enter}', '{enter}')
-        expectedMessageCreateCustomer('Customer mobile is required')
+        expectedMessageCreateCustomer('Mobile Number is too short')
     })
 
     
@@ -153,41 +153,26 @@ afterEach(() => {
         accessToCustSection()
         accessToAddCustForm()
         filloutCustInfo(randUsername2, randUsername1, '{enter}', '{enter}')
-        expectedMessageCreateCustomer('Customer mobile is required')
+        expectedMessageCreateCustomer('Mobile Number is too short')
     })
 
-    it.only('Verify Genders Male and Female are available', () => {
+    it('Verify Genders Male and Female are available', () => {
         accessToCustSection()
         accessToAddCustForm()
         cy.get('select').select('Female').should('be.visible')
         cy.get('select').select('Male').should('be.visible')
     })
 
-    it.only('Verify Gender is required when when First Name and mobile number is filled', () => {
+    it('Verify Gender Females is default ', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', '50827783')
-        expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
+        cy.get('select').select('Female').should('be.visible')
     })
 
-    it.only('Verify Gender is required when when First Name, Last Name and Mobile Number is filled', () => {
+    it('Verify that the Phone Number is validated', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo(randUsername2, randUsername1, '{enter}', '50827783')
-        expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
-    })
-
-    it.only('Verify Gender is required when when First Name, Last Name, Notes and Mobile Number is filled', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, randUsername1, 'NOTES', '50827783')
-        expectedMessageCreateCustomer("Invalid enum value. Expected 'M' | 'F', received 'B'")
-    })
-
-    it.only('Verify that the Phone Number is validated', () => {
-        accessToCustSection()
-        accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', '50827783')
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', '38717494')
         cy.get('select').select('Female')
         expectedMessageCreateCustomer('Invalid mobile number')
     })
@@ -197,7 +182,7 @@ afterEach(() => {
         accessToAddCustForm()
         filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
         cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
+        expectedMessageCreateCustomer('Mobile Number is too short')
     })
 
     it.skip('Verify it is possible to close the new customer form', () => {
@@ -205,7 +190,7 @@ afterEach(() => {
         accessToAddCustForm()
         filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
         cy.contains('span','Value contains no numbers').should('be.visible')
-        expectedMessageCreateCustomer('Customer mobile is required')
+        expectedMessageCreateCustomer('Mobile Number is too short')
     })
 })
 

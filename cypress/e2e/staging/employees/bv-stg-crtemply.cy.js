@@ -70,7 +70,7 @@ describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin cred
         cy.contains('h6','employees', { matchCase: false }).parent().next('div').find('button').eq(1).click({ force: true })
         cy.filloutProfileInfo(randUsername2, '{enter}', randEmail2, '{enter}', randUsername2, '1234567890')
         cy.contains('span','Permission Level').parent().next('select').should('exist')
-        cy.contains('span','Permission Level').parent().next('select').select('High')
+        cy.contains('span','Permission Level').parent().next('select').select('Medium')
         cy.selectAllServices()
         cy.filloutCommissionsInfo()
         cy.expectedMessageCreateEmployee('Employee created')
