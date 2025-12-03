@@ -45,44 +45,19 @@ Cypress.Commands.add('loginprod', (name, username, password) => {
     })
 })
 
-// -- This is a parent command to login into the Old Vendor STAGING--
-Cypress.Commands.add('loginov', (name, username, password) => {
-    cy.session(name,() => {
-        cy.visit(Cypress.env("URL_OldVendor_Staging")+ 'auth?nativeLogout=true')
-        cy.wait(1500)
-        cy.get('#username').should('be.visible');
-        cy.get('#password').should('be.visible');
-        cy.xpath('//button[text()="Sign in"]').should('be.visible');
-        cy.get('#username').click().type(username, {force: true, delay: 80})
-        cy.get('#password').click().type(password,{force: true, delay: 80})
-        cy.intercept('POST', '/ssr/main/api/auth/login').as('sign')
-        cy.get('button').contains('Sign in').click()
-        cy.wait(1000)
-        cy.wait('@sign').then((interception) => {
-            expect(interception.response.statusCode).to.equal(200)
-        })          
-    })
-})
+Cypress.Commands.add('closeWelcomeBackBanner', () => {
+  cy.document().then(doc => {
+    const h3 = Array.from(doc.querySelectorAll('h3'))
+      .find(el => el.textContent.includes('Welcome Back'))
 
-// -- This is a parent command to login into the Old Vendor PRODUCTION--
-Cypress.Commands.add('loginovprd', (name, username, password) => {
-    cy.session(name,() => {
-        //cy.visit('https://vendor.bookr.co/auth?nativeLogout=true')
-        cy.visit(Cypress.env("URL_OldVendor_Production") + 'auth?nativeLogout=true')
-        cy.wait(1000)
-        // cy.get('#username').should('be.visible');
-        // cy.get('#password').should('be.visible');
-        cy.xpath('//button[text()="Sign in"]').should('be.visible');
-        cy.get('#username').click().type(username, {force: true, delay: 80})
-        cy.get('#password').click().type(password,{force: true, delay: 80})
-        cy.intercept('POST', '/ssr/main/api/auth/login').as('sign')
-        cy.get('button').contains('Sign in').click()
-        cy.wait(1000)
-        cy.wait('@sign').then((interception) => {
-            expect(interception.response.statusCode).to.equal(200)
-        })          
-    })
-})
+    if (h3) {
+      cy.wrap(h3).next('button').click()
+      cy.log('Closed Welcome Back banner')
+    } else {
+      cy.log('Welcome Back banner not found')
+    }
+  })
+});
 
 // -- This is a parent command to logout from the Beta Vendor STAGGING --
 Cypress.Commands.add('logout', () => {
@@ -457,7 +432,7 @@ Cypress.Commands.add('addItemSubscription', (subs) => {
 })
 
 Cypress.Commands.add('fillButton', (method) => {
-    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').click()
+    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').first().click()
     cy.contains('h6', /^Total$/).next('span').then(($span) => {
         //total = $span.text().substring(4)
         const total = $span.text().split(" ")

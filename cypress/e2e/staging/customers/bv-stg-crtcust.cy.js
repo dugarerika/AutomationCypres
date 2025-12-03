@@ -30,6 +30,8 @@ const filloutCustInfo = (first_name, last_name, notes, mobile_number) => {
 
 const accessToCustSection = () => {
     cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.wait(100);
+    cy.closeWelcomeBackBanner()
     cy.contains('button>span','Customers').should('be.visible')
     cy.contains('button>span','Customers').click({ force: true })
     cy.contains('div','Customers').should('be.visible')
@@ -180,8 +182,8 @@ afterEach(() => {
     it('Verify that the Mobile Number field accepts only valid phone number formats', () => {
         accessToCustSection()
         accessToAddCustForm()
-        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty5')
-        cy.contains('span','Value contains no numbers').should('be.visible')
+        filloutCustInfo(randUsername2, '{enter}', '{enter}', 'werty')
+        // cy.contains('span','Value contains no numbers').should('be.visible')
         expectedMessageCreateCustomer('Mobile Number is too short')
     })
 

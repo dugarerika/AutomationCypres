@@ -13,6 +13,9 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+        cy.wait(100)
+        cy.contains('h3','Welcome Back!').next('button').click()
+        cy.wait(100)
     })
 
     afterEach(() => {
