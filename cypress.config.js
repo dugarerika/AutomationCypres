@@ -59,8 +59,8 @@ module.exports = defineConfig({
     env: {
       allureReuseAfterSpec: true,
       SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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',
-      URL_BetaVendor_Staging: "https://vendor.bookr-dev.com/",
-      URL_BetaVendor_Production: "https://vendor.bookr.co/",
+      URL_Staging: "https://vendor.bookr-dev.com/",
+      URL_Production: "https://vendor.bookr.co/",
       URL_Deeplink_Staging_artnailcorner: "https://bookr-dev.com/vendors/athary-world-nail-",
       Vendor0_Admin_Username_Staging: "nailedit",
       Vendor0_Admin_Password_Staging: "1234567890",

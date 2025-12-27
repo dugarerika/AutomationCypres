@@ -12,8 +12,8 @@
 // -- This is a parent command to log into the Beta Vendor STAGING --
 Cypress.Commands.add('login', (name, username, password) => {
     cy.session(name,() => {
-        cy.visit(Cypress.env("URL_BetaVendor_Staging"))
-        cy.url().should('include', Cypress.env("URL_BetaVendor_Staging") + 'auth')
+        cy.visit(Cypress.env("URL_Staging"))
+        cy.url().should('include', Cypress.env("URL_Staging") + 'auth')
         cy.get('[type="text"]').should('be.visible')
         cy.get('[type="password"]').should('be.visible')
         cy.xpath('//button[text()="Login"]').should('be.visible')
@@ -30,8 +30,8 @@ Cypress.Commands.add('login', (name, username, password) => {
 // -- This is a parent command to log into the Beta Vendor PRODUCTION --
 Cypress.Commands.add('loginprod', (name, username, password) => {
     cy.session(name,() => {
-        cy.visit(Cypress.env("URL_BetaVendor_Production"))
-        cy.url().should('include', Cypress.env("URL_BetaVendor_Production") + 'auth')
+        cy.visit(Cypress.env("URL_Production"))
+        cy.url().should('include', Cypress.env("URL_Production") + 'auth')
         cy.get('[type="text"]').should('be.visible')
         cy.get('[type="password"]').should('be.visible')
         cy.xpath('//button[text()="Login"]').should('be.visible')
@@ -65,38 +65,9 @@ Cypress.Commands.add('logout', () => {
 })
 
 // ------------------------------ Inventory/ Products Section --------------------------------
-// -- This is a child command for the create product section Old Vendor PRODUCTION--
-Cypress.Commands.add('accessToCreateProductovprod', () => {
-    //cy.visit('https://vendor.bookr.co/calendar')
-    cy.visit(Cypress.env("URL_OldVendor_Production") + 'calendar')
-    cy.contains('Inventory', { matchCase: false }).should('exist')
-    cy.contains('Inventory', { matchCase: false }).click({ force: true })
-    cy.wait(1000)
-    //cy.visit('https://vendor.bookr.co/inventory')
-    cy.visit(Cypress.env("URL_OldVendor_Production") + 'inventory')
-    cy.contains('div>h6', 'Products', { matchCase: false }).should('exist')
-    cy.contains('button', 'Add new', { matchCase: false }).should('exist')
-    cy.contains('button', 'Add new', { matchCase: false }).click({ force: true })
-    cy.contains('h3', 'Create Product').should('exist')
-})
-
-// -- This is a child command for the create product section Old Vendor STAGING--
-Cypress.Commands.add('accessToCreateProductov', () => {
-    //cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-    cy.visit(Cypress.env("URL_OldVendor_Staging") + 'calendar')
-    cy.contains('Inventory', { matchCase: false }).should('exist')
-    cy.contains('Inventory', { matchCase: false }).click({ force: true })
-    cy.wait(1000)
-    //cy.visit('https://staging.vendor.bookr-dev.com/inventory')
-    cy.visit(Cypress.env("URL_OldVendor_Staging") + 'inventory')
-    cy.contains('div>h6', 'Products', { matchCase: false }).should('exist')
-    cy.contains('button', 'Add new', { matchCase: false }).should('exist')
-    cy.contains('button', 'Add new', { matchCase: false }).click({ force: true })
-    cy.contains('h3', 'Create Product', { matchCase: false }).should('exist')
-})
 
 Cypress.Commands.add('accessToCreateProduct', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
     cy.contains('Inventory', { matchCase: false }).should('exist')
     cy.contains('Inventory', { matchCase: false }).click({ force: true })
     cy.contains('Products', { matchCase: false }).should('exist')
@@ -108,7 +79,7 @@ Cypress.Commands.add('accessToCreateProduct', () => {
 })
 
 Cypress.Commands.add('accessToCreateProductbvprod', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
     cy.contains('Inventory', { matchCase: false }).should('exist')
     cy.contains('Inventory', { matchCase: false }).click({ force: true })
     cy.contains('Products', { matchCase: false }).should('exist')
@@ -124,23 +95,6 @@ Cypress.Commands.add('accessToCreateProductbvprod', () => {
 Cypress.Commands.add('filloutProductBasicInfo', (prod_name, prod_barcode, prod_measurement, prod_short_description, prod_description) => {
     cy.contains('button', 'Basic info', { matchCase: false }).should('exist')
     cy.contains('button', 'Basic info', { matchCase: false }).click({ force: true })
-    cy.get('input[placeholder = "Enter product name"]').should('exist')
-    cy.get('input[placeholder = "Enter product name"]').type(prod_name)
-    cy.get('input[placeholder="Enter product barcode"]').should('exist')
-    cy.get('input[placeholder="Enter product barcode"]').type(prod_barcode)
-    cy.get('input[placeholder="Enter product measurement"]').should('exist')
-    cy.get('input[placeholder="Enter product measurement"]').type(prod_measurement)
-    cy.get('input[placeholder="Enter short description for your product"]').should('exist')
-    cy.get('input[placeholder="Enter short description for your product"]').type(prod_short_description)
-    cy.contains('label>span', 'Product description', { matchCase: false }).parents('label').next('div').find('textarea').first().should('exist')
-    cy.contains('label>span', 'Product description', { matchCase: false }).parents('label').next('div').find('textarea').first().type(prod_description)
-    // cy.get('textarea[placeholder="Enter product description"]').should('exist')
-    // cy.get('textarea[placeholder="Enter product description"]').type(prod_description)
-})
-
-Cypress.Commands.add('filloutProductBasicInfoov', (prod_name, prod_barcode, prod_measurement, prod_short_description, prod_description) => {
-    cy.contains('button', 'Basic Info', { matchCase: false }).should('exist')
-    cy.contains('button', 'Basic Info', { matchCase: false }).click({ force: true })
     cy.get('input[placeholder = "Enter product name"]').should('exist')
     cy.get('input[placeholder = "Enter product name"]').type(prod_name)
     cy.get('input[placeholder="Enter product barcode"]').should('exist')
@@ -185,7 +139,7 @@ Cypress.Commands.add('filloutProductInventoryInfo', (prod_ksu, prod_stock_qty, p
 // ------------------------------ Inventory/Supppliers Section --------------------------------
 
 Cypress.Commands.add('accessToCreateSuppliers', () =>{
-        cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+        cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
         cy.contains('Inventory').should('exist')
         cy.contains('Inventory').click({ force: true })
         cy.contains('Suppliers').should('exist')
@@ -198,7 +152,7 @@ Cypress.Commands.add('accessToCreateSuppliers', () =>{
 })
 
 Cypress.Commands.add('accessToCreateSuppliersProd', () =>{
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Suppliers').should('exist')
@@ -237,8 +191,8 @@ Cypress.Commands.add('expectedMessageCreateSupplier', (supplier_message) =>{
 
 // ------------------------------ Employee Section --------------------------------
 Cypress.Commands.add('deleteEmployee', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-    cy.url().should('include', Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+    cy.url().should('include', Cypress.env("URL_Staging") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
     cy.contains('All Employees').should('exist')
@@ -279,7 +233,6 @@ Cypress.Commands.add('filloutProfileInfo', (first_name, last_name, email, order,
     cy.contains('span','Order').parent().next('div').find('input').eq(0).type(order)
 })
 
-
 Cypress.Commands.add('selectAllServices', () => {
     cy.contains('div>button', 'Profile').scrollIntoView()
     cy.contains('div>button', 'Services').click({force: true})
@@ -303,8 +256,8 @@ Cypress.Commands.add('expectedMessageCreateEmployee', (product_message) => {
 
 // ------------------------------ Customer Section --------------------------------
 Cypress.Commands.add('deleteCustomer', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
-    cy.url().should('include', Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+    cy.url().should('include', Cypress.env("URL_Staging") + 'admin/calendar')
     cy.contains('Customers').click({ force: true })
     cy.get('table tbody').find('tr').eq(0).find('td').eq(7).find('span>div>svg').eq(1).click()
     cy.contains('button','Yes').click()
@@ -336,7 +289,7 @@ Cypress.Commands.add('searchTimeSlot', (staff,start_time) => {
 })
 
 Cypress.Commands.add('createappt', (staff,start_time,serv) => {
-    // cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+    // cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
     cy.searchTimeSlot(staff, start_time)
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type(`${serv}{downarrow}{enter}`)
     cy.contains('Create Appointment').click({force: true})
@@ -347,7 +300,7 @@ Cypress.Commands.add('createappt', (staff,start_time,serv) => {
 })
 
 Cypress.Commands.add('searchBlockTime', (staff,start_time) => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
+    cy.visit(Cypress.env("URL_Staging"))
     let color
     cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
