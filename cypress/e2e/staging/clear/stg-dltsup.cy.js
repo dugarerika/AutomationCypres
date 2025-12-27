@@ -5,7 +5,7 @@ const { should } = require("chai")
 
 
 const accessToDeleteSuppliers = () => {
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  cy.visit(Cypress.env("URL_Staging") + 'auth')
   cy.contains('Inventory', { matchCase: false }).should('exist')
   cy.contains('Inventory', { matchCase: false }).click({ force: true })
   cy.contains('Supplier', { matchCase: false }).should('exist')

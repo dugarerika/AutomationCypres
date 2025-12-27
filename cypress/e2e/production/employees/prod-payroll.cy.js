@@ -2,7 +2,7 @@
 /// <reference types="cypress-xpath" />
 
 const payrollSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
     cy.wait(199)
@@ -25,7 +25,6 @@ describe('Beta Vendor Admin | Employee | Payroll | logged with Admin credentials
         cy.contains('div>h6','Payrolls').should('exist')
     })
 
-// Add Employee Successfully
 // LOW Permission Level
     it('Verify it is possible to add an Employee with role Readonly by filling up All the required info, selecting all services and adding ', () => {
         payrollSection()

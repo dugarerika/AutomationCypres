@@ -18,19 +18,19 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
     })
 
     it('Verify it is possible to acces New Appointment modal by clicking on Add New/New Appointment on the Calendar', () => {
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')  
     })
 
     it('Verify duration is required in the New Appointment form on the Calendar', () => {
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('button','Create Appointment').click({force: true})
         cy.contains('div>span','Duration must be at least 1min').should('be.visible')
     })
 
     it('Verify employee is required in the New Appointment form on the Calendar', () => {
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('button','Create Appointment').click({force: true})
@@ -38,7 +38,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
     })
 
     it('Verify service is required in the New Appointment form on the Calendar', () => {
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
@@ -47,7 +47,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
     })
 
     it('Verify customer is not required in the New Appointment form on the Calendar', () => {
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{downarrow}{downarrow}{enter}')
@@ -64,7 +64,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
         };
         const dayNow = new Date().toLocaleDateString("en-US",options)
         cy.log(dayNow)
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Date').parent('div').find('input').click()
         cy.get(`[aria-label ="${dayNow}"]`).parent('button').next('button').click({force: true})
@@ -78,7 +78,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
     })
 
     it('Verify Start time for the offer (1 service) is required in the New Appointment form on the Calendar', () => {
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
@@ -95,7 +95,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
     })
 
     it('Verify offer is required in the New Appointment form on the Calendar', () => {
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
@@ -111,7 +111,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
 
     
     it('Verify it is possible to create a new appointment only for an offer (1 service)', () => {
-        cy.newAppt("URL_BetaVendor_Production")
+        cy.newAppt("URL_Production")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('Add New Item').should('exist')  
         cy.contains('Add New Item').click()

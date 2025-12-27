@@ -18,7 +18,7 @@ const expectedMessageCreateSubs = (product_message) => {
 }
 
 const deleteAppt = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production"))
+    cy.visit(Cypress.env("URL_Production"))
     cy.contains('button>span','Accounting').should('exist')
     cy.contains('button>span','Accounting').click({ force: true })
     cy.contains('li>button','Reports').should('exist')

@@ -9,7 +9,7 @@
 // ***********************************************
 //
 //
-// -- This is a parent command to log into the Beta Vendor STAGING --
+// -- This is a parent command to log into the STAGING --
 Cypress.Commands.add('login', (name, username, password) => {
     cy.session(name,() => {
         cy.visit(Cypress.env("URL_Staging"))
@@ -27,7 +27,7 @@ Cypress.Commands.add('login', (name, username, password) => {
     })
 })
 
-// -- This is a parent command to log into the Beta Vendor PRODUCTION --
+// -- This is a parent command to log into the PRODUCTION --
 Cypress.Commands.add('loginprod', (name, username, password) => {
     cy.session(name,() => {
         cy.visit(Cypress.env("URL_Production"))
@@ -147,8 +147,7 @@ Cypress.Commands.add('accessToCreateSuppliers', () =>{
         cy.contains('h6', 'Suppliers').should('exist')
         cy.contains('button', 'Add New', { matchCase: false }).should('exist')
         cy.contains('button', 'Add New', { matchCase: false }).click({ force: true })
-        cy.contains('h3', 'Add supplier').should('exist')
-        
+        cy.contains('h3', 'Add supplier').should('exist')      
 })
 
 Cypress.Commands.add('accessToCreateSuppliersProd', () =>{
@@ -160,8 +159,7 @@ Cypress.Commands.add('accessToCreateSuppliersProd', () =>{
     cy.contains('h6', 'Suppliers').should('exist')
     cy.contains('button', 'Add New', { matchCase: false }).should('exist')
     cy.contains('button', 'Add New', { matchCase: false }).click({ force: true })
-    cy.contains('h3', 'Add supplier').should('exist')
-    
+    cy.contains('h3', 'Add supplier').should('exist')  
 })
 
 
@@ -214,7 +212,7 @@ Cypress.Commands.add('deleteEmployee', () => {
     cy.get('tbody').find('tr').its('length').then(count => {
       if (count) {   // not count >= 0, because 0 means no elements
         cy.log(`there are ${count - 1} elements`)
-    }
+        }
     })
 })
 

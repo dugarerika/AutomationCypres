@@ -35,7 +35,7 @@ const filloutOfferInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub
 }
 
 const accessToCouponSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+    cy.visit(Cypress.env("URL_Production") + 'auth')
     cy.contains('button>span','Promotions').should('exist')
     cy.contains('button>span','Promotions').click({ force: true })
     cy.contains('li>button','Coupons').should('exist')

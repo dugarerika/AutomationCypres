@@ -4,7 +4,7 @@
 const { should } = require("chai")
   
 const searchTimeSlot = (staff,start_time) => {
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+  cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
   let color
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
@@ -16,7 +16,7 @@ const searchTimeSlot = (staff,start_time) => {
 }
 
 const searchApt = (staff,start_time) => {
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+  cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
   let color
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')

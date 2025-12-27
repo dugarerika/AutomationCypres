@@ -16,7 +16,7 @@ describe('Production - Beta Vendor Admin | Inventory | Create products| logged w
     cy.clearCookies()
   })
   it('Verify it is possible access to the Inventory/Product section', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+    cy.visit(Cypress.env("URL_Production") + 'auth')
     cy.contains('Inventory', { matchCase: false }).should('exist')
     cy.contains('Inventory', { matchCase: false }).click({ force: true })
     cy.contains('Products', { matchCase: false }).should('exist')
@@ -400,7 +400,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
   
   it('Verify brand name is required when creating a brand', () => {
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+    cy.visit(Cypress.env("URL_Production") + 'auth')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')
@@ -421,7 +421,7 @@ it('Verify it is not possible to create a Product by filling up Price Name and a
 
 it('Verify category name is required when creating a category', () => {
   //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-  cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+  cy.visit(Cypress.env("URL_Production") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
   cy.contains('Products').should('exist')
@@ -442,7 +442,7 @@ it('Verify category name is required when creating a category', () => {
 
 it('Verify bookr category is required when creating a category', () => {
   //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-  cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+  cy.visit(Cypress.env("URL_Production") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
   cy.contains('Products').should('exist')

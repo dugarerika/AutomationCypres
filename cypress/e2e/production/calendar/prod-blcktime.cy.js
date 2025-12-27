@@ -4,7 +4,7 @@
 const { should } = require("chai")
 
 const newBlockTime = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
     // cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').click({force: true})
     // cy.contains('li','New Block Time').should('be.visible')

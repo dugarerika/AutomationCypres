@@ -19,7 +19,7 @@ const expectedMessageCreateSubs = (product_message) => {
 
 
 const accessToSubsSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+    cy.visit(Cypress.env("URL_Production") + 'auth')
     cy.contains('button>span','Subscriptions').should('exist')
     cy.contains('button>span','Subscriptions').click({ force: true })
     cy.contains('h6','Subscriptions').should('exist')

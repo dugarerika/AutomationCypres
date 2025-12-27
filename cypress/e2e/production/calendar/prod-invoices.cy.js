@@ -21,7 +21,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
 
         // Checkout successfully - Subscriptions
     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription without discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -38,7 +38,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
         cy.contains('span', 'Email has been sent').should('exist')
     })
     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription with percentage discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -57,7 +57,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
     })
 
     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription with fixed discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -77,7 +77,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
 
         // Checkout successfully - Offers
     it(' Verify that the invoice is successfully sent by email - Walkin - 1 Offer without discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemOffer('Down Payment Offer')
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
@@ -90,7 +90,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
         cy.contains('span', 'Email has been sent').should('exist')
     })
     it(' Verify that the invoice is successfully sent by email - Walking - 1 Offer with percentage discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemOffer('Down Payment Offer')
         cy.addPercentageDiscount('Down Payment Offer','40','15')
         cy.fillButton('Cash')
@@ -105,7 +105,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
     })
 
     it(' Verify that the invoice is successfully sent by email - Walking - 1 Offer with fixed discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemOffer('Down Payment Offer')
         cy.addFixedDiscount('Down Payment Offer','5','15')
         cy.fillButton('Cash')
@@ -121,7 +121,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
 
     // Checkout successfully - Services Invoices
     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service without discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemService('Short Hair')
         cy.fillButton('Cash')
         cy.addEmployee('Zumba')
@@ -135,7 +135,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
         cy.contains('span', 'Email has been sent').should('exist')
     })
     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service with a percentage discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemService('Hair Cut')
         cy.addPercentageDiscount('Hair Cut','40','15')
         cy.fillButton('Cash')
@@ -151,7 +151,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
     })
 
     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service with a fix discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemService('Long Hair')
         cy.addFixedDiscount('Long Hair','5','15')
         cy.fillButton('Cash')
@@ -169,7 +169,7 @@ describe('Production - Beta Vendor Admin | Calendar| Invoices generate from New 
     // checkout successfully - Giftcards Invoices
 
     it(' Verify that the invoice is successfully sent by email - Walkin - GiftCard', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemGiftCard("243.48 KWD Gift Card")
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
@@ -200,7 +200,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 
         // Checkout successfully - Subscriptions
     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription without discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -217,7 +217,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.contains('span', 'Email has been sent').should('exist')
     })
     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription with percentage discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -236,7 +236,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     })
 
     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription with fixed discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -256,7 +256,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 
         // Checkout successfully - Offers
     it(' Verify that the invoice is successfully sent by email - Walkin - 1 Offer without discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemOffer('Down Payment Offer')
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
@@ -269,7 +269,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.contains('span', 'Email has been sent').should('exist')
     })
     it(' Verify that the invoice is successfully sent by email - Walking - 1 Offer with percentage discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemOffer('Down Payment Offer')
         cy.addPercentageDiscount('Down Payment Offer','40','15')
         cy.fillButton('Cash')
@@ -284,7 +284,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     })
 
     it(' Verify that the invoice is successfully sent by email - Walking - 1 Offer with fixed discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemOffer('Down Payment Offer')
         cy.addFixedDiscount('Down Payment Offer','5','15')
         cy.fillButton('Cash')
@@ -300,7 +300,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 
     // Checkout successfully - Services Invoices
     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service without discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemService('Short Hair')
         cy.fillButton('Cash')
         cy.addEmployee('Zumba')
@@ -314,7 +314,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.contains('span', 'Email has been sent').should('exist')
     })
     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service with a percentage discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemService('Hair Cut')
         cy.addPercentageDiscount('Hair Cut','40','15')
         cy.fillButton('Cash')
@@ -330,7 +330,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     })
 
     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service with a fix discount', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemService('Long Hair')
         cy.addFixedDiscount('Long Hair','5','15')
         cy.fillButton('Cash')
@@ -348,7 +348,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     // checkout successfully - Giftcards Invoices
 
     it.only(' Verify that the invoice is successfully sent by email - Walkin - GiftCard', () => {
-        cy.newCheckout("URL_BetaVendor_Production")
+        cy.newCheckout("URL_Production")
         cy.addItemGiftCard("243.48 KWD Gift Card")
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
@@ -379,7 +379,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 
 //         // Checkout successfully - Subscriptions
 //     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription without discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.contains('button','Change customer').click()
 //         cy.contains('div','Search customer..').should('be.visible')
 //         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -396,7 +396,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //         cy.contains('span', 'Email has been sent').should('exist')
 //     })
 //     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription with percentage discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.contains('button','Change customer').click()
 //         cy.contains('div','Search customer..').should('be.visible')
 //         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -415,7 +415,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //     })
 
 //     it(' Verify that the invoice is successfully sent by email - Customer added - 1 Subscription with fixed discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.contains('button','Change customer').click()
 //         cy.contains('div','Search customer..').should('be.visible')
 //         cy.contains('div','Search customer..').next().find('input').type('Alejandra Dugar{enter}', { delay: 1000})
@@ -435,7 +435,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 
 //         // Checkout successfully - Offers
 //     it(' Verify that the invoice is successfully sent by email - Walkin - 1 Offer without discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.addItemOffer('Down Payment Offer')
 //         cy.fillButton('Cash')
 //         cy.expectedMessageCompleteSale('Sale Completed')
@@ -448,7 +448,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //         cy.contains('span', 'Email has been sent').should('exist')
 //     })
 //     it(' Verify that the invoice is successfully sent by email - Walking - 1 Offer with percentage discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.addItemOffer('Down Payment Offer')
 //         cy.addPercentageDiscount('Down Payment Offer','40')
 //         cy.fillButton('Cash')
@@ -463,7 +463,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //     })
 
 //     it(' Verify that the invoice is successfully sent by email - Walking - 1 Offer with fixed discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.addItemOffer('Down Payment Offer')
 //         cy.addFixedDiscount('Down Payment Offer','5')
 //         cy.fillButton('Cash')
@@ -479,7 +479,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 
 //     // Checkout successfully - Services Invoices
 //     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service without discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.addItemService('Short Hair')
 //         cy.fillButton('Cash')
 //         cy.addEmployee('Zumba')
@@ -493,7 +493,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //         cy.contains('span', 'Email has been sent').should('exist')
 //     })
 //     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service with a percentage discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.addItemService('Hair Cut')
 //         cy.addPercentageDiscount('Hair Cut','40')
 //         cy.fillButton('Cash')
@@ -509,7 +509,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //     })
 
 //     it(' Verify that the invoice is successfully sent by email - Walkin - 1 service with a fix discount', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.addItemService('Long Hair')
 //         cy.addFixedDiscount('Long Hair','5')
 //         cy.fillButton('Cash')
@@ -527,7 +527,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //     // checkout successfully - Giftcards Invoices
 
 //     it(' Verify that the invoice is successfully sent by email - Walkin - GiftCard', () => {
-//         cy.newCheckout("URL_BetaVendor_Production")
+//         cy.newCheckout("URL_Production")
 //         cy.addItemGiftCard("243.48 SAR Gift Card")
 //         cy.fillButton('Cash')
 //         cy.expectedMessageCompleteSale('Sale Completed')

@@ -4,7 +4,7 @@
 const { should } = require("chai")
   
 const searchTimeSlot = (staff,start_time) => {
-  cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+  cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
   let color
   const regex = new RegExp('^' + staff, 'i') // regex to match the start of the sentence
   cy.contains('div>span',regex).parent('div').then(($div) => {
@@ -17,7 +17,7 @@ const searchTimeSlot = (staff,start_time) => {
 }
 
 const searchApt = (staff,start_time) => {
-  cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+  cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
   let color
   const regex = new RegExp('^' + staff, 'i')
   cy.contains('div>span',regex).parent('div').then(($div) => {
@@ -43,7 +43,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth?nativeLogout=true')
+  cy.visit(Cypress.env("URL_Production") + 'auth?nativeLogout=true')
 })
 
 it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
@@ -160,11 +160,11 @@ describe.only('Production - Beta Vendor Admin | Calendar | Create appointments b
   })
 
   afterEach(() => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth?nativeLogout=true')
+    cy.visit(Cypress.env("URL_Production") + 'auth?nativeLogout=true')
   })
 
   after(() => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+    cy.visit(Cypress.env("URL_Production") + 'auth')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
@@ -289,11 +289,11 @@ describe.only('Production - Beta Vendor Admin | Calendar | Create appointments b
   })
 
   afterEach(() => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth?nativeLogout=true')
+    cy.visit(Cypress.env("URL_Production") + 'auth?nativeLogout=true')
   })
 
   after(() => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+    cy.visit(Cypress.env("URL_Production") + 'auth')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
@@ -398,7 +398,7 @@ describe.only('Production - Beta Vendor Admin | Calendar| Create appointments by
   })
 
   after(() => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'auth')
+    cy.visit(Cypress.env("URL_Production") + 'auth')
   })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials', () => {

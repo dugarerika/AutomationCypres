@@ -29,7 +29,7 @@ const filloutCustInfo = (first_name, last_name, notes, mobile_number) => {
 }
 
 const accessToCustSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.visit(Cypress.env("URL_Staging") + 'auth')
     cy.wait(100);
     cy.closeWelcomeBackBanner()
     cy.contains('button>span','Customers').should('be.visible')
@@ -40,7 +40,7 @@ const accessToCustSection = () => {
 }
 
 const accessToBlackTab = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.visit(Cypress.env("URL_Staging") + 'auth')
     cy.contains('button>span','Customers').should('be.visible')
     cy.contains('button>span','Customers').click({ force: true })
     cy.contains('div','Customers').should('be.visible')

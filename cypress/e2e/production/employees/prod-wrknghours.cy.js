@@ -2,7 +2,7 @@
 /// <reference types="cypress-xpath" />
 
 const employeeWorkingHoursSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
     cy.wait(199)

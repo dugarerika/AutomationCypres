@@ -5,7 +5,7 @@ const { should } = require("chai")
 
 const login = (name, username, password) => {
   cy.session(name, () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging"))
+    cy.visit(Cypress.env("URL_Staging"))
     cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
     cy.get('[type="text"]').should('be.visible')
     cy.get('[type="password"]').should('be.visible')
@@ -21,7 +21,7 @@ const login = (name, username, password) => {
 }
 
 const accessCategory = () => {
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+  cy.visit(Cypress.env("URL_Staging") + 'auth')
   cy.contains('Inventory').click({ force: true })
   cy.contains('Products').should('exist')
   cy.contains('Products').click({ force: true })
@@ -61,7 +61,7 @@ describe('Beta Vendor Admin | Inventory | Delete Cateogories| logged with Admin 
   })
 
   it('Verify it is possible delete category', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.visit(Cypress.env("URL_Staging") + 'auth')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Products').should('exist')

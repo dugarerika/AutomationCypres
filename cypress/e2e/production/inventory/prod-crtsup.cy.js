@@ -26,7 +26,7 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
   })
 
   it('Verify it is possible access to the Inventory/Suplliers section', () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Production") + 'admin/calendar')
+    cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Suppliers').should('exist')

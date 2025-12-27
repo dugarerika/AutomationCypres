@@ -35,7 +35,7 @@ const filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessio
 }
 
 const accessToSubsSection = () => {
-    cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'auth')
+    cy.visit(Cypress.env("URL_Staging") + 'auth')
     cy.contains('button>span','Subscriptions').should('exist')
     cy.contains('button>span','Subscriptions').click({ force: true })
     cy.contains('h6','Subscriptions').should('exist')
