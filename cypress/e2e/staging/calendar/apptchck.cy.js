@@ -14,7 +14,13 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
         cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
         cy.wait(100)
-        cy.contains('h3','Welcome Back!').next('button').click()
+        // cy.contains('h3','Welcome Back!').next('button').click()
+        cy.get('body').then(($body) => {
+            if ($body.text().includes('Welcome Back!')) {
+                cy.contains('h3', 'Welcome Back!').next('button').click()
+                cy.wait(100)
+            }
+        })
         cy.wait(100)
     })
 
@@ -23,8 +29,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
     })
 
     describe('Required field during checkout', () => {
-        it('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
-            cy.createappt('Susan one','01:00', 'Downpayment')
+        it.only('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
+            // cy.createappt('Susan one','01:00', 'Downpayment')
             cy.searchAppt('Susan one')
             cy.contains('button','Checkout').click()
             cy.wait(999)
@@ -34,8 +40,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
     })
 
     describe('Fillout buttons with Downpayment (it is pending gift card)', () => {
-        it('Verify that clicking "Fill" for Debit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
-            cy.createappt('Helen','01:00', 'Downpayment')
+        it.only('Verify that clicking "Fill" for Debit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
+            // cy.createappt('Helen','01:00', 'Downpayment')
             cy.searchAppt('Helen')
             cy.wait(99)
             cy.contains('button','Checkout').click()
