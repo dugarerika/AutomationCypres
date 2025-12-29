@@ -4,7 +4,7 @@
 const { should } = require("chai")
 
 const accessToEditSuppliers = () => {
-  cy.visit(Cypress.env("URL_BetaVendor_Staging") + 'admin/calendar')
+  cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Supplier').should('exist')

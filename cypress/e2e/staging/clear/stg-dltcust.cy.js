@@ -69,7 +69,7 @@ describe('Staging - Beta Vendor Admin | Employee | Delete Employee| logged with 
     cy.deleteCustomer()
     cy.deleteCustomer()
     cy.deleteCustomer()
-        cy.deleteCustomer()
+    cy.deleteCustomer()
     cy.deleteCustomer()
     cy.deleteCustomer()
     cy.deleteCustomer()
