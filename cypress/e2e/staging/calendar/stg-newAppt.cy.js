@@ -10,7 +10,18 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
     
     beforeEach(() => {
+        // cy.clearCookies()
+        // cy.clearLocalStorage()
         cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+        cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+        // cy.contains('h3','Welcome Back!').next('button').click()
+        cy.get('body').then(($body) => {
+            if ($body.text().includes('Welcome Back!')) {
+                cy.contains('h3', 'Welcome Back!').next('button').click()
+                cy.wait(100)
+            }
+        })
+        cy.wait(100)
     })
 
     afterEach(() => {
@@ -25,7 +36,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     it('Verify duration is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Duration must be at least 1min').should('be.visible')
     })
 
@@ -33,7 +44,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Employee is required').should('be.visible')
     })
 
@@ -42,7 +53,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Some services are not available').should('be.visible')
     })
 
@@ -52,7 +63,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 
@@ -73,7 +84,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Start Time').parent('div').find('input').click().type('09:00 PM{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 
@@ -90,7 +101,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('Add Offer').click()
         cy.contains('div','Offer').should('exist')  
         cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Please Select Start Time for all Offer Services').should('be.visible')
     })
 
@@ -105,7 +116,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('Add New Item').click()
         cy.contains('Add Offer').should('exist')  
         cy.contains('Add Offer').click()
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Some offers are not available').should('be.visible')
     })
 
@@ -122,7 +133,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('ErikaT{downarrow}{enter}')
         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
         cy.get('.css-1dukv94').eq(0).children('button').click({force: true})
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 })
@@ -134,7 +145,9 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
     
     beforeEach(() => {
-        cy.login('Staff Session', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
+        cy.clearCookies()
+        cy.clearLocalStorage()
+        cy.login('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
     })
 
     afterEach(() => {
@@ -149,7 +162,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     it('Verify duration is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Duration must be at least 1min').should('be.visible')
     })
 
@@ -157,7 +170,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Employee is required').should('be.visible')
     })
 
@@ -165,8 +178,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{enter}')
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Some services are not available').should('be.visible')
     })
 
@@ -174,9 +187,9 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{downarrow}{downarrow}{enter}')
+        cy.contains('label','Staff').parent('div').find('input').click().type('Helen{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 
@@ -197,7 +210,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{enter}')
         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
         cy.contains('label','Start Time').parent('div').find('input').click().type('08:00 PM{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 
@@ -214,7 +227,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('Add Offer').click()
         cy.contains('div','Offer').should('exist')  
         cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Please Select Start Time for all Offer Services').should('be.visible')
     })
 
@@ -229,7 +242,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('Add New Item').click()
         cy.contains('Add Offer').should('exist')  
         cy.contains('Add Offer').click()
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Some offers are not available').should('be.visible')
     })
 
@@ -246,7 +259,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('ErikaT{downarrow}{enter}')
         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
         cy.get('.css-1dukv94').eq(0).children('button').click({force: true})
-        cy.contains('button','Create Appointment').click({force: true})
+        cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 })
@@ -273,7 +286,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
 //     it('Verify duration is required in the New Appointment form on the Calendar', () => {
 //         cy.newAppt("URL_Staging")
 //         cy.contains('New Appointment').should('be.visible')
-//         cy.contains('button','Create Appointment').click({force: true})
+//         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
 //         cy.contains('div>span','Duration must be at least 1min').should('be.visible')
 //     })
 
@@ -281,7 +294,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
 //         cy.newAppt("URL_Staging")
 //         cy.contains('New Appointment').should('be.visible')
 //         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
-//         cy.contains('button','Create Appointment').click({force: true})
+//         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
 //         cy.contains('div>span','Employee is required').should('be.visible')
 //     })
 
@@ -290,7 +303,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
 //         cy.contains('New Appointment').should('be.visible')
 //         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
 //         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{enter}')
-//         cy.contains('button','Create Appointment').click({force: true})
+//         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
 //         cy.contains('div>span','Some services are not available').should('be.visible')
 //     })
 
@@ -300,7 +313,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
 //         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
 //         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{downarrow}{downarrow}{enter}')
 //         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
-//         cy.contains('button','Create Appointment').click({force: true})
+//         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
 //         cy.contains('div>span','Booking Created Successfully').should('be.visible')
 //     })
 
@@ -321,7 +334,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
 //         cy.contains('label','Staff').parent('div').find('input').click().type('ALEX ALEX{downarrow}{enter}')
 //         cy.contains('label','Service').parent('div').find('input').click().type('{downarrow}{downarrow}{downarrow}{enter}')
 //         cy.contains('label','Start Time').parent('div').find('input').click().type('09:00 PM{enter}')
-//         cy.contains('button','Create Appointment').click({force: true})
+//         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
 //         cy.contains('div>span','Booking Created Successfully').should('be.visible')
 //     })
 
@@ -338,7 +351,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
 //         cy.contains('Add Offer').click()
 //         cy.contains('div','Offer').should('exist')  
 //         cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
-//         cy.contains('button','Create Appointment').click({force: true})
+//         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
 //         cy.contains('div>span','Please Select Start Time for all Offer Services').should('be.visible')
 //     })
 
@@ -353,7 +366,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
 //         cy.contains('Add New Item').click()
 //         cy.contains('Add Offer').should('exist')  
 //         cy.contains('Add Offer').click()
-//         cy.contains('button','Create Appointment').click({force: true})
+//         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
 //         cy.contains('div>span','Some offers are not available').should('be.visible')
 //     })
 
@@ -370,7 +383,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
 //         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('ErikaT{downarrow}{enter}')
 //         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
 //         cy.get('.css-1dukv94').eq(0).children('button').click({force: true})
-//         cy.contains('button','Create Appointment').click({force: true})
+//         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
 //         cy.contains('div>span','Booking Created Successfully').should('be.visible')
 //     })
 // })

@@ -64,6 +64,14 @@ describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin crede
 
   beforeEach(() => {
     cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
+        // cy.contains('h3','Welcome Back!').next('button').click()
+    cy.get('body').then(($body) => {
+        if ($body.text().includes('Welcome Back!')) {
+            cy.contains('h3', 'Welcome Back!').next('button').click()
+            cy.wait(100)
+        }
+    })
+    cy.wait(100)
   })
 
   afterEach(() => {

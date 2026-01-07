@@ -383,7 +383,7 @@ Cypress.Commands.add('addItemSubscription', (subs) => {
 })
 
 Cypress.Commands.add('fillButton', (method) => {
-    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').first().click()
+    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').children('.fill').find('button').click()
     cy.contains('h6', /^Total$/).next('span').then(($span) => {
         //total = $span.text().substring(4)
         const total = $span.text().split(" ")
@@ -397,7 +397,7 @@ Cypress.Commands.add('fillButton', (method) => {
 })
 
 Cypress.Commands.add('fillButtonDonwpayment', (method) => {
-    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').find('button').click()
+    cy.contains('label', method, { matchCase: false }).parent('div').parent('div').next('div').children('.fill').find('button').click()
     cy.contains('h6', /^Down Payment$/).next('span').then(($span) => {
         //total = $span.text().substring(4)
         const total = $span.text().split(" ")
@@ -634,7 +634,7 @@ Cypress.Commands.add('newBlockTime', (environment) => {
 Cypress.Commands.add('newAppt', (environment) => {
     cy.visit(Cypress.env(environment))
     // cy.contains('button','Add New').should('be.visible')
-    cy.contains('button','Add New').should('be.visible').click()
+    cy.contains('button','Add New').should('be.visible').click({force: true})
     cy.wait(10)
     // cy.contains('li','New Appointment').should('be.visible')
     cy.contains('li','New Appointment').should('be.visible').click({force: true})

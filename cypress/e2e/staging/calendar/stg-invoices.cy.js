@@ -12,6 +12,16 @@ describe('Staging - Beta Vendor Admin | Calendar| Invoices generate from New Che
     
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
+        cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+        cy.wait(10000)
+        // cy.contains('h3','Welcome Back!').next('button').click()
+        cy.get('body').then(($body) => {
+            if ($body.text().includes('Welcome Back!')) {
+                cy.contains('h3', 'Welcome Back!').next('button').click()
+                cy.wait(100)
+            }
+        })
+        cy.wait(100)
     })
 
     afterEach(() => {
