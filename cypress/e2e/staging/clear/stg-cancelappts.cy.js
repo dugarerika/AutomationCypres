@@ -48,6 +48,17 @@ describe('Staging - Beta Vendor Admin | Employee | Cancel Appointments| logged w
     
     beforeEach(() => {
         cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+                cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+        cy.wait(10000)
+        // cy.contains('h3','Welcome Back!').next('button').click()
+        cy.get('body').then(($body) => {
+            if ($body.text().includes('Welcome Back!')) {
+                cy.contains('h3', 'Welcome Back!').next('button').click()
+                cy.wait(100)
+            }
+        })
+        cy.wait(100)
+
     })
 
     // afterEach(() => {
@@ -57,6 +68,100 @@ describe('Staging - Beta Vendor Admin | Employee | Cancel Appointments| logged w
     // Add Subscription form fiels validation
 
     it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+    
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+        deleteAppt()
+    })
+
+        it('Cancel Appointment', () => {
         deleteAppt()
     })
 

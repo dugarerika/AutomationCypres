@@ -71,7 +71,7 @@ it('Verify it is possible to create a new appointment for 1 service and 1 offer'
   }) 
 
 it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-  searchTimeSlot('Susan one','06:00') 
+  searchTimeSlot('Susan one','07:00') 
   cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
   cy.contains('Create Appointment').click({force: true})
@@ -82,7 +82,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
 })
 
 it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
-  searchTimeSlot('Naomi Naomi','06:00') 
+  searchTimeSlot('Naomi Naomi','07:00') 
   cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -187,7 +187,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     }) 
 
   it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-    searchTimeSlot('Susan one','07:00')
+    searchTimeSlot('Mateo','04:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -303,7 +303,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     }) 
     
   it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-    searchTimeSlot('Zumba Zumba','06:00')
+    searchTimeSlot('Zumba Zumba','04:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})

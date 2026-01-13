@@ -64,7 +64,7 @@
     "ARTNAILCORNER-staging-calendar:crtapt": "cypress run --browser chrome --spec 'cypress/e2e/staging/calendar/stg-crtapt.cy.js'",
     "cy:staging-calendar:crtaptnaqa": "cypress run --browser chrome --spec 'cypress/e2e/staging/naqa/stg-crtaptfornaqa.cy.js'",
     "cy:staging-calendar:invoices": "cypress run --spec 'cypress/e2e/staging/calendar/stg-invoices.cy.js'",
-    "ARTNAILCORNER-staging-calendar:newappt": "cypress run --spec 'cypress/e2e/staging/calendar/stg-newappt.cy.js'",
+    "ARTNAILCORNER-staging-calendar:newappt": "cypress run --browser chrome --spec 'cypress/e2e/staging/calendar/stg-newappt.cy.js'",
     "COCOCUTSALON-staging-calendar:newchck": "cypress run --browser chrome --spec 'cypress/e2e/staging/calendar/stg-newchck.cy.js'",
     "cy:staging-calendar:apptchck": "cypress run --spec 'cypress/e2e/staging/calendar/stg-apptchck.cy.js'",
     "cy:staging-coupons:crtcoupons": "cypress run --spec 'cypress/e2e/staging/coupons/stg-crtCoupons.cy.js'",
