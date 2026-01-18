@@ -21,6 +21,12 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
                 cy.wait(80)
             }
         })
+        cy.get('body').then(($body) => {
+            if ($body.text().includes('Welcome Back!')) {
+                cy.contains('h6', 'Enable Notifications').next('button').scrollIntoView().click()
+                cy.wait(80)
+            }
+        })
         cy.wait(80)
     })
 

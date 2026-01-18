@@ -20,11 +20,11 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
             on("before:browser:launch", (browser, launchOptions) => {
         if (["chrome", "edge"].includes(browser.name)) {
-          launchOptions.args.push("--no-sandbox");
-          launchOptions.args.push("--disable-gl-drawing-for-tests");
+          launchOptions.args.push("--window-size=3840,2160");
+          launchOptions.args.push("--force-device-scale-factor=1");
+          launchOptions.args.push("--high-dpi-support=1");
           launchOptions.args.push("--disable-gpu");
-          launchOptions.args.push("--js-flags=--max-old-space-size=3500");
-          launchOptions.args.push("--force-device-scale-factor=0.67");
+          launchOptions.args.push("--no-sandbox");
         }
         return launchOptions;
       });
@@ -45,8 +45,8 @@ module.exports = defineConfig({
     screenshotOnRunFailure: false,
     trashAssetsBeforeRuns: true,
     video: false,
-    viewportWidth: 1920,
-    viewportHeight: 1080,
+    viewportWidth: 3840,
+    viewportHeight: 2160,
     experimentalMemoryManagement: true,
     numTestsKeptInMemory: 0,
     // reporter: 'mochawesome',
