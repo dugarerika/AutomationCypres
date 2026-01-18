@@ -41,7 +41,7 @@
     "cy:staging-clear:dltsup": "cypress run --spec 'cypress/e2e/staging/clear/stg-dltsup.cy.js'",
     "cy:all-except-newcheckout": "cypress run --spec 'cypress/e2e/staging/calendar/{stg-blcktime.cy.js,stg-crtapt.cy.js,stg-newAppt.cy.js,stg-invoices.cy.js},cypress/e2e/staging/{coupons,customers,employees,inventory,offers,subscriptions}/*.cy.js'",
     "cy:all-except-newchk-crtapt-crtcust": "cypress run --spec \"cypress/e2e/staging/calendar/stg-blcktime.cy.js,cypress/e2e/staging/calendar/stg-invoices.cy.js,cypress/e2e/staging/calendar/stg-newAppt.cy.js,cypress/e2e/staging/coupons/stg-crtCoupons.cy.js,cypress/e2e/staging/employees/stg-attendances.cy.js,cypress/e2e/staging/employees/stg-contracts.cy.js,cypress/e2e/staging/employees/stg-crtemplcy.cy.js,cypress/e2e/staging/employees/stg-payroll.cy.js,cypress/e2e/staging/employees/stg-wrknghours.cy.js,cypress/e2e/staging/inventory/stg-crtprod.cy.js,cypress/e2e/staging/inventory/stg-crtsup.cy.js,cypress/e2e/staging/inventory/stg-edtsup.cy.js,cypress/e2e/staging/offers/stg-crtsoffer.cy.js,cypress/e2e/staging/subscriptions/stg-crtsubs.cy.js\"",
-    "cy:staging:all": "cypress run --spec 'cypress/e2e/staging/**/*.cy.js'",
+    "cy:staging:all": "cypress run --browser chrome --spec 'cypress/e2e/staging/**/*.cy.js'",
     "cy:prod:all": "cypress run --spec 'cypress/e2e/production/**/*.cy.js'",
     "cy:prod-inventory:createProducts": "cypress run --spec 'cypress/e2e/production/inventory/prod-crtprod.cy.js'",
     "cy:prod-inventory:edtsup": "cypress run --spec 'cypress/e2e/production/inventory/prod-edtsup.cy.js'",
