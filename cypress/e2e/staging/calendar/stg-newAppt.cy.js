@@ -4,10 +4,10 @@ const { should } = require("chai")
 
 describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
 
-    before(() => {
-        // ensure clean test slate for these tests
-        cy.then(Cypress.session.clearAllSavedSessions)
-    })
+    // before(() => {
+    //     // ensure clean test slate for these tests
+    //     cy.then(Cypress.session.clearAllSavedSessions)
+    // })
     
     beforeEach(() => {
         // cy.clearCookies()

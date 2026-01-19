@@ -29,10 +29,10 @@ const searchApt = (staff,start_time) => {
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
-before(() => {
-    // ensure clean test slate for these tests
-    cy.then(Cypress.session.clearAllSavedSessions)
-})
+// before(() => {
+//     // ensure clean test slate for these tests
+//     cy.then(Cypress.session.clearAllSavedSessions)
+// })
 
 beforeEach(() => {
     cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
@@ -266,10 +266,10 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 })
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
-  before(() => {
-    // ensure clean test slate for these tests
-    cy.then(Cypress.session.clearAllSavedSessions)
-  })
+  // before(() => {
+  //   // ensure clean test slate for these tests
+  //   cy.then(Cypress.session.clearAllSavedSessions)
+  // })
   
   beforeEach(() => {
     cy.login('Staff Session', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
@@ -279,9 +279,9 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.clearCookies()
   })    
 
-  afterEach(() => {
-    cy.clearCookies()
-  })
+  // afterEach(() => {
+  //   cy.clearCookies()
+  // })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
     searchTimeSlot('Zumba Zumba','03:00')

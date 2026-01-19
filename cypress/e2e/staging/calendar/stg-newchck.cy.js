@@ -5,10 +5,10 @@ const { should } = require("chai")
 
 describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
 
-    before(() => {
-        // ensure clean test slate for these tests
-        cy.then(Cypress.session.clearAllSavedSessions)
-    })  
+    // before(() => {
+    //     // ensure clean test slate for these tests
+    //     cy.then(Cypress.session.clearAllSavedSessions)
+    // })  
     
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))

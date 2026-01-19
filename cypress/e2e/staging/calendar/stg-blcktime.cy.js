@@ -5,10 +5,10 @@ const { should } = require("chai")
 
 describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials', () => {
 
-    before(() => {
-        // ensure clean test slate for these tests
-        cy.then(Cypress.session.clearAllSavedSessions)
-    })
+    // before(() => {
+    //     // ensure clean test slate for these tests
+    //     cy.then(Cypress.session.clearAllSavedSessions)
+    // })
     
     beforeEach(() => {
         cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))

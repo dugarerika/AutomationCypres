@@ -5,33 +5,31 @@ const { should } = require("chai")
 
 describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged with Admin Credentials', () => {
 
-    before(() => {
-        // ensure clean test slate for these tests
-        cy.then(Cypress.session.clearAllSavedSessions)
-    })  
+    // before(() => {
+    //     // ensure clean test slate for these tests
+    //     // cy.then(Cypress.session.clearAllSavedSessions)
+    // })  
     
     beforeEach(() => {
         // cy.viewport(3840,2160)
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
         cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
-        cy.wait(80)
+        cy.wait(8000)
         cy.get('body').then(($body) => {
             if ($body.text().includes('Welcome Back!')) {
                 cy.contains('h3', 'Welcome Back!').next('button').scrollIntoView().click()
-                cy.wait(80)
+                cy.wait(8000)
             }
-        })
-        cy.get('body').then(($body) => {
-            if ($body.text().includes('Welcome Back!')) {
+            if ($body.text().includes('Enable Notifications')) {
                 cy.contains('h6', 'Enable Notifications').next('button').scrollIntoView().click()
-                cy.wait(80)
+                cy.wait(80000)
             }
         })
         cy.wait(80)
     })
 
     afterEach(() => {
-        cy.clearCookies()
+        // cy.clearCookies()
     })
 
     describe('Required field during checkout', () => {
