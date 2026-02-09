@@ -23,26 +23,25 @@ Cypress.Commands.add('login', (name, username, password) => {
         cy.xpath('//button[text()="Login"]').click()
         cy.wait('@sign').then((interception) => {
             expect(interception.response.statusCode).to.equal(200)
-        	cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		    cy.wait(900);
-		    cy.get('body').then(($body) => {
+        })          
+    })
+    	cy.wait(100);
+		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.wait(4000);
+		cy.get('body').then(($body) => {
 			if ($body.text().includes('Welcome Back!')) {
 				cy
 					.contains('h3', 'Welcome Back!')
 					.next('button')
 					.scrollIntoView()
 					.click();
-				cy.wait(800);
+				cy.wait(4000);
 			}
 			if ($body.text().includes('Enable Notifications')) {
 				cy.contains('button', 'Not now').click();
-				cy.wait(100);
+				cy.wait(500);
 			}
 		});
-        })          
-    })
-    	// cy.wait(100);
-
 })
 
 
@@ -222,7 +221,7 @@ Cypress.Commands.add('deleteEmployee', () => {
     cy.wait(100)
     cy.contains('Delete employee').scrollIntoView()
     cy.contains('Delete employee').click({ force: true })
-    cy.wait(100)
+    cy.wait(1000)
     cy.contains('button', 'Delete').should('exist')
     cy.contains('button', 'Delete').click({ force: true })
     // cy.contains('h3', 'Delete Employee').should('exist')
@@ -268,7 +267,7 @@ Cypress.Commands.add('expectedMessageCreateEmployee', (product_message) => {
     cy.contains('button', 'Save').should('exist')
     cy.contains('button', 'Save').click({ force: true })
     cy.contains('div>span', product_message).should('exist')
-    cy.wait(100)
+    cy.wait(300)
 })
 
 
@@ -340,7 +339,7 @@ Cypress.Commands.add('newCheckout', (environ) => {
     cy.visit(Cypress.env(environ) + 'admin/calendar')
     // cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').should('be.visible').click({force: true})
-    cy.wait(900)
+    cy.wait(1000)
     // cy.contains('li','New Checkout').should('be.visible')
     cy.contains('li','New Checkout').should('be.visible').click({force: true})
     // cy.contains('div','Search customer..').should('be.visible')
@@ -378,7 +377,7 @@ Cypress.Commands.add('addEmployee', (employee) => {
     // cy.contains('button','Edit').should('be.visible')
     cy.contains('button','Edit').should('be.visible').click({force: true})
     cy.contains('label>span', 'Staff').parents('label').next('div').find('input').type(`${employee}{enter}{enter}`)
-    cy.wait(900)
+    cy.wait(1000)
     cy.contains('button', 'Save').click({force: true})
     // cy.get('div[role="presentation"]').trigger('click')
 })
