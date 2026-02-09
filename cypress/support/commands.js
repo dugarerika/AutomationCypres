@@ -27,7 +27,7 @@ Cypress.Commands.add('login', (name, username, password) => {
     })
     	cy.wait(100);
 		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		cy.wait(1000);
+		cy.wait(8000);
 		cy.get('body').then(($body) => {
 			if ($body.text().includes('Welcome Back!')) {
 				cy
@@ -35,11 +35,11 @@ Cypress.Commands.add('login', (name, username, password) => {
 					.next('button')
 					.scrollIntoView()
 					.click();
-				cy.wait(1000);
+				cy.wait(8000);
 			}
 			if ($body.text().includes('Enable Notifications')) {
 				cy.contains('button', 'Not now').click();
-				cy.wait(100);
+				cy.wait(800);
 			}
 		});
 })
