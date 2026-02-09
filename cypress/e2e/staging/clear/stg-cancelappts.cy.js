@@ -230,30 +230,6 @@ describe('Staging - Beta Vendor Admin | Employee | Cancel Appointments| logged w
     it('Cancel Appointment', () => {
         deleteAppt()
     })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
 })
 
 
