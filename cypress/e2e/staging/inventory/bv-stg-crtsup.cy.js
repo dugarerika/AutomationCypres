@@ -6,7 +6,7 @@ const { should } = require("chai")
 const expectedMessageCreateSupplier = (supplier_message) => {
   cy.contains('button', 'Save').should('exist')
   cy.contains('button', 'Save').click()
-  cy.wait(100)
+  cy.wait(80)
   cy.contains('span', supplier_message).should('exist')
 }
 
@@ -18,10 +18,10 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
     cy.get('body').then(($body) => {
         if ($body.text().includes('Welcome Back!')) {
             cy.contains('h3', 'Welcome Back!').next('button').click()
-            cy.wait(100)
+            cy.wait(80)
         }
     })
-    cy.wait(100)
+    cy.wait(80)
   })
 
   afterEach(() => {
@@ -127,21 +127,21 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
   it('Verify new supplier is added successfully by filling up all the inputs fields- Admin credentials', () => {
     cy.accessToCreateSuppliers()
     cy.filloutSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','38717494','3@gmail.com')
-    cy.wait(100)
+    cy.wait(80)
     expectedMessageCreateSupplier('Supplier created successfully')
   })
 
   it('Verify new supplier is added successfully by filling up supplier name, last name, mobile and email- Admin credentials', () => {
     cy.accessToCreateSuppliers()
     cy.filloutSupplierForm('Supplier name - last name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
-    cy.wait(100)
+    cy.wait(80)
     expectedMessageCreateSupplier('Supplier created successfully')
   })
 
   it('Verify new supplier is added successfully by filling up supplier name, mobile and email- Admin credentials', () => {
     cy.accessToCreateSuppliers()
     cy.filloutSupplierForm('Supplier name - Contact Last Name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
-    cy.wait(100)
+    cy.wait(80)
     expectedMessageCreateSupplier('Supplier created successfully')
   })
 
@@ -155,7 +155,7 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
   it('Verify new supplier is added successfully by filling up supplier name, mobile and email- Admin credentials', () => {
     cy.accessToCreateSuppliers()
     cy.filloutSupplierForm('Supplier name - mobile - email','{enter}','{enter}','{enter}','38972467','3@gmail.com')
-    cy.wait(100)
+    cy.wait(80)
     expectedMessageCreateSupplier('Supplier created successfully')
   })
 
@@ -163,7 +163,7 @@ describe('Beta Vendor Admin | Inventory | Create Suppliers|logged with Admin cre
   it('Verify new supplier is added successfully by filling up supplier name and email- Admin credentials', () => {
     cy.accessToCreateSuppliers()
     cy.filloutSupplierForm('Supplier name - email','{enter}','{enter}','{enter}','{enter}','3@gmail.com')
-    cy.wait(100)
+    cy.wait(80)
     expectedMessageCreateSupplier('Supplier created successfully')
   })
 })

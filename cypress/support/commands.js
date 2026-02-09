@@ -24,7 +24,7 @@ Cypress.Commands.add('login', (name, username, password) => {
         cy.wait('@sign').then((interception) => {
             expect(interception.response.statusCode).to.equal(200)
         	cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		    cy.wait(1000);
+		    cy.wait(900);
 		    cy.get('body').then(($body) => {
 			if ($body.text().includes('Welcome Back!')) {
 				cy
@@ -32,7 +32,7 @@ Cypress.Commands.add('login', (name, username, password) => {
 					.next('button')
 					.scrollIntoView()
 					.click();
-				cy.wait(1000);
+				cy.wait(800);
 			}
 			if ($body.text().includes('Enable Notifications')) {
 				cy.contains('button', 'Not now').click();
@@ -222,7 +222,7 @@ Cypress.Commands.add('deleteEmployee', () => {
     cy.wait(100)
     cy.contains('Delete employee').scrollIntoView()
     cy.contains('Delete employee').click({ force: true })
-    cy.wait(1000)
+    cy.wait(100)
     cy.contains('button', 'Delete').should('exist')
     cy.contains('button', 'Delete').click({ force: true })
     // cy.contains('h3', 'Delete Employee').should('exist')
@@ -268,7 +268,7 @@ Cypress.Commands.add('expectedMessageCreateEmployee', (product_message) => {
     cy.contains('button', 'Save').should('exist')
     cy.contains('button', 'Save').click({ force: true })
     cy.contains('div>span', product_message).should('exist')
-    cy.wait(300)
+    cy.wait(100)
 })
 
 
@@ -340,7 +340,7 @@ Cypress.Commands.add('newCheckout', (environ) => {
     cy.visit(Cypress.env(environ) + 'admin/calendar')
     // cy.contains('button','Add New').should('be.visible')
     cy.contains('button','Add New').should('be.visible').click({force: true})
-    cy.wait(1000)
+    cy.wait(900)
     // cy.contains('li','New Checkout').should('be.visible')
     cy.contains('li','New Checkout').should('be.visible').click({force: true})
     // cy.contains('div','Search customer..').should('be.visible')
@@ -378,7 +378,7 @@ Cypress.Commands.add('addEmployee', (employee) => {
     // cy.contains('button','Edit').should('be.visible')
     cy.contains('button','Edit').should('be.visible').click({force: true})
     cy.contains('label>span', 'Staff').parents('label').next('div').find('input').type(`${employee}{enter}{enter}`)
-    cy.wait(1000)
+    cy.wait(900)
     cy.contains('button', 'Save').click({force: true})
     // cy.get('div[role="presentation"]').trigger('click')
 })
