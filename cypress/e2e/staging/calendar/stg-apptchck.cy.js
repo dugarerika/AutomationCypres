@@ -12,7 +12,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 			Cypress.env('Vendor1_Admin_Username_Staging'),
 			Cypress.env('Vendor1_Admin_Password_Staging')
 		);
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		// cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
 		// cy.wait(8000);
 		// cy.get('body').then(($body) => {
 		// 	if ($body.text().includes('Welcome Back!')) {
