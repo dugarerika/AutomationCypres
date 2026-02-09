@@ -25,7 +25,26 @@ Cypress.Commands.add('login', (name, username, password) => {
             expect(interception.response.statusCode).to.equal(200)
         })          
     })
+    	cy.wait(10000);
+		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.wait(8000);
+		cy.get('body').then(($body) => {
+			if ($body.text().includes('Welcome Back!')) {
+				cy
+					.contains('h3', 'Welcome Back!')
+					.next('button')
+					.scrollIntoView()
+					.click();
+				cy.wait(8000);
+			}
+			if ($body.text().includes('Enable Notifications')) {
+				cy.contains('button', 'Not now').click();
+				cy.wait(800);
+			}
+		});
 })
+
+
 
 // -- This is a parent command to log into the PRODUCTION --
 Cypress.Commands.add('loginprod', (name, username, password) => {

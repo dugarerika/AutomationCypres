@@ -15,24 +15,6 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 			Cypress.env('Vendor_Admin_Username_Staging'),
 			Cypress.env('Vendor_Admin_Password_Staging')
 		);
-		cy.wait(10000);
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		cy.wait(8000);
-		cy.get('body').then(($body) => {
-			if ($body.text().includes('Welcome Back!')) {
-				cy
-					.contains('h3', 'Welcome Back!')
-					.next('button')
-					.scrollIntoView()
-					.click();
-				cy.wait(8000);
-			}
-			if ($body.text().includes('Enable Notifications')) {
-				cy.contains('button', 'Not now').click();
-				cy.wait(800);
-			}
-		});
-		cy.wait(100);
 	});
 
 	afterEach(() => {
@@ -344,22 +326,6 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 			Cypress.env('Vendor_Staff_Username_Staging'),
 			Cypress.env('Vendor_Staff_Password_Staging')
 		);
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		cy.wait(8000);
-		cy.get('body').then(($body) => {
-			if ($body.text().includes('Welcome Back!')) {
-				cy
-					.contains('h3', 'Welcome Back!')
-					.next('button')
-					.scrollIntoView()
-					.click();
-				cy.wait(8000);
-			}
-			if ($body.text().includes('Enable Notifications')) {
-				cy.contains('button', 'Not now').click();
-				cy.wait(800);
-			}
-		});
 	});
 
 	afterEach(() => {

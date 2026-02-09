@@ -36,16 +36,6 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 
 beforeEach(() => {
     cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
-    cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
-    cy.wait(10000)
-    // cy.contains('h3','Welcome Back!').next('button').click()
-    cy.get('body').then(($body) => {
-      if ($body.text().includes('Welcome Back!')) {
-        cy.contains('h3', 'Welcome Back!').next('button').click()
-        cy.wait(100)
-      }
-    })
-    cy.wait(100)
 })
 
 afterEach(() => {
@@ -266,10 +256,6 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 })
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
-  // before(() => {
-  //   // ensure clean test slate for these tests
-  //   cy.then(Cypress.session.clearAllSavedSessions)
-  // })
   
   beforeEach(() => {
     cy.login('Staff Session', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
