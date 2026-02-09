@@ -60,7 +60,7 @@
 		"cy:staging-calendar:all": "npx cypress run -b chrome --spec 'cypress/e2e/staging/calendar/*.cy.js'",
 		"cy:staging-calendar-inventory-employees": "npx cypress run --spec 'cypress/e2e/staging/calendar/*.cy.js,cypress/e2e/staging/inventory/*.cy.js,cypress/e2e/staging/employees/*.cy.js,'",
 		"cy:staging-calendar:all-except-newchk-crtapt": "npx cypress run --spec 'cypress/e2e/staging/calendar/stg-blcktime.cy.js,cypress/e2e/staging/calendar/stg-invoices.cy.js,cypress/e2e/staging/calendar/stg-newAppt.cy.js'",
-		"cy:staging-calendar:blcktime": "npx cypress run --spec 'cypress/e2e/staging/calendar/stg-blcktime.cy.js'",
+		"cy:staging-calendar:blcktime": "npx cypress run -b chrome --spec 'cypress/e2e/staging/calendar/stg-blcktime.cy.js'",
 		"ARTNAILCORNER-staging-calendar:crtapt": "npx cypress run --browser chrome --spec 'cypress/e2e/staging/calendar/stg-crtapt.cy.js'",
 		"cy:staging-calendar:crtaptnaqa": "npx cypress run --browser chrome --spec 'cypress/e2e/staging/naqa/stg-crtaptfornaqa.cy.js'",
 		"cy:staging-calendar:invoices": "npx cypress run --spec 'cypress/e2e/staging/calendar/stg-invoices.cy.js'",

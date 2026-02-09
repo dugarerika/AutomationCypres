@@ -4,10 +4,6 @@
 const { should } = require('chai');
 
 describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged with Admin Credentials', () => {
-	// before(() => {
-	//     // ensure clean test slate for these tests
-	//     // cy.then(Cypress.session.clearAllSavedSessions)
-	// })
 
 	beforeEach(() => {
 		// cy.viewport(3840,2160)
@@ -35,9 +31,9 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 		cy.wait(80);
 	});
 
-	afterEach(() => {
-		// cy.clearCookies()
-	});
+	// afterEach(() => {
+	// 	cy.clearCookies()
+	// });
 
 	describe('Required field during checkout', () => {
 		it('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
