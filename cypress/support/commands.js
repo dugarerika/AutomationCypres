@@ -25,7 +25,7 @@ Cypress.Commands.add('login', (name, username, password) => {
             expect(interception.response.statusCode).to.equal(200)
         })          
     })
-    	cy.wait(100);
+    	// cy.wait(100);
 		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
 		cy.wait(4000);
 		cy.get('body').then(($body) => {
