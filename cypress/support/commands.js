@@ -23,25 +23,26 @@ Cypress.Commands.add('login', (name, username, password) => {
         cy.xpath('//button[text()="Login"]').click()
         cy.wait('@sign').then((interception) => {
             expect(interception.response.statusCode).to.equal(200)
-        })          
-    })
-    	// cy.wait(100);
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		cy.wait(4000);
-		cy.get('body').then(($body) => {
+        	cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		    cy.wait(1000);
+		    cy.get('body').then(($body) => {
 			if ($body.text().includes('Welcome Back!')) {
 				cy
 					.contains('h3', 'Welcome Back!')
 					.next('button')
 					.scrollIntoView()
 					.click();
-				cy.wait(4000);
+				cy.wait(1000);
 			}
 			if ($body.text().includes('Enable Notifications')) {
 				cy.contains('button', 'Not now').click();
-				cy.wait(500);
+				cy.wait(100);
 			}
 		});
+        })          
+    })
+    	// cy.wait(100);
+
 })
 
 
