@@ -48,7 +48,7 @@ module.exports = defineConfig({
 						].includes(browser.name)
 					) {
 						launchOptions.args.push(
-							'--window-size=3840,2160',
+							'--window-size=2560,1440',
 							'--force-device-scale-factor=1',
 							'--high-dpi-support=1',
 							'--disable-gpu',
@@ -81,8 +81,8 @@ module.exports = defineConfig({
 		screenshotOnRunFailure: false,
 		trashAssetsBeforeRuns: true,
 		video: false,
-		viewportWidth: 3840,
-		viewportHeight: 2160,
+		viewportWidth: 2560,
+		viewportHeight: 1440,
 		experimentalMemoryManagement: true,
 		numTestsKeptInMemory: 0,
 
