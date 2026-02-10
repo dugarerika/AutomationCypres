@@ -343,7 +343,7 @@ describe(
 	}
 );
 
-describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);
