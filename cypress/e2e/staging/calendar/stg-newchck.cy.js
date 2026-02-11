@@ -11,17 +11,8 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     // })  
     
     beforeEach(() => {
-        cy.viewport(3840,2160)
         cy.login('Admin Session', Cypress.env("Vendor1_Admin_Username_Staging"), Cypress.env("Vendor1_Admin_Password_Staging"))
         cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
-        // cy.contains('h3','Welcome Back!').next('button').click()
-        cy.get('body').then(($body) => {
-            if ($body.text().includes('Welcome Back!')) {
-                cy.contains('h3', 'Welcome Back!').next('button').click()
-                cy.wait(100)
-            }
-        })
-        cy.wait(100)
     })
 
     afterEach(() => {
@@ -54,7 +45,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
             cy.wait(10)
         })
 
-        it.only('Verify it is not possible to complete New Checkout for a service without adding a payment and without linking it to an employee ', () => {
+        it('Verify it is not possible to complete New Checkout for a service without adding a payment and without linking it to an employee ', () => {
             cy.newCheckout("URL_Staging")
             cy.contains('button','Add New').should('be.visible')
             cy.contains('button','Add New').click({force: true})
@@ -87,7 +78,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
             cy.fillButton('Debit')
         })
 
-        it.only('Verify that After clicking the Fill button for Credit, the Credit text field is populated with the correct Total', () => {
+        it('Verify that After clicking the Fill button for Credit, the Credit text field is populated with the correct Total', () => {
             cy.newCheckout("URL_Staging")
             cy.addItemService('Hair Cut')
             cy.fillButton('Credit')
