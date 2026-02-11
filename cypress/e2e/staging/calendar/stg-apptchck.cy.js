@@ -34,8 +34,12 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 	// 	cy.clearCookies()
 	// });
 
-	describe('Required field during checkout', () => {
+	describe.only('Required field during checkout', () => {
 		it('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
+<<<<<<< HEAD
+=======
+			// cy.createappt('Susan one','01:00', 'Downpayment')
+>>>>>>> eeb86d803503cd127fcc7f97bbfbbf7ea4b9e7d2
 			cy.searchAppt('Susan one');
 			cy
 				.contains('button', 'Checkout')
@@ -50,7 +54,12 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 	});
 
 	describe('Fillout buttons with Downpayment (it is pending gift card)', () => {
+<<<<<<< HEAD
 		it('Verify that clicking "Fill" for Debit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
+=======
+		it.only('Verify that clicking "Fill" for Debit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
+			// cy.createappt('Helen','01:00', 'Downpayment')
+>>>>>>> eeb86d803503cd127fcc7f97bbfbbf7ea4b9e7d2
 			cy.searchAppt('Helen');
 			cy.wait(99);
 			cy
