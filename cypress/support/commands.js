@@ -563,7 +563,9 @@ Cypress.Commands.add('addFixedDiscount', (service, fixed, tax) => {
         cy.contains('h6',`Tax ${tax}%`).next('span').then(($span2) => {
             const tax = $span2.text().split(" ")
             cy.log(tax[1])
-            expect((price[0] - fixed)*0.15).to.equal(eval(tax[1]))
+            const valor01 = eval((price[0] - fixed)*0.15)
+            expect(Math.round((valor01 + Number.EPSILON) * 10000) / 10000).to.equal(eval(tax[1]))
+            //expect((price[0] - fixed)*0.15).to.equal(eval(tax[1]))
         })
         cy.contains('h6', /^Total$/).next('span').then(($span3) => {
             const total = $span3.text().split(" ")
