@@ -34,7 +34,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 	// 	cy.clearCookies()
 	// });
 
-	describe.only('Required field during checkout', () => {
+	describe('Required field during checkout', () => {
 		it('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
 			cy.searchAppt('Susan one');
 			cy
