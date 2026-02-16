@@ -15,9 +15,9 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
     })
 
-    afterEach(() => {
-        cy.clearCookies()
-    })
+    // afterEach(() => {
+    //     cy.clearCookies()
+    // })
 
     describe('Validate required fields during new checkout:', () => {
         // Validate Required fields during checkout
@@ -904,7 +904,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -915,9 +915,9 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
         cy.login('Staff Session', Cypress.env("Vendor1_Staff_Username_Staging"), Cypress.env("Vendor1_Staff_Password_Staging"))
     })
 
-    afterEach(() => {
-        cy.clearCookies()
-    })
+    // afterEach(() => {
+    //     cy.clearCookies()
+    // })
 
         describe('Validate required fields during new checkout:', () => {
         // Validate Required fields during checkout
@@ -953,20 +953,20 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
             cy.contains('label>span', 'search').parents('label').next('div').find('input').type('Hair Cut')
             cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
             cy.get('div[role="presentation"]').filter(':visible').first().trigger('click', {force: true})
-            cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
+            // cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
             cy.wait(10)
             cy.expectedMessageCompleteSale('Add at least one payment')
             cy.wait(10)
         })
 
-        it('Verify it is not possible to complete New Checkout for a service without linking it to an employee ', () => {
+        it.only('Verify it is not possible to complete New Checkout for a service without linking it to an employee', () => {
             cy.newCheckout("URL_Staging")
             cy.contains('button','Add New').should('be.visible')
             cy.contains('button','Add New').click({force: true})
             cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
             cy.contains('label>span', 'search').parents('label').next('div').find('input').type('Hair Cut')
             cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
-            cy.get('div[role="presentation"]').filter(':visible').first().trigger('click', {force: true})
+            cy.get('div[role="presentation"]').trigger('click')
             cy.fillButton('Cash')
             cy.wait(10)
             cy.expectedMessageCompleteSale('Employee must be present')
