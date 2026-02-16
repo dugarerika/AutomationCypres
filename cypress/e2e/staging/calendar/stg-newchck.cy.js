@@ -530,7 +530,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.contains('label>span', 'search').parents('label').next('div').find('input').type('Hair Cut')
             cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
             cy.get('div[role="presentation"]').filter(':visible').first().trigger('click', {force: true})
-            cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
+            // cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
             cy.wait(10)
             cy.expectedMessageCompleteSale('Add at least one payment')
             cy.wait(10)
@@ -543,7 +543,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
             cy.get('div[role="tablist"]').find('button').eq(0).click({force: true})
             cy.contains('label>span', 'search').parents('label').next('div').find('input').type('Hair Cut')
             cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
-            cy.get('div[role="presentation"]').filter(':visible').first().trigger('click', {force: true})
+            cy.get('div[role="presentation"]').trigger('click')
             cy.fillButton('Cash')
             cy.wait(10)
             cy.expectedMessageCompleteSale('Employee must be present')
@@ -904,7 +904,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-describe.only('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
