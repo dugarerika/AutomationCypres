@@ -72,7 +72,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
 })
 
 it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
-  searchTimeSlot('Naomi Naomi','07:00') 
+  searchTimeSlot('MaxWayne','07:00') 
   cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -84,7 +84,7 @@ it('Verify it is possible to create an appointment searching and selecting custo
 })
 
 it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
-  searchTimeSlot('Naomi Naomi','07:00')  
+  searchTimeSlot('MaxWayne','07:00')  
   cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
   cy.contains('Create Appointment').click({force: true})
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -97,7 +97,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ov
 })
 
 it('Verify it is possible to create an appointment over and already taken time slot - Admin Credentials', () => {
-  searchTimeSlot('Naomi Naomi','07:00') 
+  searchTimeSlot('MaxWayne','07:00') 
   cy.contains('New Appointment').should('exist')
   cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
   cy.contains('Create Appointment').click({force: true})
@@ -130,7 +130,7 @@ it('Verify The edit appointment modal is display after clicking on Edit booking 
   cy.contains('Edit Appointment').should('exist') 
 })
 
-it('Verify it is possible to edit the Customer', () => {
+it.only('Verify it is possible to edit the Customer', () => {
   searchApt('ALEX ALEX','07:00') 
   cy.contains('Appointment Details').should('be.visible')
   cy.contains('Edit Booking').should('be.visible')
@@ -358,7 +358,7 @@ describe.skip('Staging - Beta Vendor Admin | Calendar| Create appointments by Cl
   })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
-    searchTimeSlot('Naomi Naomi','03:00')
+    searchTimeSlot('MaxWayne','03:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -366,7 +366,7 @@ describe.skip('Staging - Beta Vendor Admin | Calendar| Create appointments by Cl
   })
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
-    searchTimeSlot('Naomi Naomi','04:00')  
+    searchTimeSlot('MaxWayne','04:00')  
     cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()

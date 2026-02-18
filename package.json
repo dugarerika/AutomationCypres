@@ -31,7 +31,7 @@
 		"cy:prod-clear:dltsubs": "npx cypress run --spec 'cypress/e2e/production/clear/prod-dltsubs.cy.js'",
 		"cy:prod-clear": "npx cypress run --spec 'cypress/e2e/production/clear/*.cy.js'",
 		"cy:staging-clear": "npx cypress run -b chrome --spec 'cypress/e2e/staging-clear/*.cy.js'",
-		"cy:staging-clear:cancelappts": "npx cypress run -b chrome --spec 'cypress/e2e/staging-clear/stg-cancelappts.cy.js'",
+		"ARTNAILCORNER:stg-clear:cancelappts": "npx cypress run -b chrome --spec 'cypress/e2e/staging-clear/stg-cancelappts.cy.js'",
 		"cy:staging-clear:dltemply": "npx cypress run --spec 'cypress/e2e/staging-clear/stg-dltemply.cy.js'",
 		"cy:staging-clear:dltcustomers": "npx cypress run -b chrome --spec 'cypress/e2e/staging-clear/stg-dltcust.cy.js'",
 		"NAILEDIT-stg-clear:dltprod": "npx cypress run -b chrome --spec 'cypress/e2e/staging-clear/stg-dltprod.cy.js'",
