@@ -19,6 +19,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 
 	describe('Required field during checkout', () => {
 		it('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
+			cy.createappt('Susan one','01:00', 'Downpayment')
+			cy.createappt('Helen','01:00', 'Downpayment')
 			cy.searchAppt('Susan one');
 			cy
 				.contains('button', 'Checkout')
