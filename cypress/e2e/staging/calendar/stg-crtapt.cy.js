@@ -130,7 +130,7 @@ it('Verify The edit appointment modal is display after clicking on Edit booking 
   cy.contains('Edit Appointment').should('exist') 
 })
 
-it.only('Verify it is possible to edit the Customer', () => {
+it('Verify it is possible to edit the Customer', () => {
   searchApt('ALEX ALEX','07:00') 
   cy.contains('Appointment Details').should('be.visible')
   cy.contains('Edit Booking').should('be.visible')
