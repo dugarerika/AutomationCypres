@@ -80,7 +80,7 @@ const clearUpdateForm = () => {
 describe('Beta Vendor Admin | Promotions/Coupons | Create Coupons| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.env("Vendor6_Admin_Username_Staging"), Cypress.env("Vendor6_Admin_Password_Staging"))
     // cy.contains('h3','Welcome Back!').next('button').click()
     cy.get('body').then(($body) => {
         if ($body.text().includes('Welcome Back!')) {
