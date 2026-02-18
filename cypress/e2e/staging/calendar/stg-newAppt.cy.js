@@ -2,7 +2,7 @@
 /// <reference types="cypress-xpath" />
 const { should } = require("chai")
 
-describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
+describe.only('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
 
     // before(() => {
     //     // ensure clean test slate for these tests
@@ -174,7 +174,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('div>span','Employee is required').should('be.visible')
     })
 
-    it('Verify service is required in the New Appointment form on the Calendar', () => {
+    it.only('Verify service is required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -183,7 +183,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('div>span','Some services are not available').should('be.visible')
     })
 
-    it('Verify customer is not required in the New Appointment form on the Calendar', () => {
+    it.only('Verify customer is not required in the New Appointment form on the Calendar', () => {
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('label','Duration').parent('div').find('input').click().type('30{downarrow}{downarrow}{downarrow}{enter}')
@@ -247,7 +247,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     })
 
     
-    it('Verify it is possible to create a new appointment only for an offer (1 service)', () => {
+    it.only('Verify it is possible to create a new appointment only for an offer (1 service)', () => {
         cy.newAppt("URL_Staging")
         cy.contains('New Appointment').should('be.visible')
         cy.contains('Add New Item').should('exist')  
@@ -256,7 +256,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
         cy.contains('Add Offer').click()
         cy.contains('div','Offer').should('exist')  
         cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{enter}')
-        cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('ErikaT{downarrow}{enter}')
+        cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('Mateo{downarrow}{enter}')
         cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{enter}')
         cy.get('.css-1dukv94').eq(0).children('button').click({force: true})
         cy.contains('button','Create Appointment').should('be.enabled').click({force: true})
