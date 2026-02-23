@@ -12,7 +12,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     beforeEach(() => {
         // cy.clearCookies()
         // cy.clearLocalStorage()
-        cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+        cy.login('Admin Session', Cypress.env("Vendor6_Admin_Username_Staging"), Cypress.env("Vendor6_Admin_Password_Staging"))
         cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
         // cy.contains('h3','Welcome Back!').next('button').click()
         cy.get('body').then(($body) => {
@@ -147,7 +147,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create New Appointment on the 
     beforeEach(() => {
         cy.clearCookies()
         cy.clearLocalStorage()
-        cy.login('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
+        cy.login('Receptionist Session', Cypress.env("Vendor6_Receptionist_Username_Staging"), Cypress.env("Vendor6_Receptionist_Password_Staging"))
     })
 
     afterEach(() => {
