@@ -88,7 +88,7 @@ module.exports = defineConfig({
 
 		// Retry settings
 		retries: {
-			runMode: 2,
+			runMode: 3,
 			openMode: 0
 		},
 
@@ -114,6 +114,8 @@ module.exports = defineConfig({
 			// Vendor 6 (Staging) credentials
 			Vendor6_Admin_Username_Staging: 'pinkdoor',
 			Vendor6_Admin_Password_Staging: '1234567890',
+			Vendor6_Receptionist_Username_Staging: 'receppink',
+			Vendor6_Receptionist_Password_Staging: '1234567890',
 
 			// Vendor 7 (Staging) credentials
 			Vendor7_Admin_Username_Staging: 'naqanails',
