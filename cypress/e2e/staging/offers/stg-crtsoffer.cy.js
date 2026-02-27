@@ -35,7 +35,7 @@ const filloutOfferInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub
 }
 
 const accessToOfferSection = () => {
-    cy.visit(Cypress.env("URL_Staging") + 'auth')
+    cy.visit(Cypress.expose("URL_Staging") + 'auth')
     cy.contains('button>span','Promotions').should('exist').click({ force: true })
     cy.contains('li>button','Offers').should('exist').click({ force: true })
     cy.contains('h6','Offers').should('exist')
@@ -77,7 +77,7 @@ const clearUpdateForm = () => {
 describe('Beta Vendor Admin | Promotions/Offers | Offers| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.expose("Vendor_Admin_Username_Staging"), Cypress.expose("Vendor_Admin_Password_Staging"))
 })
 
 afterEach(() => {

@@ -53,6 +53,10 @@ module.exports = defineConfig({
 							'--high-dpi-support=1',
 							'--disable-gpu',
 							'--no-sandbox',
+							'--disable-dev-shm-usage',
+							'--disable-background-timer-throttling',
+							'--disable-backgrounding-occluded-windows',
+							'--disable-renderer-backgrounding',
 							'--disable-logging',
 							'--log-level=3'
 						);
@@ -77,7 +81,8 @@ module.exports = defineConfig({
 		// Cypress settings
 		chromeWebSecurity: false,
 		defaultCommandTimeout: 10000,
-		pageLoadTimeout: 120000,
+		pageLoadTimeout: 60000,
+		requestTimeout: 8000,
 		screenshotOnRunFailure: false,
 		trashAssetsBeforeRuns: true,
 		video: false,
@@ -88,17 +93,20 @@ module.exports = defineConfig({
 
 		// Retry settings
 		retries: {
-			runMode: 3,
+			runMode: 1,
 			openMode: 0
 		},
 
-		// Environment variables
+		// Environment variables (plugin-specific only)
 		env: {
 			allureReuseAfterSpec: true,
 			// Slack webhook URL
 			SLACK_WEBHOOK_URL:
-				'https://hooks.slack.com/services/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',
+				'https://hooks.slack.com/services/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'
+		},
 
+		// Exposed public configuration (URLs and test credentials)
+		expose: {
 			// Staging URLs
 			URL_Staging: 'https://vendor.bookr-dev.com/',
 			URL_Deeplink_Staging_artnailcorner:

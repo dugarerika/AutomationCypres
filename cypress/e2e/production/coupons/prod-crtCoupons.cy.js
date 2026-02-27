@@ -35,7 +35,7 @@ const filloutOfferInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub
 }
 
 const accessToCouponSection = () => {
-    cy.visit(Cypress.env("URL_Production") + 'auth')
+    cy.visit(Cypress.expose("URL_Production") + 'auth')
     cy.contains('button>span','Promotions').should('exist')
     cy.contains('button>span','Promotions').click({ force: true })
     cy.contains('li>button','Coupons').should('exist')
@@ -80,7 +80,7 @@ const clearUpdateForm = () => {
 describe('Beta Vendor Admin | Promotions/Coupons | Create Coupons| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+    cy.loginprod('Admin Section', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))
 })
 
 afterEach(() => {

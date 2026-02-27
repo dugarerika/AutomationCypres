@@ -29,8 +29,8 @@ const filloutCustInfo = (first_name, last_name, notes, mobile_number) => {
 }
 
 const accessToCustSection = () => {
-    cy.visit(Cypress.env("URL_Staging") + 'auth')
-    cy.wait(100);
+    cy.visit(Cypress.expose("URL_Staging") + 'auth')
+    cy.wait(64);
     cy.closeWelcomeBackBanner()
     cy.contains('button>span','Customers').should('be.visible')
     cy.contains('button>span','Customers').click({ force: true })
@@ -40,7 +40,7 @@ const accessToCustSection = () => {
 }
 
 const accessToBlackTab = () => {
-    cy.visit(Cypress.env("URL_Staging") + 'auth')
+    cy.visit(Cypress.expose("URL_Staging") + 'auth')
     cy.contains('button>span','Customers').should('be.visible')
     cy.contains('button>span','Customers').click({ force: true })
     cy.contains('div','Customers').should('be.visible')
@@ -86,7 +86,7 @@ const clearUpdateForm = () => {
 describe('Staging - Beta Vendor Admin | Customer | Create Customer| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor6_Admin_Username_Staging"), Cypress.env("Vendor6_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.expose("Vendor6_Admin_Username_Staging"), Cypress.expose("Vendor6_Admin_Password_Staging"))
 })
 
 afterEach(() => {

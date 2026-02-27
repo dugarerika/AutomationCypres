@@ -5,7 +5,7 @@ const { should } = require("chai")
 
 
 const accessToDeleteSuppliers = () => {
-  cy.visit(Cypress.env("URL_Staging") + 'auth')
+  cy.visit(Cypress.expose("URL_Staging") + 'auth')
   cy.contains('Inventory', { matchCase: false }).should('exist')
   cy.contains('Inventory', { matchCase: false }).click({ force: true })
   cy.contains('Supplier', { matchCase: false }).should('exist')
@@ -24,7 +24,7 @@ const accessToDeleteSuppliers = () => {
 describe('Beta Vendor Admin | Inventory | Delete Suppliers|logged with Admin credentials', () =>{
 
   beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.expose("Vendor0_Admin_Username_Staging"), Cypress.expose("Vendor0_Admin_Password_Staging"))
   })
 
   afterEach(() => {

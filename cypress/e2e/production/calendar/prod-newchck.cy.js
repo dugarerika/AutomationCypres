@@ -11,7 +11,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
     })
     
     beforeEach(() => {
-        cy.loginprod('Admin Session', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+        cy.loginprod('Admin Session', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))
     })
 
     afterEach(() => {
@@ -40,9 +40,9 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         it('Verify it is not possible to complete New Checkout with the cart empty ', () => {
             cy.newCheckout("URL_Staging")
             cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
-            cy.wait(10)
+            cy.wait(8)
             cy.expectedMessageCompleteSale('Add at least one payment')
-            cy.wait(10)
+            cy.wait(8)
         })
 
         it('Verify it is not possible to complete New Checkout for a service without adding a payment and without linking it to an employee ', () => {
@@ -54,9 +54,9 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
             cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
             cy.get('div[role="presentation"]').trigger('click')
             cy.contains('h5', 'Amount to pay').parent('div').next('div').find('input').eq(0).type('0')
-            cy.wait(10)
+            cy.wait(8)
             cy.expectedMessageCompleteSale('Add at least one payment')
-            cy.wait(10)
+            cy.wait(8)
         })
 
         it('Verify it is not possible to complete New Checkout for a service without linking it to an employee ', () => {
@@ -68,9 +68,9 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
             cy.contains('div', 'Hair Cut').parents('li').find('button').click({force: true})
             cy.get('div[role="presentation"]').trigger('click')
             cy.fillButton('Cash')
-            cy.wait(10)
+            cy.wait(8)
             cy.expectedMessageCompleteSale('Employee must be present')
-            cy.wait(10)
+            cy.wait(8)
         })  
     })
 
@@ -112,7 +112,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         it('Verify the breakdown is correct after applying a coupon to a service ', () => {
             cy.newCheckout("URL_Staging")
             cy.addItemService('Hair Cut')
-            cy.wait(100)
+            cy.wait(64)
             cy.addCouponDiscount('Hair Cut','CPN2','10', '15')
         })
 
@@ -187,8 +187,8 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
             cy.newCheckout("URL_Staging")
             cy.contains('button','Change customer').click()
             cy.contains('div','Search customer..').should('be.visible')
-            cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
-            cy.wait(100)
+            cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 700})
+            cy.wait(64)
             cy.addItemProduct('Blond studio 9')
             cy.fillButton('Cash')
             cy.expectedMessageCompleteSale('Employee must be present')
@@ -323,8 +323,8 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.newCheckout("URL_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 700})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
@@ -333,8 +333,8 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.newCheckout("URL_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 700})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.addPercentageDiscount('Subscription B','40','15')
         cy.fillButton('Cash')
@@ -345,8 +345,8 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
         cy.newCheckout("URL_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 700})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.addFixedDiscount('Subscription B','5','15')
         cy.fillButton('Cash')
@@ -493,7 +493,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //     })
     
 //     beforeEach(() => {
-//         cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
+//         cy.loginprod('Receptionist Session', Cypress.expose("Vendor_Receptionist_Username_Production"), Cypress.expose("Vendor_Receptionist_Password_Production"))
 //     })
 
 //     afterEach(() => {
@@ -543,7 +543,7 @@ describe('Production - Beta Vendor Admin | Calendar| New Checkout | logged with 
 //     })
     
 //     beforeEach(() => {
-//         cy.login('Staff Session', Cypress.env("Vendor1_Staff_Username_Staging"), Cypress.env("Vendor1_Staff_Password_Staging"))
+//         cy.login('Staff Session', Cypress.expose("Vendor1_Staff_Username_Staging"), Cypress.expose("Vendor1_Staff_Password_Staging"))
 //     })
 
 //     afterEach(() => {

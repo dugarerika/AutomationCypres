@@ -6,13 +6,13 @@ const { should } = require("chai")
 const login = (name, username, password) => {
   cy.session(name, () => {
     //cy.visit('https://beta.vendor.bookr-dev.com/')
-    cy.visit(Cypress.env("URL_Production"))
+    cy.visit(Cypress.expose("URL_Production"))
     cy.url().should('include', 'https://beta.vendor.bookr-dev.com/auth')
     cy.get('[type="text"]').should('be.visible')
     cy.get('[type="password"]').should('be.visible')
     cy.xpath('//button[text()="Login"]').should('be.visible')
-    cy.get('[type="text"]').type(username, { force: true, delay: 50 })
-    cy.get('[type="password"]').type(password, { force: true, delay: 50 })
+    cy.get('[type="text"]').type(username, { force: true, delay: 35 })
+    cy.get('[type="password"]').type(password, { force: true, delay: 35 })
     cy.intercept('POST', '/api/main/auth/login').as('sign')
     cy.xpath('//button[text()="Login"]').click()
     cy.wait('@sign').then((interception) => {
@@ -23,7 +23,7 @@ const login = (name, username, password) => {
 
 const accessBrand = () => {
   //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
-  cy.visit(Cypress.env("URL_Production") + 'auth')
+  cy.visit(Cypress.expose("URL_Production") + 'auth')
   cy.contains('Inventory').should('exist')
   cy.contains('Inventory').click({ force: true })
   cy.contains('Options').should('exist')
@@ -35,7 +35,7 @@ const accessBrand = () => {
 describe('Beta Vendor Admin | Inventory | Delete Brands| logged with Admin credentials', () =>{
 
     beforeEach(() => {
-      cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+      cy.loginprod('Admin Section', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))
     })
 
     afterEach(() => {
@@ -43,7 +43,7 @@ describe('Beta Vendor Admin | Inventory | Delete Brands| logged with Admin crede
     })
 
     it('Verify it is possible delete brand', () => {
-      cy.visit(Cypress.env("URL_Production") + 'auth')
+      cy.visit(Cypress.expose("URL_Production") + 'auth')
       cy.contains('Inventory').should('exist')
       cy.contains('Inventory').click({ force: true })
       cy.contains('Products').should('exist')

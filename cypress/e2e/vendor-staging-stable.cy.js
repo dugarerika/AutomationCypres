@@ -6,15 +6,15 @@ const { should } = require("chai")
 const login = (name, username, password) => {
   cy.session(name,() => {
     cy.visit('https://staging.vendor.bookr-dev.com/auth')
-    cy.wait(900)
+    cy.wait(720)
     cy.get('#username').should('be.visible');
     cy.get('#password').should('be.visible');
     cy.xpath('//button[text()="Sign in"]').should('be.visible');
-    cy.get('#username').click().type(username, {force: true, delay: 50})
-    cy.get('#password').click().type(password,{force: true, delay: 50})
+    cy.get('#username').click().type(username, {force: true, delay: 35})
+    cy.get('#password').click().type(password,{force: true, delay: 35})
     cy.intercept('POST', '/ssr/main/api/auth/login').as('sign')
     cy.get('button').contains('Sign in').click()
-    cy.wait(100)
+    cy.wait(64)
     cy.wait('@sign').then((interception) => {
       expect(interception.response.statusCode).to.equal(200)
     })          
@@ -41,7 +41,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(6000)
+      cy.wait(4800)
       cy.contains(`${staff1}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -60,9 +60,9 @@ describe('Vendor Admin | logged with Staff credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains('06:00 PM').scrollIntoView()
-      cy.wait(1000)
+      cy.wait(640)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -87,7 +87,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -112,7 +112,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -139,7 +139,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -150,7 +150,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
       cy.contains('New Appointment').should('exist')
       cy.contains("Search customer..").next('div').should('exist')
       cy.contains("Search customer..").next('div').children('input').click({force: true})
-      cy.contains("Search customer..").next('div').children('input').type('juan{enter}{enter}',{force: true, delay: 1000})
+      cy.contains("Search customer..").next('div').children('input').type('juan{enter}{enter}',{force: true, delay: 700})
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
       cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
       cy.contains('Create Appointment').click({force: true})
@@ -176,7 +176,7 @@ describe('Vendor Admin | logged with Staff credentials', () => {
       cy.get('[id="Logout-1--Streamline-Core.svg"]').should('exist')
       cy.intercept('DELETE', '/ssr/main/api/auth/logout').as('logout')
       cy.get('[id="Logout-1--Streamline-Core.svg"]').parents('li').click()
-      cy.wait(100)
+      cy.wait(64)
       cy.wait('@logout').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
       })   
@@ -205,7 +205,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -230,7 +230,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -241,7 +241,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       cy.contains('New Appointment').should('exist')
       cy.contains("Search customer..").next('div').should('exist')
       cy.contains("Search customer..").next('div').children('input').click({force: true})
-      cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
+      cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 700})
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
       cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
       cy.contains('Create Appointment').click({force: true})
@@ -258,7 +258,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -286,7 +286,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -313,7 +313,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -338,7 +338,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -363,7 +363,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -385,7 +385,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -400,7 +400,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       cy.contains('Edit Appointment').should('exist') 
       cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
       cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-      cy.wait(1000)
+      cy.wait(640)
     })
   })
 
@@ -408,7 +408,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
     
     it('Verify it is possible to access the new staff section - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -417,7 +417,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify after clicking "ADD NEW" the New Staff modal is display - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(1000)
+      cy.wait(640)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -429,7 +429,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to access the new staff form - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible')
       cy.get('[aria-label="Staff"]').click()
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -441,7 +441,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify that user permission is require when creating a new staff through the New Staff form - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -456,7 +456,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify first name is a require field in the New Staff form - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -475,7 +475,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify Last name is a optional field in the New Staff form - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -494,7 +494,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify that user permission is require when creating a new staff through the New Staff form - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.contains('ADD NEW').should('be.visible')
       cy.contains('ADD NEW').click()
@@ -507,7 +507,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify first name is a require field in the New Staff form - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.contains('ADD NEW').should('be.visible')
       cy.contains('ADD NEW').click()
@@ -524,7 +524,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify Last name is a optional field in the New Staff form - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.contains('ADD NEW').should('be.visible')
       cy.contains('ADD NEW').click()
@@ -541,7 +541,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to add a new staff - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.contains('ADD NEW').should('be.visible')
       cy.contains('ADD NEW').click()
@@ -551,7 +551,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       cy.get('[data-value="STAFF"]').should('be.visible')
       cy.get('[data-value="STAFF"]').click()
       cy.get('[name="firstName"]').should('be.visible')
-      cy.get('[name="firstName"]').type('EritestAdmin',{force: true, delay: 100})
+      cy.get('[name="firstName"]').type('EritestAdmin',{force: true, delay: 70})
       cy.contains('Submit').should('be.visible')
       cy.contains('Submit').click()
       cy.contains('Created successfully').should('be.visible')
@@ -561,7 +561,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
         
     it('Verify it is possible to edit staff User permission From STAFF to RECEPTIONIST - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -582,7 +582,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to edit staff User permission From RECEPTIONIST to READ ONLY - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -603,7 +603,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to edit staff User permission From READ ONLY to STAFF - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -624,7 +624,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to edit staff User permission From READ ONLY to STAFF - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -645,7 +645,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
   
     it('Verify it is possible to delete staff - Admin credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -676,7 +676,7 @@ describe('Vendor Admin | logged with Admin credentials', () => {
       cy.get('[id="Logout-1--Streamline-Core.svg"]').should('exist')
       cy.intercept('DELETE', '/ssr/main/api/auth/logout').as('logout')
       cy.get('[id="Logout-1--Streamline-Core.svg"]').parents('li').click()
-      cy.wait(100)
+      cy.wait(64)
       cy.wait('@logout').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
       })   
@@ -707,7 +707,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -733,7 +733,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -744,7 +744,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       cy.contains('New Appointment').should('exist')
       cy.contains("Search customer..").next('div').should('exist')
       cy.contains("Search customer..").next('div').children('input').click({force: true})
-      cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
+      cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 700})
       cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
       cy.intercept('POST', '/ssr/main/api/vendor/bookings/cart').as('new-user')
       cy.contains('Create Appointment').click({force: true})
@@ -762,7 +762,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -791,7 +791,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -819,7 +819,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -845,7 +845,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -872,7 +872,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -895,7 +895,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       let color
       cy.get('.tool-datepicker-next').should('be.visible')
       cy.get('.tool-datepicker-next').click()
-      cy.wait(7000)
+      cy.wait(5600)
       cy.contains(`${staff}`).parent('div').then(($div) => {
         color = $div.attr('color')
         cy.log(color)
@@ -916,7 +916,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify it is possible to access the new staff section - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -925,7 +925,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify after clicking "ADD NEW" the New Staff modal is display - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -937,7 +937,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify it is possible to access the new staff form - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible')
       cy.get('[aria-label="Staff"]').click()
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -949,7 +949,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify that user permission is require when creating a new staff through the New Staff form - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -964,7 +964,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify first name is a require field in the New Staff form - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(900)
+      cy.wait(720)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -983,7 +983,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify Last name is a optional field in the New Staff form - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/calendar')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
@@ -1002,7 +1002,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify that user permission is require when creating a new staff through the New Staff form - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.contains('ADD NEW').should('be.visible')
       cy.contains('ADD NEW').click()
@@ -1015,7 +1015,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify first name is a require field in the New Staff form - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.contains('ADD NEW').should('be.visible')
       cy.contains('ADD NEW').click()
@@ -1032,7 +1032,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify Last name is a optional field in the New Staff form - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.contains('ADD NEW').should('be.visible')
       cy.contains('ADD NEW').click()
@@ -1049,7 +1049,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify it is possible to add a new staff - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.contains('ADD NEW').should('be.visible')
       cy.contains('ADD NEW').click()
@@ -1059,7 +1059,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       cy.get('[data-value="STAFF"]').should('be.visible')
       cy.get('[data-value="STAFF"]').click()
       cy.get('[name="firstName"]').should('be.visible')
-      cy.get('[name="firstName"]').type('Eritest1',{force: true, delay: 100})
+      cy.get('[name="firstName"]').type('Eritest1',{force: true, delay: 70})
       cy.contains('Submit').should('be.visible')
       cy.contains('Submit').click()
       cy.contains('Created successfully').should('be.visible')
@@ -1069,7 +1069,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
         
     it('Verify it is possible to edit staff User permission From STAFF to RECEPTIONIST - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -1090,7 +1090,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify it is possible to edit staff User permission From RECEPTIONIST to READ ONLY - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -1111,7 +1111,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify it is possible to edit staff User permission From READ ONLY to STAFF - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -1132,7 +1132,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify it is possible to edit staff User permission From READ ONLY to STAFF - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -1153,7 +1153,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
   
     it('Verify it is possible to delete staff - Receptionist credentials', () => {
       cy.visit('https://staging.vendor.bookr-dev.com/staff')
-      cy.wait(7000)
+      cy.wait(5600)
       cy.url().should('include', 'https://staging.vendor.bookr-dev.com/staff')
       cy.get('[aria-label="Staff"]').should('be.visible');
       cy.get('[aria-label="Staff"]').click();
@@ -1184,7 +1184,7 @@ describe('Vendor Admin | logged with Receptionist credentials', () => {
       cy.get('[id="Logout-1--Streamline-Core.svg"]').should('exist')
       cy.intercept('DELETE', '/ssr/main/api/auth/logout').as('logout')
       cy.get('[id="Logout-1--Streamline-Core.svg"]').parents('li').click()
-      cy.wait(100)
+      cy.wait(64)
       cy.wait('@logout').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
       })   
@@ -1219,7 +1219,7 @@ describe('Vendor Admin | Login/logout| logged with Read Only credentials', () =>
       cy.get('[id="Logout-1--Streamline-Core.svg"]').should('exist')
       cy.intercept('DELETE', '/ssr/main/api/auth/logout').as('logout')
       cy.get('[id="Logout-1--Streamline-Core.svg"]').parents('li').click()
-      cy.wait(100)
+      cy.wait(64)
       cy.wait('@logout').then((interception) => {
         expect(interception.response.statusCode).to.equal(200)
       })   

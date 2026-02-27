@@ -8,8 +8,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 		// cy.viewport(3840,2160)
 		cy.login(
 			'Admin Session',
-			Cypress.env('Vendor1_Admin_Username_Staging'),
-			Cypress.env('Vendor1_Admin_Password_Staging')
+			Cypress.expose('Vendor1_Admin_Username_Staging'),
+			Cypress.expose('Vendor1_Admin_Password_Staging')
 		);
 	});
 
@@ -25,7 +25,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.contains('button', 'Checkout')
 				.scrollIntoView()
 				.click();
-			cy.wait(999);
+			cy.wait(799);
 			cy.contains('Change customer').should('be.visible');
 			cy.expectedMessageCompleteSale(
 				'Add at least one payment'
@@ -37,13 +37,13 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 		it('Verify that clicking "Fill" for Debit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
 			cy.createappt('Helen','01:00', 'Downpayment')
 			cy.searchAppt('Helen');
-			cy.wait(99);
+			cy.wait(79);
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
 				.click();
 			cy.fillButtonDonwpayment('Debit');
-			cy.wait(99);
+			cy.wait(79);
 		});
 
 		it(
@@ -55,7 +55,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 					.scrollIntoView()
 					.click();
 				cy.fillButtonDonwpayment('Credit');
-				cy.wait(999);
+				cy.wait(799);
 			}
 		);
 
@@ -66,7 +66,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.scrollIntoView()
 				.click();
 			cy.fillButtonDonwpayment('Cash');
-			cy.wait(999);
+			cy.wait(799);
 		});
 
 		it('Verify that clicking "Fill" for Other sets the field with the paid Downpayment amount for a Downpayment service.', () => {
@@ -76,7 +76,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.scrollIntoView()
 				.click();
 			cy.fillButtonDonwpayment('Other');
-			cy.wait(999);
+			cy.wait(799);
 		});
 
 		it('Verify that clicking "Fill" for Hisabe sets the field with the paid Downpayment amount for a Downpayment service.', () => {
@@ -86,7 +86,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.scrollIntoView()
 				.click();
 			cy.fillButtonDonwpayment('Hisabe');
-			cy.wait(999);
+			cy.wait(799);
 		});
 
 		// Fillout buttons with Total (it is pending gift card)
@@ -98,7 +98,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.click();
 			cy.disableDownpaymentSwitch();
 			cy.fillButton('Debit');
-			cy.wait(999);
+			cy.wait(799);
 		});
 
 		it('Verify that clicking "Fill" for Credit sets the field with the paid Total amount for a Downpayment service.', () => {
@@ -110,7 +110,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.click();
 			cy.disableDownpaymentSwitch();
 			cy.fillButton('Credit');
-			cy.wait(999);
+			cy.wait(799);
 		});
 
 		it('Verify that clicking "Fill" for Cash sets the field with the paid Total amount for a Downpayment service.', () => {
@@ -122,7 +122,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.click();
 			cy.disableDownpaymentSwitch();
 			cy.fillButton('Cash');
-			cy.wait(999);
+			cy.wait(799);
 		});
 
 		it('Verify that clicking "Fill" for Other sets the field with the paid Total amount for a Downpayment service.', () => {
@@ -133,7 +133,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.click();
 			cy.disableDownpaymentSwitch();
 			cy.fillButton('Other');
-			cy.wait(999);
+			cy.wait(799);
 		});
 
 		it('Verify that clicking "Fill" for Hisabe sets the field with the paid Total amount for a Downpayment service.', () => {
@@ -144,7 +144,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.click();
 			cy.disableDownpaymentSwitch();
 			cy.fillButton('Hisabe');
-			cy.wait(999);
+			cy.wait(799);
 		});
 	});
 
@@ -203,7 +203,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.scrollIntoView()
 				.click();
 			// cy.addItemService('Long Hair')
-			cy.wait(9000);
+			cy.wait(7200);
 			cy.addEmptyDiscount('Fixed');
 		});
 
@@ -213,7 +213,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.contains('button', 'Checkout')
 				.scrollIntoView()
 				.click();
-			cy.wait(9000);
+			cy.wait(7200);
 			cy.addEmptyDiscount('Percentage');
 		});
 
@@ -223,7 +223,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 				.contains('button', 'Checkout')
 				.scrollIntoView()
 				.click();
-			cy.wait(9000);
+			cy.wait(7200);
 			// cy.addItemService('Long Hair')
 			cy.addEmptyDiscount('Coupon');
 		});
@@ -307,7 +307,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 		cy.newCheckout('URL_Staging');
 		cy.addItemSubscription('Subscription B');
 		cy.addItemGiftCard('100 SAR Gift Card');
-		cy.wait(99);
+		cy.wait(79);
 		cy
 			.contains(
 				'span',
@@ -330,8 +330,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 			.contains('div', 'Search customer..')
 			.next()
 			.find('input')
-			.type('Dugar Erika{enter}', { delay: 999 });
-		cy.wait(80);
+			.type('Dugar Erika{enter}', { delay: 699 });
+		cy.wait(64);
 		cy.addItemSubscription('Subscription B');
 		cy.fillButton('Cash');
 		cy.expectedMessageCompleteSale('Sale Completed');
@@ -349,8 +349,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 			.contains('div', 'Search customer..')
 			.next()
 			.find('input')
-			.type('Dugar Erika{enter}', { delay: 999 });
-		cy.wait(80);
+			.type('Dugar Erika{enter}', { delay: 699 });
+		cy.wait(64);
 		cy.addItemSubscription('Subscription B');
 		cy.addPercentageDiscount('Subscription B', '40', '15');
 		cy.fillButton('Cash');
@@ -370,8 +370,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 			.contains('div', 'Search customer..')
 			.next()
 			.find('input')
-			.type('Dugar Erika{enter}', { delay: 999 });
-		cy.wait(80);
+			.type('Dugar Erika{enter}', { delay: 699 });
+		cy.wait(64);
 		cy.addItemSubscription('Subscription B');
 		cy.addFixedDiscount('Subscription B', '5', '15');
 		cy.fillButton('Cash');
@@ -436,7 +436,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 		cy.newCheckout('URL_Staging');
 		cy.addItemGiftCard('243.48 SAR Gift Card');
 		cy.fillButton('Cash');
-		cy.wait(99);
+		cy.wait(79);
 		cy.expectedMessageCompleteSale('Sale Completed');
 	});
 });
@@ -450,11 +450,11 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 	beforeEach(() => {
 		cy.login(
 			'Receptionist Session',
-			Cypress.env('Vendor1_Receptionist_Username_Staging'),
-			Cypress.env('Vendor1_Receptionist_Password_Staging')
+			Cypress.expose('Vendor1_Receptionist_Username_Staging'),
+			Cypress.expose('Vendor1_Receptionist_Password_Staging')
 		);
-		// cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		// cy.wait(8000);
+		// cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
+		// cy.wait(6400);
 		// cy.get('body').then(($body) => {
 		// 	if ($body.text().includes('Welcome Back!')) {
 		// 		cy
@@ -462,14 +462,14 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 		// 			.next('button')
 		// 			.scrollIntoView()
 		// 			.click();
-		// 		cy.wait(8000);
+		// 		cy.wait(6400);
 		// 	}
 		// 	if ($body.text().includes('Enable Notifications')) {
 		// 		cy.contains('button', 'Not now').click();
-		// 		cy.wait(800);
+		// 		cy.wait(640);
 		// 	}
 		// });
-		// cy.wait(80);
+		// cy.wait(64);
 	});
 
 	afterEach(() => {
@@ -520,11 +520,11 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 	beforeEach(() => {
 		cy.login(
 			'Staff Session',
-			Cypress.env('Vendor1_Staff_Username_Staging'),
-			Cypress.env('Vendor1_Staff_Password_Staging')
+			Cypress.expose('Vendor1_Staff_Username_Staging'),
+			Cypress.expose('Vendor1_Staff_Password_Staging')
 		);
-		// cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		// cy.wait(8000);
+		// cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
+		// cy.wait(6400);
 		// cy.get('body').then(($body) => {
 		// 	if ($body.text().includes('Welcome Back!')) {
 		// 		cy
@@ -532,14 +532,14 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 		// 			.next('button')
 		// 			.scrollIntoView()
 		// 			.click();
-		// 		cy.wait(8000);
+		// 		cy.wait(6400);
 		// 	}
 		// 	if ($body.text().includes('Enable Notifications')) {
 		// 		cy.contains('button', 'Not now').click();
-		// 		cy.wait(800);
+		// 		cy.wait(640);
 		// 	}
 		// });
-		// cy.wait(80);
+		// cy.wait(64);
 	});
 
 	afterEach(() => {

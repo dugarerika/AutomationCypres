@@ -4,7 +4,7 @@
 const { should } = require("chai")
 
 const accessToEditSuppliers = () => {
-  cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
+  cy.visit(Cypress.expose("URL_Production") + 'admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
     cy.contains('Supplier').should('exist')
@@ -54,14 +54,14 @@ const clearEditSupplierForm = () => {
 const expectedMessageCreateSupplier = (supplier_message) => {
     cy.contains('button', 'Save').should('exist')
     cy.contains('button', 'Save').click()
-    cy.wait(100)
+    cy.wait(64)
     cy.contains('span', supplier_message).should('exist')
 }
 
 describe('Production - Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin credentials', () =>{
 
   beforeEach(() => {
-    cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+    cy.loginprod('Admin Section', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))
   })
 
   afterEach(() => {
@@ -169,7 +169,7 @@ describe('Production - Beta Vendor Admin | Inventory | Edit Suppliers|logged wit
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier with all the fields fillout','Supplier Description','contact First Name','Contact Last Name','38717494','3@gmail.com')
-    cy.wait(100)
+    cy.wait(64)
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })
 
@@ -177,7 +177,7 @@ describe('Production - Beta Vendor Admin | Inventory | Edit Suppliers|logged wit
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - last name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
-    cy.wait(100)
+    cy.wait(64)
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })
 
@@ -185,7 +185,7 @@ describe('Production - Beta Vendor Admin | Inventory | Edit Suppliers|logged wit
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - Contact Last Name - mobile - email','{enter}','{enter}','Contact Last Name','38972467','3@gmail.com')
-    cy.wait(100)
+    cy.wait(64)
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })
 
@@ -201,7 +201,7 @@ describe('Production - Beta Vendor Admin | Inventory | Edit Suppliers|logged wit
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - mobile - email','{enter}','{enter}','{enter}','38972467','3@gmail.com')
-    cy.wait(100)
+    cy.wait(64)
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })
 
@@ -210,7 +210,7 @@ describe('Production - Beta Vendor Admin | Inventory | Edit Suppliers|logged wit
     accessToEditSuppliers()
     clearEditSupplierForm()
     filloutEditSupplierForm('Supplier name - email','{enter}','{enter}','{enter}','{enter}','3@gmail.com')
-    cy.wait(100)
+    cy.wait(64)
     expectedMessageCreateSupplier('Supplier Updated successfully')
   })
 })

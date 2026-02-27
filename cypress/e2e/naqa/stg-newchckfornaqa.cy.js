@@ -11,7 +11,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     })  
     
     beforeEach(() => {
-        cy.login('Admin Session', Cypress.env("Vendor7_Admin_Username_Staging"), Cypress.env("Vendor7_Admin_Password_Staging"))
+        cy.login('Admin Session', Cypress.expose("Vendor7_Admin_Username_Staging"), Cypress.expose("Vendor7_Admin_Password_Staging"))
     })
 
     afterEach(() => {
@@ -23,8 +23,8 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.newCheckout("URL_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 999})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 699})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
@@ -33,8 +33,8 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.newCheckout("URL_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 999})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 699})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.addPercentageDiscount('Subscription B','40','10')
         cy.fillButton('Cash')
@@ -45,8 +45,8 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
         cy.newCheckout("URL_Staging")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 999})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 699})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.addFixedDiscount('Subscription B','5','10')
         cy.fillButton('Cash')
@@ -129,7 +129,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
     
     beforeEach(() => {
-        cy.login('Receptionist Session', Cypress.env("Vendor7_Receptionist_Username_Staging"), Cypress.env("Vendor7_Receptionist_Password_Staging"))
+        cy.login('Receptionist Session', Cypress.expose("Vendor7_Receptionist_Username_Staging"), Cypress.expose("Vendor7_Receptionist_Password_Staging"))
     })
 
     afterEach(() => {
@@ -179,7 +179,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
 //     })
     
 //     beforeEach(() => {
-//         cy.login('Staff Session', Cypress.env("Vendor1_Staff_Username_Staging"), Cypress.env("Vendor1_Staff_Password_Staging"))
+//         cy.login('Staff Session', Cypress.expose("Vendor1_Staff_Username_Staging"), Cypress.expose("Vendor1_Staff_Password_Staging"))
 //     })
 
 //     afterEach(() => {

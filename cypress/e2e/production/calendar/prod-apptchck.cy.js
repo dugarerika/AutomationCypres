@@ -11,8 +11,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     })  
     
     beforeEach(() => {
-        cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
-        cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
+        cy.loginprod('Receptionist Session', Cypress.expose("Vendor_Receptionist_Username_Production"), Cypress.expose("Vendor_Receptionist_Password_Production"))
+        cy.visit(Cypress.expose("URL_Production") + 'admin/calendar')
         // cy.createappt('Meriam','01:00', 'Downpayment')
         // cy.createappt('Sara ','01:00', 'Downpayment')
     })
@@ -26,7 +26,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
         //cy.createappt('Susan one','01:00', 'Downpayment')
         cy.searchAppt('Susan one')
         cy.contains('button','Checkout').click()
-        cy.wait(999)
+        cy.wait(799)
         cy.contains('Change customer').should('be.visible')
         cy.expectedMessageCompleteSale('Add at least one payment')
     })
@@ -37,7 +37,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
         cy.searchAppt('Helen')
         cy.contains('button','Checkout').click()
         cy.fillButtonDonwpayment('Debit')
-        cy.wait(99)
+        cy.wait(79)
     })
 
     it('Verify that clicking "Fill" for Credit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
@@ -45,7 +45,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
         cy.searchAppt('Helen')
         cy.contains('button','Checkout').click()
         cy.fillButtonDonwpayment('Credit')
-        cy.wait(999)
+        cy.wait(799)
     })
 
     it('Verify that clicking "Fill" for Cash sets the field with the paid Downpayment amount for a Downpayment service.', () => {
@@ -53,7 +53,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     cy.searchAppt('Helen')
     cy.contains('button','Checkout').click()
     cy.fillButtonDonwpayment('Cash')
-    cy.wait(999)
+    cy.wait(799)
     })
 
     it('Verify that clicking "Fill" for Other sets the field with the paid Downpayment amount for a Downpayment service.', () => {
@@ -61,7 +61,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     cy.searchAppt('Helen')
     cy.contains('button','Checkout').click()
     cy.fillButtonDonwpayment('Other')
-    cy.wait(999)
+    cy.wait(799)
     })
 
     it('Verify that clicking "Fill" for Hisabe sets the field with the paid Downpayment amount for a Downpayment service.', () => {
@@ -69,7 +69,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     cy.searchAppt('Helen')
     cy.contains('button','Checkout').click()
     cy.fillButtonDonwpayment('Hisabe')
-    cy.wait(999)
+    cy.wait(799)
     })
 
     // Fillout buttons with Total (it is pending gift card)
@@ -79,7 +79,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     cy.contains('button','Checkout').click()
     cy.disableDownpaymentSwitch()
     cy.fillButton('Debit')
-    cy.wait(999)
+    cy.wait(799)
     })
 
     it('Verify that clicking "Fill" for Credit sets the field with the paid Total amount for a Downpayment service.', () => {
@@ -88,7 +88,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     cy.contains('button','Checkout').click()
     cy.disableDownpaymentSwitch()
     cy.fillButton('Credit')
-    cy.wait(999)
+    cy.wait(799)
     })
 
     it('Verify that clicking "Fill" for Cash sets the field with the paid Total amount for a Downpayment service.', () => {
@@ -97,7 +97,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     cy.contains('button','Checkout').click()
     cy.disableDownpaymentSwitch()
     cy.fillButton('Cash')
-    cy.wait(999)
+    cy.wait(799)
     })
 
     it('Verify that clicking "Fill" for Other sets the field with the paid Total amount for a Downpayment service.', () => {
@@ -106,7 +106,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     cy.contains('button','Checkout').click()
     cy.disableDownpaymentSwitch()
     cy.fillButton('Other')
-    cy.wait(999)
+    cy.wait(799)
     })
 
     it('Verify that clicking "Fill" for Hisabe sets the field with the paid Total amount for a Downpayment service.', () => {
@@ -115,7 +115,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
     cy.contains('button','Checkout').click()
     cy.disableDownpaymentSwitch()
     cy.fillButton('Hisabe')
-    cy.wait(999)
+    cy.wait(799)
     })
 
     // Discounts
@@ -227,8 +227,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
         cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 700})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.fillButton('Cash')
         cy.expectedMessageCompleteSale('Sale Completed')
@@ -237,8 +237,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
         cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 700})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.addPercentageDiscount('Subscription B','40')
         cy.fillButton('Cash')
@@ -249,8 +249,8 @@ describe('Staging - Beta Vendor Admin | Calendar| Appt Checkout | logged with Ad
         cy.newCheckout("URL_Production")
         cy.contains('button','Change customer').click()
         cy.contains('div','Search customer..').should('be.visible')
-        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 1000})
-        cy.wait(100)
+        cy.contains('div','Search customer..').next().find('input').type('Dugar Erika{enter}', { delay: 700})
+        cy.wait(64)
         cy.addItemSubscription('Subscription B')
         cy.addFixedDiscount('Subscription B','5')
         cy.fillButton('Cash')
@@ -323,7 +323,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
     
     beforeEach(() => {
-        cy.login('Receptionist Session', Cypress.env("Vendor1_Receptionist_Username_Staging"), Cypress.env("Vendor1_Receptionist_Password_Staging"))
+        cy.login('Receptionist Session', Cypress.expose("Vendor1_Receptionist_Username_Staging"), Cypress.expose("Vendor1_Receptionist_Password_Staging"))
     })
 
     afterEach(() => {
@@ -373,7 +373,7 @@ describe.skip('Staging - Beta Vendor Admin | Calendar| New Checkout | logged wit
     })
     
     beforeEach(() => {
-        cy.login('Staff Session', Cypress.env("Vendor1_Staff_Username_Staging"), Cypress.env("Vendor1_Staff_Password_Staging"))
+        cy.login('Staff Session', Cypress.expose("Vendor1_Staff_Username_Staging"), Cypress.expose("Vendor1_Staff_Password_Staging"))
     })
 
     afterEach(() => {

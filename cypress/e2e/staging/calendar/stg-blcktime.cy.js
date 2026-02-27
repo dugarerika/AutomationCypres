@@ -14,8 +14,8 @@ describe(
 		beforeEach(() => {
 			cy.login(
 				'Admin Session',
-				Cypress.env('Vendor_Admin_Username_Staging'),
-				Cypress.env('Vendor_Admin_Password_Staging')
+				Cypress.expose('Vendor_Admin_Username_Staging'),
+				Cypress.expose('Vendor_Admin_Password_Staging')
 			);
 		});
 
@@ -209,7 +209,7 @@ describe(
 
 		it('Verify it is possible to edit staff on a blocktime from the Calendar', () => {
 			cy.visit(
-				Cypress.env('URL_Staging') + 'admin/calendar'
+				Cypress.expose('URL_Staging') + 'admin/calendar'
 			);
 			cy
 				.contains('span', 'Blocked Time for')
@@ -240,7 +240,7 @@ describe(
 
 		it('Verify it is possible to edit Start time on a blocktime from the Calendar', () => {
 			cy.visit(
-				Cypress.env('URL_Staging') + 'admin/calendar'
+				Cypress.expose('URL_Staging') + 'admin/calendar'
 			);
 			cy
 				.contains('span', 'Blocked Time for')
@@ -274,7 +274,7 @@ describe(
 				.type(
 					'{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{enter}'
 				);
-			cy.wait(1000);
+			cy.wait(640);
 			cy
 				.contains('button', 'Update')
 				.click({ force: true });
@@ -288,7 +288,7 @@ describe(
 
 		it('Verify it is possible to edit End time on a blocktime from the Calendar', () => {
 			cy.visit(
-				Cypress.env('URL_Staging') + 'admin/calendar'
+				Cypress.expose('URL_Staging') + 'admin/calendar'
 			);
 			cy
 				.contains('span', 'Blocked Time for')
@@ -308,7 +308,7 @@ describe(
 				.type(
 					'{downarrow}{downarrow}{downarrow}{downarrow}{enter}'
 				);
-			cy.wait(1000);
+			cy.wait(640);
 			cy
 				.contains('button', 'Update')
 				.click({ force: true });
@@ -322,7 +322,7 @@ describe(
 
 		it('Verify it is possible to delete a blocktime from the Calendar', () => {
 			cy.visit(
-				Cypress.env('URL_Staging') + 'admin/calendar'
+				Cypress.expose('URL_Staging') + 'admin/calendar'
 			);
 			cy
 				.contains('span', 'Blocked Time for', {
@@ -352,8 +352,8 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the C
 	beforeEach(() => {
 		cy.login(
 			'Staff Session',
-			Cypress.env('Vendor_Staff_Username_Staging'),
-			Cypress.env('Vendor_Staff_Password_Staging')
+			Cypress.expose('Vendor_Staff_Username_Staging'),
+			Cypress.expose('Vendor_Staff_Password_Staging')
 		);
 	});
 
@@ -533,7 +533,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the C
 	});
 
 	it('Verify it is possible to edit staff on a blocktime from the Calendar', () => {
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
 		cy
 			.contains('span', 'Blocked Time for')
 			.next('span', 'Helen')
@@ -560,7 +560,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the C
 	});
 
 	it('Verify it is possible to edit Start time on a blocktime from the Calendar', () => {
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
 		cy
 			.contains('span', 'Blocked Time for')
 			.next('span', 'Mateo Mateo')
@@ -593,7 +593,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the C
 			.type(
 				'{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{enter}'
 			);
-		cy.wait(1000);
+		cy.wait(640);
 		cy.contains('button', 'Update').click({ force: true });
 		cy
 			.contains(
@@ -604,7 +604,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the C
 	});
 
 	it('Verify it is possible to edit End time on a blocktime from the Calendar', () => {
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
 		cy
 			.contains('span', 'Blocked Time for')
 			.next('span', 'Mateo Mateo')
@@ -623,7 +623,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the C
 			.type(
 				'{downarrow}{downarrow}{downarrow}{downarrow}{enter}'
 			);
-		cy.wait(1000);
+		cy.wait(640);
 		cy.contains('button', 'Update').click({ force: true });
 		cy
 			.contains(
@@ -634,7 +634,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the C
 	});
 
 	it('Verify it is possible to delete a blocktime from the Calendar', () => {
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
 		cy
 			.contains('span', 'Blocked Time for')
 			.next('span', 'Zumba')
@@ -658,11 +658,11 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 	beforeEach(() => {
 		cy.login(
 			'Receptionist Session',
-			Cypress.env('Vendor_Receptionist_Username_Staging'),
-			Cypress.env('Vendor_Staff_Password_Staging')
+			Cypress.expose('Vendor_Receptionist_Username_Staging'),
+			Cypress.expose('Vendor_Staff_Password_Staging')
 		);
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
-		cy.wait(8000);
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
+		cy.wait(6400);
 		cy.get('body').then(($body) => {
 			if ($body.text().includes('Welcome Back!')) {
 				cy
@@ -670,11 +670,11 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 					.next('button')
 					.scrollIntoView()
 					.click();
-				cy.wait(8000);
+				cy.wait(6400);
 			}
 			if ($body.text().includes('Enable Notifications')) {
 				cy.contains('button', 'Not now').click();
-				cy.wait(800);
+				cy.wait(640);
 			}
 		});
 	});
@@ -855,7 +855,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 	});
 
 	it('Verify it is possible to edit staff on a blocktime from the Calendar', () => {
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
 		cy
 			.contains('span', 'Blocked Time for')
 			.next('span', 'Helen')
@@ -882,7 +882,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 	});
 
 	it('Verify it is possible to edit Start time on a blocktime from the Calendar', () => {
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
 		cy
 			.contains('span', 'Blocked Time for')
 			.next('span', 'Helen')
@@ -915,7 +915,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 			.type(
 				'{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{downarrow}{enter}'
 			);
-		cy.wait(1000);
+		cy.wait(640);
 		cy.contains('button', 'Update').click({ force: true });
 		cy
 			.contains(
@@ -926,7 +926,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 	});
 
 	it('Verify it is possible to edit End time on a blocktime from the Calendar', () => {
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
 		cy
 			.contains('span', 'Blocked Time for')
 			.next('span', 'Helen')
@@ -945,7 +945,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 			.type(
 				'{downarrow}{downarrow}{downarrow}{downarrow}{enter}'
 			);
-		cy.wait(1000);
+		cy.wait(640);
 		cy.contains('button', 'Update').click({ force: true });
 		cy
 			.contains(
@@ -956,7 +956,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 	});
 
 	it('Verify it is possible to delete a blocktime from the Calendar', () => {
-		cy.visit(Cypress.env('URL_Staging') + 'admin/calendar');
+		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
 		cy
 			.contains('span', 'Blocked Time for')
 			.next('span', 'Helen')
@@ -982,8 +982,8 @@ describe.skip(
 		beforeEach(() => {
 			cy.login(
 				'Read-only Session',
-				Cypress.env('Vendor_ReadOnly_Username_Staging'),
-				Cypress.env('Vendor_ReadOnly_Password_Staging')
+				Cypress.expose('Vendor_ReadOnly_Username_Staging'),
+				Cypress.expose('Vendor_ReadOnly_Password_Staging')
 			);
 		});
 
@@ -993,7 +993,7 @@ describe.skip(
 
 		it('Verify The option to add Block Time is not available for Readonlyu Role', () => {
 			cy.visit(
-				Cypress.env('URL_Staging') + 'admin/calendar'
+				Cypress.expose('URL_Staging') + 'admin/calendar'
 			);
 			cy.newBlockTime('URL_Staging');
 			cy

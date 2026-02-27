@@ -4,7 +4,7 @@
 const { should } = require("chai")
   
 const searchTimeSlot = (staff,start_time) => {
-  cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
+  cy.visit(Cypress.expose("URL_Production") + 'admin/calendar')
   let color
   const regex = new RegExp('^' + staff, 'i') // regex to match the start of the sentence
   cy.contains('div>span',regex).parent('div').then(($div) => {
@@ -17,7 +17,7 @@ const searchTimeSlot = (staff,start_time) => {
 }
 
 const searchApt = (staff,start_time) => {
-  cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
+  cy.visit(Cypress.expose("URL_Production") + 'admin/calendar')
   let color
   const regex = new RegExp('^' + staff, 'i')
   cy.contains('div>span',regex).parent('div').then(($div) => {
@@ -39,11 +39,11 @@ describe('Production - Beta Vendor Admin | Calendar | Create appointments by Cli
   })
 
 beforeEach(() => {
-  cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+  cy.loginprod('Admin Section', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))
 })
 
 afterEach(() => {
-  cy.visit(Cypress.env("URL_Production") + 'auth?nativeLogout=true')
+  cy.visit(Cypress.expose("URL_Production") + 'auth?nativeLogout=true')
 })
 
 it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
@@ -80,7 +80,7 @@ it('Verify it is possible to create an appointment searching and selecting custo
   searchTimeSlot('Naomi Naomi','07:00') 
   cy.contains("Search customer..").next('div').should('exist')
   cy.contains("Search customer..").next('div').children('input').click({force: true})
-  cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
+  cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 700})
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
   cy.contains('Create Appointment').click({force: true})
@@ -145,7 +145,7 @@ it('Verify it is possible to edit the Customer', () => {
   cy.contains('Edit Appointment').should('exist') 
   cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
   cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-  cy.wait(1000)
+  cy.wait(640)
 })
 })
 
@@ -156,15 +156,15 @@ describe.only('Production - Beta Vendor Admin | Calendar | Create appointments b
   })
   
   beforeEach(() => {
-    cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
+    cy.loginprod('Receptionist Session', Cypress.expose("Vendor_Receptionist_Username_Production"), Cypress.expose("Vendor_Receptionist_Password_Production"))
   })
 
   afterEach(() => {
-    cy.visit(Cypress.env("URL_Production") + 'auth?nativeLogout=true')
+    cy.visit(Cypress.expose("URL_Production") + 'auth?nativeLogout=true')
   })
 
   after(() => {
-    cy.visit(Cypress.env("URL_Production") + 'auth')
+    cy.visit(Cypress.expose("URL_Production") + 'auth')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
@@ -201,7 +201,7 @@ describe.only('Production - Beta Vendor Admin | Calendar | Create appointments b
     searchTimeSlot('Zstaff ','06:00') 
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
-    cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
+    cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 700})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -274,7 +274,7 @@ describe.only('Production - Beta Vendor Admin | Calendar | Create appointments b
     cy.contains('Edit Appointment').should('exist') 
     cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
     cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-    cy.wait(1000)
+    cy.wait(640)
   })
 })
 
@@ -285,15 +285,15 @@ describe.only('Production - Beta Vendor Admin | Calendar | Create appointments b
   })
   
   beforeEach(() => {
-    cy.loginprod('Staff Session', Cypress.env("Vendor_Staff_Username_Production"), Cypress.env("Vendor_Staff_Password_Production"))
+    cy.loginprod('Staff Session', Cypress.expose("Vendor_Staff_Username_Production"), Cypress.expose("Vendor_Staff_Password_Production"))
   })
 
   afterEach(() => {
-    cy.visit(Cypress.env("URL_Production") + 'auth?nativeLogout=true')
+    cy.visit(Cypress.expose("URL_Production") + 'auth?nativeLogout=true')
   })
 
   after(() => {
-    cy.visit(Cypress.env("URL_Production") + 'auth')
+    cy.visit(Cypress.expose("URL_Production") + 'auth')
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
@@ -330,7 +330,7 @@ describe.only('Production - Beta Vendor Admin | Calendar | Create appointments b
     searchTimeSlot('Zumba Zumba','07:00')
     cy.contains("Search customer..").next('div').should('exist')
     cy.contains("Search customer..").next('div').children('input').click({force: true})
-    cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 1000})
+    cy.contains("Search customer..").next('div').children('input').type('erika{enter}{enter}',{force: true, delay: 700})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -379,7 +379,7 @@ describe.only('Production - Beta Vendor Admin | Calendar | Create appointments b
     cy.contains('Edit Appointment').should('exist') 
     cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
     cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-    cy.wait(1000)
+    cy.wait(640)
   })
 })
 
@@ -390,7 +390,7 @@ describe.only('Production - Beta Vendor Admin | Calendar| Create appointments by
   })
 
   beforeEach(() => {
-    cy.loginprod('ReadOnly Session', Cypress.env("Vendor_ReadOnly_Username_Production"), Cypress.env("Vendor_ReadOnly_Password_Production"))
+    cy.loginprod('ReadOnly Session', Cypress.expose("Vendor_ReadOnly_Username_Production"), Cypress.expose("Vendor_ReadOnly_Password_Production"))
   })
 
   afterEach(() => {
@@ -398,7 +398,7 @@ describe.only('Production - Beta Vendor Admin | Calendar| Create appointments by
   })
 
   after(() => {
-    cy.visit(Cypress.env("URL_Production") + 'auth')
+    cy.visit(Cypress.expose("URL_Production") + 'auth')
   })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials', () => {

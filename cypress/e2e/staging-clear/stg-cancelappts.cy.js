@@ -18,7 +18,7 @@ const expectedMessageCreateSubs = (product_message) => {
 }
 
 const deleteAppt = () => {
-    cy.visit(Cypress.env("URL_Staging"))
+    cy.visit(Cypress.expose("URL_Staging"))
     cy.contains('button>span','Accounting').should('exist')
     cy.contains('button>span','Accounting').click({ force: true })
     cy.contains('li>button', /^Reports$/).should('exist')
@@ -32,7 +32,7 @@ const deleteAppt = () => {
     cy.contains('p','No Status').parent('li').find('input[type="radio"]').click({ force: true })
     cy.contains('button','Apply Filters').click({ force: true })
     cy.get('tbody').find('tr').first().click({ force: true })
-    cy.wait(10)
+    cy.wait(8)
     cy.contains('div>h3', 'Appointment Details', { matchCase: false }).should('exist')
     cy.contains('button','No Status').click({ force: true })
     cy.contains('div>span', 'Canceled').click({ force: true })
@@ -47,17 +47,17 @@ describe('Staging - Beta Vendor Admin | Employee | Cancel Appointments| logged w
     })
     
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
-                cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
-        cy.wait(100)
+        cy.login('Admin Section', Cypress.expose("Vendor_Admin_Username_Staging"), Cypress.expose("Vendor_Admin_Password_Staging"))
+                cy.visit(Cypress.expose("URL_Staging") + 'admin/calendar')
+        cy.wait(64)
         // cy.contains('h3','Welcome Back!').next('button').click()
         cy.get('body').then(($body) => {
             if ($body.text().includes('Welcome Back!')) {
                 cy.contains('h3', 'Welcome Back!').next('button').click()
-                cy.wait(100)
+                cy.wait(64)
             }
         })
-        cy.wait(100)
+        cy.wait(64)
 
     })
 

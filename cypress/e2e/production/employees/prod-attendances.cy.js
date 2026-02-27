@@ -2,10 +2,10 @@
 /// <reference types="cypress-xpath" />
 
 const attendancesSection = () => {
-    cy.visit(Cypress.env("URL_Production") + 'admin/calendar')
+    cy.visit(Cypress.expose("URL_Production") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
-    cy.wait(199)
+    cy.wait(159)
     cy.contains('li>button','Attendances').should('exist')
     cy.contains('li>button','Attendances').click({ force: true })
 }
@@ -13,7 +13,7 @@ const attendancesSection = () => {
 describe('Beta Vendor Admin | Employee | Create Attendances| logged with Admin credentials', () => {
 
     beforeEach(() => {
-        cy.loginprod('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Production"), Cypress.env("Vendor_Receptionist_Password_Production"))
+        cy.loginprod('Receptionist Session', Cypress.expose("Vendor_Receptionist_Username_Production"), Cypress.expose("Vendor_Receptionist_Password_Production"))
     })
 
     afterEach(() => {

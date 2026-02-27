@@ -16,7 +16,7 @@ const randUsername3 = `${faker.person.firstName()}sttest${faker.number.int({ min
 const randUsername4 = `${faker.person.firstName()}sttest${faker.number.int({ min: 10, max: 100 })}`
 
 const employeeSection = () => {
-    cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+    cy.visit(Cypress.expose("URL_Staging") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
     cy.contains('li>button','All Employees').should('exist')
@@ -26,7 +26,7 @@ const employeeSection = () => {
 describe('Beta Vendor Admin | Employee | Create Employee| logged with Admin credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
+        cy.login('Admin Section', Cypress.expose("Vendor0_Admin_Username_Staging"), Cypress.expose("Vendor0_Admin_Password_Staging"))
     })
 
     afterEach(() => {

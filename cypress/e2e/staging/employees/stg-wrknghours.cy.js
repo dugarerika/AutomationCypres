@@ -2,10 +2,10 @@
 /// <reference types="cypress-xpath" />
 
 const employeeWorkingHoursSection = () => {
-    cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+    cy.visit(Cypress.expose("URL_Staging") + 'admin/calendar')
     cy.contains('Employees').should('exist')
     cy.contains('Employees').click({ force: true })
-    cy.wait(199)
+    cy.wait(159)
     cy.contains('li>button','Working Hours').should('exist')
     cy.contains('li>button','Working Hours').click({ force: true })
 }
@@ -13,7 +13,7 @@ const employeeWorkingHoursSection = () => {
 describe('Beta Vendor Admin | Employee | Create Working Hours| logged with Admin credentials', () => {
 
     beforeEach(() => {
-        cy.login('Admin Section', Cypress.env("Vendor0_Admin_Username_Staging"), Cypress.env("Vendor0_Admin_Password_Staging"))
+        cy.login('Admin Section', Cypress.expose("Vendor0_Admin_Username_Staging"), Cypress.expose("Vendor0_Admin_Password_Staging"))
     })
 
     afterEach(() => {

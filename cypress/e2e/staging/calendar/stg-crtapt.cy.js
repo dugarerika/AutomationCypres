@@ -4,7 +4,7 @@
 const { should } = require("chai")
   
 const searchTimeSlot = (staff,start_time) => {
-  cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+  cy.visit(Cypress.expose("URL_Staging") + 'admin/calendar')
   let color
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
@@ -16,7 +16,7 @@ const searchTimeSlot = (staff,start_time) => {
 }
 
 const searchApt = (staff,start_time) => {
-  cy.visit(Cypress.env("URL_Staging") + 'admin/calendar')
+  cy.visit(Cypress.expose("URL_Staging") + 'admin/calendar')
   let color
   cy.contains(`${staff}`).parent('div').then(($div) => {
     color = $div.attr('color')
@@ -35,7 +35,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 // })
 
 beforeEach(() => {
-    cy.login('Admin Session', Cypress.env("Vendor_Admin_Username_Staging"), Cypress.env("Vendor_Admin_Password_Staging"))
+    cy.login('Admin Session', Cypress.expose("Vendor_Admin_Username_Staging"), Cypress.expose("Vendor_Admin_Password_Staging"))
 })
 
 afterEach(() => {
@@ -73,7 +73,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
 
 it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
   searchTimeSlot('MaxWayne','07:00') 
-  cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
+  cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 700})
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
   cy.contains('Create Appointment').click({force: true})
@@ -140,7 +140,7 @@ it('Verify it is possible to edit the Customer', () => {
   cy.contains('button','Change customer').click({force: true})
   // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
   // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-  cy.wait(1000)
+  cy.wait(640)
 })
 })
 
@@ -151,7 +151,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
   
   beforeEach(() => {
-    cy.login('Receptionist Session', Cypress.env("Vendor_Receptionist_Username_Staging"), Cypress.env("Vendor_Receptionist_Password_Staging"))
+    cy.login('Receptionist Session', Cypress.expose("Vendor_Receptionist_Username_Staging"), Cypress.expose("Vendor_Receptionist_Password_Staging"))
   })
 
   afterEach(() => {
@@ -191,7 +191,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 
   it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
     searchTimeSlot('Mateo','06:00') 
-    cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
+    cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 700})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -255,14 +255,14 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.contains('button','Change customer').click({force: true})
     // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
     // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-    cy.wait(1000)
+    cy.wait(640)
   })
 })
 
 describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   
   beforeEach(() => {
-    cy.login('Staff Session', Cypress.env("Vendor_Staff_Username_Staging"), Cypress.env("Vendor_Staff_Password_Staging"))
+    cy.login('Staff Session', Cypress.expose("Vendor_Staff_Username_Staging"), Cypress.expose("Vendor_Staff_Password_Staging"))
   })
 
   afterEach(() => {
@@ -305,8 +305,8 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
 
   it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
     searchTimeSlot('Zumba Zumba','06:00')
-    cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
-    // cy.get('input[id="react-select-3-input"]').click().type('erika{downarrow}{enter}',{force: true, delay: 1000})
+    cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 700})
+    // cy.get('input[id="react-select-3-input"]').click().type('erika{downarrow}{enter}',{force: true, delay: 700})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -345,7 +345,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.contains('button','Change customer').click({force: true})
     // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
     // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
-    cy.wait(1000)
+    cy.wait(640)
   })
 })
 
@@ -356,7 +356,7 @@ describe.skip('Staging - Beta Vendor Admin | Calendar| Create appointments by Cl
   })
 
   beforeEach(() => {
-    cy.login('ReadOnly Session', Cypress.env("Vendor_ReadOnly_Username_Staging"), Cypress.env("Vendor_ReadOnly_Password_Staging"))
+    cy.login('ReadOnly Session', Cypress.expose("Vendor_ReadOnly_Username_Staging"), Cypress.expose("Vendor_ReadOnly_Password_Staging"))
   })
 
   afterEach(() => {

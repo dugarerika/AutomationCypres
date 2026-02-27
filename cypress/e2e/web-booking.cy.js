@@ -27,7 +27,7 @@ context('Actions', () => {
       cy.get('.action-email').type('{shift}')
   
       // Delay each keypress by 0.1 sec
-      cy.get('.action-email').type('slow.typing@email.com', { delay: 100 })
+      cy.get('.action-email').type('slow.typing@email.com', { delay: 70 })
       cy.get('.action-email').should('have.value', 'slow.typing@email.com')
   
       cy.get('.action-disabled')

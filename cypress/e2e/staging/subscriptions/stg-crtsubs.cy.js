@@ -34,7 +34,7 @@ const filloutSubscriptionInfo = (sub_name, sub_price, sub_expiration, sub_sessio
 }
 
 const accessToSubsSection = () => {
-    cy.visit(Cypress.env("URL_Staging") + 'auth')
+    cy.visit(Cypress.expose("URL_Staging") + 'auth')
     cy.contains('button>span','Subscriptions').should('exist')
     cy.contains('button>span','Subscriptions').click({ force: true })
     cy.contains('h6','Subscriptions').should('exist')
@@ -77,7 +77,7 @@ const clearUpdateForm = () => {
 describe('Beta Vendor Admin | Subscriptions | Create Subscription| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.login('Admin Section', Cypress.env("Vendor10_Admin_Username_Staging"), Cypress.env("Vendor10_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.expose("Vendor10_Admin_Username_Staging"), Cypress.expose("Vendor10_Admin_Password_Staging"))
 })
 
 afterEach(() => {

@@ -8,7 +8,7 @@ const { should } = require("chai")
 describe('Production - Beta Vendor Admin | Inventory | Delete products| logged with Admin credentials', () => {
 
   beforeEach(() => {
-    cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))  
+    cy.loginprod('Admin Section', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))  
   })
   
   afterEach(() => {
@@ -16,7 +16,7 @@ describe('Production - Beta Vendor Admin | Inventory | Delete products| logged w
   })
 
   const deleteProduct  = () => {
-    cy.visit(Cypress.env("URL_Production") + 'auth')
+    cy.visit(Cypress.expose("URL_Production") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })
@@ -35,7 +35,7 @@ describe('Production - Beta Vendor Admin | Inventory | Delete products| logged w
 
 //Delete Successfully
   it('Verify it is possible Delete products from the Inventory/Product list section', () => {
-    cy.visit(Cypress.env("URL_Production") + 'auth')
+    cy.visit(Cypress.expose("URL_Production") + 'auth')
     //cy.visit('https://beta.vendor.bookr-dev.com/admin/calendar')
     cy.contains('Inventory').should('exist')
     cy.contains('Inventory').click({ force: true })

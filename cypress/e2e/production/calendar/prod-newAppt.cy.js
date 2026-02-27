@@ -10,7 +10,7 @@ describe('Production - Beta Vendor Admin | Calendar| Create New Appointment on t
     })
     
     beforeEach(() => {
-        cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+        cy.loginprod('Admin Section', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))
     })
 
     afterEach(() => {

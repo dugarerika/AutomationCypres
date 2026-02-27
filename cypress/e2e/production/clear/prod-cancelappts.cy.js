@@ -18,7 +18,7 @@ const expectedMessageCreateSubs = (product_message) => {
 }
 
 const deleteAppt = () => {
-    cy.visit(Cypress.env("URL_Production"))
+    cy.visit(Cypress.expose("URL_Production"))
     cy.contains('button>span','Accounting').should('exist')
     cy.contains('button>span','Accounting').click({ force: true })
     cy.contains('li>button','Reports').should('exist')
@@ -32,7 +32,7 @@ const deleteAppt = () => {
     cy.contains('p','No Status').parent('li').find('input[type="radio"]').click({ force: true })
     cy.contains('button','Apply Filters').click({ force: true })
     cy.get('tbody').find('tr').first().click({ force: true })
-    cy.wait(100)
+    cy.wait(64)
     cy.contains('div>h3', 'Appointment Details', { matchCase: false }).should('exist')
     cy.contains('button','No Status').click({ force: true })
     cy.contains('div>span', 'Canceled').click({ force: true })
@@ -47,7 +47,7 @@ describe('Production - Beta Vendor Admin | Employee | Cancel Appointments| logge
     })
     
     beforeEach(() => {
-        cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+        cy.loginprod('Admin Section', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))
     })
 
     // afterEach(() => {

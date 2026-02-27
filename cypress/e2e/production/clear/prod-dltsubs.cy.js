@@ -19,7 +19,7 @@ const expectedMessageCreateSubs = (product_message) => {
 
 
 const accessToSubsSection = () => {
-    cy.visit(Cypress.env("URL_Production") + 'auth')
+    cy.visit(Cypress.expose("URL_Production") + 'auth')
     cy.contains('button>span','Subscriptions').should('exist')
     cy.contains('button>span','Subscriptions').click({ force: true })
     cy.contains('h6','Subscriptions').should('exist')
@@ -36,7 +36,7 @@ const accessToSubsSection = () => {
 describe('Production - Beta Vendor Admin | Employee | Delete Subscription| logged with Admin credentials', () => {
 
     beforeEach(() => {
-        cy.loginprod('Admin Section', Cypress.env("Vendor_Admin_Username_Production"), Cypress.env("Vendor_Admin_Password_Production"))
+        cy.loginprod('Admin Section', Cypress.expose("Vendor_Admin_Username_Production"), Cypress.expose("Vendor_Admin_Password_Production"))
     })
 
     afterEach(() => {
