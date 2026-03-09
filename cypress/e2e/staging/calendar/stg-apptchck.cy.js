@@ -1,9 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-const { should } = require('chai');
-
-describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged with Admin Credentials', () => {
+describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with Admin Credentials', () => {
 	beforeEach(() => {
 		// cy.viewport(3840,2160)
 		cy.login(
@@ -441,7 +439,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 	});
 });
 
-describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with Receptionist Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);
@@ -453,23 +451,6 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 			Cypress.expose('Vendor1_Receptionist_Username_Staging'),
 			Cypress.expose('Vendor1_Receptionist_Password_Staging')
 		);
-		// cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
-		// cy.wait(6400);
-		// cy.get('body').then(($body) => {
-		// 	if ($body.text().includes('Welcome Back!')) {
-		// 		cy
-		// 			.contains('h3', 'Welcome Back!')
-		// 			.next('button')
-		// 			.scrollIntoView()
-		// 			.click();
-		// 		cy.wait(6400);
-		// 	}
-		// 	if ($body.text().includes('Enable Notifications')) {
-		// 		cy.contains('button', 'Not now').click();
-		// 		cy.wait(640);
-		// 	}
-		// });
-		// cy.wait(64);
 	});
 
 	afterEach(() => {
@@ -511,7 +492,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 	});
 });
 
-describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged with Staff Credentials', () => {
+describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with Staff Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);
@@ -523,23 +504,6 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 			Cypress.expose('Vendor1_Staff_Username_Staging'),
 			Cypress.expose('Vendor1_Staff_Password_Staging')
 		);
-		// cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
-		// cy.wait(6400);
-		// cy.get('body').then(($body) => {
-		// 	if ($body.text().includes('Welcome Back!')) {
-		// 		cy
-		// 			.contains('h3', 'Welcome Back!')
-		// 			.next('button')
-		// 			.scrollIntoView()
-		// 			.click();
-		// 		cy.wait(6400);
-		// 	}
-		// 	if ($body.text().includes('Enable Notifications')) {
-		// 		cy.contains('button', 'Not now').click();
-		// 		cy.wait(640);
-		// 	}
-		// });
-		// cy.wait(64);
 	});
 
 	afterEach(() => {
@@ -591,18 +555,3 @@ describe('Staging - Beta Vendor Admin | Calendar| Appointment Checkout | logged 
 	});
 });
 
-// test cases pendingDuring the Appointment Checkout:
-
-// Verify packages (Subscriptions) cannot be mixed with other items like products, services and offers ✅
-
-// Verify it is possible to add new service after removing one leaving the cart empty. ✅
-
-// Verify it is possible to add new product with a service already in the cart ✅
-
-// Verify it is possible to add new subscription with a service and product already in the cart  ✅
-
-// Verify that it is possible to remove a service after removing the applied coupon. ✅
-
-// Verify that it is possible to assign a staff member to a service after removing the applied coupon.  ✅
-
-// Verify that it is possible to assign a quantity to a service after removing the applied coupon.  ✅

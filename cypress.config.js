@@ -93,7 +93,7 @@ module.exports = defineConfig({
 
 		// Retry settings
 		retries: {
-			runMode: 1,
+			runMode: 2,
 			openMode: 0
 		},
 

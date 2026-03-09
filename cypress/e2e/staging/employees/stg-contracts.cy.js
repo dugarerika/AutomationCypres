@@ -10,7 +10,7 @@ const contractSection = () => {
     cy.contains('li>button','Contracts').click({ force: true })
 }
 
-describe('Beta Vendor Admin | Employee | Contracts | logged with Admin credentials', () => {
+describe('Vendor Admin | Employee | Contracts | logged with Admin credentials', () => {
 
     beforeEach(() => {
         cy.login('Admin Section', Cypress.expose("Vendor0_Admin_Username_Staging"), Cypress.expose("Vendor0_Admin_Password_Staging"))

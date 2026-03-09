@@ -60,7 +60,7 @@ const expectedMessageCreateSupplier = (supplier_message) => {
     cy.contains('span', supplier_message).should('exist')
 }
 
-describe('Beta Vendor Admin | Inventory | Edit Suppliers|logged with Admin credentials', () =>{
+describe('Vendor Admin | Inventory | Edit Suppliers|logged with Admin credentials', () =>{
 
   beforeEach(() => {
     cy.login('Admin Section', Cypress.expose("Vendor0_Admin_Username_Staging"), Cypress.expose("Vendor0_Admin_Password_Staging"))

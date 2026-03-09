@@ -1,9 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-const { should } = require("chai")
-
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
+describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
 
     // before(() => {
     //     // ensure clean test slate for these tests
@@ -12,7 +10,6 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     
     beforeEach(() => {
         cy.login('Admin Session', Cypress.expose("Vendor1_Admin_Username_Staging"), Cypress.expose("Vendor1_Admin_Password_Staging"))
-        cy.visit(Cypress.expose("URL_Staging") + 'admin/calendar')
     })
 
     // afterEach(() => {
@@ -481,7 +478,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Adm
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -904,7 +901,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Rec
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -1327,7 +1324,7 @@ describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with Sta
     })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar| New Checkout | logged with low permission level credentials', () => {
+describe('Staging - Vendor Admin | Calendar| New Checkout | logged with low permission level credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

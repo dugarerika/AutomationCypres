@@ -1,16 +1,9 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-const { should } = require('chai');
-
 describe(
-	'Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials',
+	'Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials',
 	() => {
-		// before(() => {
-		//     // ensure clean test slate for these tests
-		//     cy.then(Cypress.session.clearAllSavedSessions)
-		// })
-
 		beforeEach(() => {
 			cy.login(
 				'Admin Session',
@@ -343,7 +336,7 @@ describe(
 	}
 );
 
-describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
+describe.only('Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);
@@ -649,7 +642,7 @@ describe.only('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the C
 	});
 });
 
-describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Receptionist Credentials', () => {
+describe('Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Receptionist Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);
@@ -661,22 +654,6 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 			Cypress.expose('Vendor_Receptionist_Username_Staging'),
 			Cypress.expose('Vendor_Staff_Password_Staging')
 		);
-		cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar');
-		cy.wait(6400);
-		cy.get('body').then(($body) => {
-			if ($body.text().includes('Welcome Back!')) {
-				cy
-					.contains('h3', 'Welcome Back!')
-					.next('button')
-					.scrollIntoView()
-					.click();
-				cy.wait(6400);
-			}
-			if ($body.text().includes('Enable Notifications')) {
-				cy.contains('button', 'Not now').click();
-				cy.wait(640);
-			}
-		});
 	});
 
 	afterEach(() => {
@@ -972,7 +949,7 @@ describe('Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calend
 });
 
 describe.skip(
-	'Staging - Beta Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials',
+	'Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials',
 	() => {
 		before(() => {
 			// ensure clean test slate for these tests

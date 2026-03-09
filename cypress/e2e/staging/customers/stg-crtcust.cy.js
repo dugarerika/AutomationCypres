@@ -83,7 +83,7 @@ const clearUpdateForm = () => {
     cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).clear({ force: true })
 }
 
-describe('Staging - Beta Vendor Admin | Customer | Create Customer| logged with Admin credentials', () => {
+describe('Staging - Vendor Admin | Customer | Create Customer| logged with Admin credentials', () => {
 
 beforeEach(() => {
     cy.login('Admin Section', Cypress.expose("Vendor6_Admin_Username_Staging"), Cypress.expose("Vendor6_Admin_Password_Staging"))

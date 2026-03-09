@@ -1,38 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-const { should } = require("chai")
-  
-const searchTimeSlot = (staff,start_time) => {
-  cy.visit(Cypress.expose("URL_Staging") + 'admin/calendar')
-  let color
-  cy.contains(`${staff}`).parent('div').then(($div) => {
-    color = $div.attr('color')
-    cy.log(color)
-    cy.get(`div[data-schedule-time="${start_time}"][color="${color}"]`).should('be.visible').click({ force: true });
-    cy.log('Test completed')
-  })
-  cy.contains('New Appointment').should('exist')
-}
-
-const searchApt = (staff,start_time) => {
-  cy.visit(Cypress.expose("URL_Staging") + 'admin/calendar')
-  let color
-  cy.contains(`${staff}`).parent('div').then(($div) => {
-    color = $div.attr('color')
-    cy.log(color)
-    cy.get(`div[color="${color}"]`).find('.event-time').contains('span',`${start_time} AM`).should('be.visible').click();
-    cy.log('Test completed')
-  })
-  cy.contains('Appointment Details').should('be.visible')
-}
-
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
-
-// before(() => {
-//     // ensure clean test slate for these tests
-//     cy.then(Cypress.session.clearAllSavedSessions)
-// })
+describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
 beforeEach(() => {
     cy.login('Admin Session', Cypress.expose("Vendor_Admin_Username_Staging"), Cypress.expose("Vendor_Admin_Password_Staging"))
@@ -42,7 +11,7 @@ afterEach(() => {
   cy.clearCookies()
 })
 it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
-  searchTimeSlot('Susan one','03:00') 
+  cy.searchTimeSlot('Susan one','03:00') 
   cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
   cy.contains('Add New Item').should('exist')  
   cy.contains('Add New Item').click()
@@ -61,7 +30,7 @@ it('Verify it is possible to create a new appointment for 1 service and 1 offer'
   }) 
 
 it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-  searchTimeSlot('Susan one','07:00') 
+  cy.searchTimeSlot('Susan one','07:00') 
   cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
   cy.contains('Create Appointment').click({force: true})
@@ -72,8 +41,8 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
 })
 
 it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
-  searchTimeSlot('MaxWayne','07:00') 
-  cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 700})
+  cy.searchTimeSlot('MaxWayne','07:00') 
+  cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 490})
   cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
   cy.contains('Create Appointment').click({force: true})
@@ -84,7 +53,7 @@ it('Verify it is possible to create an appointment searching and selecting custo
 })
 
 it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
-  searchTimeSlot('MaxWayne','07:00')  
+  cy.searchTimeSlot('MaxWayne','07:00')  
   cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
   cy.contains('Create Appointment').click({force: true})
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -97,7 +66,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ov
 })
 
 it('Verify it is possible to create an appointment over and already taken time slot - Admin Credentials', () => {
-  searchTimeSlot('MaxWayne','07:00') 
+  cy.searchTimeSlot('MaxWayne','07:00') 
   cy.contains('New Appointment').should('exist')
   cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
   cy.contains('Create Appointment').click({force: true})
@@ -110,7 +79,7 @@ it('Verify it is possible to create an appointment over and already taken time s
 })
 
 it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-  searchTimeSlot('ALEX ALEX','07:00')  
+  cy.searchTimeSlot('ALEX ALEX','07:00')  
   cy.contains('New Appointment').should('exist')
   cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
   cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -122,7 +91,7 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
 })
 
 it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
-  searchApt('ALEX ALEX','07:00') 
+  cy.searchAppt('ALEX ALEX','07:00') 
   cy.log('Test completed')
   cy.contains('Appointment Details').should('be.visible')
   cy.contains('Edit Booking').should('be.visible')
@@ -131,7 +100,7 @@ it('Verify The edit appointment modal is display after clicking on Edit booking 
 })
 
 it('Verify it is possible to edit the Customer', () => {
-  searchApt('ALEX ALEX','07:00') 
+  cy.searchAppt('ALEX ALEX','07:00') 
   cy.contains('Appointment Details').should('be.visible')
   cy.contains('Edit Booking').should('be.visible')
   cy.contains('Edit Booking').click({force: true})
@@ -144,7 +113,7 @@ it('Verify it is possible to edit the Customer', () => {
 })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -159,7 +128,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
-    searchTimeSlot('Zstaff ','06:00')
+    cy.searchTimeSlot('Zstaff ','06:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     // cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
@@ -179,7 +148,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     }) 
 
   it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-    searchTimeSlot('Mateo','04:00')
+    cy.searchTimeSlot('Mateo','04:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -190,8 +159,8 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
-    searchTimeSlot('Mateo','06:00') 
-    cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 700})
+    cy.searchTimeSlot('Mateo','06:00') 
+    cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 490})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -202,7 +171,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
-    searchTimeSlot('Zstaff','06:00')
+    cy.searchTimeSlot('Zstaff','06:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -215,7 +184,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create an appointment over and already taken time slot', () => {
-    searchTimeSlot('Zstaff','06:00')
+    cy.searchTimeSlot('Zstaff','06:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.contains('Warning: ').should('be.visible')
@@ -227,7 +196,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-    searchTimeSlot('MaxWayne','06:00')
+    cy.searchTimeSlot('MaxWayne','06:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -238,7 +207,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
-    searchApt('Mateo','06:00') 
+    cy.searchAppt('Mateo','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
@@ -246,7 +215,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to edit the Customer', () => {
-    searchApt('Mateo','06:00') 
+    cy.searchAppt('Mateo','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
@@ -259,7 +228,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 })
 
-describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   
   beforeEach(() => {
     cy.login('Staff Session', Cypress.expose("Vendor_Staff_Username_Staging"), Cypress.expose("Vendor_Staff_Password_Staging"))
@@ -269,12 +238,8 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     cy.clearCookies()
   })    
 
-  // afterEach(() => {
-  //   cy.clearCookies()
-  // })
-
   it('Verify it is possible to create a new appointment for 1 service and 1 offer', () => {
-    searchTimeSlot('Zumba Zumba','03:00')
+    cy.searchTimeSlot('Zumba Zumba','03:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()
@@ -293,7 +258,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
     }) 
     
   it('Verify the New appointment modal is hidden after creating successfully an appointment', () => {
-    searchTimeSlot('Zumba Zumba','04:00')
+    cy.searchTimeSlot('Zumba Zumba','04:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -304,9 +269,9 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify it is possible to create an appointment searching and selecting customer from vendor', () => {
-    searchTimeSlot('Zumba Zumba','06:00')
-    cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 700})
-    // cy.get('input[id="react-select-3-input"]').click().type('erika{downarrow}{enter}',{force: true, delay: 700})
+    cy.searchTimeSlot('Zumba Zumba','06:00')
+    cy.get('input[id^="react-select-"][id$="-input"]').eq(1).click().type('erika{downarrow}{enter}',{force: true, delay: 490})
+    // cy.get('input[id="react-select-3-input"]').click().type('erika{downarrow}{enter}',{force: true, delay: 490})
     cy.xpath('//span[text()="Service"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -317,7 +282,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it('Verify the New appointment modal is hidden after creating successfully an ovelap appointment', () => {
-    searchTimeSlot('Zumba Zumba','06:00')
+    cy.searchTimeSlot('Zumba Zumba','06:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.contains('Create Appointment').click({force: true})
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
@@ -330,14 +295,14 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 
   it.skip('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
-    searchTimeSlot('Zumba Zumba','07:00')
+    cy.searchTimeSlot('Zumba Zumba','07:00')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
     cy.contains('Edit Appointment').should('exist') 
   })
 
   it.skip('Verify it is possible to edit the Customer', () => {
-    searchTimeSlot('Zumba Zumba','07:00')
+    cy.searchTimeSlot('Zumba Zumba','07:00')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
     cy.contains('Edit Appointment').should('exist')
@@ -349,7 +314,7 @@ describe('Staging - Beta Vendor Admin | Calendar | Create appointments by Clicki
   })
 })
 
-describe.skip('Staging - Beta Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe.skip('Staging - Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -364,7 +329,7 @@ describe.skip('Staging - Beta Vendor Admin | Calendar| Create appointments by Cl
   })
 
   it('Verify it is not possible to create an appointment when loggeed with readonly creadentials  - Readonly credentials', () => {
-    searchTimeSlot('MaxWayne','03:00')
+    cy.searchTimeSlot('MaxWayne','03:00')
     cy.contains('label', 'Service').next('div').find('div > div > div').next('div').find('input').click().type('{downarrow}{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/validate/slots').as('new-user')
     cy.contains('Create Appointment').click({force: true})
@@ -372,7 +337,7 @@ describe.skip('Staging - Beta Vendor Admin | Calendar| Create appointments by Cl
   })
 
   it('Verify it is not possible to create a new appointment for 1 service and 1 offer - Read Only credentials', () => {
-    searchTimeSlot('MaxWayne','04:00')  
+    cy.searchTimeSlot('MaxWayne','04:00')  
     cy.get('.css-1u3or2w>*').eq(1).find('input').first().click().type('{downarrow}{enter}')
     cy.contains('Add New Item').should('exist')  
     cy.contains('Add New Item').click()

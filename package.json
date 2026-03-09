@@ -86,7 +86,10 @@
 		"delete-results": "rm -rf cypress/results/* || true",
 		"cypress-regression-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run headless && npm run mochawesome-merge",
 		"staging": "npx cypress run --browser chrome --env configFile=staging",
-		"cypress-multi-browser": "npm run autoTestStore -- --browser electron --headed & npm run autoTestStore -- --browser edge --headed"
+		"cypress-multi-browser": "npm run autoTestStore -- --browser electron --headed & npm run autoTestStore -- --browser edge --headed",
+		"cy:staging:group1": "npx cypress run -b chrome --spec 'cypress/e2e/staging/calendar/*.cy.js,cypress/e2e/staging/employees/*.cy.js'",
+		"cy:staging:group2": "npx cypress run -b chrome --spec 'cypress/e2e/staging/inventory/*.cy.js,cypress/e2e/staging/offers/*.cy.js,cypress/e2e/staging/subscriptions/*.cy.js,cypress/e2e/staging/giftcards/*.cy.js,cypress/e2e/staging/customers/*.cy.js,cypress/e2e/staging/coupons/*.cy.js'",
+		"cy:staging:parallel": "run-p cy:staging:group1 cy:staging:group2"
 	},
 	"author": "Erika Tavera",
 	"license": "ISC",
@@ -108,11 +111,11 @@
 		"mocha-junit-reporter": "^2.0.2",
 		"mochawesome": "^7.1.3",
 		"mochawesome-merge": "^4.4.1",
-		"mochawesome-report-generator": "^6.2.0"
+		"mochawesome-report-generator": "^6.2.0",
+		"npm-run-all": "^4.1.5"
 	},
 	"cypress-cucumber-preprocessor": {
 		"nonGlobalStepDefinitions": false,
 		"stepDefinitions": "cypress/support/step_definitions"
-	},
-	"dependencies": {}
+	}
 }
