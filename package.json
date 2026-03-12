@@ -87,8 +87,8 @@
 		"cypress-regression-pack": "npm run delete-results && npm run delete-mochawesome-report && npm run headless && npm run mochawesome-merge",
 		"staging": "npx cypress run --browser chrome --env configFile=staging",
 		"cypress-multi-browser": "npm run autoTestStore -- --browser electron --headed & npm run autoTestStore -- --browser edge --headed",
-		"cy:staging:group1": "npx cypress run -b chrome --spec 'cypress/e2e/staging/calendar/*.cy.js,cypress/e2e/staging/employees/*.cy.js'",
-		"cy:staging:group2": "npx cypress run -b chrome --spec 'cypress/e2e/staging/inventory/*.cy.js,cypress/e2e/staging/offers/*.cy.js,cypress/e2e/staging/subscriptions/*.cy.js,cypress/e2e/staging/giftcards/*.cy.js,cypress/e2e/staging/customers/*.cy.js,cypress/e2e/staging/coupons/*.cy.js'",
+		"cy:staging:group1": "npx cypress run -b chrome --spec 'cypress/e2e/staging/calendar/stg-blcktime.cy.js,cypress/e2e/staging/calendar/stg-invoices.cy.js,cypress/e2e/staging/calendar/stg-newAppt.cy.js,cypress/e2e/staging/coupons/*.cy.js,cypress/e2e/staging/giftcards/*.cy.js,cypress/e2e/staging/offers/*.cy.js,cypress/e2e/staging/subscriptions/*.cy.js'",
+		"cy:staging:group2": "npx cypress run -b chrome --spec 'cypress/e2e/staging/calendar/stg-crtapt.cy.js,cypress/e2e/staging/calendar/stg-newchck.cy.js,cypress/e2e/staging/calendar/stg-apptchck.cy.js,cypress/e2e/staging/employees/*.cy.js,cypress/e2e/staging/inventory/*.cy.js,cypress/e2e/staging/customers/*.cy.js'",
 		"cy:staging:parallel": "run-p cy:staging:group1 cy:staging:group2"
 	},
 	"author": "Erika Tavera",
