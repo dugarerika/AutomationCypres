@@ -1,0 +1,60 @@
+name: Staging Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  staging-clear:
+    name: Staging Clear
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run staging-clear tests
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          spec: cypress/e2e/staging-clear/**/*.cy.js
+
+  staging-group1:
+    name: Staging Group 1
+    needs: staging-clear
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run staging group 1 tests
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          spec: |
+            cypress/e2e/staging/calendar/stg-blcktime.cy.js,
+            cypress/e2e/staging/calendar/stg-invoices.cy.js,
+            cypress/e2e/staging/calendar/stg-newAppt.cy.js,
+            cypress/e2e/staging/coupons/**/*.cy.js,
+            cypress/e2e/staging/giftcards/**/*.cy.js,
+            cypress/e2e/staging/offers/**/*.cy.js,
+            cypress/e2e/staging/subscriptions/**/*.cy.js
+
+  staging-group2:
+    name: Staging Group 2
+    needs: staging-clear
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run staging group 2 tests
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          spec: |
+            cypress/e2e/staging/calendar/stg-crtapt.cy.js,
+            cypress/e2e/staging/calendar/stg-newchck.cy.js,
+            cypress/e2e/staging/calendar/stg-apptchck.cy.js,
+            cypress/e2e/staging/employees/**/*.cy.js,
+            cypress/e2e/staging/inventory/**/*.cy.js,
+            cypress/e2e/staging/customers/**/*.cy.js
