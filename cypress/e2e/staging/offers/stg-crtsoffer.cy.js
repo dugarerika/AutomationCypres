@@ -84,32 +84,32 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it.only('Verify it is possible access to the Offers section', () => {
+it('Verify it is possible access to the Offers section', () => {
     accessToOfferSection()
 })
 
-it.only('Verify it is possible access to the Add Offers form', () => {
+it('Verify it is possible access to the Add Offers form', () => {
     accessToOfferSection()
     accessToAddOffersForm()
 })
 
-// Add Subscription form fiels validation
+// Add Offer form fiels validation
 
-it('Verify that the Add Subscription Service is required', () => {
+it.only('Verify that the Add Offer Service is required', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     filloutOfferInfo(randUsername1, '1', 1, 1, randEmail1, randUsername1)
     expectedMessageCreateOffer('At least one service variant is required')
 })
 
-it('Verify that the Add Subscription Name is required', () => {
+it('Verify that the Add Offer Name is required', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
     expectedMessageCreateOffer('Name is required')
 })
 
-it('Verify that the Add Subscription Name must be at least 3 characters', () => {
+it('Verify that the Add Offer Name must be at least 3 characters', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -117,7 +117,7 @@ it('Verify that the Add Subscription Name must be at least 3 characters', () => 
     expectedMessageCreateOffer('Name must be at least 3 characters')
 })
 
-it('Verify that the Add Subscription Price is required', () => {
+it('Verify that the Add Offer Price is required', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -125,7 +125,7 @@ it('Verify that the Add Subscription Price is required', () => {
     expectedMessageCreateOffer('Price is required')
 })
 
-it('Verify that the Add Subscription Price must be greater than Zero', () => {
+it('Verify that the Add Offer Price must be greater than Zero', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -133,31 +133,31 @@ it('Verify that the Add Subscription Price must be greater than Zero', () => {
     expectedMessageCreateOffer('Price must be greater or equal than 1')
 })
 
-it('Verify that the Add Subscription Price allow decimal numbers', () => {
+it('Verify that the Add Offer Price allow decimal numbers', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
     filloutOfferInfo('SubPrice Zeropoint1',1.1,2,3,'Notes','Description')
-    expectedMessageCreateOffer('Subscription created')
+    expectedMessageCreateOffer('Offer created')
 })
 
-it('Verify that the Add Subscription Description field is optional', () => {
+it('Verify that the Add Offer Description field is optional', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
     filloutOfferInfo('SubDescription is optional',101,2,3,'Notes for Description is optional','{enter}')
-    expectedMessageCreateOffer('Subscription created')
+    expectedMessageCreateOffer('Offer created')
 })
 
-it('Verify that the Add Subscription Notes field is optional', () => {
+it('Verify that the Add Offer Notes field is optional', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
     filloutOfferInfo('SubNotes is optional',9,2,3,'{enter}','Description test for Notes is optional')
-    expectedMessageCreateOffer('Subscription created')
+    expectedMessageCreateOffer('Offer created')
 })
 
-it('Verify that the Add Subscription Number of Sessions is required  ', () => {
+it('Verify that the Add Offer Number of Sessions is required  ', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -165,7 +165,7 @@ it('Verify that the Add Subscription Number of Sessions is required  ', () => {
     expectedMessageCreateOffer('Number of sessions is required')
 })
 
-it('Verify that the Add Subscription Number of Sessions must be greater than 1', () => {
+it('Verify that the Add Offer Number of Sessions must be greater than 1', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -173,7 +173,7 @@ it('Verify that the Add Subscription Number of Sessions must be greater than 1',
     expectedMessageCreateOffer('Number of sessions must be greater or equal than 1')
 })
 
-it('Verify that the Add Subscription Number of Sessions must be an integer', () => {
+it('Verify that the Add Offer Number of Sessions must be an integer', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -181,7 +181,7 @@ it('Verify that the Add Subscription Number of Sessions must be an integer', () 
     expectedMessageCreateOffer('Number of sessions must be an integer')
 })
 
-it('Verify that the Add Subscription Expiration in days is required', () => {
+it('Verify that the Add Offer Expiration in days is required', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -189,7 +189,7 @@ it('Verify that the Add Subscription Expiration in days is required', () => {
     expectedMessageCreateOffer('Expiration time is required')
 })
 
-it('Verify that the Add Subscription Expiration in days must be greater than 1', () => {
+it('Verify that the Add Offer Expiration in days must be greater than 1', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -197,7 +197,7 @@ it('Verify that the Add Subscription Expiration in days must be greater than 1',
     expectedMessageCreateOffer('Expiration time must be greater or equal than 1')
 })
 
-it('Verify that the Add Subscription Expiration in days must be an integer', () => {
+it('Verify that the Add Offer Expiration in days must be an integer', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
@@ -206,58 +206,58 @@ it('Verify that the Add Subscription Expiration in days must be an integer', () 
     expectedMessageCreateOffer('Expiration time must be an integer')
 })
 
-it('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
+it('Verify that the Add Offer Service: Add another service allows the user to add multiple services', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
     selectOfferService()
     selectOfferService()
     selectOfferService()
-    filloutOfferInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-    expectedMessageCreateOffer('Subscription created')
+    filloutOfferInfo('Offer linked to 4 services',9.1,3,1000,'Notes','Description')
+    expectedMessageCreateOffer('Offer created')
 })
 
-it('Verify that the Add Subscription Service: Services can be removed ', () => {
+it('Verify that the Add Offer Service: Services can be removed ', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
-    filloutOfferInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
+    filloutOfferInfo('Offer linked to 4 services',9.1,3,1000,'Notes','Description')
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
     expectedMessageCreateOffer('At least one service variant is required')
 })
 
-it('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
+it('Verify that the Add Offer Service: Add another service allows the user to add multiple services', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     selectOfferService()
     selectOfferService()
-    filloutOfferInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-    expectedMessageCreateOffer('Subscription created')
+    filloutOfferInfo('Offer linked to 4 services',9.1,3,1000,'Notes','Description')
+    expectedMessageCreateOffer('Offer created')
 })
 
-// Edit Subscription form fiels validation
-it.skip('Verify that the Update Subscription allows the user to remove services', () => {
+// Edit Offer form fiels validation
+it.skip('Verify that the Update Offer allows the user to remove services', () => {
     accessToOfferSection()
     accessToEditSubsForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
     expectedMessageCreateOffer('Please select at least one service')
 })
 
-it.skip('Verify that the Update Subscription Service is required', () => {
+it.skip('Verify that the Update Offer Service is required', () => {
     accessToOfferSection()
     accessToEditSubsForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
     expectedMessageCreateOffer('Please select at least one service')
 })
 
-// it('Verify that the Update Subscription Name is required', () => {
+// it('Verify that the Update Offer Name is required', () => {
 //     accessToOfferSection()
 //     accessToEditSubsForm()
 //     clearUpdateForm()
 //     expectedMessageCreateOffer('Name is required')
 // })
 
-// it('Verify that the update Subscription Name must be at least 3 characters', () => {
+// it('Verify that the update Offer Name must be at least 3 characters', () => {
 //     accessToOfferSection()
 //     accessToEditSubsForm()
 //     clearUpdateForm()
@@ -265,7 +265,7 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Name must be at least 3 characters')
 // })
 
-// it('Verify that the update Subscription Price is required', () => {
+// it('Verify that the update Offer Price is required', () => {
 //     accessToOfferSection()
 //     accessToEditSubsForm()
 //     clearUpdateForm()
@@ -273,7 +273,7 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Price is required')
 // })
 
-// it('Verify that the Update Subscription Price must be greater than Zero', () => {
+// it('Verify that the Update Offer Price must be greater than Zero', () => {
 //     accessToOfferSection()
 //     accessToEditSubsForm()
 //     clearUpdateForm()
@@ -281,31 +281,31 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Price must be greater than 0')
 // })
 
-// it('Verify that the Update Subscription Price allow decimal numbers', () => {
+// it('Verify that the Update Offer Price allow decimal numbers', () => {
 //     accessToOfferSection()
 //     accessToEditSubsForm()
 //     clearUpdateForm()
 //     filloutOfferInfo('SubPrice Zeropoint1',0.1,2,3,'Notes','Description')
-//     expectedMessageCreateOffer('Subscription Updated Succesfully')
+//     expectedMessageCreateOffer('Offer Updated Succesfully')
 // })
 
-// it('Verify that the Update Subscription Description field is optional', () => {
+// it('Verify that the Update Offer Description field is optional', () => {
 //     accessToOfferSection()
 //     accessToEditSubsForm()
 //     clearUpdateForm()
 //     filloutOfferInfo('update SubDescription is optional', 0.101, 2, 3, 'Notes for Description is optional','{enter}')
-//     expectedMessageCreateOffer('Subscription Updated Succesfully')
+//     expectedMessageCreateOffer('Offer Updated Succesfully')
 // })
 
-// it('Verify that the Add Subscription Notes field is optional', () => {
+// it('Verify that the Add Offer Notes field is optional', () => {
 //     accessToOfferSection()
 //     accessToEditSubsForm()
 //     clearUpdateForm()
 //     filloutOfferInfo('Update SubNotes is optional',0.1,2,3,'{enter}','Description test for Notes is optional')
-//     expectedMessageCreateOffer('Subscription Updated Succesfully')
+//     expectedMessageCreateOffer('Offer Updated Succesfully')
 // })
 
-// it('Verify that the Add Subscription Number of Sessions is required  ', () => {
+// it('Verify that the Add Offer Number of Sessions is required  ', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
@@ -313,7 +313,7 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Number of sessions is required')
 // })
 
-// it.skip('Verify that the Add Subscription Number of Sessions must be greater than Zero', () => {
+// it.skip('Verify that the Add Offer Number of Sessions must be greater than Zero', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
@@ -321,7 +321,7 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Number of sessions must be greater than 0')
 // })
 
-// it.skip('Verify that the Add Subscription Number of Sessions must be an integer', () => {
+// it.skip('Verify that the Add Offer Number of Sessions must be an integer', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
@@ -329,7 +329,7 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Number of sessions must be an integer number')
 // })
 
-// it.skip('Verify that the Add Subscription Expiration in days is required', () => {
+// it.skip('Verify that the Add Offer Expiration in days is required', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
@@ -337,7 +337,7 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Expiration is required')
 // })
 
-// it.skip('Verify that the Add Subscription Expiration in days must be greater than Zero', () => {
+// it.skip('Verify that the Add Offer Expiration in days must be greater than Zero', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
@@ -345,7 +345,7 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Expiration must be greater than 0')
 // })
 
-// it.skip('Verify that the Add Subscription Expiration in days must be an integer', () => {
+// it.skip('Verify that the Add Offer Expiration in days must be an integer', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
@@ -354,90 +354,90 @@ it.skip('Verify that the Update Subscription Service is required', () => {
 //     expectedMessageCreateOffer('Expiration must be an integer number')
 // })
 
-// it.skip('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
+// it.skip('Verify that the Add Offer Service: Add another service allows the user to add multiple services', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
 //     selectOfferService()
 //     selectOfferService()
 //     selectOfferService()
-//     filloutOfferInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-//     expectedMessageCreateOffer('Subscription created')
+//     filloutOfferInfo('Offer linked to 4 services',9.1,3,1000,'Notes','Description')
+//     expectedMessageCreateOffer('Offer created')
 // })
 
-// it.skip('Verify that the Add Subscription Service: Services can be removed ', () => {
+// it.skip('Verify that the Add Offer Service: Services can be removed ', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
-//     filloutOfferInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
+//     filloutOfferInfo('Offer linked to 4 services',9.1,3,1000,'Notes','Description')
 //     cy.get('[data-testid="CloseIcon"]').click({ force: true })
 //     expectedMessageCreateOffer('Please select at least one service')
 // })
 
-// it.skip('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
+// it.skip('Verify that the Add Offer Service: Add another service allows the user to add multiple services', () => {
 //     accessToOfferSection()
 //     accessToAddOffersForm()
 //     selectOfferService()
 //     selectOfferService()
-//     filloutOfferInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-//     expectedMessageCreateOffer('Subscription created')
+//     filloutOfferInfo('Offer linked to 4 services',9.1,3,1000,'Notes','Description')
+//     expectedMessageCreateOffer('Offer created')
 // })
 
 })
 
 
 
-// Verify that the Add Subscription set Enable toggle OFF  
+// Verify that the Add Offer set Enable toggle OFF  
 
 
-// Verify a subscription can be deleted when confirming the action.  
+// Verify a Offer can be deleted when confirming the action.  
 
-// Verify that after deleting a subscription the Subscription list gets updated.  
+// Verify that after deleting a Offer the Offer list gets updated.  
 
-// Verify a subscription can not be deleted when canceling the action.  
+// Verify a Offer can not be deleted when canceling the action.  
 
 
-// Update Subscription Form:
+// Update Offer Form:
 
-// Verify that the 'Update Subscription' Service is required. 
+// Verify that the 'Update Offer' Service is required. 
 
-// Verify that the 'Update Subscription' Name is required. 
+// Verify that the 'Update Offer' Name is required. 
 
-// Verify that the 'Update Subscription' Name must be at least 3 characters  
+// Verify that the 'Update Offer' Name must be at least 3 characters  
 
-// @Obafemi Joseph  It is allowing to create a subscription with a 1 character name
+// @Obafemi Joseph  It is allowing to create a Offer with a 1 character name
 
-// Verify that the 'Update Subscription' Description is an optional field 
+// Verify that the 'Update Offer' Description is an optional field 
 
-// Verify that the 'Update Subscription' Notes is optional field 
+// Verify that the 'Update Offer' Notes is optional field 
 
-// Verify that the 'Update Subscription' set Enable toggle ON 	
+// Verify that the 'Update Offer' set Enable toggle ON 	
 
-// Verify that the 'Update Subscription' set Enable toggle OFF 
+// Verify that the 'Update Offer' set Enable toggle OFF 
 
-// Verify that the 'Update Subscription' Price is required 
+// Verify that the 'Update Offer' Price is required 
 
-// Verify that the 'Add' Subscription Price must be greater than 0 
+// Verify that the 'Add' Offer Price must be greater than 0 
 
-// Verify that the 'Update Subscription' Price allowed decimal number  
+// Verify that the 'Update Offer' Price allowed decimal number  
 
-// Verify that the 'Update Subscription' Number of Sessions is required 
+// Verify that the 'Update Offer' Number of Sessions is required 
 
-// Verify that the 'Add' Subscription Number of Sessions must be an integer 
+// Verify that the 'Add' Offer Number of Sessions must be an integer 
 
-// Verify that the 'Update Subscription' Number of Sessions must be greater than Zero 
+// Verify that the 'Update Offer' Number of Sessions must be greater than Zero 
 
-// Verify that the 'Update Subscription' Expiration in days is required 
+// Verify that the 'Update Offer' Expiration in days is required 
 
-// Verify that the 'Add' Subscription Expiration in days must be an integer. 
+// Verify that the 'Add' Offer Expiration in days must be an integer. 
 
-// Verify that the 'Update Subscription' Expiration in days must be greater than Zero 
+// Verify that the 'Update Offer' Expiration in days must be greater than Zero 
 
-// Verify that the 'Update Subscription' Service: dropdown matches current services available 
+// Verify that the 'Update Offer' Service: dropdown matches current services available 
 
-// Verify that the 'Update Subscription' Service: Add another service allows the user to add multiple services 
+// Verify that the 'Update Offer' Service: Add another service allows the user to add multiple services 
 
-// Verify that the 'Update Subscription' Subscription Service: Services are added correctly to the Subscription	
+// Verify that the 'Update Offer' Offer Service: Services are added correctly to the Offer	
 
-// Verify that the 'Update Subscription' Service: Services can be removed 
+// Verify that the 'Update Offer' Service: Services can be removed 
 

@@ -194,11 +194,12 @@ Cypress.Commands.add('deleteCustomer', () => {
 
 // ===== Calendar =====
 
-Cypress.Commands.add('searchAppt', (staff) => {
+Cypress.Commands.add('searchAppt', (staff, start_time) => {
     cy.contains(`${staff}`).parent('div').then(($div) => {
         const color = $div.attr('color')
         cy.log(color)
-        cy.get(`div[color="${color}"][data-event-start]`).should('be.visible').click({ force: true })
+        cy.xpath(`//div[@color="${color}"]/div[@class="event-time"]/span[text()="${start_time} AM"]/following-sibling::span[1]`)
+            .should('be.visible').click()
         cy.log('Test completed')
     })
 })

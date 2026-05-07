@@ -956,7 +956,7 @@ describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Staff Cr
             cy.wait(8)
         })
 
-        it.only('Verify it is not possible to complete New Checkout for a service without linking it to an employee', () => {
+        it('Verify it is not possible to complete New Checkout for a service without linking it to an employee', () => {
             cy.newCheckout("URL_Staging")
             cy.contains('button','Add New').should('be.visible')
             cy.contains('button','Add New').click({force: true})

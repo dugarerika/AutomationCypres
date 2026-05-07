@@ -113,7 +113,7 @@ it('Verify it is possible to edit the Customer', () => {
 })
 })
 
-describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+describe.only('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -206,7 +206,7 @@ describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
+  it.only('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
     cy.searchAppt('Mateo','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
@@ -214,7 +214,7 @@ describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on
     cy.contains('Edit Appointment').should('exist') 
   })
 
-  it('Verify it is possible to edit the Customer', () => {
+  it.only('Verify it is possible to edit the Customer', () => {
     cy.searchAppt('Mateo','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')

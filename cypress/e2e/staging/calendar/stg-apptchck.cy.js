@@ -420,7 +420,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		cy.expectedMessageCompleteSale('Sale Completed');
 	});
 
-	it('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
+	it.only('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
 		cy.newCheckout('URL_Staging');
 		cy.addItemService('Long Hair');
 		cy.addFixedDiscount('Long Hair', '5', '15');
