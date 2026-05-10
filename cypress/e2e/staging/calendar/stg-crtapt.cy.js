@@ -113,7 +113,7 @@ it('Verify it is possible to edit the Customer', () => {
 })
 })
 
-describe.only('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -206,7 +206,7 @@ describe.only('Staging - Vendor Admin | Calendar | Create appointments by Clicki
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it.only('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
+  it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
     cy.searchAppt('Mateo','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
@@ -214,7 +214,7 @@ describe.only('Staging - Vendor Admin | Calendar | Create appointments by Clicki
     cy.contains('Edit Appointment').should('exist') 
   })
 
-  it.only('Verify it is possible to edit the Customer', () => {
+  it('Verify it is possible to edit the Customer', () => {
     cy.searchAppt('Mateo','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
@@ -247,8 +247,8 @@ describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on
     cy.contains('Add Offer').click()
     cy.contains('div','Offer').should('exist')  
     cy.xpath('//span[text()="Offer"]/parent::label/following-sibling::div/div/div/div/following-sibling::div/input').click().type('Offer{enter}')
-    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('{downarrow}{downarrow}{downarrow}{enter}')
-    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{downarrow}{downarrow}{downarrow}{enter}')
+    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(1).click().type('Zumba{enter}')
+    cy.get('.css-1u3or2w').eq(1).children('div').next('div').find('input').eq(2).click().type('{02:00{enter}')
     cy.intercept('POST', '/api/main/vendor/bookings/cart').as('new-user')
     cy.contains('Create Appointment').click({force: true})
     cy.wait('@new-user').then((interception) => {

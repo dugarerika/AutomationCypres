@@ -18,7 +18,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 	describe('Required field during checkout', () => {
 		it('Verify it is not possible to complete Appointment Checkout without adding payment', () => {
 			cy.createappt('Susan one','01:00', 'Downpayment')
-			cy.searchAppt('Susan one');
+			cy.searchAppt('Susan one','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -34,7 +34,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 	describe('Fillout buttons with Downpayment (it is pending gift card)', () => {
 		it('Verify that clicking "Fill" for Debit sets the field with the paid Downpayment amount for a Downpayment service.', () => {
 			cy.createappt('Helen','01:00', 'Downpayment')
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy.wait(79);
 			cy
 				.contains('button', 'Checkout')
@@ -47,7 +47,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		it(
 			'Verify that clicking "Fill" for Credit sets the field with the paid Downpayment amount for a Downpayment service.',
 			() => {
-				cy.searchAppt('Helen');
+				cy.searchAppt('Helen','01:00');
 				cy
 					.contains('button', 'Checkout')
 					.scrollIntoView()
@@ -58,7 +58,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		);
 
 		it('Verify that clicking "Fill" for Cash sets the field with the paid Downpayment amount for a Downpayment service.', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -68,7 +68,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify that clicking "Fill" for Other sets the field with the paid Downpayment amount for a Downpayment service.', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -78,7 +78,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify that clicking "Fill" for Hisabe sets the field with the paid Downpayment amount for a Downpayment service.', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -89,7 +89,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 
 		// Fillout buttons with Total (it is pending gift card)
 		it('Verify that clicking "Fill" for Debit sets the field with the paid Total amount for a Downpayment service.', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -101,7 +101,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 
 		it('Verify that clicking "Fill" for Credit sets the field with the paid Total amount for a Downpayment service.', () => {
 			// cy.createappt('Helen','01:00', 'Downpayment')
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -113,7 +113,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 
 		it('Verify that clicking "Fill" for Cash sets the field with the paid Total amount for a Downpayment service.', () => {
 			// cy.createappt('Helen','01:00', 'Downpayment')
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -124,7 +124,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify that clicking "Fill" for Other sets the field with the paid Total amount for a Downpayment service.', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -135,7 +135,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify that clicking "Fill" for Hisabe sets the field with the paid Total amount for a Downpayment service.', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -149,7 +149,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 	describe('Discounts', () => {
 		// Discounts
 		it('Verify the breakdown is correct after applying a coupon to a service ', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -165,7 +165,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 
 		it('Verify the breakdown is correct after applying a fixed discount to a service ', () => {
 			// cy.createappt('Zstaff','1:00','Downpayment')
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -175,7 +175,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify the breakdown is correct after applying a percentage discount to a service ', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -185,7 +185,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify it is not possible to apply a fixed discount greather than the service price', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -195,7 +195,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify it is not possible to apply a fixed discount when leaving the discount empty', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -206,7 +206,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify it is not possible to apply a Percentage discount when leaving the discount empty', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -216,7 +216,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		});
 
 		it('Verify it is not possible to apply a Coupon discount when leaving the discount empty', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -230,7 +230,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 	describe(' Services checkout validations', () => {
 		// Services checkout validations
 		it('Verify the breakdown is correct after adding a service ', () => {
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -262,7 +262,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		// Giftcards checkout validations
 		it('Verify the Gift card must be the only item in the cart trying to add after a service', () => {
 			// cy.createappt('Helen','01:00', 'Downpayment')
-			cy.searchAppt('Helen');
+			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
 				.scrollIntoView()
@@ -420,7 +420,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		cy.expectedMessageCompleteSale('Sale Completed');
 	});
 
-	it.only('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
+	it('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
 		cy.newCheckout('URL_Staging');
 		cy.addItemService('Long Hair');
 		cy.addFixedDiscount('Long Hair', '5', '15');
