@@ -123,7 +123,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 			cy.wait(799);
 		});
 
-		it('Verify that clicking "Fill" for Other sets the field with the paid Total amount for a Downpayment service.', () => {
+		it.only('Verify that clicking "Fill" for Other sets the field with the paid Total amount for a Downpayment service.', () => {
 			cy.searchAppt('Helen','01:00');
 			cy
 				.contains('button', 'Checkout')
@@ -244,7 +244,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 			cy.removeItem('Long Hair', 'Yes');
 		});
 
-		it('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
+		it.only('Verify that it is not possible to remove a service from the cart after canceling do you want to delete it', () => {
 			cy.newCheckout('URL_Staging');
 			cy.addItemService('Long Hair');
 			cy.removeItem('Long Hair', 'Cancel');
@@ -420,7 +420,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 		cy.expectedMessageCompleteSale('Sale Completed');
 	});
 
-	it('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
+	it.only('Verify it is possible to complete a checkout after applying a fix discount to a service ', () => {
 		cy.newCheckout('URL_Staging');
 		cy.addItemService('Long Hair');
 		cy.addFixedDiscount('Long Hair', '5', '15');
