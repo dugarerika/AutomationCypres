@@ -336,7 +336,7 @@ describe(
 	}
 );
 
-describe.only('Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
+describe('Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);

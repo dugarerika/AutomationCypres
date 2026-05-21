@@ -93,8 +93,8 @@ module.exports = defineConfig({
 
 		// Retry settings
 		retries: {
-			runMode: 2,
-			openMode: 0
+			runMode: 3,
+			openMode: 3
 		},
 
 		// Environment variables (plugin-specific only)
