@@ -54,14 +54,14 @@ const selectCouponAllService = () => {
         .should('exist')
         .then($switch => {
             const isChecked = $switch.prop('checked')
-            cy.log(`Switch checked: ${isChecked}`)
-            if (isChecked) {
-                cy.log('Switch is enabled. Attempting to disable it.')
+            // cy.log(`Switch checked: ${isChecked}`)
+            // if (isChecked) {
+            //     cy.log('Switch is enabled. Attempting to disable it.')
                 cy.wrap($switch).click({ force: true })
                         cy.wait(64)
-            } else {
-                cy.log('Switch is already disabled.')
-            }
+            // } else {
+            //     cy.log('Switch is already disabled.')
+            // }
         })
 }
 
