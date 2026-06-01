@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar | Create appointments by Clicking on the calendar| logged with Admin credentials', () => {
 
 beforeEach(() => {
     cy.login('Admin Session', Cypress.expose("Vendor_Admin_Username_Staging"), Cypress.expose("Vendor_Admin_Password_Staging"))
@@ -113,7 +113,7 @@ it('Verify it is possible to edit the Customer', () => {
 })
 })
 
-describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar | Create appointments by Clicking on the calendar| logged with Receptionist credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)
@@ -228,7 +228,7 @@ describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on
   })
 })
 
-describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar | Create appointments by Clicking on the calendar| logged with Staff credentials', () => {
   
   beforeEach(() => {
     cy.login('Staff Session', Cypress.expose("Vendor_Staff_Username_Staging"), Cypress.expose("Vendor_Staff_Password_Staging"))
@@ -314,7 +314,7 @@ describe('Staging - Vendor Admin | Calendar | Create appointments by Clicking on
   })
 })
 
-describe.skip('Staging - Vendor Admin | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Create appointments by Clicking on the calendar | logged with Read Only credentials', () => {
   before(() => {
     // ensure clean test slate for these tests
     cy.then(Cypress.session.clearAllSavedSessions)

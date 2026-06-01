@@ -6,32 +6,30 @@ const { faker } = require('@faker-js/faker');
 
 // Important:  before running this test cases the product list must be empty
 
-const randEmail1 = faker.internet.email()
-const randEmail2 = faker.internet.email()
-const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
-const randUsername2 = `teststf${faker.number.int({ min: 10, max: 100 })}`
+const randCouponCode1 = `PINK1${faker.number.int({ min: 100, max: 1000 })}`
+const randCouponCode2 = `PINK2${faker.number.int({ min: 100, max: 1000 })}`
+const randCouponCode3 = `PINK1${faker.number.int({ min: 100, max: 1000 })}`
+const randCouponCode4 = `PINK2${faker.number.int({ min: 100, max: 1000 })}`
 
-const expectedMessageCreateOffer = (product_message) => {
+const expectedMessageCreateCoupon = (product_message) => {
     cy.contains('button', 'Save').should('exist')
     cy.contains('button', 'Save').click({ force: true })
     cy.contains('div>span', product_message).should('exist')
 }
 
-const filloutOfferInfo = (sub_name, sub_price, sub_expiration, sub_sessions, sub_notes, sub_description) => {
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).type(sub_name)
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).type(sub_price)
-    cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).type(sub_expiration)
-    cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Number of sessions', { matchCase: false }).parent().next('div').find('input').eq(0).type(sub_sessions)
-    cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).should('exist')
-    cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).type(sub_notes)
-    cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).should('exist')
-    cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).type(sub_description)
+const filloutCouponInfo = (coupon_name, coupon_code, coupon_value, coupon_limit) => {
+    cy.contains('label>span','Coupon Name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Coupon Name').parent().next('div').find('input').eq(0).type(coupon_name)
+    cy.contains('label>span','Coupon Code').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Coupon Code').parent().next('div').find('input').eq(0).type(coupon_code)
+    cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).clear({ force: true })
+    cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).type(coupon_value)
+    // cy.contains('label>span','Expire Date').parent().next('div').find('input').eq(0).should('exist')
+    // cy.contains('label>span','Expire Date').parent().next('div').find('input').eq(0).type(coupon_expiration)
+    cy.contains('label>span','Limit', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Limit', { matchCase: false }).parent().next('div').find('input').eq(0).type(coupon_limit)
 }
 
 const accessToCouponSection = () => {
@@ -44,40 +42,48 @@ const accessToCouponSection = () => {
 }
 
 const accessToAddCouponForm = () => {
-    cy.contains('h6','Coupons').parent().next('div').find('button').should('exist')
-    cy.contains('h6','Coupons').parent().next('div').find('button').click({ force: true })
-    cy.contains('h3','Add New Coupon', { matchCase: false }).parent().next('div').find('button').should('exist')
+    // cy.contains('h6','Coupons').parent().next('div').find('button').should('exist')
+    cy.contains('button','+ Add New Coupon', { matchCase: false }).click({ force: true })
+    cy.contains('button','+ Add New Coupon', { matchCase: false }).should('exist')
 }
 
-const selectOfferService = () => {
-    cy.contains('div>button','Add another service').should('exist')
-    cy.contains('div>button','Add another service').click({ force: true })
-    cy.contains('div>div','Select service').should('exist')
-    cy.contains('div>div','Select service').click({ force: true })
-    cy.contains('div>div','Select service').next('div').find('input').type('{downarrow}{enter}',{ force: true })
+const selectCouponAllService = () => {
+    cy.contains('span','All Services')
+        .parent('label')
+        .find('input[type="checkbox"]')
+        .should('exist')
+        .then($switch => {
+            const isChecked = $switch.prop('checked')
+            cy.log(`Switch checked: ${isChecked}`)
+            if (isChecked) {
+                cy.log('Switch is enabled. Attempting to disable it.')
+                cy.wrap($switch).click({ force: true })
+                        cy.wait(64)
+            } else {
+                cy.log('Switch is already disabled.')
+            }
+        })
 }
 
-const accessToEditOfferForm = () => {
+const accessToEditCouponForm = () => {
     cy.get('tbody>*').should('exist')
     cy.get('tbody>*').first().click({ force: true })
 }
 
 const clearUpdateForm = () => {
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Name').parent().next('div').find('input').eq(0).clear()
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Price').parent().next('div').find('input').eq(0).clear({ force: true })
-    cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Expiration').parent().next('div').find('input').eq(0).clear({ force: true })
-    cy.contains('label>span','Number of Sessions', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
-    cy.contains('label>span','Number of Sessions', { matchCase: false }).parent().next('div').find('input').eq(0).clear({ force: true })
-    cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).should('exist')
-    cy.contains('label>span','Notes').parent().next('div').find('textarea').eq(0).clear({ force: true })
-    cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).should('exist')
-    cy.contains('label>span','Description').parent().next('div').find('textarea').eq(0).clear({ force: true })
+    cy.contains('label>span','Coupon Name').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Coupon Name').parent().next('div').find('input').eq(0).clear()
+    cy.contains('label>span','Coupon Code').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Coupon Code').parent().next('div').find('input').eq(0).clear({ force: true })
+    cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).clear({ force: true })
+    cy.contains('label>span','Expire Date', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
+    cy.contains('label>span','Expire Date', { matchCase: false }).parent().next('div').find('input').eq(0).clear({ force: true })
+    cy.contains('label>span','Limit').parent().next('div').find('textarea').eq(0).should('exist')
+    cy.contains('label>span','Limit').parent().next('div').find('textarea').eq(0).clear({ force: true })
 }
 
-describe('Vendor Admin | Promotions/Coupons | Create Coupons| logged with Admin credentials', () => {
+describe('Staging - Vendor Admin:PINKDOOR | Promotions/Coupons | Create Coupons| logged with Admin credentials', () => {
 
 beforeEach(() => {
     cy.login('Admin Section', Cypress.expose("Vendor6_Admin_Username_Staging"), Cypress.expose("Vendor6_Admin_Password_Staging"))
@@ -95,360 +101,347 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it.only('Verify it is possible access to the Coupons section', () => {
+it('Verify it is possible access to the Coupons section', () => {
     accessToCouponSection()
 })
 
-it.only('Verify it is possible access to the Add Coupons form', () => {
+it('Verify it is possible access to the Add Coupons form', () => {
     accessToCouponSection()
     accessToAddCouponForm()
 })
 
-// Add Subscription form fiels validation
+// Add Couponcription form fiels validation
 
-it('Verify that the Add Subscription Service is required', () => {
-    accessToOfferSection()
-    accessToAddOffersForm()
-    filloutSubscriptionInfo(randUsername1, '1', 1, 1, randEmail1, randUsername1)
-    expectedMessageCreateSubs('At least one service variant is required')
+it.only('Verify that the Add Coupon Service & Category are NOT required', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+        cy.wait(64)
+    selectCouponAllService()
+    cy.wait(64)
+    // filloutCouponInfo(randCouponCode1, randCouponCode1, 1, 1, 1)
+    cy.wait(64)
+    expectedMessageCreateCoupon('Coupon created successfully')
 })
 
-it('Verify that the Add Subscription Name is required', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    expectedMessageCreateSubs('Name is required')
+it('Verify that the Add Coupon Name is required', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('{enter}', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Required')
 })
 
-it('Verify that the Add Subscription Name must be at least 3 characters', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo(10,10,20,30,'Notes10','Description10')
-    expectedMessageCreateSubs('Name must be at least 3 characters')
+it('Verify that the Add Coupon Name must be at least 3 characters', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode2, 1, 1, 1)
+    expectedMessageCreateCoupon('Required')
 })
 
-it('Verify that the Add Subscription Price is required', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubPrice Required','{enter}',2,3,'Notes','Description')
-    expectedMessageCreateSubs('Price is required')
+it('Verify that the Coupon discount value is required', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo(randCouponCode3, randCouponCode3, '{enter}', 1, 1)
+    expectedMessageCreateCoupon('Discount value is required')
 })
 
-it('Verify that the Add Subscription Price must be greater than Zero', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubPrice greater than 0',0,2,3,'Notes','Description')
-    expectedMessageCreateSubs('Price must be greater or equal than 1')
+it('Verify that the Add Couponcription Price must be greater than Zero', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo(randCouponCode4, randCouponCode4, 1, 1, 1)
+    expectedMessageCreateCoupon('Price must be greater or equal than 1')
 })
 
-it('Verify that the Add Subscription Price allow decimal numbers', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubPrice Zeropoint1',1.1,2,3,'Notes','Description')
-    expectedMessageCreateSubs('Subscription created')
+it('Verify that the Add Couponcription Price allow decimal numbers', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo(randCouponCode2, randCouponCode2, 0.1, 1, 1)
+    expectedMessageCreateCoupon('Coupon created successfully')
 })
 
-it('Verify that the Add Subscription Description field is optional', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubDescription is optional',101,2,3,'Notes for Description is optional','{enter}')
-    expectedMessageCreateSubs('Subscription created')
+it('Verify that the Add Couponcription Description field is optional', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Required')
 })
 
-it('Verify that the Add Subscription Notes field is optional', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubNotes is optional',9,2,3,'{enter}','Description test for Notes is optional')
-    expectedMessageCreateSubs('Subscription created')
+it('Verify that the Add Couponcription Notes field is optional', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Required')
 })
 
-it('Verify that the Add Subscription Number of Sessions is required  ', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubNotes is optional',1,2,'{enter}','Notes','Description')
-    expectedMessageCreateSubs('Number of sessions is required')
+it('Verify that the Add Couponcription Number of Sessions is required  ', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Number of sessions is required')
 })
 
-it('Verify that the Add Subscription Number of Sessions must be greater than 1', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubNotes is optional',1,2,0,'Notes','Description')
-    expectedMessageCreateSubs('Number of sessions must be greater or equal than 1')
+it('Verify that the Add Couponcription Number of Sessions must be greater than 1', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
-it('Verify that the Add Subscription Number of Sessions must be an integer', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubNotes is optional',10.10,2,2.1,'Notes','Description')
-    expectedMessageCreateSubs('Number of sessions must be an integer')
+it('Verify that the Add Couponcription Number of Sessions must be an integer', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Number of sessions must be an integer')
 })
 
-it('Verify that the Add Subscription Expiration in days is required', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubNotes is optional',1,'{enter}',1000,'Notes','Description')
-    expectedMessageCreateSubs('Expiration time is required')
+it('Verify that the Add Couponcription Expiration in days is required', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Expiration time is required')
 })
 
-it('Verify that the Add Subscription Expiration in days must be greater than 1', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('SubNotes is optional',1,0,8,'Notes','Description')
-    expectedMessageCreateSubs('Expiration time must be greater or equal than 1')
+it('Verify that the Add Couponcription Expiration in days must be greater than 1', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Expiration time must be greater or equal than 1')
 })
 
-it('Verify that the Add Subscription Expiration in days must be an integer', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    selectSubsService()
-    filloutSubscriptionInfo('SubNotes is optional',1,8.1,1000,'Notes','Description')
-    expectedMessageCreateSubs('Expiration time must be an integer')
+it('Verify that the Add Couponcription Expiration in days must be an integer', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Expiration time must be an integer')
 })
 
-it('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    selectSubsService()
-    selectSubsService()
-    selectSubsService()
-    filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-    expectedMessageCreateSubs('Subscription created')
+it('Verify that the Add Couponcription Service: Add another service allows the user to add multiple services', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    expectedMessageCreateCoupon('Couponcription created')
 })
 
-it('Verify that the Add Subscription Service: Services can be removed ', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
+it('Verify that the Add Couponcription Service: Services can be removed ', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    selectCouponService()
+    filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
-    expectedMessageCreateSubs('At least one service variant is required')
+    expectedMessageCreateCoupon('At least one service variant is required')
 })
 
-it('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
-    accessToOfferSection()
-    accessToAddSubsForm()
-    selectSubsService()
-    selectSubsService()
-    filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-    expectedMessageCreateSubs('Subscription created')
+it('Verify that the Add Couponcription Service: Add another service allows the user to add multiple services', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+    selectCouponService()
+    selectCouponService()
+    filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
+    expectedMessageCreateCoupon('Couponcription created')
 })
 
-// Edit Subscription form fiels validation
-it.skip('Verify that the Update Subscription allows the user to remove services', () => {
-    accessToOfferSection()
-    accessToEditSubsForm()
+// Edit Couponcription form fiels validation
+it.skip('Verify that the Update Couponcription allows the user to remove services', () => {
+    accessToCouponSection()
+    accessToEditCouponForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
-    expectedMessageCreateSubs('Please select at least one service')
+    expectedMessageCreateCoupon('Please select at least one service')
 })
 
-it.skip('Verify that the Update Subscription Service is required', () => {
-    accessToOfferSection()
-    accessToEditSubsForm()
+it.skip('Verify that the Update Couponcription Service is required', () => {
+    accessToCouponSection()
+    accessToEditCouponForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
-    expectedMessageCreateSubs('Please select at least one service')
+    expectedMessageCreateCoupon('Please select at least one service')
 })
 
-// it('Verify that the Update Subscription Name is required', () => {
-//     accessToOfferSection()
-//     accessToEditSubsForm()
+// it('Verify that the Update Couponcription Name is required', () => {
+//     accessToCouponSection()
+//     accessToEditCouponForm()
 //     clearUpdateForm()
-//     expectedMessageCreateSubs('Name is required')
+//     expectedMessageCreateCoupon('Name is required')
 // })
 
-// it('Verify that the update Subscription Name must be at least 3 characters', () => {
-//     accessToOfferSection()
-//     accessToEditSubsForm()
+// it('Verify that the update Couponcription Name must be at least 3 characters', () => {
+//     accessToCouponSection()
+//     accessToEditCouponForm()
 //     clearUpdateForm()
-//     filloutSubscriptionInfo(10,10,20,30,'Notes10','Description10')
-//     expectedMessageCreateSubs('Name must be at least 3 characters')
+//     filloutCouponcriptionInfo(10,10,20,30,'Notes10','Description10')
+//     expectedMessageCreateCoupon('Name must be at least 3 characters')
 // })
 
-// it('Verify that the update Subscription Price is required', () => {
-//     accessToOfferSection()
-//     accessToEditSubsForm()
+// it('Verify that the update Couponcription Price is required', () => {
+//     accessToCouponSection()
+//     accessToEditCouponForm()
 //     clearUpdateForm()
-//     filloutSubscriptionInfo('SubPrice Required','{enter}',2,3,'Notes','Description')
-//     expectedMessageCreateSubs('Price is required')
+//     filloutCouponcriptionInfo('SubPrice Required','{enter}',2,3,'Notes','Description')
+//     expectedMessageCreateCoupon('Price is required')
 // })
 
-// it('Verify that the Update Subscription Price must be greater than Zero', () => {
-//     accessToOfferSection()
-//     accessToEditSubsForm()
+// it('Verify that the Update Couponcription Price must be greater than Zero', () => {
+//     accessToCouponSection()
+//     accessToEditCouponForm()
 //     clearUpdateForm()
-//     filloutSubscriptionInfo('SubPrice greater than 0',0,2,3,'Notes','Description')
-//     expectedMessageCreateSubs('Price must be greater than 0')
+//     filloutCouponcriptionInfo('SubPrice greater than 0',0,2,3,'Notes','Description')
+//     expectedMessageCreateCoupon('Price must be greater than 0')
 // })
 
-// it('Verify that the Update Subscription Price allow decimal numbers', () => {
-//     accessToOfferSection()
-//     accessToEditSubsForm()
+// it('Verify that the Update Couponcription Price allow decimal numbers', () => {
+//     accessToCouponSection()
+//     accessToEditCouponForm()
 //     clearUpdateForm()
-//     filloutSubscriptionInfo('SubPrice Zeropoint1',0.1,2,3,'Notes','Description')
-//     expectedMessageCreateSubs('Subscription Updated Succesfully')
+//     filloutCouponcriptionInfo('SubPrice Zeropoint1',0.1,2,3,'Notes','Description')
+//     expectedMessageCreateCoupon('Couponcription Updated Succesfully')
 // })
 
-// it('Verify that the Update Subscription Description field is optional', () => {
-//     accessToOfferSection()
-//     accessToEditSubsForm()
+// it('Verify that the Update Couponcription Description field is optional', () => {
+//     accessToCouponSection()
+//     accessToEditCouponForm()
 //     clearUpdateForm()
-//     filloutSubscriptionInfo('update SubDescription is optional', 0.101, 2, 3, 'Notes for Description is optional','{enter}')
-//     expectedMessageCreateSubs('Subscription Updated Succesfully')
+//     filloutCouponcriptionInfo('update SubDescription is optional', 0.101, 2, 3, 'Notes for Description is optional','{enter}')
+//     expectedMessageCreateCoupon('Couponcription Updated Succesfully')
 // })
 
-// it('Verify that the Add Subscription Notes field is optional', () => {
-//     accessToOfferSection()
-//     accessToEditSubsForm()
+// it('Verify that the Add Couponcription Notes field is optional', () => {
+//     accessToCouponSection()
+//     accessToEditCouponForm()
 //     clearUpdateForm()
-//     filloutSubscriptionInfo('Update SubNotes is optional',0.1,2,3,'{enter}','Description test for Notes is optional')
-//     expectedMessageCreateSubs('Subscription Updated Succesfully')
+//     filloutCouponcriptionInfo('Update SubNotes is optional',0.1,2,3,'{enter}','Description test for Notes is optional')
+//     expectedMessageCreateCoupon('Couponcription Updated Succesfully')
 // })
 
-// it('Verify that the Add Subscription Number of Sessions is required  ', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     filloutSubscriptionInfo('SubNotes is optional',0.1,2,'{enter}','Notes','Description')
-//     expectedMessageCreateSubs('Number of sessions is required')
+// it('Verify that the Add Couponcription Number of Sessions is required  ', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('SubNotes is optional',0.1,2,'{enter}','Notes','Description')
+//     expectedMessageCreateCoupon('Number of sessions is required')
 // })
 
-// it.skip('Verify that the Add Subscription Number of Sessions must be greater than Zero', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     filloutSubscriptionInfo('SubNotes is optional',0.1,2,0,'Notes','Description')
-//     expectedMessageCreateSubs('Number of sessions must be greater than 0')
+// it.skip('Verify that the Add Couponcription Number of Sessions must be greater than Zero', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('SubNotes is optional',0.1,2,0,'Notes','Description')
+//     expectedMessageCreateCoupon('Number of sessions must be greater than 0')
 // })
 
-// it.skip('Verify that the Add Subscription Number of Sessions must be an integer', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     filloutSubscriptionInfo('SubNotes is optional',10.10,2,2.1,'Notes','Description')
-//     expectedMessageCreateSubs('Number of sessions must be an integer number')
+// it.skip('Verify that the Add Couponcription Number of Sessions must be an integer', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('SubNotes is optional',10.10,2,2.1,'Notes','Description')
+//     expectedMessageCreateCoupon('Number of sessions must be an integer number')
 // })
 
-// it.skip('Verify that the Add Subscription Expiration in days is required', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     filloutSubscriptionInfo('SubNotes is optional',0.1,'{enter}',1000,'Notes','Description')
-//     expectedMessageCreateSubs('Expiration is required')
+// it.skip('Verify that the Add Couponcription Expiration in days is required', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('SubNotes is optional',0.1,'{enter}',1000,'Notes','Description')
+//     expectedMessageCreateCoupon('Expiration is required')
 // })
 
-// it.skip('Verify that the Add Subscription Expiration in days must be greater than Zero', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     filloutSubscriptionInfo('SubNotes is optional',0.1,0,8,'Notes','Description')
-//     expectedMessageCreateSubs('Expiration must be greater than 0')
+// it.skip('Verify that the Add Couponcription Expiration in days must be greater than Zero', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('SubNotes is optional',0.1,0,8,'Notes','Description')
+//     expectedMessageCreateCoupon('Expiration must be greater than 0')
 // })
 
-// it.skip('Verify that the Add Subscription Expiration in days must be an integer', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     selectSubsService()
-//     filloutSubscriptionInfo('SubNotes is optional',0.1,8.1,1000,'Notes','Description')
-//     expectedMessageCreateSubs('Expiration must be an integer number')
+// it.skip('Verify that the Add Couponcription Expiration in days must be an integer', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('SubNotes is optional',0.1,8.1,1000,'Notes','Description')
+//     expectedMessageCreateCoupon('Expiration must be an integer number')
 // })
 
-// it.skip('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     selectSubsService()
-//     selectSubsService()
-//     selectSubsService()
-//     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-//     expectedMessageCreateSubs('Subscription created')
+// it.skip('Verify that the Add Couponcription Service: Add another service allows the user to add multiple services', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     selectCouponService()
+//     selectCouponService()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
+//     expectedMessageCreateCoupon('Couponcription created')
 // })
 
-// it.skip('Verify that the Add Subscription Service: Services can be removed ', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
+// it.skip('Verify that the Add Couponcription Service: Services can be removed ', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
 //     cy.get('[data-testid="CloseIcon"]').click({ force: true })
-//     expectedMessageCreateSubs('Please select at least one service')
+//     expectedMessageCreateCoupon('Please select at least one service')
 // })
 
-// it.skip('Verify that the Add Subscription Service: Add another service allows the user to add multiple services', () => {
-//     accessToOfferSection()
-//     accessToAddSubsForm()
-//     selectSubsService()
-//     selectSubsService()
-//     filloutSubscriptionInfo('Subscription linked to 4 services',9.1,3,1000,'Notes','Description')
-//     expectedMessageCreateSubs('Subscription created')
+// it.skip('Verify that the Add Couponcription Service: Add another service allows the user to add multiple services', () => {
+//     accessToCouponSection()
+//     accessToAddCouponForm()
+//     selectCouponService()
+//     selectCouponService()
+//     filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
+//     expectedMessageCreateCoupon('Couponcription created')
 // })
 
 })
 
 
 
-// Verify that the Add Subscription set Enable toggle OFF  
+// Verify that the Add Couponcription set Enable toggle OFF  
 
 
-// Verify a subscription can be deleted when confirming the action.  
+// Verify a Couponcription can be deleted when confirming the action.  
 
-// Verify that after deleting a subscription the Subscription list gets updated.  
+// Verify that after deleting a Couponcription the Couponcription list gets updated.  
 
-// Verify a subscription can not be deleted when canceling the action.  
+// Verify a Couponcription can not be deleted when canceling the action.  
 
 
-// Update Subscription Form:
+// Update Couponcription Form:
 
-// Verify that the 'Update Subscription' Service is required. 
+// Verify that the 'Update Couponcription' Service is required. 
 
-// Verify that the 'Update Subscription' Name is required. 
+// Verify that the 'Update Couponcription' Name is required. 
 
-// Verify that the 'Update Subscription' Name must be at least 3 characters  
+// Verify that the 'Update Couponcription' Name must be at least 3 characters  
 
-// @Obafemi Joseph  It is allowing to create a subscription with a 1 character name
+// @Obafemi Joseph  It is allowing to create a Couponcription with a 1 character name
 
-// Verify that the 'Update Subscription' Description is an optional field 
+// Verify that the 'Update Couponcription' Description is an optional field 
 
-// Verify that the 'Update Subscription' Notes is optional field 
+// Verify that the 'Update Couponcription' Notes is optional field 
 
-// Verify that the 'Update Subscription' set Enable toggle ON 	
+// Verify that the 'Update Couponcription' set Enable toggle ON 	
 
-// Verify that the 'Update Subscription' set Enable toggle OFF 
+// Verify that the 'Update Couponcription' set Enable toggle OFF 
 
-// Verify that the 'Update Subscription' Price is required 
+// Verify that the 'Update Couponcription' Price is required 
 
-// Verify that the 'Add' Subscription Price must be greater than 0 
+// Verify that the 'Add' Couponcription Price must be greater than 0 
 
-// Verify that the 'Update Subscription' Price allowed decimal number  
+// Verify that the 'Update Couponcription' Price allowed decimal number  
 
-// Verify that the 'Update Subscription' Number of Sessions is required 
+// Verify that the 'Update Couponcription' Number of Sessions is required 
 
-// Verify that the 'Add' Subscription Number of Sessions must be an integer 
+// Verify that the 'Add' Couponcription Number of Sessions must be an integer 
 
-// Verify that the 'Update Subscription' Number of Sessions must be greater than Zero 
+// Verify that the 'Update Couponcription' Number of Sessions must be greater than Zero 
 
-// Verify that the 'Update Subscription' Expiration in days is required 
+// Verify that the 'Update Couponcription' Expiration in days is required 
 
-// Verify that the 'Add' Subscription Expiration in days must be an integer. 
+// Verify that the 'Add' Couponcription Expiration in days must be an integer. 
 
-// Verify that the 'Update Subscription' Expiration in days must be greater than Zero 
+// Verify that the 'Update Couponcription' Expiration in days must be greater than Zero 
 
-// Verify that the 'Update Subscription' Service: dropdown matches current services available 
+// Verify that the 'Update Couponcription' Service: dropdown matches current services available 
 
-// Verify that the 'Update Subscription' Service: Add another service allows the user to add multiple services 
+// Verify that the 'Update Couponcription' Service: Add another service allows the user to add multiple services 
 
-// Verify that the 'Update Subscription' Subscription Service: Services are added correctly to the Subscription	
+// Verify that the 'Update Couponcription' Couponcription Service: Services are added correctly to the Couponcription	
 
-// Verify that the 'Update Subscription' Service: Services can be removed 
+// Verify that the 'Update Couponcription' Service: Services can be removed 
 
