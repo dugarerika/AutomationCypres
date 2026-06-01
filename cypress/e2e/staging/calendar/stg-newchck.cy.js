@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Admin Credentials', () => {
+describe('Staging - Vendor Admin:COCOCUTSALON | Calendar| New Checkout | logged with Admin Credentials', () => {
 
     // before(() => {
     //     // ensure clean test slate for these tests
@@ -478,7 +478,7 @@ describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Admin Cr
     })
 })
 
-describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Vendor Admin:COCOCUTSALON | Calendar| New Checkout | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -901,7 +901,7 @@ describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Receptio
     })
 })
 
-describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Staff Credentials', () => {
+describe('Staging - Vendor Admin:COCOCUTSALON | Calendar| New Checkout | logged with Staff Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests
@@ -1324,7 +1324,7 @@ describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Staff Cr
     })
 })
 
-describe('Staging - Vendor Admin | Calendar| New Checkout | logged with low permission level credentials', () => {
+describe('Staging - Vendor Admin:COCOCUTSALON | Calendar| New Checkout | logged with low permission level credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

@@ -69,107 +69,20 @@ describe('Staging - Beta Vendor Admin | ARTNAILCORNER | Cancel Appointments| log
 
     it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-    
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-        it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
     })
 
@@ -200,25 +113,6 @@ describe('Staging - Beta Vendor Admin | ARTNAILCORNER | Cancel Appointments| log
         deleteAppt()
     })
     
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
     it('Cancel Appointment', () => {
         deleteAppt()
     })
@@ -231,7 +125,6 @@ describe('Staging - Beta Vendor Admin | ARTNAILCORNER | Cancel Appointments| log
         deleteAppt()
     })
 })
-
 
 describe('Staging - Beta Vendor Admin | COCOCUTSALON | Cancel Appointments| logged with Admin credentials', () => {
 
@@ -263,122 +156,20 @@ describe('Staging - Beta Vendor Admin | COCOCUTSALON | Cancel Appointments| logg
 
     it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-    
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-    it('Cancel Appointment', () => {
         deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-        it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
         deleteAppt()
     })
 
@@ -394,29 +185,6 @@ describe('Staging - Beta Vendor Admin | COCOCUTSALON | Cancel Appointments| logg
         deleteAppt()
     })
     
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
     it('Cancel Appointment', () => {
         deleteAppt()
     })
@@ -456,6 +224,11 @@ describe('Staging - Beta Vendor Admin | PINKDOOR | Cancel Appointments| logged w
 
     it('Cancel Appointment', () => {
         deleteAppt()
+        deleteAppt()
+    })
+
+    it('Cancel Appointment', () => {
+
     })
 
     it('Cancel Appointment', () => {
@@ -465,65 +238,6 @@ describe('Staging - Beta Vendor Admin | PINKDOOR | Cancel Appointments| logged w
     it('Cancel Appointment', () => {
         deleteAppt()
     })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-    
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
     it('Cancel Appointment', () => {
         deleteAppt()
     })
@@ -587,29 +301,6 @@ describe('Staging - Beta Vendor Admin | PINKDOOR | Cancel Appointments| logged w
         deleteAppt()
     })
     
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
-    it('Cancel Appointment', () => {
-        deleteAppt()
-    })
-
     it('Cancel Appointment', () => {
         deleteAppt()
     })

@@ -1,8 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-describe(
-	'Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials',
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Create Blocktime on the Calendar | logged with Admin Credentials',
 	() => {
 		beforeEach(() => {
 			cy.login(
@@ -336,7 +335,7 @@ describe(
 	}
 );
 
-describe('Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Create Blocktime on the Calendar | logged with Staff Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);
@@ -642,7 +641,7 @@ describe('Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | 
 	});
 });
 
-describe('Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Receptionist Credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Create Blocktime on the Calendar | logged with Receptionist Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);
@@ -948,8 +947,7 @@ describe('Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | 
 	});
 });
 
-describe.skip(
-	'Staging - Vendor Admin | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials',
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Create Blocktime on the Calendar | logged with Read-Only Credentials',
 	() => {
 		before(() => {
 			// ensure clean test slate for these tests

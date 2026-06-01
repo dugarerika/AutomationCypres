@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with Admin Credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Appointment Checkout | logged with Admin Credentials', () => {
 	beforeEach(() => {
 		// cy.viewport(3840,2160)
 		cy.login(
@@ -435,7 +435,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 	});
 });
 
-describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Appointment Checkout | logged with Receptionist Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);
@@ -488,7 +488,7 @@ describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with 
 	});
 });
 
-describe('Staging - Vendor Admin | Calendar| Appointment Checkout | logged with Staff Credentials', () => {
+describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Appointment Checkout | logged with Staff Credentials', () => {
 	before(() => {
 		// ensure clean test slate for these tests
 		cy.then(Cypress.session.clearAllSavedSessions);

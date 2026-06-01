@@ -80,7 +80,7 @@
 		"NAILEDIT:stg-inventory:crtsup": "npx cypress run -b chrome --spec 'cypress/e2e/staging/inventory/stg-crtsup.cy.js'",
 		"cy:staging-inventory:edtsup": "npx cypress run -b chrome --spec 'cypress/e2e/staging/inventory/stg-edtsup.cy.js'",
 		"cy:staging-offers:crtsoffer": "npx cypress run -b chrome --spec 'cypress/e2e/staging/offers/stg-crtsoffer.cy.js'",
-		"cy:staging-subscriptions:crtsubs": "npx cypress run --spec 'cypress/e2e/staging/subscriptions/stg-crtsubs.cy.js'",
+		"BEAUTIQUE:stg-subscriptions:crtsubs": "npx cypress run --spec 'cypress/e2e/staging/subscriptions/stg-crtsubs.cy.js'",
 		"junit-merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/results.xml",
 		"delete-junit-report": "rm -rf cypress/results/junit/results.xml",
 		"delete-results": "rm -rf cypress/results/* || true",

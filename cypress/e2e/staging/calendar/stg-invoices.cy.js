@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-describe('Staging - Vendor Admin | Calendar| Invoices generate from New Checkout | logged with Admin Credentials', () => {
+describe('Staging - Vendor Admin:COCOCUTSALON | Calendar| Invoices generate from New Checkout | logged with Admin Credentials', () => {
 
     beforeEach(() => {
         cy.login('Admin Session', Cypress.expose("Vendor1_Admin_Username_Staging"), Cypress.expose("Vendor1_Admin_Password_Staging"))
@@ -175,7 +175,7 @@ describe('Staging - Vendor Admin | Calendar| Invoices generate from New Checkout
     })
 })
 
-describe('Staging - Vendor Admin | Calendar| New Checkout | logged with Receptionist Credentials', () => {
+describe('Staging - Vendor Admin:COCOCUTSALON | Calendar| New Checkout | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

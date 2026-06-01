@@ -4,8 +4,6 @@
 const { should } = require("chai")
 const { faker } = require('@faker-js/faker');
 
-// Important:  before running this test cases the product list must be empty
-
 const randEmail1 = faker.internet.email()
 const randEmail2 = faker.internet.email()
 const randUsername1 = `teststf${faker.number.int({ min: 10, max: 100 })}`
