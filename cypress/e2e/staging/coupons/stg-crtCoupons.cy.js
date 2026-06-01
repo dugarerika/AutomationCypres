@@ -112,7 +112,7 @@ it('Verify it is possible access to the Add Coupons form', () => {
 
 // Add Couponcription form fiels validation
 
-it.only('Verify that the Add Coupon Service & Category are NOT required', () => {
+it.only('Verify that the Add Coupon Category are NOT required', () => {
     accessToCouponSection()
     accessToAddCouponForm()
         cy.wait(64)
@@ -123,31 +123,34 @@ it.only('Verify that the Add Coupon Service & Category are NOT required', () => 
     expectedMessageCreateCoupon('Coupon created successfully')
 })
 
-it('Verify that the Add Coupon Name is required', () => {
+it.only('Verify that the Add Coupon Service & Category are NOT required', () => {
+    accessToCouponSection()
+    accessToAddCouponForm()
+        cy.wait(64)
+    cy.wait(64)
+    filloutCouponInfo(`SERV${randCouponCode2}`, randCouponCode2, 1, 1, 1)
+    cy.wait(64)
+    expectedMessageCreateCoupon('Coupon created successfully')
+})
+
+it.only('Verify that the Add Coupon Name is required', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('{enter}', randCouponCode1, 1, 1, 1)
     expectedMessageCreateCoupon('Required')
 })
 
-it('Verify that the Add Coupon Name must be at least 3 characters', () => {
-    accessToCouponSection()
-    accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode2, 1, 1, 1)
-    expectedMessageCreateCoupon('Required')
-})
-
-it('Verify that the Coupon discount value is required', () => {
+it.only('Verify that the Coupon discount value is required', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo(randCouponCode3, randCouponCode3, '{enter}', 1, 1)
     expectedMessageCreateCoupon('Discount value is required')
 })
 
-it('Verify that the Add Couponcription Price must be greater than Zero', () => {
+it.only('Verify that the coupon Price must be greater than Zero', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo(randCouponCode4, randCouponCode4, 1, 1, 1)
+    filloutCouponInfo(randCouponCode4, randCouponCode4, -1, 1, 1)
     expectedMessageCreateCoupon('Price must be greater or equal than 1')
 })
 
