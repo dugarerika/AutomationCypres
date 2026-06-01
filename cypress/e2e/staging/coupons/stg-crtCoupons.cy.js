@@ -6,10 +6,10 @@ const { faker } = require('@faker-js/faker');
 
 // Important:  before running this test cases the product list must be empty
 
-const randCouponCode1 = `PINK1${faker.number.int({ min: 100, max: 1000 })}`
-const randCouponCode2 = `PINK2${faker.number.int({ min: 100, max: 1000 })}`
-const randCouponCode3 = `PINK1${faker.number.int({ min: 100, max: 1000 })}`
-const randCouponCode4 = `PINK2${faker.number.int({ min: 100, max: 1000 })}`
+const randCouponCode1 = `PNK1${faker.number.int({ min: 100, max: 1000 })}`
+const randCouponCode2 = `PNK2${faker.number.int({ min: 100, max: 1000 })}`
+const randCouponCode3 = `PNK1${faker.number.int({ min: 100, max: 1000 })}`
+const randCouponCode4 = `PNK2${faker.number.int({ min: 100, max: 1000 })}`
 
 const expectedMessageCreateCoupon = (product_message) => {
     cy.contains('button', 'Save').should('exist')
@@ -118,7 +118,7 @@ it.only('Verify that the Add Coupon Service & Category are NOT required', () => 
         cy.wait(64)
     selectCouponAllService()
     cy.wait(64)
-    // filloutCouponInfo(randCouponCode1, randCouponCode1, 1, 1, 1)
+    filloutCouponInfo(randCouponCode1, randCouponCode1, 1, 1, 1)
     cy.wait(64)
     expectedMessageCreateCoupon('Coupon created successfully')
 })
