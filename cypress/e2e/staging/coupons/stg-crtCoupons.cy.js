@@ -26,8 +26,7 @@ const filloutCouponInfo = (coupon_name, coupon_code, coupon_value, coupon_limit)
     cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).clear({ force: true })
     cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Promotion Value').parent().next('div').find('input').eq(0).type(coupon_value)
-    // cy.contains('label>span','Expire Date').parent().next('div').find('input').eq(0).should('exist')
-    // cy.contains('label>span','Expire Date').parent().next('div').find('input').eq(0).type(coupon_expiration)
+    cy.contains('label>span','Limit', { matchCase: false }).parent().next('div').find('input').eq(0).clear({ force: true })
     cy.contains('label>span','Limit', { matchCase: false }).parent().next('div').find('input').eq(0).should('exist')
     cy.contains('label>span','Limit', { matchCase: false }).parent().next('div').find('input').eq(0).type(coupon_limit)
 }
@@ -151,7 +150,7 @@ it.only('Verify that the coupon Price must be greater than Zero', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo(randCouponCode4, randCouponCode4, -1, 1, 1)
-    expectedMessageCreateCoupon('Price must be greater or equal than 1')
+    expectedMessageCreateCoupon('Price must be greater than Zero')
 })
 
 it.only('Verify that the Add Coupon Price allow decimal numbers', () => {
