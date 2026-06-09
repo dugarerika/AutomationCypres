@@ -95,7 +95,7 @@ it('Verify it is possible access to the Add Offers form', () => {
 
 // Add Offer form fiels validation
 
-it.only('Verify that the Add Offer Service is required', () => {
+it('Verify that the Add Offer Service is required', () => {
     accessToOfferSection()
     accessToAddOffersForm()
     filloutOfferInfo(randUsername1, '1', 1, 1, randEmail1, randUsername1)

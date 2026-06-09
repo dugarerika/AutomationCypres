@@ -101,21 +101,21 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it('Verify it is possible access to the Coupons section', () => {
+it.only('Verify it is possible access to the Coupons section', () => {
     accessToCouponSection()
 })
 
-it('Verify it is possible access to the Add Coupons form', () => {
+it.only('Verify it is possible access to the Add Coupons form', () => {
     accessToCouponSection()
     accessToAddCouponForm()
 })
 
-// Add Couponcription form fiels validation
+// Add Coupon form fiels validation
 
 it.only('Verify that the Add Coupon Category are NOT required', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-        cy.wait(64)
+    cy.wait(64)
     selectCouponAllService()
     cy.wait(64)
     filloutCouponInfo(`SERV${randCouponCode1}`, randCouponCode1, 1, 1, 1)
@@ -154,297 +154,132 @@ it.only('Verify that the coupon Price must be greater than Zero', () => {
     expectedMessageCreateCoupon('Price must be greater or equal than 1')
 })
 
-it('Verify that the Add Couponcription Price allow decimal numbers', () => {
+it.only('Verify that the Add Coupon Price allow decimal numbers', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo(randCouponCode2, randCouponCode2, 0.1, 1, 1)
     expectedMessageCreateCoupon('Coupon created successfully')
 })
 
-it('Verify that the Add Couponcription Description field is optional', () => {
+it.only('Verify that the it is possible to Add Coupon Fixed Price ', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
     expectedMessageCreateCoupon('Required')
 })
 
-it('Verify that the Add Couponcription Notes field is optional', () => {
+it.skip('Verify that the Add Coupon limit is Zero by default', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
     expectedMessageCreateCoupon('Required')
 })
 
-it('Verify that the Add Couponcription Number of Sessions is required  ', () => {
+it.skip('Verify that the Add Coupon setting like Public, Unlimited Used per Client and Booking Date are set off by default  ', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
     expectedMessageCreateCoupon('Number of sessions is required')
 })
 
-it('Verify that the Add Couponcription Number of Sessions must be greater than 1', () => {
+it.skip('Verify that the Add Coupon allow to create a coupona as Public', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
     expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
-it('Verify that the Add Couponcription Number of Sessions must be an integer', () => {
+it.skip('Verify that the Add Coupon allow to create a coupon with Limit the Promotion to an Specific date', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
-    expectedMessageCreateCoupon('Number of sessions must be an integer')
+    expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
-it('Verify that the Add Couponcription Expiration in days is required', () => {
+it.skip('Verify that the Add Coupon allow to create a coupon with Unlimited use per Client', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
-    expectedMessageCreateCoupon('Expiration time is required')
+    expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
-it('Verify that the Add Couponcription Expiration in days must be greater than 1', () => {
+it.skip('Verify that the Add Coupon allow to create a coupon with all the toggles enable', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
-    expectedMessageCreateCoupon('Expiration time must be greater or equal than 1')
+    expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
-it('Verify that the Add Couponcription Expiration in days must be an integer', () => {
-    accessToCouponSection()
-    accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
-    expectedMessageCreateCoupon('Expiration time must be an integer')
-})
-
-it('Verify that the Add Couponcription Service: Add another service allows the user to add multiple services', () => {
-    accessToCouponSection()
-    accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
-    expectedMessageCreateCoupon('Couponcription created')
-})
-
-it('Verify that the Add Couponcription Service: Services can be removed ', () => {
-    accessToCouponSection()
-    accessToAddCouponForm()
-    selectCouponService()
-    filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
-    cy.get('[data-testid="CloseIcon"]').click({ force: true })
-    expectedMessageCreateCoupon('At least one service variant is required')
-})
-
-it('Verify that the Add Couponcription Service: Add another service allows the user to add multiple services', () => {
-    accessToCouponSection()
-    accessToAddCouponForm()
-    selectCouponService()
-    selectCouponService()
-    filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
-    expectedMessageCreateCoupon('Couponcription created')
-})
-
-// Edit Couponcription form fiels validation
-it.skip('Verify that the Update Couponcription allows the user to remove services', () => {
+// Edit Coupon form fiels validation
+it.skip('Verify that the Update Coupon allows the user to remove services', () => {
     accessToCouponSection()
     accessToEditCouponForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
     expectedMessageCreateCoupon('Please select at least one service')
 })
 
-it.skip('Verify that the Update Couponcription Service is required', () => {
+it.skip('Verify that the Update Coupon Service is required', () => {
     accessToCouponSection()
     accessToEditCouponForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
     expectedMessageCreateCoupon('Please select at least one service')
 })
 
-// it('Verify that the Update Couponcription Name is required', () => {
-//     accessToCouponSection()
-//     accessToEditCouponForm()
-//     clearUpdateForm()
-//     expectedMessageCreateCoupon('Name is required')
-// })
-
-// it('Verify that the update Couponcription Name must be at least 3 characters', () => {
-//     accessToCouponSection()
-//     accessToEditCouponForm()
-//     clearUpdateForm()
-//     filloutCouponcriptionInfo(10,10,20,30,'Notes10','Description10')
-//     expectedMessageCreateCoupon('Name must be at least 3 characters')
-// })
-
-// it('Verify that the update Couponcription Price is required', () => {
-//     accessToCouponSection()
-//     accessToEditCouponForm()
-//     clearUpdateForm()
-//     filloutCouponcriptionInfo('SubPrice Required','{enter}',2,3,'Notes','Description')
-//     expectedMessageCreateCoupon('Price is required')
-// })
-
-// it('Verify that the Update Couponcription Price must be greater than Zero', () => {
-//     accessToCouponSection()
-//     accessToEditCouponForm()
-//     clearUpdateForm()
-//     filloutCouponcriptionInfo('SubPrice greater than 0',0,2,3,'Notes','Description')
-//     expectedMessageCreateCoupon('Price must be greater than 0')
-// })
-
-// it('Verify that the Update Couponcription Price allow decimal numbers', () => {
-//     accessToCouponSection()
-//     accessToEditCouponForm()
-//     clearUpdateForm()
-//     filloutCouponcriptionInfo('SubPrice Zeropoint1',0.1,2,3,'Notes','Description')
-//     expectedMessageCreateCoupon('Couponcription Updated Succesfully')
-// })
-
-// it('Verify that the Update Couponcription Description field is optional', () => {
-//     accessToCouponSection()
-//     accessToEditCouponForm()
-//     clearUpdateForm()
-//     filloutCouponcriptionInfo('update SubDescription is optional', 0.101, 2, 3, 'Notes for Description is optional','{enter}')
-//     expectedMessageCreateCoupon('Couponcription Updated Succesfully')
-// })
-
-// it('Verify that the Add Couponcription Notes field is optional', () => {
-//     accessToCouponSection()
-//     accessToEditCouponForm()
-//     clearUpdateForm()
-//     filloutCouponcriptionInfo('Update SubNotes is optional',0.1,2,3,'{enter}','Description test for Notes is optional')
-//     expectedMessageCreateCoupon('Couponcription Updated Succesfully')
-// })
-
-// it('Verify that the Add Couponcription Number of Sessions is required  ', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('SubNotes is optional',0.1,2,'{enter}','Notes','Description')
-//     expectedMessageCreateCoupon('Number of sessions is required')
-// })
-
-// it.skip('Verify that the Add Couponcription Number of Sessions must be greater than Zero', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('SubNotes is optional',0.1,2,0,'Notes','Description')
-//     expectedMessageCreateCoupon('Number of sessions must be greater than 0')
-// })
-
-// it.skip('Verify that the Add Couponcription Number of Sessions must be an integer', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('SubNotes is optional',10.10,2,2.1,'Notes','Description')
-//     expectedMessageCreateCoupon('Number of sessions must be an integer number')
-// })
-
-// it.skip('Verify that the Add Couponcription Expiration in days is required', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('SubNotes is optional',0.1,'{enter}',1000,'Notes','Description')
-//     expectedMessageCreateCoupon('Expiration is required')
-// })
-
-// it.skip('Verify that the Add Couponcription Expiration in days must be greater than Zero', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('SubNotes is optional',0.1,0,8,'Notes','Description')
-//     expectedMessageCreateCoupon('Expiration must be greater than 0')
-// })
-
-// it.skip('Verify that the Add Couponcription Expiration in days must be an integer', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('SubNotes is optional',0.1,8.1,1000,'Notes','Description')
-//     expectedMessageCreateCoupon('Expiration must be an integer number')
-// })
-
-// it.skip('Verify that the Add Couponcription Service: Add another service allows the user to add multiple services', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     selectCouponService()
-//     selectCouponService()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
-//     expectedMessageCreateCoupon('Couponcription created')
-// })
-
-// it.skip('Verify that the Add Couponcription Service: Services can be removed ', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
-//     cy.get('[data-testid="CloseIcon"]').click({ force: true })
-//     expectedMessageCreateCoupon('Please select at least one service')
-// })
-
-// it.skip('Verify that the Add Couponcription Service: Add another service allows the user to add multiple services', () => {
-//     accessToCouponSection()
-//     accessToAddCouponForm()
-//     selectCouponService()
-//     selectCouponService()
-//     filloutCouponcriptionInfo('Couponcription linked to 4 services',9.1,3,1000,'Notes','Description')
-//     expectedMessageCreateCoupon('Couponcription created')
-// })
-
 })
 
 
 
-// Verify that the Add Couponcription set Enable toggle OFF  
+// Verify that the Add Coupon set Enable toggle OFF  
 
 
-// Verify a Couponcription can be deleted when confirming the action.  
+// Verify a Coupon can be deleted when confirming the action.  
 
-// Verify that after deleting a Couponcription the Couponcription list gets updated.  
+// Verify that after deleting a Coupon the Coupon list gets updated.  
 
-// Verify a Couponcription can not be deleted when canceling the action.  
+// Verify a Coupon can not be deleted when canceling the action.  
 
 
-// Update Couponcription Form:
+// Update Coupon Form:
 
-// Verify that the 'Update Couponcription' Service is required. 
+// Verify that the 'Update Coupon' Service is required. 
 
-// Verify that the 'Update Couponcription' Name is required. 
+// Verify that the 'Update Coupon' Name is required. 
 
-// Verify that the 'Update Couponcription' Name must be at least 3 characters  
+// Verify that the 'Update Coupon' Name must be at least 3 characters  
 
-// @Obafemi Joseph  It is allowing to create a Couponcription with a 1 character name
+// @Obafemi Joseph  It is allowing to create a Coupon with a 1 character name
 
-// Verify that the 'Update Couponcription' Description is an optional field 
+// Verify that the 'Update Coupon' Description is an optional field 
 
-// Verify that the 'Update Couponcription' Notes is optional field 
+// Verify that the 'Update Coupon' Notes is optional field 
 
-// Verify that the 'Update Couponcription' set Enable toggle ON 	
+// Verify that the 'Update Coupon' set Enable toggle ON 	
 
-// Verify that the 'Update Couponcription' set Enable toggle OFF 
+// Verify that the 'Update Coupon' set Enable toggle OFF 
 
-// Verify that the 'Update Couponcription' Price is required 
+// Verify that the 'Update Coupon' Price is required 
 
-// Verify that the 'Add' Couponcription Price must be greater than 0 
+// Verify that the 'Add' Coupon Price must be greater than 0 
 
-// Verify that the 'Update Couponcription' Price allowed decimal number  
+// Verify that the 'Update Coupon' Price allowed decimal number  
 
-// Verify that the 'Update Couponcription' Number of Sessions is required 
+// Verify that the 'Update Coupon' Number of Sessions is required 
 
-// Verify that the 'Add' Couponcription Number of Sessions must be an integer 
+// Verify that the 'Add' Coupon Number of Sessions must be an integer 
 
-// Verify that the 'Update Couponcription' Number of Sessions must be greater than Zero 
+// Verify that the 'Update Coupon' Number of Sessions must be greater than Zero 
 
-// Verify that the 'Update Couponcription' Expiration in days is required 
+// Verify that the 'Update Coupon' Expiration in days is required 
 
-// Verify that the 'Add' Couponcription Expiration in days must be an integer. 
+// Verify that the 'Add' Coupon Expiration in days must be an integer. 
 
-// Verify that the 'Update Couponcription' Expiration in days must be greater than Zero 
+// Verify that the 'Update Coupon' Expiration in days must be greater than Zero 
 
-// Verify that the 'Update Couponcription' Service: dropdown matches current services available 
+// Verify that the 'Update Coupon' Service: dropdown matches current services available 
 
-// Verify that the 'Update Couponcription' Service: Add another service allows the user to add multiple services 
+// Verify that the 'Update Coupon' Service: Add another service allows the user to add multiple services 
 
-// Verify that the 'Update Couponcription' Couponcription Service: Services are added correctly to the Couponcription	
+// Verify that the 'Update Coupon' Coupon Service: Services are added correctly to the Coupon	
 
-// Verify that the 'Update Couponcription' Service: Services can be removed 
+// Verify that the 'Update Coupon' Service: Services can be removed 
 

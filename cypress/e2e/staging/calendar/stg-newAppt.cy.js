@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 
-describe('Staging - Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
+describe('Staging - Vendor Admin:PINKDOOR | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Admin Credentials', () => {
 
     beforeEach(() => {
         cy.login('Admin Session', Cypress.expose("Vendor6_Admin_Username_Staging"), Cypress.expose("Vendor6_Admin_Password_Staging"))
@@ -120,7 +120,7 @@ describe('Staging - Vendor Admin | Calendar| Create New Appointment on the Calen
         cy.contains('div>span','Booking Created Successfully').should('be.visible')
     })
 })
-describe('Staging - Vendor Admin | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Receptionist Credentials', () => {
+describe('Staging - Vendor Admin:PINKDOOR | Calendar| Create New Appointment on the Calendar through Add New/New Appointment | logged with Receptionist Credentials', () => {
 
     before(() => {
         // ensure clean test slate for these tests

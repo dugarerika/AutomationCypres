@@ -24,7 +24,7 @@ Cypress.Commands.add('login', (name, username, password) => {
     })
     cy.wait(640)
     cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar')
-    cy.wait(5600)
+    cy.wait(7999)
     cy.get('body').then(($body) => {
         if ($body.text().includes('Welcome Back!')) {
             cy.contains('h3', 'Welcome Back!').next('button').scrollIntoView().click()
@@ -186,11 +186,67 @@ Cypress.Commands.add('expectedMessageCreateEmployee', (product_message) => {
 
 Cypress.Commands.add('deleteCustomer', () => {
     cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar')
-    cy.url().should('include', Cypress.expose('URL_Staging') + 'admin/calendar')
-    cy.contains('Customers').click({ force: true })
-    cy.get('table tbody').find('tr').eq(0).find('td').eq(7).find('span>div>svg').eq(1).click()
-    cy.contains('button', 'Yes').click()
+    // cy.url().should('include', Cypress.expose('URL_Staging') + 'admin/calendar')
+    cy.contains('Customers').click({ force: true });
+    for (let i = 0; i < 3; i++) {
+    cy.get('table tbody').find('tr').eq(0).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(1).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(2).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(3).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(4).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(5).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(6).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(7).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(8).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.get('table tbody').find('tr').eq(9).find('td').eq(7).find('span > div > svg').eq(1).click();
+    cy.contains('button', 'Yes').click();
+    cy.visit(Cypress.expose('URL_Staging') + 'admin/customers')
+    cy.url().should('include', Cypress.expose('URL_Staging') + 'admin/customers')
+        cy.wait(80)
+    }
 })
+
+Cypress.Commands.add('deleteCustomers', () => {
+  cy.intercept('DELETE', '**/customers/**').as('deleteCustomer');
+
+  cy.visit(`${Cypress.expose('URL_Staging')}admin/customers`);
+
+  const deleteFirstCustomer = () => {
+    cy.get('table tbody tr').then(($rows) => {
+
+      if ($rows.length === 0) {
+        cy.log('All customers deleted');
+        return;
+      }
+
+      cy.wrap($rows)
+        .first()
+        .find('td')
+        .eq(7)
+        .find('svg')
+        .eq(1)
+        .click({ force: true });
+
+      cy.contains('button', 'Yes')
+        .click();
+
+      cy.wait('@deleteCustomer', { timeout: 60000 });
+
+      deleteFirstCustomer();
+    });
+  };
+
+  deleteFirstCustomer();
+});
 
 // ===== Calendar =====
 
