@@ -90,13 +90,13 @@ it('Verify the New appointment modal is hidden after creating successfully an ap
   cy.contains('New Appointment').should('not.be.visible')  
 })
 
-it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
+it('Verify The Edit modal is display after clicking on Edit booking button', () => {
   cy.searchAppt('ALEX ALEX','07:00') 
   cy.log('Test completed')
   cy.contains('Appointment Details').should('be.visible')
   cy.contains('Edit Booking').should('be.visible')
   cy.contains('Edit Booking').click({force: true})
-  cy.contains('Edit Appointment').should('exist') 
+  cy.contains('Edit').should('exist') 
 })
 
 it('Verify it is possible to edit the Customer', () => {
@@ -104,11 +104,11 @@ it('Verify it is possible to edit the Customer', () => {
   cy.contains('Appointment Details').should('be.visible')
   cy.contains('Edit Booking').should('be.visible')
   cy.contains('Edit Booking').click({force: true})
-  cy.contains('Edit Appointment').should('exist') 
+  cy.contains('Edit').should('exist') 
   cy.contains('button','Change customer').should('be.visible')
   cy.contains('button','Change customer').click({force: true})
-  // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
-  // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
+  // cy.xpath(`//h2[text()="Edit"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
+  // cy.xpath(`//h2[text()="Edit"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
   cy.wait(640)
 })
 })
@@ -206,12 +206,12 @@ describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar | Create appointments 
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
+  it('Verify The Edit modal is display after clicking on Edit booking button', () => {
     cy.searchAppt('Mateo','06:00') 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
-    cy.contains('Edit Appointment').should('exist') 
+    cy.contains('Edit').should('exist') 
   })
 
   it('Verify it is possible to edit the Customer', () => {
@@ -219,11 +219,11 @@ describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar | Create appointments 
     cy.contains('Appointment Details').should('be.visible')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
-    cy.contains('Edit Appointment').should('exist')
+    cy.contains('Edit').should('exist')
     cy.contains('button','Change customer').should('be.visible')
     cy.contains('button','Change customer').click({force: true})
-    // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
-    // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
+    // cy.xpath(`//h2[text()="Edit"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
+    // cy.xpath(`//h2[text()="Edit"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
     cy.wait(640)
   })
 })
@@ -294,22 +294,22 @@ describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar | Create appointments 
     cy.contains('New Appointment').should('not.be.visible')  
   })
 
-  it.skip('Verify The edit appointment modal is display after clicking on Edit booking button', () => {
+  it.skip('Verify The Edit modal is display after clicking on Edit booking button', () => {
     cy.searchTimeSlot('Zumba Zumba','07:00')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
-    cy.contains('Edit Appointment').should('exist') 
+    cy.contains('Edit').should('exist') 
   })
 
   it.skip('Verify it is possible to edit the Customer', () => {
     cy.searchTimeSlot('Zumba Zumba','07:00')
     cy.contains('Edit Booking').should('be.visible')
     cy.contains('Edit Booking').click({force: true})
-    cy.contains('Edit Appointment').should('exist')
+    cy.contains('Edit').should('exist')
     cy.contains('button','Change customer').should('be.visible')
     cy.contains('button','Change customer').click({force: true})
-    // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
-    // cy.xpath(`//h2[text()="Edit Appointment"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
+    // cy.xpath(`//h2[text()="Edit"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).should('be.visible')
+    // cy.xpath(`//h2[text()="Edit"]/parent::div/following-sibling::div/div/div/div/div/button[text()="Change customer"]`).click()
     cy.wait(640)
   })
 })
