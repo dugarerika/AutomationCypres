@@ -188,30 +188,14 @@ Cypress.Commands.add('deleteCustomer', () => {
     cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar')
     // cy.url().should('include', Cypress.expose('URL_Staging') + 'admin/calendar')
     cy.contains('Customers').click({ force: true });
-    for (let i = 0; i < 3; i++) {
-    cy.get('table tbody').find('tr').eq(0).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(1).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(2).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(3).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(4).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(5).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(6).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(7).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(8).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.get('table tbody').find('tr').eq(9).find('td').eq(7).find('span > div > svg').eq(1).click();
-    cy.contains('button', 'Yes').click();
-    cy.visit(Cypress.expose('URL_Staging') + 'admin/customers')
-    cy.url().should('include', Cypress.expose('URL_Staging') + 'admin/customers')
-        cy.wait(80)
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 9; j++) {
+            cy.get('table tbody').find('tr').eq(j).find('td').eq(7).find('span > div > svg').eq(1).click();
+            cy.contains('button', 'Yes').click();s
+        }
+    // cy.visit(Cypress.expose('URL_Staging') + 'admin/customers')
+    // cy.url().should('include', Cypress.expose('URL_Staging') + 'admin/customers')
+    //     cy.wait(80)
     }
 })
 
