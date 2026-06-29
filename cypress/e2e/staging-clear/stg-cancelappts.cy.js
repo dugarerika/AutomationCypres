@@ -33,7 +33,7 @@ const deleteAppt = () => {
     cy.contains('button','Apply Filters').click({ force: true })
     cy.get('tbody').find('tr').first().click({ force: true })
     cy.wait(8)
-    cy.contains('div>h3', 'Appointment Details', { matchCase: false }).should('exist')
+    cy.contains('div>h3', 'Details', { matchCase: false }).should('exist')
     cy.contains('button','No Status').click({ force: true })
     cy.contains('div>span', 'Canceled').click({ force: true })
     cy.contains('button', 'Proceed').click({ force: true })
