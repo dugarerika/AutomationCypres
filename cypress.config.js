@@ -164,13 +164,11 @@ module.exports = defineConfig({
 			Vendor1_Low_Level_Password_Staging: '1234567890',
 			Vendor1_ReadOnly_Username_Staging: 'readonlyerika2',
 			Vendor1_ReadOnly_Password_Staging: '1234567890',
-			Vendor1_Receptionist_Username_Staging:
-				'recepcococut1',
+			Vendor1_Receptionist_Username_Staging:'recepcococut1',
 			Vendor1_Receptionist_Password_Staging: '1234567890',
 
 			// Vendor admin and staff (Production) credentials
-			Vendor_Admin_Username_Production:
-				'qatartestsalon3@mailinator.com',
+			Vendor_Admin_Username_Production:'qatartestsalon3@mailinator.com',
 			Vendor_Admin_Password_Production: '1234567890',
 			Vendor_Staff_Username_Production: 'zumbacococut',
 			Vendor_Staff_Password_Production: '1234567890',
@@ -178,8 +176,7 @@ module.exports = defineConfig({
 			Vendor_Staff1_Password_Production: '1234567890',
 			Vendor_ReadOnly_Username_Production: 'readonlyerika2',
 			Vendor_ReadOnly_Password_Production: '1234567890',
-			Vendor_Receptionist_Username_Production:
-				'recepcococut',
+			Vendor_Receptionist_Username_Production:'recepcococut',
 			Vendor_Receptionist_Password_Production: '1234567890',
 			Vendor1_Admin_Username_Production: 'testsalon',
 			Vendor1_Admin_Password_Production: 'testsalon@1o',
@@ -187,8 +184,7 @@ module.exports = defineConfig({
 			Vendor1_Staff_Password_Production: '1234567890',
 			Vendor1_ReadOnly_Username_Production: 'readonly92',
 			Vendor1_ReadOnly_Password_Production: '1234567890',
-			Vendor1_Receptionist_Username_Production:
-				'receptionist77',
+			Vendor1_Receptionist_Username_Production:'receptionist77',
 			Vendor1_Receptionist_Password_Production: '1234567890'
 		}
 	}

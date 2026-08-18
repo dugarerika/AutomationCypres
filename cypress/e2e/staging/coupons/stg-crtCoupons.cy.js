@@ -150,7 +150,7 @@ it.only('Verify that the coupon Price must be greater than Zero', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo(randCouponCode4, randCouponCode4, -1, 1, 1)
-    expectedMessageCreateCoupon('Price must be greater than Zero')
+    expectedMessageCreateCoupon('Promotion value must be greater than 0')
 })
 
 it.only('Verify that the Add Coupon Price allow decimal numbers', () => {
