@@ -23,7 +23,7 @@ Cypress.Commands.add('login', (name, username, password) => {
         performSessionLogin('URL_Staging', username, password)
     })
     cy.wait(640)
-    cy.visit(Cypress.expose('URL_Staging') + 'admin/calendar')
+    cy.visit(Cypress.expose('URL_Staging') + 'admin')
     cy.wait(7999)
     cy.get('body').then(($body) => {
         if ($body.text().includes('Welcome Back!')) {
@@ -63,7 +63,7 @@ Cypress.Commands.add('logout', () => {
 // ===== Inventory / Products =====
 
 Cypress.Commands.add('accessToCreateProduct', (environment = 'URL_Staging') => {
-    cy.visit(Cypress.expose(environment) + 'admin/calendar')
+    // cy.visit(Cypress.expose(environment) + 'admin/calendar')
     cy.contains('Inventory', { matchCase: false }).should('exist').click({ force: true })
     cy.contains('Products', { matchCase: false }).should('exist').click({ force: true })
     cy.contains('h6', 'Products', { matchCase: false }).should('exist')
@@ -108,7 +108,7 @@ Cypress.Commands.add('filloutProductInventoryInfo', (prod_ksu, prod_stock_qty, p
 // ===== Inventory / Suppliers =====
 
 Cypress.Commands.add('accessToCreateSuppliers', (environment = 'URL_Staging') => {
-    cy.visit(Cypress.expose(environment) + 'admin/calendar')
+    // cy.visit(Cypress.expose(environment) + 'admin/calendar')
     cy.contains('Inventory').should('exist').click({ force: true })
     cy.contains('Suppliers').should('exist').click({ force: true })
     cy.contains('h6', 'Suppliers').should('exist')
@@ -282,10 +282,11 @@ Cypress.Commands.add('expectedMessageCompleteSale', (message) => {
 })
 
 Cypress.Commands.add('newCheckout', (environ) => {
-    cy.visit(Cypress.expose(environ) + 'admin/calendar')
+    // cy.visit(Cypress.expose(environ) + 'admin/calendar')
     cy.contains('button', 'Add New').should('be.visible').click({ force: true })
     cy.wait(800)
     cy.contains('li', 'New Checkout').should('be.visible').click({ force: true })
+    cy.contains('button', 'Classic checkout').should('be.visible').click({ force: true })
     cy.contains('button', 'Walk In').should('be.visible').click({ force: true })
 })
 
