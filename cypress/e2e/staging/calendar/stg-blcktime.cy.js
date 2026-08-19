@@ -970,37 +970,9 @@ describe('Staging - Vendor Admin:ARTNAILCORNER | Calendar| Create Blocktime on t
 			cy.visit(
 				Cypress.expose('URL_Staging') + 'admin/calendar'
 			);
-			cy.newBlockTime('URL_Staging');
-			cy
-				.contains('div', 'Choose a staff')
-				.next('div')
-				.find('input')
-				.should('be.visible')
-				.click()
-				.type('Helen {enter}');
-			cy
-				.contains('span', 'Start Time')
-				.parent()
-				.next('div')
-				.find('input')
-				.should('be.visible')
-				.type('01:00{enter}');
-			cy
-				.contains('span', 'End Time')
-				.parent()
-				.next('div')
-				.find('input')
-				.should('be.visible')
-				.type('03:00{enter}');
-			cy
-				.contains('button', 'Submit')
-				.click({ force: true });
-			cy
-				.contains(
-					'div>span',
-					'User does not have enough permissions to use this service'
-				)
-				.should('be.visible');
+			cy.contains('button', 'Add New').should('not.exist')
+			cy.wait(8)
+			cy.contains('li','New Block Time').should('not.exist');
 		});
 	}
 );

@@ -35,35 +35,16 @@ module.exports = defineConfig({
 			// );
 
 			// Allure reporter
-			allureWriter(on, config);
+			// allureWriter(on, config);
 
 			// Browser launch options
-			on(
-				'before:browser:launch',
-				(browser, launchOptions) => {
-					if (
-						[
-							'chrome',
-							'edge'
-						].includes(browser.name)
-					) {
-						launchOptions.args.push(
-							'--window-size=2560,1440',
-							'--force-device-scale-factor=1',
-							'--high-dpi-support=1',
-							'--disable-gpu',
-							'--no-sandbox',
-							'--disable-dev-shm-usage',
-							'--disable-background-timer-throttling',
-							'--disable-backgrounding-occluded-windows',
-							'--disable-renderer-backgrounding',
-							'--disable-logging',
-							'--log-level=3'
-						);
-					}
-					return launchOptions;
-				}
-			);
+on('before:browser:launch', (browser, launchOptions) => {
+    if (browser.family === 'chromium') {
+        launchOptions.args.push('--window-size=1920,1080');
+    }
+
+    return launchOptions;
+});
 
 			// Merge environment-specific config (DO NOT replace config)
 			const file = config.env.configFile;
