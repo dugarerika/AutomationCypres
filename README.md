@@ -21,7 +21,7 @@ Each folder contains Cypress test files (`*.cy.js`) covering the main workflows 
 ---
 
 ## ✅ Features Covered  
-- **Calendar & Appointments**: Booking, new appointments, invoicing, blocking times, etc.  
+- **Calendar & Appointments**: Booking, new appointments, Appointment checkout, New Checkout, invoicing, blocking times, etc.  
 - **Coupons**: Creation and validation of coupons.  
 - **Customers**: Adding customers and using filters.  
 - **Employees**: Attendance, contracts, payroll, working hours.  
