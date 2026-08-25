@@ -85,7 +85,7 @@ const clearUpdateForm = () => {
 describe('Staging - Vendor Admin:PINKDOOR | Promotions/Coupons | Create Coupons| logged with Admin credentials', () => {
 
 beforeEach(() => {
-    cy.login('Admin Section', Cypress.expose("Vendor6_Admin_Username_Staging"), Cypress.expose("Vendor6_Admin_Password_Staging"))
+    cy.login('Admin Section', Cypress.expose("Vendor7_Admin_Username_Staging"), Cypress.expose("Vendor7_Admin_Password_Staging"))
     // cy.contains('h3','Welcome Back!').next('button').click()
     cy.get('body').then(($body) => {
         if ($body.text().includes('Welcome Back!')) {
