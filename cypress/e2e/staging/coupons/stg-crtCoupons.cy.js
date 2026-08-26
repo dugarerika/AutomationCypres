@@ -100,18 +100,18 @@ afterEach(() => {
     cy.clearCookies()
 })
 
-it.only('Verify it is possible access to the Coupons section', () => {
+it('Verify it is possible access to the Coupons section', () => {
     accessToCouponSection()
 })
 
-it.only('Verify it is possible access to the Add Coupons form', () => {
+it('Verify it is possible access to the Add Coupons form', () => {
     accessToCouponSection()
     accessToAddCouponForm()
 })
 
 // Add Coupon form fiels validation
 
-it.only('Verify that the Add Coupon Category are NOT required', () => {
+it('Verify that the Add Coupon Category are NOT required', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     cy.wait(64)
@@ -122,7 +122,7 @@ it.only('Verify that the Add Coupon Category are NOT required', () => {
     expectedMessageCreateCoupon('Coupon created successfully')
 })
 
-it.only('Verify that the Add Coupon Service & Category are NOT required', () => {
+it('Verify that the Add Coupon Service & Category are NOT required', () => {
     accessToCouponSection()
     accessToAddCouponForm()
         cy.wait(64)
@@ -132,92 +132,92 @@ it.only('Verify that the Add Coupon Service & Category are NOT required', () => 
     expectedMessageCreateCoupon('Coupon created successfully')
 })
 
-it.only('Verify that the Add Coupon Name is required', () => {
+it('Verify that the Add Coupon Name is required', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo('{enter}', randCouponCode1, 1, 1, 1)
     expectedMessageCreateCoupon('Required')
 })
 
-it.only('Verify that the Coupon discount value is required', () => {
+it('Verify that the Coupon discount value is required', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo(randCouponCode3, randCouponCode3, '{enter}', 1, 1)
     expectedMessageCreateCoupon('Discount value is required')
 })
 
-it.only('Verify that the coupon Price must be greater than Zero', () => {
+it('Verify that the coupon Price must be greater than Zero', () => {
     accessToCouponSection()
     accessToAddCouponForm()
     filloutCouponInfo(randCouponCode4, randCouponCode4, -1, 1, 1)
     expectedMessageCreateCoupon('Promotion value must be greater than 0')
 })
 
-it.only('Verify that the Add Coupon Price allow decimal numbers', () => {
+it('Verify that the Add Coupon Price allow decimal numbers', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo(randCouponCode2, randCouponCode2, 0.1, 1, 1)
+    filloutCouponInfo(`PNK2${faker.number.int({ min: 1, max: 100 })}`, `PNK2${faker.number.int({ min: 1, max: 100 })}`, 0.1, 1, 1)
     expectedMessageCreateCoupon('Coupon created successfully')
 })
 
-it.only('Verify that the it is possible to Add Coupon Fixed Price ', () => {
+it('Verify that the it is possible to Add Coupon Fixed Price ', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    filloutCouponInfo('12', `PNK2${faker.number.int({ min: 1, max: 100 })}`, 1, 1, 1)
     expectedMessageCreateCoupon('Required')
 })
 
-it.skip('Verify that the Add Coupon limit is Zero by default', () => {
+it('Verify that the Add Coupon limit is Zero by default', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    filloutCouponInfo('12', `PNK2${faker.number.int({ min: 1, max: 100 })}`, 1, 1, 1)
     expectedMessageCreateCoupon('Required')
 })
 
-it.skip('Verify that the Add Coupon setting like Public, Unlimited Used per Client and Booking Date are set off by default  ', () => {
+it('Verify that the Add Coupon setting like Public, Unlimited Used per Client and Booking Date are set off by default  ', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    filloutCouponInfo('12', `PNK2${faker.number.int({ min: 1, max: 100 })}`, 1, 1, 1)
     expectedMessageCreateCoupon('Number of sessions is required')
 })
 
-it.skip('Verify that the Add Coupon allow to create a coupona as Public', () => {
+it('Verify that the Add Coupon allow to create a coupona as Public', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    filloutCouponInfo('12', `PNK2${faker.number.int({ min: 1, max: 100 })}`, 1, 1, 1)
     expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
-it.skip('Verify that the Add Coupon allow to create a coupon with Limit the Promotion to an Specific date', () => {
+it('Verify that the Add Coupon allow to create a coupon with Limit the Promotion to an Specific date', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    filloutCouponInfo('12', `PNK2${faker.number.int({ min: 1, max: 100 })}`, 1, 1, 1)
     expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
-it.skip('Verify that the Add Coupon allow to create a coupon with Unlimited use per Client', () => {
+it('Verify that the Add Coupon allow to create a coupon with Unlimited use per Client', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    filloutCouponInfo('12', `PNK2${faker.number.int({ min: 1, max: 100 })}`, 1, 1, 1)
     expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
-it.skip('Verify that the Add Coupon allow to create a coupon with all the toggles enable', () => {
+it('Verify that the Add Coupon allow to create a coupon with all the toggles enable', () => {
     accessToCouponSection()
     accessToAddCouponForm()
-    filloutCouponInfo('12', randCouponCode1, 1, 1, 1)
+    filloutCouponInfo('12', `PNK2${faker.number.int({ min: 1, max: 100 })}`, 1, 1, 1)
     expectedMessageCreateCoupon('Number of sessions must be greater or equal than 1')
 })
 
 // Edit Coupon form fiels validation
-it.skip('Verify that the Update Coupon allows the user to remove services', () => {
+it('Verify that the Update Coupon allows the user to remove services', () => {
     accessToCouponSection()
     accessToEditCouponForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
     expectedMessageCreateCoupon('Please select at least one service')
 })
 
-it.skip('Verify that the Update Coupon Service is required', () => {
+it('Verify that the Update Coupon Service is required', () => {
     accessToCouponSection()
     accessToEditCouponForm()
     cy.get('[data-testid="CloseIcon"]').click({ force: true })
