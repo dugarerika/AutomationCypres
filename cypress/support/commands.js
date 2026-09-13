@@ -34,6 +34,13 @@ Cypress.Commands.add('login', (name, username, password) => {
             cy.contains('button', 'Not now').click()
             cy.wait(400)
         }
+        if ($body.text().includes('New ways to grow')) {
+            cy.contains('button', 'Not now').click()
+            cy.contains('button', 'Not now').click()
+            cy.contains('button', 'Not now').click()
+            cy.contains('button', 'Not now').click()
+            cy.wait(800)
+        }
     })
 })
 
